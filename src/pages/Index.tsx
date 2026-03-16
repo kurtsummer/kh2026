@@ -106,7 +106,7 @@ export default function Index() {
 
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider">
-                {filteredPrompts.length} gespeicherte Prompts
+                {filteredPrompts.length} gespeicherte Einträge
               </h3>
             </div>
 

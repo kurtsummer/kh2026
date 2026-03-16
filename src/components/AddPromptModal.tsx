@@ -18,10 +18,10 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
-    mediaType: "Image" as MediaType,
+    mediaType: "Bild" as MediaType,
     cameraType: "Digital" as CameraType,
     filmStock: "Standard Digital" as FilmStock,
-    perspective: "Eye Level" as Perspective,
+    perspective: "Augenhöhe" as Perspective,
     tags: "",
   });
 
@@ -53,10 +53,10 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
     setFormData({
       title: "",
       content: "",
-      mediaType: "Image",
+      mediaType: "Bild",
       cameraType: "Digital",
       filmStock: "Standard Digital",
-      perspective: "Eye Level",
+      perspective: "Augenhöhe",
       tags: "",
     });
     toast({
@@ -65,40 +65,40 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
     });
   };
 
-  const cameraTypes: CameraType[] = ["Retro", "Analog", "Digital", "Mirrorless", "DSLR", "Vintage", "35mm", "Medium Format", "Large Format"];
-  const filmStocks: FilmStock[] = ["Kodak Portra 400", "Fujifilm Superia", "Black & White", "CineStill 800T", "Polaroid", "Technicolor", "Ektachrome", "Standard Digital", "VHS", "Super 8"];
-  const perspectives: Perspective[] = ["Wide Shot", "Close-up", "Bird's Eye View", "Low Angle", "High Angle", "Eye Level", "Dutch Angle", "Macro", "Extreme Close-up", "Full Shot", "Medium Shot"];
+  const cameraTypes: CameraType[] = ["Retro", "Analog", "Digital", "Spiegellos", "Spiegelreflex", "Vintage", "35mm Film", "Mittelformat", "Großformat", "GoPro", "iPhone"];
+  const filmStocks: FilmStock[] = ["Kodak Portra 400", "Fujifilm Superia", "Schwarz-Weiß", "CineStill 800T", "Polaroid", "Technicolor", "Ektachrome", "Standard Digital", "VHS-Stil", "Super 8", "Kodak Gold 200", "Ilford HP5"];
+  const perspectives: Perspective[] = ["Weitwinkel", "Nahaufnahme", "Vogelperspektive", "Froschperspektive", "Draufsicht", "Augenhöhe", "Schräger Winkel", "Makro", "Extreme Nahaufnahme", "Totale", "Halbtotale", "Ego-Perspektive"];
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="rounded-full px-6 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
-          <Plus className="w-4 h-4 mr-2" /> Neuer Prompt
+          <Plus className="w-4 h-4 mr-2" /> Eigener Prompt
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
         <form onSubmit={handleSubmit}>
           <DialogHeader>
-            <DialogTitle>Prompt hinzufügen</DialogTitle>
+            <DialogTitle>Manueller Eintrag</DialogTitle>
             <DialogDescription>
-              Fülle die Details aus, um einen neuen Prompt in der Datenbank zu speichern.
+              Füge einen bereits existierenden Prompt zur Datenbank hinzu.
             </DialogDescription>
           </DialogHeader>
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
-              <Label htmlFor="title">Titel</Label>
+              <Label htmlFor="title">Kurztitel</Label>
               <Input 
                 id="title" 
-                placeholder="z.B. Neon Tokyo Rain" 
+                placeholder="z.B. Neon City Shot" 
                 value={formData.title}
                 onChange={(e) => setFormData({...formData, title: e.target.value})}
               />
             </div>
             <div className="grid gap-2">
-              <Label htmlFor="content">Prompt-Text</Label>
+              <Label htmlFor="content">Prompt-Text (Englisch)</Label>
               <Textarea 
                 id="content" 
-                placeholder="Beschreibe den Prompt im Detail..." 
+                placeholder="Füge hier deinen englischen Prompt ein..." 
                 className="min-h-[100px]"
                 value={formData.content}
                 onChange={(e) => setFormData({...formData, content: e.target.value})}
@@ -110,7 +110,7 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
                 <Select value={formData.mediaType} onValueChange={(v) => setFormData({...formData, mediaType: v as MediaType})}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Image">Bild</SelectItem>
+                    <SelectItem value="Bild">Bild</SelectItem>
                     <SelectItem value="Video">Video</SelectItem>
                   </SelectContent>
                 </Select>
@@ -145,18 +145,9 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
                 </Select>
               </div>
             </div>
-            <div className="grid gap-2">
-              <Label htmlFor="tags">Tags (kommagetrennt)</Label>
-              <Input 
-                id="tags" 
-                placeholder="portrait, cinematic, 8k" 
-                value={formData.tags}
-                onChange={(e) => setFormData({...formData, tags: e.target.value})}
-              />
-            </div>
           </div>
           <DialogFooter>
-            <Button type="submit" className="w-full h-12 text-lg font-semibold">Prompt Speichern</Button>
+            <Button type="submit" className="w-full h-12">In Datenbank speichern</Button>
           </DialogFooter>
         </form>
       </DialogContent>

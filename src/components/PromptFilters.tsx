@@ -24,17 +24,17 @@ export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersPro
     setFilters({ ...filters, [key]: value === "all" ? "" : value });
   };
 
-  const mediaTypes: MediaType[] = ["Image", "Video"];
-  const cameraTypes: CameraType[] = ["Retro", "Analog", "Digital", "Mirrorless", "DSLR", "Vintage", "35mm", "Medium Format", "Large Format"];
-  const filmStocks: FilmStock[] = ["Kodak Portra 400", "Fujifilm Superia", "Black & White", "CineStill 800T", "Polaroid", "Technicolor", "Ektachrome", "Standard Digital", "VHS", "Super 8"];
-  const perspectives: Perspective[] = ["Wide Shot", "Close-up", "Bird's Eye View", "Low Angle", "High Angle", "Eye Level", "Dutch Angle", "Macro", "Extreme Close-up", "Full Shot", "Medium Shot"];
+  const mediaTypes: MediaType[] = ["Bild", "Video"];
+  const cameraTypes: CameraType[] = ["Retro", "Analog", "Digital", "Spiegellos", "Spiegelreflex", "Vintage", "35mm Film", "Mittelformat", "Großformat", "GoPro", "iPhone"];
+  const filmStocks: FilmStock[] = ["Kodak Portra 400", "Fujifilm Superia", "Schwarz-Weiß", "CineStill 800T", "Polaroid", "Technicolor", "Ektachrome", "Standard Digital", "VHS-Stil", "Super 8", "Kodak Gold 200", "Ilford HP5"];
+  const perspectives: Perspective[] = ["Weitwinkel", "Nahaufnahme", "Vogelperspektive", "Froschperspektive", "Draufsicht", "Augenhöhe", "Schräger Winkel", "Makro", "Extreme Nahaufnahme", "Totale", "Halbtotale", "Ego-Perspektive"];
 
   return (
     <div className="bg-white dark:bg-zinc-950 border rounded-2xl p-6 shadow-sm mb-8 space-y-6">
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
         <Input
-          placeholder="Suche nach Prompts oder Tags..."
+          placeholder="Suche in der Datenbank..."
           className="pl-10 h-12 rounded-xl"
           value={filters.search}
           onChange={(e) => updateFilter("search", e.target.value)}
@@ -45,7 +45,7 @@ export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersPro
         <div className="space-y-2">
           <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Typ</Label>
           <Select value={filters.mediaType || "all"} onValueChange={(v) => updateFilter("mediaType", v)}>
-            <SelectTrigger className="rounded-xl">
+            <SelectTrigger className="rounded-xl h-11">
               <SelectValue placeholder="Alle Typen" />
             </SelectTrigger>
             <SelectContent>
@@ -58,7 +58,7 @@ export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersPro
         <div className="space-y-2">
           <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Kamera</Label>
           <Select value={filters.cameraType || "all"} onValueChange={(v) => updateFilter("cameraType", v)}>
-            <SelectTrigger className="rounded-xl">
+            <SelectTrigger className="rounded-xl h-11">
               <SelectValue placeholder="Alle Kameras" />
             </SelectTrigger>
             <SelectContent>
@@ -69,9 +69,9 @@ export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersPro
         </div>
 
         <div className="space-y-2">
-          <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Film/Look</Label>
+          <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Film / Look</Label>
           <Select value={filters.filmStock || "all"} onValueChange={(v) => updateFilter("filmStock", v)}>
-            <SelectTrigger className="rounded-xl">
+            <SelectTrigger className="rounded-xl h-11">
               <SelectValue placeholder="Alle Looks" />
             </SelectTrigger>
             <SelectContent>
@@ -84,11 +84,11 @@ export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersPro
         <div className="space-y-2">
           <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Perspektive</Label>
           <Select value={filters.perspective || "all"} onValueChange={(v) => updateFilter("perspective", v)}>
-            <SelectTrigger className="rounded-xl">
-              <SelectValue placeholder="Alle Blickwinkel" />
+            <SelectTrigger className="rounded-xl h-11">
+              <SelectValue placeholder="Alle Winkel" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">Alle Blickwinkel</SelectItem>
+              <SelectItem value="all">Alle Winkel</SelectItem>
               {perspectives.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
             </SelectContent>
           </Select>
