@@ -5,7 +5,8 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { MediaType, CameraType, FilmStock, Perspective, Lighting, Mood, Prompt } from "../types/prompt";
-import { Sparkles, Copy, Check, Save, Wand2, RefreshCcw, Zap, Dices } from "lucide-react";
+import { Sparkles, Copy, Check, Save, Wand2, RefreshCcw, Zap, Dices, BrainCircuit } from "lucide-react";
+
 import { toast } from "../hooks/use-toast";
 
 interface PromptGeneratorProps {
@@ -114,7 +115,42 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     toast({ title: "Überraschung!", description: "Zufällige Kombination generiert." });
   };
 
+  const handleAutoOptimize = () => {
+    if (!config.subject) {
+      toast({ title: "Fehler", description: "Bitte gib zuerst ein Thema ein, damit ich es analysieren kann.", variant: "destructive" });
+      return;
+    }
+
+    const text = config.subject.toLowerCase();
+    let updates: Partial<typeof config> = {};
+
+    if (text.includes("portrait") || text.includes("gesicht") || text.includes("mensch") || text.includes("frau") || text.includes("mann")) {
+      updates = { perspective: "Nahaufnahme", lighting: "Weiches Licht", filmStock: "Kodak Portra 400", aperture: "1.8", focalLength: "85mm", mood: "Raw/Authentisch" };
+    } else if (text.includes("nacht") || text.includes("neon") || text.includes("dunkel") || text.includes("stadt")) {
+      updates = { lighting: "Neon-Licht", mood: "Futuristisch", filmStock: "CineStill 800T", aperture: "2.8", focalLength: "35mm", perspective: "Weitwinkel" };
+    } else if (text.includes("landschaft") || text.includes("berge") || text.includes("natur") || text.includes("see")) {
+      updates = { perspective: "Weitwinkel", lighting: "Goldene Stunde", filmStock: "Fujifilm Superia", aperture: "8.0", focalLength: "24mm", mood: "Raw/Authentisch" };
+    } else if (text.includes("auto") || text.includes("rennen") || text.includes("schnell")) {
+      updates = { perspective: "Froschperspektive", lighting: "Hartes Licht", shutterSpeed: "1/2000", aperture: "4.0", focalLength: "35mm", mood: "Lebhaft" };
+    } else if (text.includes("makro") || text.includes("detail") || text.includes("insekt") || text.includes("blume")) {
+      updates = { perspective: "Makro", lighting: "Studio-Beleuchtung", aperture: "2.8", focalLength: "100mm", mood: "Professionell" };
+    } else if (text.includes("weltraum") || text.includes("station") || text.includes("zukunft")) {
+      updates = { mood: "Futuristisch", lighting: "Cinematisch", cameraType: "Digital", filmStock: "Standard Digital", focalLength: "24mm" };
+    } else {
+      // Default Professional fallback
+      updates = { perspective: "Augenhöhe", lighting: "Cinematisch", mood: "Professionell", aperture: "2.8", focalLength: "35mm" };
+    }
+
+    setConfig(prev => ({ ...prev, ...updates }));
+    toast({
+      title: "Optimiert!",
+      description: "Einstellungen wurden basierend auf deinem Thema angepasst.",
+      duration: 3000
+    });
+  };
+
   const generatePrompt = () => {
+
     if (!config.subject) {
       toast({ title: "Hinweis", description: "Bitte gib zuerst ein Thema ein.", variant: "destructive" });
       return;
@@ -185,11 +221,22 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       </CardHeader>
       <CardContent className="space-y-8 p-10">
         <div className="space-y-3">
-          <Label htmlFor="subject" className="text-base font-black text-primary uppercase tracking-widest flex items-center gap-2">
-            <Zap className="w-4 h-4 fill-primary" /> 1. Was ist dein Thema?
-          </Label>
-          <Textarea 
+          <div className="flex items-center justify-between">
+            <Label htmlFor="subject" className="text-base font-black text-primary uppercase tracking-widest flex items-center gap-2">
+              <Zap className="w-4 h-4 fill-primary" /> 1. Was ist dein Thema?
+            </Label>
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={handleAutoOptimize}
+              className="rounded-xl h-8 text-[10px] font-black uppercase tracking-widest gap-2 animate-pulse hover:animate-none bg-primary/10 text-primary border-none"
+            >
+              <BrainCircuit className="w-3.5 h-3.5" /> KI-Optimierung
+            </Button>
+          </div>
+          <Textarea
             id="subject"
+
             placeholder="Beschreibe deine Szene..."
             className="h-32 resize-none rounded-3xl border-2 border-primary/5 bg-white/50 dark:bg-black/20 focus:border-primary/30 focus:ring-primary/20 transition-all text-lg p-6"
             value={config.subject}
