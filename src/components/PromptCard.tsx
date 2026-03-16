@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card"
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Camera, Film, Video, Image as ImageIcon, Copy, Check, Calendar, Sparkles, Heart, MoreVertical, Pencil, Trash2 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "../hooks/use-toast";
 import {
   DropdownMenu,
@@ -23,10 +23,21 @@ interface PromptCardProps {
 
 export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDelete, onImageUpload }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      // Check file size (limit to 1MB to avoid localStorage issues)
+      if (file.size > 1024 * 1024) {
+        toast({
+          title: "Datei zu groß",
+          description: "Bitte lade ein Bild unter 1MB hoch, um den Speicher zu schonen.",
+          variant: "destructive"
+        });
+        return;
+      }
+
       const reader = new FileReader();
       reader.onloadend = () => {
         onImageUpload?.(prompt.id, reader.result as string);
@@ -102,13 +113,10 @@ export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDel
                   <Pencil className="w-4 h-4 text-blue-500" /> Bearbeiten
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  className="rounded-xl gap-2 font-bold cursor-pointer relative"
-                  asChild
+                  onClick={() => fileInputRef.current?.click()}
+                  className="rounded-xl gap-2 font-bold cursor-pointer"
                 >
-                  <label className="flex items-center w-full">
-                    <ImageIcon className="w-4 h-4 text-emerald-500 mr-2" /> Bild hochladen
-                    <input type="file" accept="image/*" className="hidden" onChange={handleFileChange} />
-                  </label>
+                  <ImageIcon className="w-4 h-4 text-emerald-500" /> Bild hochladen
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   onClick={() => onDelete?.(prompt.id)}
@@ -116,9 +124,16 @@ export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDel
                 >
                   <Trash2 className="w-4 h-4" /> Löschen
                 </DropdownMenuItem>
-
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <input
+              type="file"
+              ref={fileInputRef}
+              className="hidden"
+              accept="image/*"
+              onChange={handleFileChange}
+            />
 
             <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground uppercase tracking-tighter ml-1">
               <Calendar className="w-3 h-3 text-secondary" />
