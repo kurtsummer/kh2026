@@ -2,7 +2,7 @@ import { Prompt } from "../types/prompt";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { Camera, Film, Video, Image as ImageIcon, Copy, Check, Calendar } from "lucide-react";
+import { Camera, Film, Video, Image as ImageIcon, Copy, Check, Calendar, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { toast } from "../hooks/use-toast";
 
@@ -32,58 +32,71 @@ export function PromptCard({ prompt }: PromptCardProps) {
   };
 
   return (
-    <Card className="group overflow-hidden border-2 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:-translate-y-1 dark:bg-zinc-900/50">
-      <CardHeader className="pb-2">
-        <div className="flex items-center justify-between mb-2">
-          <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 font-bold">
-            {prompt.mediaType === 'Video' ? <Video className="w-3 h-3 mr-1" /> : <ImageIcon className="w-3 h-3 mr-1" />}
+    <Card className="group relative overflow-hidden border-none transition-all duration-500 hover:shadow-[0_20px_50px_rgba(99,102,241,0.2)] hover:-translate-y-2 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-md rounded-[2rem]">
+      {/* Decorative gradient background on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <CardHeader className="pb-2 relative">
+        <div className="flex items-center justify-between mb-3">
+          <Badge className="bg-gradient-to-r from-primary to-primary/80 text-white border-none px-3 py-1 font-bold text-[10px] uppercase tracking-wider">
+            {prompt.mediaType === 'Video' ? <Video className="w-3 h-3 mr-1.5" /> : <ImageIcon className="w-3 h-3 mr-1.5" />}
             {prompt.mediaType}
           </Badge>
-          <div className="flex items-center gap-1 text-[10px] text-muted-foreground">
-            <Calendar className="w-3 h-3" />
+          <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground uppercase tracking-tighter">
+            <Calendar className="w-3 h-3 text-secondary" />
             {formatDate(prompt.createdAt)}
           </div>
         </div>
-        <CardTitle className="text-xl font-bold tracking-tight line-clamp-1">{prompt.title}</CardTitle>
+        <CardTitle className="text-xl font-black tracking-tight line-clamp-1 group-hover:text-primary transition-colors">{prompt.title}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="relative group/text">
-          <p className="text-sm text-muted-foreground line-clamp-3 italic min-h-[60px]">
+
+      <CardContent className="space-y-5 relative">
+        <div className="relative p-4 rounded-2xl bg-white dark:bg-zinc-800/50 border border-primary/5 shadow-inner group-hover:border-primary/20 transition-all">
+          <p className="text-sm text-muted-foreground line-clamp-3 italic leading-relaxed">
             "{prompt.content}"
           </p>
-          <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent opacity-0 group-hover/text:opacity-100 transition-opacity pointer-events-none" />
         </div>
         
-        <div className="grid grid-cols-2 gap-2 text-[11px]">
-          <div className="flex items-center gap-2 p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-transparent hover:border-blue-500/20 transition-colors">
-            <Camera className="w-3.5 h-3.5 text-blue-500" />
-            <span className="font-semibold truncate">{prompt.cameraType}</span>
+        <div className="grid grid-cols-2 gap-3 text-[11px]">
+          <div className="flex flex-col gap-1 p-3 rounded-2xl bg-primary/5 border border-primary/10 hover:bg-primary/10 transition-colors">
+            <div className="flex items-center gap-1.5 text-primary">
+              <Camera className="w-3.5 h-3.5" />
+              <span className="font-black uppercase tracking-widest text-[9px]">Kamera</span>
+            </div>
+            <span className="font-bold truncate text-zinc-700 dark:text-zinc-300">{prompt.cameraType}</span>
           </div>
-          <div className="flex items-center gap-2 p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-transparent hover:border-orange-500/20 transition-colors">
-            <Film className="w-3.5 h-3.5 text-orange-500" />
-            <span className="font-semibold truncate">{prompt.filmStock}</span>
+          <div className="flex flex-col gap-1 p-3 rounded-2xl bg-secondary/5 border border-secondary/10 hover:bg-secondary/10 transition-colors">
+            <div className="flex items-center gap-1.5 text-secondary">
+              <Film className="w-3.5 h-3.5" />
+              <span className="font-black uppercase tracking-widest text-[9px]">Film/Look</span>
+            </div>
+            <span className="font-bold truncate text-zinc-700 dark:text-zinc-300">{prompt.filmStock}</span>
           </div>
-          <div className="flex items-center gap-2 p-2 rounded-xl bg-zinc-100 dark:bg-zinc-800 col-span-2 border border-transparent hover:border-primary/20 transition-colors">
-            <span className="text-zinc-500 font-medium">Blickwinkel:</span>
-            <span className="font-bold">{prompt.perspective}</span>
+          <div className="flex items-center gap-3 p-3 rounded-2xl bg-accent/5 border border-accent/10 col-span-2 hover:bg-accent/10 transition-colors">
+             <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+             <div className="flex-1">
+                <span className="text-accent font-black uppercase tracking-widest text-[9px] block">Perspektive</span>
+                <span className="font-bold text-zinc-700 dark:text-zinc-300">{prompt.perspective}</span>
+             </div>
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-1.5 mt-2">
+        <div className="flex flex-wrap gap-2 pt-2">
           {prompt.tags.map(tag => (
-            <Badge key={tag} variant="outline" className="text-[9px] uppercase tracking-wider font-bold py-0 bg-zinc-50 dark:bg-zinc-900">
+            <Badge key={tag} variant="outline" className="text-[9px] uppercase tracking-tighter font-black px-2 py-0.5 rounded-full border-primary/20 bg-primary/5 text-primary hover:bg-primary hover:text-white transition-all cursor-default">
               #{tag}
             </Badge>
           ))}
         </div>
       </CardContent>
-      <CardFooter className="bg-zinc-50 dark:bg-zinc-800/50 pt-4 border-t border-zinc-100 dark:border-zinc-800">
-        <Button
-          variant="outline"
-          className="w-full gap-2 transition-all active:scale-95 hover:bg-primary hover:text-white border-primary/20"
+
+      <CardFooter className="pt-4 pb-6 px-6 relative">
+        <Button 
+          variant="outline" 
+          className="w-full h-12 gap-2 transition-all duration-300 active:scale-95 bg-white dark:bg-zinc-800 hover:bg-primary hover:text-white border-primary/20 hover:border-primary shadow-lg shadow-primary/5 hover:shadow-primary/20 rounded-xl font-bold" 
           onClick={copyToClipboard}
         >
-          {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+          {copied ? <Check className="w-4 h-4" /> : <Sparkles className="w-4 h-4" />}
           {copied ? "Kopiert" : "Prompt kopieren"}
         </Button>
       </CardFooter>

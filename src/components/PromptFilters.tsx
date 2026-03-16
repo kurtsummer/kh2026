@@ -30,74 +30,44 @@ export function PromptFilters({ filters, setFilters, onReset }: PromptFiltersPro
   const perspectives: Perspective[] = ["Weitwinkel", "Nahaufnahme", "Vogelperspektive", "Froschperspektive", "Draufsicht", "Augenhöhe", "Schräger Winkel", "Makro", "Extreme Nahaufnahme", "Totale", "Halbtotale", "Ego-Perspektive"];
 
   return (
-    <div className="bg-white dark:bg-zinc-950 border rounded-2xl p-6 shadow-sm mb-8 space-y-6">
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
+    <div className="bg-white/50 dark:bg-zinc-950/50 backdrop-blur-xl border-2 border-primary/5 rounded-[2.5rem] p-8 shadow-2xl shadow-primary/5 mb-12 space-y-8 animate-in slide-in-from-top-4 duration-700">
+      <div className="relative group">
+        <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
+          <Search className="text-primary w-5 h-5 group-focus-within:scale-110 transition-transform" />
+        </div>
         <Input
-          placeholder="Suche in der Datenbank..."
-          className="pl-10 h-12 rounded-xl"
+          placeholder="Durchsuche deine kreative Sammlung..."
+          className="pl-14 h-16 rounded-[1.5rem] border-2 border-primary/5 bg-white/80 dark:bg-black/20 focus:border-primary/30 focus:ring-primary/10 transition-all text-lg font-medium shadow-inner"
           value={filters.search}
           onChange={(e) => updateFilter("search", e.target.value)}
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="space-y-2">
-          <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Typ</Label>
-          <Select value={filters.mediaType || "all"} onValueChange={(v) => updateFilter("mediaType", v)}>
-            <SelectTrigger className="rounded-xl h-11">
-              <SelectValue placeholder="Alle Typen" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">Alle Typen</SelectItem>
-              {mediaTypes.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="space-y-2">
-          <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Kamera</Label>
-          <Select value={filters.cameraType || "all"} onValueChange={(v) => updateFilter("cameraType", v)}>
-            <SelectTrigger className="rounded-xl h-11">
-              <SelectValue placeholder="Alle Kameras" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">Alle Kameras</SelectItem>
-              {cameraTypes.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="space-y-2">
-          <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Film / Look</Label>
-          <Select value={filters.filmStock || "all"} onValueChange={(v) => updateFilter("filmStock", v)}>
-            <SelectTrigger className="rounded-xl h-11">
-              <SelectValue placeholder="Alle Looks" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">Alle Looks</SelectItem>
-              {filmStocks.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-            </SelectContent>
-          </Select>
-        </div>
-
-        <div className="space-y-2">
-          <Label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Perspektive</Label>
-          <Select value={filters.perspective || "all"} onValueChange={(v) => updateFilter("perspective", v)}>
-            <SelectTrigger className="rounded-xl h-11">
-              <SelectValue placeholder="Alle Winkel" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">Alle Winkel</SelectItem>
-              {perspectives.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-            </SelectContent>
-          </Select>
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { label: "Medien-Typ", key: "mediaType", options: mediaTypes },
+          { label: "Kamera-Modell", key: "cameraType", options: cameraTypes },
+          { label: "Film / Look", key: "filmStock", options: filmStocks },
+          { label: "Blickwinkel", key: "perspective", options: perspectives },
+        ].map((filter) => (
+          <div key={filter.key} className="space-y-2">
+            <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-2">{filter.label}</Label>
+            <Select value={filters[filter.key as keyof FilterState] || "all"} onValueChange={(v) => updateFilter(filter.key as keyof FilterState, v)}>
+              <SelectTrigger className="rounded-2xl h-14 border-2 border-primary/5 bg-white/80 dark:bg-black/20 hover:border-primary/20 transition-all font-bold">
+                <SelectValue placeholder={`Alle ${filter.label}`} />
+              </SelectTrigger>
+              <SelectContent className="rounded-2xl max-h-[300px]">
+                <SelectItem value="all" className="rounded-xl font-bold text-primary">Alle {filter.label}</SelectItem>
+                {filter.options.map(t => <SelectItem key={t} value={t} className="rounded-xl my-0.5">{t}</SelectItem>)}
+              </SelectContent>
+            </Select>
+          </div>
+        ))}
       </div>
 
-      <div className="flex justify-end">
-        <Button variant="ghost" size="sm" onClick={onReset} className="text-xs text-muted-foreground hover:text-foreground">
-          <X className="w-3 h-3 mr-1" /> Filter zurücksetzen
+      <div className="flex justify-center sm:justify-end pt-2">
+        <Button variant="ghost" onClick={onReset} className="text-xs font-black uppercase tracking-widest text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-full px-6 transition-all">
+          <X className="w-4 h-4 mr-2" /> Filter zurücksetzen
         </Button>
       </div>
     </div>

@@ -5,12 +5,11 @@ import { PromptFilters } from "../components/PromptFilters";
 import { AddPromptModal } from "../components/AddPromptModal";
 import { PromptGenerator } from "../components/PromptGenerator";
 import { Prompt } from "../types/prompt";
-import { Sparkles, Database, LayoutGrid, Wand2 } from "lucide-react";
+import { Sparkles, Database, LayoutGrid, Wand2, Palette } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
 export default function Index() {
-
   const [prompts, setPrompts] = useState<Prompt[]>(mockPrompts);
   const [filters, setFilters] = useState({
     search: "",
@@ -51,44 +50,51 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafafa] dark:bg-black text-foreground selection:bg-primary/20">
-      <header className="sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary/20 relative overflow-hidden">
+      {/* Decorative Blobs */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-[20%] right-[-5%] w-[30%] h-[30%] bg-accent/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-xl">
         <div className="container mx-auto px-4 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 bg-primary rounded-2xl shadow-lg shadow-primary/20">
+            <div className="p-2.5 bg-gradient-to-br from-primary to-secondary rounded-2xl shadow-lg shadow-primary/20">
               <Database className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight">PromptDB</h1>
-              <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">AI Generator Engine</p>
+              <h1 className="text-xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">PromptDB</h1>
+              <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-semibold">AI Creative Studio</p>
             </div>
           </div>
-          <AddPromptModal onAdd={handleAddPrompt} />
+          <div className="flex items-center gap-4">
+             <AddPromptModal onAdd={handleAddPrompt} />
+          </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="max-w-4xl mx-auto mb-16 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary border border-primary/10 text-sm font-medium">
-            <Sparkles className="w-4 h-4" />
-            <span>Kreatives Prompt-Werkzeug</span>
+      <main className="container mx-auto px-4 py-12 relative">
+        <div className="max-w-4xl mx-auto mb-16 text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-zinc-900 shadow-sm border border-primary/10 text-sm font-medium animate-bounce-subtle">
+            <Palette className="w-4 h-4 text-primary" />
+            <span className="text-primary">Farbenfrohes Design Aktiviert</span>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-            Vom Konzept zum <span className="text-primary">perfekten Prompt</span>
+          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight">
+            Gestalte die <span className="text-primary italic">Zukunft</span> deiner <span className="text-secondary">Bilder</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Wähle deine Kamera, den Film-Look und die Perspektive. Beschreibe deine Szene und lass den Generator den Rest erledigen.
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Wähle deine Kamera, den Film-Look und die Perspektive. Unser Generator erstellt dir den perfekten, detailreichen Prompt.
           </p>
         </div>
 
         <Tabs defaultValue="generator" className="space-y-12">
           <div className="flex justify-center">
-            <TabsList className="h-14 p-1 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border-2">
-              <TabsTrigger value="generator" className="rounded-xl px-8 flex items-center gap-2 data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:shadow-sm">
-                <Wand2 className="w-4 h-4" /> Generator
+            <TabsList className="h-16 p-1.5 rounded-2xl bg-white dark:bg-zinc-900 border-2 border-primary/5 shadow-xl shadow-primary/5">
+              <TabsTrigger value="generator" className="rounded-xl px-10 text-base font-bold flex items-center gap-2 data-[state=active]:bg-primary data-[state=active]:text-white transition-all duration-300">
+                <Wand2 className="w-5 h-5" /> Generator
               </TabsTrigger>
-              <TabsTrigger value="database" className="rounded-xl px-8 flex items-center gap-2 data-[state=active]:bg-white dark:data-[state=active]:bg-zinc-800 data-[state=active]:shadow-sm">
-                <LayoutGrid className="w-4 h-4" /> Datenbank
+              <TabsTrigger value="database" className="rounded-xl px-10 text-base font-bold flex items-center gap-2 data-[state=active]:bg-secondary data-[state=active]:text-white transition-all duration-300">
+                <LayoutGrid className="w-5 h-5" /> Datenbank
               </TabsTrigger>
             </TabsList>
           </div>
@@ -98,39 +104,44 @@ export default function Index() {
           </TabsContent>
 
           <TabsContent value="database" className="space-y-8 focus-visible:outline-none">
-            <PromptFilters
-              filters={filters}
-              setFilters={setFilters}
-              onReset={handleResetFilters}
+            <PromptFilters 
+              filters={filters} 
+              setFilters={setFilters} 
+              onReset={handleResetFilters} 
             />
 
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider">
-                {filteredPrompts.length} gespeicherte Einträge
+            <div className="flex items-center justify-between mb-8">
+              <h3 className="text-sm font-bold text-primary uppercase tracking-widest flex items-center gap-2">
+                <div className="w-8 h-1 bg-primary rounded-full" />
+                {filteredPrompts.length} Gespeicherte Werke
               </h3>
             </div>
 
             {filteredPrompts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPrompts.map((prompt) => (
                   <PromptCard key={prompt.id} prompt={prompt} />
                 ))}
               </div>
             ) : (
-              <div className="py-20 text-center border-2 border-dashed rounded-3xl bg-zinc-50 dark:bg-zinc-900/20">
-                <p className="text-zinc-500 font-medium">Keine Prompts gefunden.</p>
-                <Button variant="link" onClick={handleResetFilters} className="mt-2">Filter aufheben</Button>
+              <div className="py-24 text-center border-4 border-dashed rounded-[2.5rem] bg-white dark:bg-zinc-900/40 border-primary/10">
+                <div className="mb-4 inline-flex p-4 bg-primary/5 rounded-full">
+                  <Database className="w-12 h-12 text-primary/40" />
+                </div>
+                <p className="text-zinc-500 text-lg font-medium">Keine passenden Einträge gefunden.</p>
+                <Button variant="link" onClick={handleResetFilters} className="mt-2 text-primary font-bold">Filter zurücksetzen</Button>
               </div>
             )}
           </TabsContent>
         </Tabs>
       </main>
 
-      <footer className="border-t py-12 mt-20 bg-white dark:bg-zinc-950">
+      <footer className="border-t py-12 mt-20 bg-white/50 dark:bg-zinc-950/50 backdrop-blur-sm">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} PromptDB. Gebaut für kreative Köpfe.
+          <p className="text-sm font-medium text-muted-foreground flex items-center justify-center gap-2">
+            Made with <Sparkles className="w-4 h-4 text-primary" /> by PromptDB
           </p>
+          <p className="text-[10px] text-muted-foreground mt-2 uppercase tracking-widest">© {new Date().getFullYear()} - Alle Rechte vorbehalten</p>
         </div>
       </footer>
     </div>

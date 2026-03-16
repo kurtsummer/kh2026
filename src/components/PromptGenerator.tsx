@@ -5,7 +5,7 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { MediaType, CameraType, FilmStock, Perspective, Lighting, Mood, Prompt } from "../types/prompt";
-import { Sparkles, Copy, Check, Save, Wand2, RefreshCcw } from "lucide-react";
+import { Sparkles, Copy, Check, Save, Wand2, RefreshCcw, Zap } from "lucide-react";
 import { toast } from "../hooks/use-toast";
 
 interface PromptGeneratorProps {
@@ -26,21 +26,13 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
   const [generatedPrompt, setGeneratedPrompt] = useState("");
   const [copied, setCopied] = useState(false);
 
-  // Mappings for English prompt generation
   const mapToEnglish = {
     media: { "Bild": "High-resolution professional photograph of", "Video": "Cinematic high-quality video footage of" },
     camera: {
-      "Retro": "vintage retro camera",
-      "Analog": "classic analog camera",
-      "Digital": "high-end digital sensor",
-      "Spiegellos": "modern mirrorless camera",
-      "Spiegelreflex": "professional DSLR camera",
-      "Vintage": "authentic vintage camera equipment",
-      "35mm Film": "35mm film camera",
-      "Mittelformat": "medium format camera with shallow depth of field",
-      "Großformat": "large format camera with immense detail",
-      "GoPro": "action-packed GoPro camera",
-      "iPhone": "shot on iPhone, mobile photography style"
+      "Retro": "vintage retro camera", "Analog": "classic analog camera", "Digital": "high-end digital sensor",
+      "Spiegellos": "modern mirrorless camera", "Spiegelreflex": "professional DSLR camera", "Vintage": "authentic vintage camera equipment",
+      "35mm Film": "35mm film camera", "Mittelformat": "medium format camera with shallow depth of field",
+      "Großformat": "large format camera with immense detail", "GoPro": "action-packed GoPro camera", "iPhone": "shot on iPhone, mobile photography style"
     },
     film: {
       "Kodak Portra 400": "Kodak Portra 400, warm skin tones, fine grain",
@@ -57,39 +49,24 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       "Ilford HP5": "Ilford HP5 black and white, gritty grain, classic look"
     },
     perspective: {
-      "Weitwinkel": "wide angle lens, capturing the vast environment",
-      "Nahaufnahme": "close-up shot, focusing on intricate details",
-      "Vogelperspektive": "bird's eye view from high above",
-      "Froschperspektive": "worm's eye view, looking up from the ground",
-      "Draufsicht": "top-down flat lay perspective",
-      "Augenhöhe": "eye-level perspective, creating a direct connection",
-      "Schräger Winkel": "dutch angle, creating tension and dynamism",
-      "Makro": "extreme macro photography, microscopic details visible",
-      "Extreme Nahaufnahme": "extreme close-up, intense focus on a specific feature",
-      "Totale": "full wide shot, showing the subject in its entirety",
-      "Halbtotale": "medium wide shot, balancing subject and environment",
-      "Ego-Perspektive": "first-person point of view (POV)"
+      "Weitwinkel": "wide angle lens, capturing the vast environment", "Nahaufnahme": "close-up shot, focusing on intricate details",
+      "Vogelperspektive": "bird's eye view from high above", "Froschperspektive": "worm's eye view, looking up from the ground",
+      "Draufsicht": "top-down flat lay perspective", "Augenhöhe": "eye-level perspective, creating a direct connection",
+      "Schräger Winkel": "dutch angle, creating tension and dynamism", "Makro": "extreme macro photography, microscopic details visible",
+      "Extreme Nahaufnahme": "extreme close-up, intense focus on a specific feature", "Totale": "full wide shot, showing the subject in its entirety",
+      "Halbtotale": "medium wide shot, balancing subject and environment", "Ego-Perspektive": "first-person point of view (POV)"
     },
     lighting: {
-      "Goldene Stunde": "bathed in warm golden hour light, long soft shadows",
-      "Cinematisch": "cinematic lighting with high dynamic range and moody shadows",
-      "Neon-Licht": "vibrant neon lights, Cyberpunk aesthetic, glowing reflections",
-      "Weiches Licht": "diffused soft lighting, gentle transitions",
-      "Hartes Licht": "hard direct sunlight, dramatic high-contrast shadows",
-      "Studio-Beleuchtung": "professional studio lighting setup, rim lights, softboxes",
-      "Natürliches Licht": "natural ambient daylight, realistic reflections",
-      "Düster": "low-key moody lighting, mysterious atmosphere",
-      "Bewölkt": "soft overcast daylight, flat even lighting"
+      "Goldene Stunde": "bathed in warm golden hour light, long soft shadows", "Cinematisch": "cinematic lighting with high dynamic range and moody shadows",
+      "Neon-Licht": "vibrant neon lights, Cyberpunk aesthetic, glowing reflections", "Weiches Licht": "diffused soft lighting, gentle transitions",
+      "Hartes Licht": "hard direct sunlight, dramatic high-contrast shadows", "Studio-Beleuchtung": "professional studio lighting setup, rim lights, softboxes",
+      "Natürliches Licht": "natural ambient daylight, realistic reflections", "Düster": "low-key moody lighting, mysterious atmosphere", "Bewölkt": "soft overcast daylight, flat even lighting"
     },
     mood: {
-      "Nostalgisch": "evoking a sense of nostalgia and memory",
-      "Futuristisch": "sleek futuristic aesthetic, clean lines, advanced tech feel",
-      "Raw/Authentisch": "raw and authentic documentary style, unpolished beauty",
-      "Ätherisch": "ethereal and otherworldly, glowing halos, soft focus",
-      "Traumhaft": "dreamlike surreal atmosphere, soft hazy textures",
-      "Professionell": "clean professional commercial look, high-end production",
-      "Dunkel": "dark and gritty atmosphere, intense and heavy",
-      "Lebhaft": "vibrant and energetic, bursting with life and color"
+      "Nostalgisch": "evoking a sense of nostalgia and memory", "Futuristisch": "sleek futuristic aesthetic, clean lines, advanced tech feel",
+      "Raw/Authentisch": "raw and authentic documentary style, unpolished beauty", "Ätherisch": "ethereal and otherworldly, glowing halos, soft focus",
+      "Traumhaft": "dreamlike surreal atmosphere, soft hazy textures", "Professionell": "clean professional commercial look, high-end production",
+      "Dunkel": "dark and gritty atmosphere, intense and heavy", "Lebhaft": "vibrant and energetic, bursting with life and color"
     }
   };
 
@@ -98,7 +75,6 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       toast({ title: "Hinweis", description: "Bitte gib zuerst ein Thema ein.", variant: "destructive" });
       return;
     }
-
     const engMedia = mapToEnglish.media[config.mediaType];
     const engCamera = mapToEnglish.camera[config.cameraType as keyof typeof mapToEnglish.camera];
     const engFilm = mapToEnglish.film[config.filmStock as keyof typeof mapToEnglish.film];
@@ -107,23 +83,21 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     const engMood = mapToEnglish.mood[config.mood as keyof typeof mapToEnglish.mood];
 
     const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed.`;
-
     setGeneratedPrompt(fullPrompt);
   };
 
   const handleCopy = () => {
     navigator.clipboard.writeText(generatedPrompt);
     setCopied(true);
-    toast({ title: "Kopiert!", description: "Der englische Prompt wurde in die Zwischenablage kopiert." });
+    toast({ title: "Kopiert!", description: "Prompt in der Zwischenablage." });
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleSave = () => {
     if (!generatedPrompt) return;
-    
-    const newPrompt: Prompt = {
+    onSave({
       id: Math.random().toString(36).substr(2, 9),
-      title: config.subject.slice(0, 30) + (config.subject.length > 30 ? "..." : ""),
+      title: config.subject.slice(0, 30),
       content: generatedPrompt,
       mediaType: config.mediaType,
       cameraType: config.cameraType,
@@ -133,10 +107,8 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       mood: config.mood,
       tags: ["generiert", config.mediaType.toLowerCase()],
       createdAt: new Date().toISOString(),
-    };
-
-    onSave(newPrompt);
-    toast({ title: "Gespeichert", description: "Prompt wurde in die Datenbank übernommen." });
+    });
+    toast({ title: "Gespeichert!", description: "In Datenbank abgelegt." });
   };
 
   const cameraTypes: CameraType[] = ["Retro", "Analog", "Digital", "Spiegellos", "Spiegelreflex", "Vintage", "35mm Film", "Mittelformat", "Großformat", "GoPro", "iPhone"];
@@ -146,123 +118,82 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
   const moods: Mood[] = ["Nostalgisch", "Futuristisch", "Raw/Authentisch", "Ätherisch", "Traumhaft", "Professionell", "Dunkel", "Lebhaft"];
 
   return (
-    <Card className="border-2 border-primary/20 shadow-2xl bg-white dark:bg-zinc-950 overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-blue-500 to-purple-600" />
-      <CardHeader>
-        <div className="flex items-center gap-2 mb-1">
-          <Wand2 className="w-5 h-5 text-primary" />
-          <CardTitle>KI Prompt Generator</CardTitle>
+    <Card className="border-none shadow-[0_30px_100px_rgba(99,102,241,0.15)] bg-white/80 dark:bg-zinc-950/80 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden relative">
+      <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-secondary to-accent" />
+      <CardHeader className="pt-10">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="p-2 bg-primary/10 rounded-xl">
+             <Wand2 className="w-6 h-6 text-primary" />
+          </div>
+          <CardTitle className="text-3xl font-black tracking-tight">Prompt Creator</CardTitle>
         </div>
-        <CardDescription>Erstelle extrem detaillierte englische Prompts durch deutsche Auswahl.</CardDescription>
+        <CardDescription className="text-lg font-medium">Lass deiner Kreativität freien Lauf.</CardDescription>
       </CardHeader>
-      <CardContent className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="md:col-span-2 lg:col-span-3 space-y-2">
-            <Label htmlFor="subject" className="text-sm font-bold">Was soll zu sehen sein? (Inhalt)</Label>
-            <Textarea 
-              id="subject"
-              placeholder="z.B. Ein alter Leuchtturm bei Sturm an der Küste..."
-              className="h-24 resize-none rounded-xl border-zinc-200 dark:border-zinc-800 focus:ring-primary"
-              value={config.subject}
-              onChange={(e) => setConfig({ ...config, subject: e.target.value })}
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-xs font-bold uppercase text-muted-foreground">Medien-Typ</Label>
-            <Select value={config.mediaType} onValueChange={(v) => setConfig({ ...config, mediaType: v as MediaType })}>
-              <SelectTrigger className="rounded-xl h-11"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Bild">Bild</SelectItem>
-                <SelectItem value="Video">Video</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-xs font-bold uppercase text-muted-foreground">Kamera</Label>
-            <Select value={config.cameraType} onValueChange={(v) => setConfig({ ...config, cameraType: v as CameraType })}>
-              <SelectTrigger className="rounded-xl h-11"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                {cameraTypes.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-xs font-bold uppercase text-muted-foreground">Film / Look</Label>
-            <Select value={config.filmStock} onValueChange={(v) => setConfig({ ...config, filmStock: v as FilmStock })}>
-              <SelectTrigger className="rounded-xl h-11"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                {filmStocks.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-xs font-bold uppercase text-muted-foreground">Perspektive</Label>
-            <Select value={config.perspective} onValueChange={(v) => setConfig({ ...config, perspective: v as Perspective })}>
-              <SelectTrigger className="rounded-xl h-11"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                {perspectives.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-xs font-bold uppercase text-muted-foreground">Beleuchtung</Label>
-            <Select value={config.lighting} onValueChange={(v) => setConfig({ ...config, lighting: v as Lighting })}>
-              <SelectTrigger className="rounded-xl h-11"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                {lightings.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label className="text-xs font-bold uppercase text-muted-foreground">Stimmung</Label>
-            <Select value={config.mood} onValueChange={(v) => setConfig({ ...config, mood: v as Mood })}>
-              <SelectTrigger className="rounded-xl h-11"><SelectValue /></SelectTrigger>
-              <SelectContent>
-                {moods.map(t => <SelectItem key={t} value={t}>{t}</SelectItem>)}
-              </SelectContent>
-            </Select>
-          </div>
+      <CardContent className="space-y-8 p-10">
+        <div className="space-y-3">
+          <Label htmlFor="subject" className="text-base font-black text-primary uppercase tracking-widest flex items-center gap-2">
+            <Zap className="w-4 h-4 fill-primary" /> 1. Was ist dein Thema?
+          </Label>
+          <Textarea 
+            id="subject"
+            placeholder="Beschreibe deine Szene..."
+            className="h-32 resize-none rounded-3xl border-2 border-primary/5 bg-white/50 dark:bg-black/20 focus:border-primary/30 focus:ring-primary/20 transition-all text-lg p-6"
+            value={config.subject}
+            onChange={(e) => setConfig({ ...config, subject: e.target.value })}
+          />
         </div>
 
-        <div className="pt-4">
-          <Button onClick={generatePrompt} className="w-full h-12 text-lg font-bold gap-2 shadow-xl shadow-primary/20">
-            <Sparkles className="w-5 h-5" /> Prompt generieren
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { label: "Medien-Typ", value: config.mediaType, key: "mediaType", options: ["Bild", "Video"] },
+            { label: "Kamera", value: config.cameraType, key: "cameraType", options: cameraTypes },
+            { label: "Film / Look", value: config.filmStock, key: "filmStock", options: filmStocks },
+            { label: "Perspektive", value: config.perspective, key: "perspective", options: perspectives },
+            { label: "Beleuchtung", value: config.lighting, key: "lighting", options: lightings },
+            { label: "Stimmung", value: config.mood, key: "mood", options: moods },
+          ].map((field) => (
+            <div key={field.key} className="space-y-2">
+              <Label className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground ml-1">{field.label}</Label>
+              <Select value={field.value as string} onValueChange={(v) => setConfig({ ...config, [field.key]: v })}>
+                <SelectTrigger className="rounded-2xl h-14 border-2 border-primary/5 bg-white/50 dark:bg-black/20 hover:border-primary/20 transition-all font-bold">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="rounded-2xl">
+                  {field.options.map(t => <SelectItem key={t} value={t} className="rounded-xl my-0.5">{t}</SelectItem>)}
+                </SelectContent>
+              </Select>
+            </div>
+          ))}
+        </div>
+
+        <div className="pt-6">
+          <Button onClick={generatePrompt} className="w-full h-16 text-xl font-black gap-3 shadow-[0_20px_40px_rgba(99,102,241,0.3)] hover:shadow-primary/40 rounded-2xl transition-all hover:scale-[1.02] active:scale-[0.98]">
+            <Sparkles className="w-6 h-6 animate-pulse" /> PROMPT GENERIEREN
           </Button>
         </div>
 
         {generatedPrompt && (
-          <div className="mt-8 p-6 bg-zinc-50 dark:bg-zinc-900 rounded-2xl border-2 border-primary/30 relative animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div className="flex items-center justify-between mb-4">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-primary flex items-center gap-1">
-                <Wand2 className="w-3 h-3" /> Dein englischer Prompt
-              </span>
-              <Button 
-                size="sm" 
-                variant="ghost" 
-                onClick={() => setGeneratedPrompt("")}
-                className="h-8 text-xs"
-              >
-                <RefreshCcw className="w-3 h-3 mr-1" /> Zurücksetzen
-              </Button>
+          <div className="mt-12 p-8 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-[2rem] border-2 border-primary/10 relative overflow-hidden animate-in zoom-in-95 duration-500">
+            <div className="absolute top-0 right-0 p-4">
+               <div className="flex gap-2">
+                  <Button size="sm" variant="ghost" onClick={() => setGeneratedPrompt("")} className="h-8 rounded-full hover:bg-white/50">
+                    <RefreshCcw className="w-3.5 h-3.5" />
+                  </Button>
+               </div>
             </div>
-            <div className="bg-white dark:bg-black p-4 rounded-xl border mb-6 shadow-inner min-h-[100px]">
-              <p className="text-sm font-medium leading-relaxed italic text-foreground">
+            <span className="text-[10px] font-black uppercase tracking-widest text-primary mb-4 block">Dein High-End Prompt:</span>
+            <div className="bg-white/60 dark:bg-black/40 backdrop-blur-sm p-6 rounded-2xl border border-white/40 mb-8 shadow-sm">
+              <p className="text-base font-bold italic leading-relaxed text-zinc-800 dark:text-zinc-200">
                 {generatedPrompt}
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <Button onClick={handleCopy} variant="outline" className="gap-2 h-11 rounded-xl border-primary/20 hover:border-primary">
-                {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
-                Kopieren
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Button onClick={handleCopy} variant="outline" className="gap-2 h-14 rounded-2xl border-primary/20 hover:border-primary font-bold bg-white/50 transition-all">
+                {copied ? <Check className="w-5 h-5 text-green-500" /> : <Copy className="w-5 h-5" />}
+                KOPIEREN
               </Button>
-              <Button onClick={handleSave} className="gap-2 h-11 rounded-xl">
-                <Save className="w-4 h-4" /> Speichern
+              <Button onClick={handleSave} className="gap-2 h-14 rounded-2xl font-bold transition-all bg-secondary hover:bg-secondary/90 shadow-lg shadow-secondary/20">
+                <Save className="w-5 h-5" /> SPEICHERN
               </Button>
             </div>
           </div>
