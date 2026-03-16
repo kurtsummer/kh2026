@@ -22,4 +22,9 @@ export interface Prompt {
   mood?: Mood;
   tags: string[];
   createdAt: string;
+  isFavorite?: boolean;
+  aperture?: string;
+  shutterSpeed?: string;
+  iso?: string;
+  focalLength?: string;
 }

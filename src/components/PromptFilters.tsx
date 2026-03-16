@@ -11,6 +11,7 @@ interface FilterState {
   cameraType: string;
   filmStock: string;
   perspective: string;
+  onlyFavorites: boolean;
 }
 
 interface PromptFiltersProps {

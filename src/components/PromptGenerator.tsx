@@ -5,7 +5,7 @@ import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { MediaType, CameraType, FilmStock, Perspective, Lighting, Mood, Prompt } from "../types/prompt";
-import { Sparkles, Copy, Check, Save, Wand2, RefreshCcw, Zap } from "lucide-react";
+import { Sparkles, Copy, Check, Save, Wand2, RefreshCcw, Zap, Dices } from "lucide-react";
 import { toast } from "../hooks/use-toast";
 
 interface PromptGeneratorProps {
@@ -21,10 +21,25 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     perspective: "Augenhöhe" as Perspective,
     lighting: "Goldene Stunde" as Lighting,
     mood: "Nostalgisch" as Mood,
+    aperture: "2.8",
+    shutterSpeed: "1/500",
+    iso: "200",
+    focalLength: "35mm"
   });
 
   const [generatedPrompt, setGeneratedPrompt] = useState("");
   const [copied, setCopied] = useState(false);
+
+  const cameraTypes: CameraType[] = ["Retro", "Analog", "Digital", "Spiegellos", "Spiegelreflex", "Vintage", "35mm Film", "Mittelformat", "Großformat", "GoPro", "iPhone"];
+  const filmStocks: FilmStock[] = ["Kodak Portra 400", "Fujifilm Superia", "Schwarz-Weiß", "CineStill 800T", "Polaroid", "Technicolor", "Ektachrome", "Standard Digital", "VHS-Stil", "Super 8", "Kodak Gold 200", "Ilford HP5"];
+  const perspectives: Perspective[] = ["Weitwinkel", "Nahaufnahme", "Vogelperspektive", "Froschperspektive", "Draufsicht", "Augenhöhe", "Schräger Winkel", "Makro", "Extreme Nahaufnahme", "Totale", "Halbtotale", "Ego-Perspektive"];
+  const lightings: Lighting[] = ["Goldene Stunde", "Cinematisch", "Neon-Licht", "Weiches Licht", "Hartes Licht", "Studio-Beleuchtung", "Natürliches Licht", "Düster", "Bewölkt"];
+  const moods: Mood[] = ["Nostalgisch", "Futuristisch", "Raw/Authentisch", "Ätherisch", "Traumhaft", "Professionell", "Dunkel", "Lebhaft"];
+  
+  const apertures = ["1.2", "1.4", "1.8", "2.8", "4.0", "5.6", "8.0", "11", "16"];
+  const shutters = ["1/8000", "1/4000", "1/2000", "1/1000", "1/500", "1/250", "1/125", "1/60", "1/30", "1/15", "1s"];
+  const isos = ["100", "200", "400", "800", "1600", "3200", "6400", "12800"];
+  const focalLengths = ["14mm", "24mm", "35mm", "50mm", "85mm", "100mm", "200mm", "400mm"];
 
   const mapToEnglish = {
     media: { "Bild": "High-resolution professional photograph of", "Video": "Cinematic high-quality video footage of" },
@@ -70,6 +85,35 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     }
   };
 
+  const handleSurpriseMe = () => {
+    const randomItems = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)];
+    const randomSubjects = [
+      "Ein Elefant in einer Londoner U-Bahn",
+      "Ein viktorianisches Labor auf dem Mars",
+      "Ein schwebender Zen-Garten in den Wolken",
+      "Ein Cyberpunk Streetfood-Stand bei Regen",
+      "Ein mittelalterlicher Ritter, der eine Pizza isst",
+      "Eine leuchtende Qualle in einem Waldsee",
+      "Ein nostalgischer 90er Jahre Skatepark im Sonnenuntergang"
+    ];
+
+    setConfig({
+      subject: randomItems(randomSubjects),
+      mediaType: randomItems(["Bild", "Video"]),
+      cameraType: randomItems(cameraTypes),
+      filmStock: randomItems(filmStocks),
+      perspective: randomItems(perspectives),
+      lighting: randomItems(lightings),
+      mood: randomItems(moods),
+      aperture: randomItems(apertures),
+      shutterSpeed: randomItems(shutters),
+      iso: randomItems(isos),
+      focalLength: randomItems(focalLengths)
+    });
+
+    toast({ title: "Überraschung!", description: "Zufällige Kombination generiert." });
+  };
+
   const generatePrompt = () => {
     if (!config.subject) {
       toast({ title: "Hinweis", description: "Bitte gib zuerst ein Thema ein.", variant: "destructive" });
@@ -82,7 +126,9 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     const engLight = mapToEnglish.lighting[config.lighting as keyof typeof mapToEnglish.lighting];
     const engMood = mapToEnglish.mood[config.mood as keyof typeof mapToEnglish.mood];
 
-    const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed.`;
+    const techInfo = `camera settings: f/${config.aperture}, focal length ${config.focalLength}, shutter speed ${config.shutterSpeed}, ISO ${config.iso}.`;
+
+    const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. ${techInfo} The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed.`;
     setGeneratedPrompt(fullPrompt);
   };
 
@@ -105,30 +151,37 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       perspective: config.perspective,
       lighting: config.lighting,
       mood: config.mood,
+      aperture: config.aperture,
+      shutterSpeed: config.shutterSpeed,
+      iso: config.iso,
+      focalLength: config.focalLength,
       tags: ["generiert", config.mediaType.toLowerCase()],
+
       createdAt: new Date().toISOString(),
     });
     toast({ title: "Gespeichert!", description: "In Datenbank abgelegt." });
   };
 
-  const cameraTypes: CameraType[] = ["Retro", "Analog", "Digital", "Spiegellos", "Spiegelreflex", "Vintage", "35mm Film", "Mittelformat", "Großformat", "GoPro", "iPhone"];
-  const filmStocks: FilmStock[] = ["Kodak Portra 400", "Fujifilm Superia", "Schwarz-Weiß", "CineStill 800T", "Polaroid", "Technicolor", "Ektachrome", "Standard Digital", "VHS-Stil", "Super 8", "Kodak Gold 200", "Ilford HP5"];
-  const perspectives: Perspective[] = ["Weitwinkel", "Nahaufnahme", "Vogelperspektive", "Froschperspektive", "Draufsicht", "Augenhöhe", "Schräger Winkel", "Makro", "Extreme Nahaufnahme", "Totale", "Halbtotale", "Ego-Perspektive"];
-  const lightings: Lighting[] = ["Goldene Stunde", "Cinematisch", "Neon-Licht", "Weiches Licht", "Hartes Licht", "Studio-Beleuchtung", "Natürliches Licht", "Düster", "Bewölkt"];
-  const moods: Mood[] = ["Nostalgisch", "Futuristisch", "Raw/Authentisch", "Ätherisch", "Traumhaft", "Professionell", "Dunkel", "Lebhaft"];
-
   return (
     <Card className="border-none shadow-[0_30px_100px_rgba(16,185,129,0.15)] bg-white/80 dark:bg-zinc-950/80 backdrop-blur-2xl rounded-[2.5rem] overflow-hidden relative">
-
       <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary via-secondary to-accent" />
       <CardHeader className="pt-10">
-        <div className="flex items-center gap-3 mb-2">
-          <div className="p-2 bg-primary/10 rounded-xl">
-             <Wand2 className="w-6 h-6 text-primary" />
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-3">
+            <div className="p-2 bg-primary/10 rounded-xl">
+               <Wand2 className="w-6 h-6 text-primary" />
+            </div>
+            <CardTitle className="text-3xl font-black tracking-tight">Prompt Creator</CardTitle>
           </div>
-          <CardTitle className="text-3xl font-black tracking-tight">Prompt Creator</CardTitle>
+          <Button 
+            variant="outline" 
+            onClick={handleSurpriseMe} 
+            className="rounded-xl border-primary/20 hover:bg-primary/5 gap-2 font-bold transition-all"
+          >
+            <Dices className="w-4 h-4 text-primary" /> Surprise Me
+          </Button>
         </div>
-        <CardDescription className="text-lg font-medium">Lass deiner Kreativität freien Lauf.</CardDescription>
+        <CardDescription className="text-lg font-medium">Lass deiner Kreativität freien Lauf oder lass dich überraschen.</CardDescription>
       </CardHeader>
       <CardContent className="space-y-8 p-10">
         <div className="space-y-3">
@@ -165,6 +218,41 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
               </Select>
             </div>
           ))}
+        </div>
+
+        {/* Technical Extended Options */}
+        <div className="p-6 bg-primary/5 rounded-[2rem] border border-primary/10">
+          <Label className="text-[10px] font-black uppercase tracking-[0.3em] text-primary mb-4 block text-center">Erweiterte Kamera-Einstellungen</Label>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="space-y-2 text-center">
+              <Label className="text-[9px] font-bold text-muted-foreground">Blende (Aperture)</Label>
+              <Select value={config.aperture} onValueChange={(v) => setConfig({ ...config, aperture: v })}>
+                <SelectTrigger className="h-10 rounded-xl bg-white/50 dark:bg-black/20 border-primary/5 font-bold"><SelectValue /></SelectTrigger>
+                <SelectContent>{apertures.map(a => <SelectItem key={a} value={a}>f/{a}</SelectItem>)}</SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2 text-center">
+              <Label className="text-[9px] font-bold text-muted-foreground">Brennweite</Label>
+              <Select value={config.focalLength} onValueChange={(v) => setConfig({ ...config, focalLength: v })}>
+                <SelectTrigger className="h-10 rounded-xl bg-white/50 dark:bg-black/20 border-primary/5 font-bold"><SelectValue /></SelectTrigger>
+                <SelectContent>{focalLengths.map(f => <SelectItem key={f} value={f}>{f}</SelectItem>)}</SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2 text-center">
+              <Label className="text-[9px] font-bold text-muted-foreground">Belichtung</Label>
+              <Select value={config.shutterSpeed} onValueChange={(v) => setConfig({ ...config, shutterSpeed: v })}>
+                <SelectTrigger className="h-10 rounded-xl bg-white/50 dark:bg-black/20 border-primary/5 font-bold"><SelectValue /></SelectTrigger>
+                <SelectContent>{shutters.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}</SelectContent>
+              </Select>
+            </div>
+            <div className="space-y-2 text-center">
+              <Label className="text-[9px] font-bold text-muted-foreground">ISO-Wert</Label>
+              <Select value={config.iso} onValueChange={(v) => setConfig({ ...config, iso: v })}>
+                <SelectTrigger className="h-10 rounded-xl bg-white/50 dark:bg-black/20 border-primary/5 font-bold"><SelectValue /></SelectTrigger>
+                <SelectContent>{isos.map(i => <SelectItem key={i} value={i}>ISO {i}</SelectItem>)}</SelectContent>
+              </Select>
+            </div>
+          </div>
         </div>
 
         <div className="pt-6">

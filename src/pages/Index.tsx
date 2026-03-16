@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { mockPrompts } from "../data/mockData";
 import { PromptCard } from "../components/PromptCard";
 import { PromptFilters } from "../components/PromptFilters";
@@ -6,7 +6,7 @@ import { AddPromptModal } from "../components/AddPromptModal";
 import { PromptGenerator } from "../components/PromptGenerator";
 import { ThemeToggle } from "../components/ThemeToggle";
 import { Prompt } from "../types/prompt";
-import { Sparkles, Database, LayoutGrid, Wand2 } from "lucide-react";
+import { Sparkles, Database, LayoutGrid, Wand2, Heart } from "lucide-react";
 
 import { Button } from "../components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
@@ -30,10 +30,11 @@ export default function Index() {
     cameraType: "",
     filmStock: "",
     perspective: "",
+    onlyFavorites: false,
   });
 
   // Save to local storage whenever prompts change
-  useMemo(() => {
+  useEffect(() => {
     localStorage.setItem("prompt_db_content", JSON.stringify(prompts));
   }, [prompts]);
 
@@ -48,13 +49,18 @@ export default function Index() {
       const matchesCameraType = !filters.cameraType || p.cameraType === filters.cameraType;
       const matchesFilmStock = !filters.filmStock || p.filmStock === filters.filmStock;
       const matchesPerspective = !filters.perspective || p.perspective === filters.perspective;
+      const matchesFavorites = !filters.onlyFavorites || p.isFavorite;
 
-      return matchesSearch && matchesMediaType && matchesCameraType && matchesFilmStock && matchesPerspective;
+      return matchesSearch && matchesMediaType && matchesCameraType && matchesFilmStock && matchesPerspective && matchesFavorites;
     });
   }, [prompts, filters]);
 
   const handleAddPrompt = (newPrompt: Prompt) => {
     setPrompts([newPrompt, ...prompts]);
+  };
+
+  const handleToggleFavorite = (id: string) => {
+    setPrompts(prev => prev.map(p => p.id === id ? { ...p, isFavorite: !p.isFavorite } : p));
   };
 
   const handleResetFilters = () => {
@@ -64,6 +70,7 @@ export default function Index() {
       cameraType: "",
       filmStock: "",
       perspective: "",
+      onlyFavorites: false,
     });
   };
 
@@ -138,23 +145,37 @@ export default function Index() {
           </TabsContent>
 
           <TabsContent value="database" className="space-y-8 focus-visible:outline-none">
-            <PromptFilters 
-              filters={filters} 
-              setFilters={setFilters} 
-              onReset={handleResetFilters} 
-            />
+            <div className="flex items-center gap-4 mb-4">
+               <PromptFilters 
+                filters={filters} 
+                setFilters={setFilters} 
+                onReset={handleResetFilters} 
+              />
+            </div>
 
             <div className="flex items-center justify-between mb-8">
               <h3 className="text-sm font-bold text-primary uppercase tracking-widest flex items-center gap-2">
                 <div className="w-8 h-1 bg-primary rounded-full" />
                 {filteredPrompts.length} Gespeicherte Werke
               </h3>
+              <Button 
+                variant={filters.onlyFavorites ? "secondary" : "ghost"} 
+                onClick={() => setFilters({ ...filters, onlyFavorites: !filters.onlyFavorites })}
+                className="rounded-xl gap-2 font-bold"
+              >
+                <Heart className={`w-4 h-4 ${filters.onlyFavorites ? 'fill-current' : ''}`} />
+                {filters.onlyFavorites ? "Nur Favoriten" : "Alle anzeigen"}
+              </Button>
             </div>
 
             {filteredPrompts.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredPrompts.map((prompt) => (
-                  <PromptCard key={prompt.id} prompt={prompt} />
+                  <PromptCard 
+                    key={prompt.id} 
+                    prompt={prompt} 
+                    onToggleFavorite={handleToggleFavorite}
+                  />
                 ))}
               </div>
             ) : (

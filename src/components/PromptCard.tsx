@@ -2,15 +2,16 @@ import { Prompt } from "../types/prompt";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
-import { Camera, Film, Video, Image as ImageIcon, Copy, Check, Calendar, Sparkles } from "lucide-react";
+import { Camera, Film, Video, Image as ImageIcon, Copy, Check, Calendar, Sparkles, Heart } from "lucide-react";
 import { useState } from "react";
 import { toast } from "../hooks/use-toast";
 
 interface PromptCardProps {
   prompt: Prompt;
+  onToggleFavorite?: (id: string) => void;
 }
 
-export function PromptCard({ prompt }: PromptCardProps) {
+export function PromptCard({ prompt, onToggleFavorite }: PromptCardProps) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -43,9 +44,17 @@ export function PromptCard({ prompt }: PromptCardProps) {
             {prompt.mediaType === 'Video' ? <Video className="w-3 h-3 mr-1.5" /> : <ImageIcon className="w-3 h-3 mr-1.5" />}
             {prompt.mediaType}
           </Badge>
-          <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground uppercase tracking-tighter">
-            <Calendar className="w-3 h-3 text-secondary" />
-            {formatDate(prompt.createdAt)}
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => onToggleFavorite?.(prompt.id)}
+              className={`p-2 rounded-full transition-all duration-300 ${prompt.isFavorite ? 'bg-red-500/10 text-red-500 scale-110' : 'bg-zinc-500/10 text-zinc-400 hover:text-red-400'}`}
+            >
+              <Heart className={`w-4 h-4 ${prompt.isFavorite ? 'fill-current' : ''}`} />
+            </button>
+            <div className="flex items-center gap-1.5 text-[10px] font-bold text-muted-foreground uppercase tracking-tighter">
+              <Calendar className="w-3 h-3 text-secondary" />
+              {formatDate(prompt.createdAt)}
+            </div>
           </div>
         </div>
         <CardTitle className="text-xl font-black tracking-tight line-clamp-1 group-hover:text-primary transition-colors">{prompt.title}</CardTitle>
@@ -81,6 +90,31 @@ export function PromptCard({ prompt }: PromptCardProps) {
              </div>
           </div>
         </div>
+
+        {(prompt.aperture || prompt.iso || prompt.shutterSpeed || prompt.focalLength) && (
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-2 border-t border-dashed border-primary/10">
+            {prompt.aperture && (
+              <div className="text-[9px] font-bold text-center bg-zinc-50 dark:bg-zinc-800 p-1 rounded-lg">
+                <span className="text-muted-foreground mr-1">F/</span>{prompt.aperture}
+              </div>
+            )}
+            {prompt.focalLength && (
+              <div className="text-[9px] font-bold text-center bg-zinc-50 dark:bg-zinc-800 p-1 rounded-lg">
+                {prompt.focalLength}
+              </div>
+            )}
+            {prompt.shutterSpeed && (
+              <div className="text-[9px] font-bold text-center bg-zinc-50 dark:bg-zinc-800 p-1 rounded-lg">
+                <span className="text-muted-foreground mr-1">SEC:</span>{prompt.shutterSpeed}
+              </div>
+            )}
+            {prompt.iso && (
+              <div className="text-[9px] font-bold text-center bg-zinc-50 dark:bg-zinc-800 p-1 rounded-lg">
+                <span className="text-muted-foreground mr-1">ISO:</span>{prompt.iso}
+              </div>
+            )}
+          </div>
+        )}
 
         <div className="flex flex-wrap gap-2 pt-2">
           {prompt.tags.map(tag => (
