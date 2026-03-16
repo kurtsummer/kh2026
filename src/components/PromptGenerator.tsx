@@ -3,9 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
+import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+
 import { MediaType, CameraType, FilmStock, Perspective, Lighting, Mood, Prompt } from "../types/prompt";
-import { Sparkles, Copy, Check, Save, Wand2, RefreshCcw, Zap, Dices, BrainCircuit } from "lucide-react";
+import { Sparkles, Copy, Check, Save, Wand2, RefreshCcw, Zap, Dices, BrainCircuit, Ban } from "lucide-react";
 
 import { toast } from "../hooks/use-toast";
 
@@ -26,7 +28,8 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
     shutterSpeed: "1/500",
     iso: "200",
     focalLength: "35mm",
-    aspectRatio: "16:9"
+    aspectRatio: "16:9",
+    negativePrompt: "blurry, low quality, distorted, watermark, signature, grainy, low resolution, ugly, out of focus"
   });
 
   const [generatedPrompt, setGeneratedPrompt] = useState("");
@@ -112,7 +115,8 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       shutterSpeed: randomItems(shutters),
       iso: randomItems(isos),
       focalLength: randomItems(focalLengths),
-      aspectRatio: randomItems(aspectRatios)
+      aspectRatio: randomItems(aspectRatios),
+      negativePrompt: "blurry, low quality, distorted, watermark"
     });
 
     toast({ title: "Überraschung!", description: "Zufällige Kombination generiert." });
@@ -167,7 +171,7 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
 
     const techInfo = `camera settings: f/${config.aperture}, focal length ${config.focalLength}, shutter speed ${config.shutterSpeed}, ISO ${config.iso}.`;
 
-    const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. ${techInfo} The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed. --ar ${config.aspectRatio}`;
+    const fullPrompt = `${engMedia} ${config.subject}. The scene is ${engPersp}, captured using a ${engCamera}. ${techInfo} The visual style is defined by ${engFilm}, ${engLight}, all contributing to a ${engMood} feeling. Extremely detailed textures, hyper-realistic, volumetric lighting, photorealistic rendering, 8k resolution, masterfully composed. --ar ${config.aspectRatio} --no ${config.negativePrompt}`;
     setGeneratedPrompt(fullPrompt);
 
   };
@@ -196,6 +200,7 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
       iso: config.iso,
       focalLength: config.focalLength,
       aspectRatio: config.aspectRatio,
+      negativePrompt: config.negativePrompt,
       tags: ["generiert", config.mediaType.toLowerCase()],
 
       createdAt: new Date().toISOString(),
@@ -249,7 +254,21 @@ export function PromptGenerator({ onSave }: PromptGeneratorProps) {
           />
         </div>
 
+        <div className="space-y-3">
+          <Label htmlFor="negative" className="text-[10px] font-black uppercase tracking-widest text-red-500/80 flex items-center gap-2">
+            <Ban className="w-3.5 h-3.5" /> Negative Einflüsse (Ausschlüsse)
+          </Label>
+          <Input
+            id="negative"
+            placeholder="Was soll NICHT im Bild sein? (z.B. Texte, Unschärfe...)"
+            className="h-12 rounded-2xl border-2 border-red-500/5 bg-red-500/5 focus:border-red-500/20 transition-all font-medium px-6 text-sm"
+            value={config.negativePrompt}
+            onChange={(e) => setConfig({ ...config, negativePrompt: e.target.value })}
+          />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
           {[
             { label: "Medien-Typ", value: config.mediaType, key: "mediaType", options: ["Bild", "Video"] },
             { label: "Kamera", value: config.cameraType, key: "cameraType", options: cameraTypes },

@@ -23,6 +23,7 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
     filmStock: "Standard Digital" as FilmStock,
     perspective: "Augenhöhe" as Perspective,
     aspectRatio: "16:9",
+    negativePrompt: "",
     tags: "",
   });
 
@@ -46,6 +47,7 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
       filmStock: formData.filmStock,
       perspective: formData.perspective,
       aspectRatio: formData.aspectRatio,
+      negativePrompt: formData.negativePrompt,
       tags: formData.tags.split(",").map(t => t.trim()).filter(t => t !== ""),
 
       createdAt: new Date().toISOString(),
@@ -61,6 +63,7 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
       filmStock: "Standard Digital",
       perspective: "Augenhöhe",
       aspectRatio: "16:9",
+      negativePrompt: "",
       tags: "",
     });
 
@@ -159,6 +162,16 @@ export function AddPromptModal({ onAdd }: AddPromptModalProps) {
               </div>
             </div>
             <div className="grid gap-2">
+              <Label className="text-[10px] font-black uppercase tracking-widest text-red-500/80 ml-1">Negative Prompts (Ausschlüsse)</Label>
+              <Input
+                placeholder="z.B. text, blurry, low quality"
+                className="h-12 rounded-xl border-2 border-red-500/5 bg-red-500/5 focus:border-red-500/20"
+                value={formData.negativePrompt}
+                onChange={(e) => setFormData({...formData, negativePrompt: e.target.value})}
+              />
+            </div>
+            <div className="grid gap-2">
+
               <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground ml-1">Seitenverhältnis (Aspect Ratio)</Label>
               <Select value={formData.aspectRatio} onValueChange={(v) => setFormData({...formData, aspectRatio: v})}>
                 <SelectTrigger className="h-12 rounded-xl border-2 border-primary/5"><SelectValue /></SelectTrigger>
