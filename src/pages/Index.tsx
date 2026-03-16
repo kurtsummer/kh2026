@@ -78,18 +78,30 @@ export default function Index() {
       </header>
 
       <main className="container mx-auto px-4 py-12 relative">
-        <div className="max-w-4xl mx-auto mb-16 text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white dark:bg-zinc-900 shadow-sm border border-primary/10 text-sm font-medium animate-bounce-subtle">
-            <Palette className="w-4 h-4 text-primary" />
-            <span className="text-primary">Frisches Grün-Design Aktiviert</span>
+        <div className="relative max-w-6xl mx-auto mb-20 p-12 md:p-20 rounded-[3rem] overflow-hidden group shadow-2xl shadow-primary/10">
+          {/* Hero Background Image */}
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+              alt="Creative Background"
+              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background/95 backdrop-blur-[2px]" />
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight leading-tight">
-            Gestalte die <span className="text-primary italic">Zukunft</span> deiner <span className="text-secondary">Bilder</span>
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Wähle deine Kamera, den Film-Look und die Perspektive. Unser Generator erstellt dir den perfekten, detailreichen Prompt.
-          </p>
+          <div className="relative z-10 max-w-4xl mx-auto text-center space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 dark:bg-zinc-900/90 shadow-sm border border-primary/20 text-sm font-bold animate-bounce-subtle mx-auto">
+              <Palette className="w-4 h-4 text-primary" />
+              <span className="text-primary">Frisches Grün-Design Aktiviert</span>
+            </div>
+
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-black tracking-tight leading-[1.1]">
+              Gestalte die <span className="text-primary italic drop-shadow-sm">Zukunft</span> deiner <span className="text-secondary drop-shadow-sm">Bilder</span>
+            </h2>
+            <p className="text-lg md:text-2xl text-foreground/80 max-w-2xl mx-auto font-medium leading-relaxed">
+              Wähle deine Kamera, den Film-Look und die Perspektive. Unser Generator erstellt dir den perfekten, detailreichen Prompt.
+            </p>
+          </div>
         </div>
 
         <Tabs defaultValue="generator" className="space-y-12">
