@@ -28,11 +28,11 @@ export function PromptCard({ prompt, onToggleFavorite, onTagClick, onEdit, onDel
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      // Check file size (limit to 1MB to avoid localStorage issues)
-      if (file.size > 1024 * 1024) {
+      // Check file size (limit to 2MB to avoid localStorage issues)
+      if (file.size > 2 * 1024 * 1024) {
         toast({
           title: "Datei zu groß",
-          description: "Bitte lade ein Bild unter 1MB hoch, um den Speicher zu schonen.",
+          description: "Bitte lade ein Bild unter 2MB hoch, um den Speicher zu schonen.",
           variant: "destructive"
         });
         return;
