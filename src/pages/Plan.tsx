@@ -63,111 +63,116 @@ const Plan = () => {
     const recipes: Record<string, Omit<Meal, "type">[]> = {
       Omnivor: [
         { 
-          name: "Hähnchen-Reis-Pfanne", 
+          name: "Hähnchen-Reis-Pfanne mit Brokkoli", 
           calories: 650, 
           time: "25 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80",
+          imageUrl: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
           ingredients: ["150g Hähnchenbrust", "80g Reis (ungekocht)", "150g Brokkoli", "1 EL Sojasauce", "1 TL Öl", "Frischer Ingwer", "1 Frühlingszwiebel"],
           instructions: [
-            "Den Reis in einem Sieb gründlich waschen, bis das Wasser klar bleibt. Dann nach Packungsanweisung in leicht gesalzenem Wasser gar kochen.",
-            "Während der Reis kocht, die Hähnchenbrust unter kaltem Wasser abspülen, trocken tupfen und in etwa 2 cm große Würfel schneiden.",
-            "Den Brokkoli in kleine Röschen teilen. Den Ingwer fein reiben und die Frühlingszwiebel in feine Ringe schneiden.",
-            "In einer großen Pfanne oder einem Wok das Öl stark erhitzen. Das Hähnchen darin von allen Seiten ca. 5 Minuten goldbraun und durchbraten.",
-            "Die Brokkoliröschen und den Ingwer hinzufügen und für weitere 3-4 Minuten mitbraten, bis der Brokkoli bissfest ist.",
-            "Den gekochten Reis unterheben, mit Sojasauce ablöschen und alles gut vermengen. Mit Frühlingszwiebeln garniert servieren."
+            "Vorbereitung: Den Reis in einem Sieb unter fließendem kaltem Wasser waschen, bis das Wasser klar bleibt. Dies entfernt überschüssige Stärke und sorgt für ein lockeres Ergebnis.",
+            "Reis kochen: Den gewaschenen Reis mit der 1,5-fachen Menge Wasser und einer Prise Salz in einem Topf aufkochen. Sobald das Wasser kocht, die Hitze auf die kleinste Stufe reduzieren und bei geschlossenem Deckel ca. 10-12 Minuten quellen lassen.",
+            "Hähnchen vorbereiten: In der Zwischenzeit die Hähnchenbrust unter kaltem Wasser abspülen, trocken tupfen und in gleichmäßige, mundgerechte Würfel (ca. 2 cm) schneiden.",
+            "Gemüse vorbereiten: Den Brokkoli waschen und in sehr kleine Röschen teilen. Den Ingwer schälen und fein reiben. Die Frühlingszwiebel putzen und in feine Ringe schneiden.",
+            "Anbraten: Eine große beschichtete Pfanne oder einen Wok mit dem Öl stark erhitzen. Das Hähnchen darin ca. 5-6 Minuten rundherum scharf anbraten, bis es durchgegart und goldbraun ist.",
+            "Gemüse & Finish: Die Brokkoliröschen und den Ingwer hinzufügen und 3-4 Minuten mitbraten (evtl. einen Schluck Wasser dazugeben). Den fertigen Reis unterheben, mit Sojasauce ablöschen und alles gut vermengen. Mit den Frühlingszwiebelringen garniert anrichten."
           ]
         },
         { 
           name: "Pasta Bolognese", 
           calories: 750, 
           time: "30 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1622973536968-3ead9e780960?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["100g Rinderhack", "100g Vollkornpasta", "200ml Tomatensauce", "1 EL Parmesan", "1 kleine Zwiebel", "1 Knoblauchzehe", "Getrockneter Oregano"],
+          imageUrl: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["100g Rinderhackfleisch", "100g Vollkornpasta", "200ml Tomatensauce (passiert)", "1 EL Parmesan", "1 kleine Zwiebel", "1 Knoblauchzehe", "Getrockneter Oregano", "Salz & Pfeffer"],
           instructions: [
-            "Einen großen Topf mit Salzwasser zum Kochen bringen und die Pasta darin nach Packungsanweisung al dente garen.",
-            "Zwiebel und Knoblauch fein würfeln. In einer Pfanne etwas Öl erhitzen und das Rinderhackfleisch darin krümelig anbraten.",
-            "Zwiebeln und Knoblauch hinzugeben und glasig dünsten. Mit Oregano, Salz und Pfeffer würzen.",
-            "Die Tomatensauce hinzugeben, die Hitze reduzieren und alles bei geschlossenem Deckel ca. 10-15 Minuten köcheln lassen, damit sich die Aromen entfalten.",
-            "Die Pasta abgießen und direkt mit der Sauce mischen oder die Sauce über die Pasta geben. Mit frisch geriebenem Parmesan bestreuen."
+            "Pasta kochen: Einen großen Topf mit Wasser füllen, kräftig salzen und zum Kochen bringen. Die Vollkornpasta darin nach Packungsanweisung (ca. 8-10 Min.) bissfest garen.",
+            "Aromaten vorbereiten: Die Zwiebel und die Knoblauchzehe schälen und in sehr feine Würfel schneiden.",
+            "Hackfleisch anbraten: Eine Pfanne ohne zusätzliches Fett erhitzen (das Hackfleisch hat meist genug Eigenfett). Das Rinderhack darin krümelig anbraten, bis es überall Farbe angenommen hat.",
+            "Saucenbasis: Zwiebel- und Knoblauchwürfel zum Fleisch geben und glasig dünsten. Mit Oregano, Salz und Pfeffer würzen.",
+            "Köcheln lassen: Die passierten Tomaten hinzufügen. Die Hitze reduzieren und die Sauce bei kleiner Flamme und halb offenem Deckel ca. 15 Minuten sanft köcheln lassen, bis sie leicht eingedickt ist.",
+            "Servieren: Die Pasta abgießen und kurz abtropfen lassen. Mit der Bolognese-Sauce mischen und auf einem Teller anrichten. Den Parmesan frisch darüber reiben."
           ]
         },
       ],
       Vegetarisch: [
         { 
-          name: "Linsencurry", 
+          name: "Indisches Linsencurry", 
           calories: 600, 
           time: "30 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["80g rote Linsen", "100ml Kokosmilch", "60g Reis", "Eine Handvoll Spinat", "1 TL Currypulver", "1/2 Zwiebel", "Prise Kurkuma"],
+          imageUrl: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["80g rote Linsen", "100ml Kokosmilch (fettreduziert)", "60g Basmatireis", "Eine Handvoll frischer Babyspinat", "1 TL Currypulver", "1/2 rote Zwiebel", "Prise Kurkuma", "Gemüsebrühe"],
           instructions: [
-            "Den Reis nach Packungsanweisung kochen. Die roten Linsen in einem Sieb waschen.",
-            "Die Zwiebel fein würfeln und in einem Topf mit etwas Öl dünsten. Currypulver und Kurkuma kurz mitrösten, bis es duftet.",
-            "Die Linsen hinzufügen und mit der Kokosmilch sowie etwa 100ml Wasser ablöschen.",
-            "Bei mittlerer Hitze ca. 15-20 Minuten köcheln lassen, bis die Linsen weich sind und die Flüssigkeit sämig geworden ist.",
-            "Zum Schluss den frischen Spinat unterrühren und zusammenfallen lassen. Mit Salz und Pfeffer abschmecken und auf dem Reis servieren."
+            "Reis vorbereiten: Den Basmatireis waschen und nach der Quellmethode (1 Teil Reis auf 2 Teile Wasser) ca. 10-12 Minuten garen.",
+            "Vorbereitung Linsen: Die roten Linsen in einem Sieb gründlich waschen, bis das Wasser nicht mehr schäumt.",
+            "Basis schaffen: Die Zwiebel fein hacken und in einem Topf mit etwas Öl dünsten. Currypulver und Kurkuma kurz mitrösten (ca. 30 Sek.), damit sich die ätherischen Öle entfalten.",
+            "Curry kochen: Die gewaschenen Linsen hinzufügen und mit der Kokosmilch sowie ca. 150ml Gemüsebrühe ablöschen. Einmal aufkochen lassen.",
+            "Garen: Die Hitze reduzieren und das Curry ca. 15-20 Minuten köcheln lassen, bis die Linsen die Flüssigkeit fast vollständig aufgenommen haben und weich sind.",
+            "Abschluss: Den frischen Spinat unter das heiße Curry rühren, bis er zusammengefallen ist. Mit Salz abschmecken und zusammen mit dem Reis in einer Schüssel anrichten."
           ]
         },
         { 
-          name: "Kichererbsen-Salat", 
+          name: "Frischer Kichererbsen-Salat", 
           calories: 500, 
           time: "15 Min", 
           imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["1 Dose Kichererbsen (240g Abtropfgewicht)", "1/2 Gurke", "50g Feta", "1 EL Olivenöl", "Saft einer halben Zitrone", "Frische Petersilie"],
+          ingredients: ["1 Dose Kichererbsen (240g Abtropfgewicht)", "1/2 Salatgurke", "50g Feta-Käse", "1 EL Olivenöl", "Saft einer halben Zitrone", "Frische glatte Petersilie", "Pfeffer aus der Mühle"],
           instructions: [
-            "Die Kichererbsen in ein Sieb geben, gründlich mit kaltem Wasser abspülen und gut abtropfen lassen.",
-            "Die Gurke waschen und in kleine Würfel schneiden. Die Petersilie fein hacken.",
-            "In einer Schüssel Kichererbsen, Gurkenwürfel und die gehackte Petersilie vermengen.",
-            "Den Feta mit den Händen grob über den Salat bröseln.",
-            "Für das Dressing Olivenöl und Zitronensaft verrühren, über den Salat geben und alles vorsichtig vermischen. Mit Salz und Pfeffer abschmecken."
+            "Kichererbsen vorbereiten: Die Kichererbsen in ein Sieb geben, unter kaltem Wasser abspülen, bis das Wasser klar bleibt, und gut abtropfen lassen.",
+            "Gemüse schneiden: Die Gurke waschen, der Länge nach vierteln und in ca. 1 cm große Würfel schneiden. Die Petersilie waschen, trocken schütteln und grob hacken.",
+            "Mischen: Die abgetropften Kichererbsen mit den Gurkenwürfeln und der Petersilie in einer großen Schüssel kombinieren.",
+            "Dressing: In einem kleinen Glas das Olivenöl mit dem Zitronensaft, Salz und Pfeffer kräftig verrühren.",
+            "Käse hinzufügen: Den Feta-Käse direkt über die Schüssel bröseln (nicht schneiden, das sorgt für mehr Textur).",
+            "Finalisieren: Das Dressing über den Salat geben, alles vorsichtig unterheben und ca. 5 Minuten ziehen lassen, damit die Aromen in die Kichererbsen einziehen können."
           ]
         },
       ],
       Vegan: [
         { 
-          name: "Tofu Stir-fry", 
+          name: "Knusper-Tofu Stir-fry", 
           calories: 550, 
           time: "20 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["150g Tofu (natur oder geräuchert)", "1 rote Paprika", "100g Reisnudeln", "2 EL Erdnusssauce", "Sesamsamen", "1 Frühlingszwiebel"],
+          imageUrl: "https://images.unsplash.com/photo-1546069901-5ec6a2a5a33f?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["150g Tofu (natur)", "1 rote Paprikaschote", "100g Reisnudeln", "2 EL Erdnussmus/Sauce", "Sesamsamen", "1 Frühlingszwiebel", "Sojasauce"],
           instructions: [
-            "Reisnudeln in eine Schüssel geben, mit kochendem Wasser übergießen und ca. 5-8 Minuten ziehen lassen (siehe Packungsanweisung), dann abgießen.",
-            "Den Tofu in Würfel schneiden und mit Küchenpapier trocken pressen, damit er beim Braten knusprig wird.",
-            "Paprika entkernen und in Streifen schneiden. Frühlingszwiebel in Ringe schneiden.",
-            "In einer Pfanne Öl erhitzen und den Tofu ca. 5-7 Minuten rundherum scharf anbraten, bis er goldbraun ist.",
-            "Die Paprika hinzufügen und 3-4 Minuten mitgaren, bis sie noch leicht bissfest ist.",
-            "Die Erdnusssauce und die abgetropften Nudeln in die Pfanne geben, alles gut vermengen und kurz erwärmen. Mit Sesamsamen bestreut servieren."
+            "Nudeln vorbereiten: Die Reisnudeln in eine hitzebeständige Schüssel geben, mit kochendem Wasser übergießen und ca. 6-8 Minuten (je nach Sorte) weichen lassen. Danach abgießen.",
+            "Tofu-Trick: Den Tofu in Würfel schneiden. Wichtig: Die Würfel zwischen mehrere Lagen Küchenpapier legen und fest andrücken, um so viel Feuchtigkeit wie möglich zu entfernen.",
+            "Anbraten: Etwas Öl in einer Pfanne stark erhitzen. Den Tofu darin ca. 6-8 Minuten rundherum anbraten, bis er eine goldbraune Kruste hat. Mit einem Schuss Sojasauce ablöschen.",
+            "Gemüse garen: Die Paprika in feine Streifen schneiden und zum Tofu geben. Für 3-4 Minuten mitbraten, damit sie knackig bleibt.",
+            "Sauce anrühren: Das Erdnussmus mit etwas heißem Wasser und Sojasauce glatt rühren, bis eine cremige Sauce entsteht.",
+            "Finish: Die abgetropften Nudeln und die Erdnusssauce in die Pfanne geben, alles gut schwenken. Mit fein geschnittenen Frühlingszwiebeln und Sesamsamen bestreut servieren."
           ]
         },
       ],
       "High Protein": [
         { 
-          name: "Putensteak mit Quark", 
+          name: "Gegrilltes Putensteak mit Kräuterquark", 
           calories: 600, 
           time: "20 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1632778149975-420e0e75ee08?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["200g Putensteak", "150g Magerquark", "250g gemischtes Pfannengemüse", "Frische Kräuter (Schnittlauch/Dill)", "1 TL Paprikapulver edelsüß"],
+          imageUrl: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["200g Putensteak", "150g Magerquark", "250g gemischtes Gemüse (Zucchini, Paprika)", "Frischer Schnittlauch", "1 TL edelsüßes Paprikapulver", "Zitrone"],
           instructions: [
-            "Das Putensteak trocken tupfen und von beiden Seiten mit Salz, Pfeffer und Paprikapulver würzen.",
-            "In einer beschichteten Pfanne etwas Öl erhitzen und das Steak bei mittlerer Hitze ca. 4-5 Minuten pro Seite braten, bis es gar ist.",
-            "In der Zwischenzeit den Magerquark mit einem Schuss Sprudelwasser oder Milch glatt rühren und die gehackten Kräuter unterheben.",
-            "Das Steak aus der Pfanne nehmen und warm stellen. Das Gemüse in der gleichen Pfanne für ca. 6-8 Minuten dünsten, bis es gar, aber noch knackig ist.",
-            "Alles zusammen auf einem Teller anrichten und den Kräuterquark als Dip zum Fleisch servieren."
+            "Fleisch vorbereiten: Das Putensteak unter kaltem Wasser abspülen, mit Küchenpapier trocken tupfen und von beiden Seiten mit Salz, Pfeffer und Paprikapulver würzen.",
+            "Fleisch braten: Eine Grillpfanne oder normale beschichtete Pfanne erhitzen. Das Steak von jeder Seite ca. 4-5 Minuten bei mittlerer Hitze braten, bis es durchgegart ist.",
+            "Quark anrühren: Den Magerquark in eine Schüssel geben. Den Schnittlauch in feine Röllchen schneiden und unter den Quark rühren. Mit einem Spritzer Zitrone, Salz und Pfeffer abschmecken.",
+            "Gemüse garen: Die Zucchini und Paprika in mundgerechte Stücke schneiden. In der Pfanne des Steaks (nachdem man es herausgenommen hat) ca. 6-7 Minuten dünsten.",
+            "Ruhephase: Das Steak kurz ruhen lassen (ca. 2 Min.), damit sich der Fleischsaft verteilt.",
+            "Anrichten: Das Putensteak zusammen mit dem gedünsteten Gemüse auf einem Teller anrichten und den Kräuterquark als proteinreichen Dip dazu servieren."
           ]
         },
       ],
       "Low Carb": [
         { 
-          name: "Zucchini-Nudeln mit Pesto", 
+          name: "Zucchini-Spaghetti (Zoodles) mit Pesto", 
           calories: 400, 
           time: "15 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1645112481338-3561ec819bc7?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["2 große Zucchini", "2 EL Basilikumpesto", "10g Pinienkerne", "Kirschtomaten", "Parmesan"],
+          imageUrl: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["2 große Zucchini", "2 EL grünes Basilikumpesto", "10g Pinienkerne", "8 Kirschtomaten", "Parmesan am Stück", "Zitronenabrieb"],
           instructions: [
-            "Die Zucchini waschen und die Enden abschneiden. Mit einem Spiralschneider zu langen 'Zoodles' (Zucchini-Nudeln) verarbeiten.",
-            "Pinienkerne in einer Pfanne ohne Fett goldbraun rösten, dann herausnehmen.",
-            "Die Kirschtomaten halbieren. Etwas Öl in der Pfanne erhitzen und die Zoodles darin für nur 2-3 Minuten andünsten (nicht zu lange, sonst werden sie wässrig).",
-            "Die Tomaten hinzufügen und kurz mitwärmen.",
-            "Die Pfanne vom Herd nehmen, das Pesto unter die Zoodles mischen und mit Pinienkernen sowie gehobeltem Parmesan bestreuen."
+            "Zoodles herstellen: Die Zucchini waschen und die Enden entfernen. Mit einem Spiralschneider zu langen Spaghetti verarbeiten.",
+            "Rösten: Die Pinienkerne in einer Pfanne ohne Fett bei mittlerer Hitze goldbraun rösten. Achtung: Sie verbrennen schnell! Danach sofort aus der Pfanne nehmen.",
+            "Tomaten vorbereiten: Die Kirschtomaten waschen und halbieren.",
+            "Kurz garen: Etwas Olivenöl in der Pfanne erhitzen. Die Zucchini-Nudeln und Tomaten hinzufügen. Nur ca. 2-3 Minuten schwenken. Wichtig: Nicht zu lange garen, da sie sonst matschig werden.",
+            "Verfeinern: Die Pfanne vom Herd nehmen. Das Pesto vorsichtig unter die warmen Zoodles heben, bis alles gleichmäßig benetzt ist.",
+            "Anrichten: Die Zoodles auf einen Teller geben, mit den gerösteten Pinienkernen, etwas Zitronenabrieb und frisch gehobeltem Parmesan bestreuen."
           ]
         },
       ]
@@ -180,16 +185,18 @@ const Plan = () => {
       meals: [
         { 
           type: "Frühstück", 
-          name: "Haferflocken mit Beeren", 
+          name: "Haferflocken mit frischen Beeren", 
           calories: Math.round(data.calories * 0.25), 
           time: "10 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["50g Haferflocken", "100g TK-Beeren", "150ml Milch oder Haferdrink", "1 TL Honig oder Ahornsirup", "Eine Prise Zimt"],
+          imageUrl: "https://images.unsplash.com/photo-1490474418645-177b353a1d40?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["50g zarte Haferflocken", "100g frische Beeren (Erdbeeren, Heidelbeeren)", "150ml Milch oder Haferdrink", "1 TL Honig oder Agavendicksaft", "Prise Zimt"],
           instructions: [
-            "Die Haferflocken zusammen mit der Milch in einen kleinen Topf geben.",
-            "Unter Rühren aufkochen lassen, dann die Hitze reduzieren und ca. 2-3 Minuten köcheln lassen, bis eine cremige Konsistenz entsteht.",
-            "Die gefrorenen oder frischen Beeren hinzufügen und kurz mitwärmen oder unterrühren.",
-            "Mit Honig und Zimt abschmecken und in einer Schüssel anrichten."
+            "Basis kochen: Die Haferflocken zusammen mit der Milch (oder dem Haferdrink) in einen kleinen Topf geben.",
+            "Quellen lassen: Unter ständigem Rühren bei mittlerer Hitze zum Kochen bringen. Sobald es blubbert, die Hitze sofort reduzieren.",
+            "Konsistenz: Ca. 3-4 Minuten köcheln lassen, bis die Haferflocken die Flüssigkeit aufgenommen haben und ein cremiger Brei entstanden ist.",
+            "Beeren vorbereiten: Während der Brei köchelt, die Beeren waschen und bei Bedarf (z.B. Erdbeeren) halbieren.",
+            "Süßen: Den Honig und den Zimt unter den warmen Haferbrei rühren.",
+            "Anrichten: Den Brei in eine Schüssel füllen und die frischen Beeren obenauf verteilen. Für extra Crunch können ein paar Nüsse hinzugefügt werden."
           ]
         },
         { 
@@ -199,17 +206,18 @@ const Plan = () => {
         },
         { 
           type: "Abendessen", 
-          name: "Protein-Salat-Bowl", 
+          name: "Bunte Protein-Salat-Bowl", 
           calories: Math.round(data.calories * 0.35), 
           time: "15 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["100g Mix-Salat", "1 Dose Thunfisch (im eigenen Saft) oder 150g Kichererbsen", "1/2 Avocado", "5 Kirschtomaten", "Leichtes Joghurt-Dressing"],
+          imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+          ingredients: ["100g gemischter Blattsalat", "1 Dose Thunfisch (im eigenen Saft) oder 150g Kichererbsen", "1/2 Avocado", "5 Kirschtomaten", "1 EL Joghurt-Dressing", "Kürbiskerne"],
           instructions: [
-            "Den Mix-Salat gründlich waschen und trocken schleudern.",
-            "Die Avocado halbieren, den Kern entfernen und das Fruchtfleisch in Scheiben schneiden. Tomaten halbieren.",
-            "Thunfisch oder Kichererbsen in einem Sieb abtropfen lassen.",
-            "Alle Zutaten nebeneinander in einer großen Bowl anrichten, um die Optik zu bewahren.",
-            "Mit dem Dressing beträufeln und sofort genießen."
+            "Salat-Basis: Den gemischten Salat gründlich in kaltem Wasser waschen und in einer Salatschleuder trocken schleudern.",
+            "Gemüse vorbereiten: Die Kirschtomaten waschen und halbieren. Die Avocado halbieren, den Kern entfernen und das Fruchtfleisch mit einem Löffel herausheben und in Scheiben schneiden.",
+            "Proteinquelle: Den Thunfisch (oder die Kichererbsen) in ein Sieb geben, abspülen und gut abtropfen lassen.",
+            "Anrichten: Den Salat in eine große Schüssel geben. Den Thunfisch/Kichererbsen, die Avocado und die Tomaten kreisförmig darauf platzieren (sieht appetitlicher aus).",
+            "Dressing: Das Joghurt-Dressing über die Zutaten träufeln. Wichtig: Erst kurz vor dem Verzehr hinzufügen, damit der Salat knackig bleibt.",
+            "Topping: Zum Schluss eine Handvoll Kürbiskerne über die Bowl streuen für gesunde Fette und einen angenehmen Biss."
           ]
         }
       ].map(m => ({ ...m, type: m.type })) as Meal[]
@@ -254,7 +262,7 @@ const Plan = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Summary Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <Card className="rounded-[2rem] border-none shadow-sm overflow-hidden">
+            <Card className="rounded-[2rem] border-none shadow-sm overflow-hidden border border-slate-100">
               <CardHeader className="bg-primary text-white pb-6">
                 <CardTitle className="text-lg">Zusammenfassung</CardTitle>
               </CardHeader>
@@ -351,42 +359,51 @@ const Plan = () => {
                         <AccordionContent className="pb-8 pt-4 border-t border-slate-50">
                           <div className="space-y-8">
                             {/* Hero Image for Recipe */}
-                            <div className="relative w-full h-48 sm:h-64 rounded-[2rem] overflow-hidden shadow-inner">
+                            <div className="relative w-full h-48 sm:h-72 rounded-[2.5rem] overflow-hidden shadow-inner group-image">
                               <img 
                                 src={meal.imageUrl} 
                                 alt={meal.name} 
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
                               />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent flex items-end p-6">
-                                <span className="text-white font-black text-2xl drop-shadow-md">{meal.name}</span>
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent flex items-end p-8">
+                                <div className="space-y-1">
+                                  <span className="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">Rezept-Vorschau</span>
+                                  <h2 className="text-white font-black text-3xl drop-shadow-md">{meal.name}</h2>
+                                </div>
                               </div>
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 px-2">
                               <div>
-                                <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                  <ListChecks className="w-4 h-4 text-primary" /> Zutaten (1 Person)
+                                <h4 className="font-bold text-slate-900 mb-5 flex items-center gap-3 text-lg">
+                                  <div className="p-2 rounded-xl bg-primary/10">
+                                    <ListChecks className="w-5 h-5 text-primary" />
+                                  </div>
+                                  Zutaten (1 Person)
                                 </h4>
-                                <ul className="space-y-2">
+                                <ul className="space-y-3">
                                   {meal.ingredients.map((ing, j) => (
-                                    <li key={j} className="flex items-center gap-3 text-slate-600 font-medium text-sm">
-                                      <div className="w-1.5 h-1.5 rounded-full bg-primary/40"></div>
+                                    <li key={j} className="flex items-center gap-4 text-slate-600 font-semibold text-sm p-2 rounded-xl hover:bg-slate-50 transition-colors">
+                                      <div className="w-2 h-2 rounded-full bg-primary/40 shrink-0"></div>
                                       {ing}
                                     </li>
                                   ))}
                                 </ul>
                               </div>
                               <div>
-                                <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
-                                  <ChefHat className="w-4 h-4 text-primary" /> Zubereitung
+                                <h4 className="font-bold text-slate-900 mb-5 flex items-center gap-3 text-lg">
+                                  <div className="p-2 rounded-xl bg-primary/10">
+                                    <ChefHat className="w-5 h-5 text-primary" />
+                                  </div>
+                                  Zubereitungsschritte
                                 </h4>
-                                <ol className="space-y-4">
+                                <ol className="space-y-5">
                                   {meal.instructions.map((step, j) => (
                                     <li key={j} className="flex gap-4 text-slate-600 text-sm leading-relaxed">
-                                      <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center font-black text-[10px] shrink-0">
+                                      <span className="w-8 h-8 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-black text-xs shrink-0 border border-primary/5">
                                         {j + 1}
                                       </span>
-                                      {step}
+                                      <p className="pt-1 font-medium">{step}</p>
                                     </li>
                                   ))}
                                 </ol>
