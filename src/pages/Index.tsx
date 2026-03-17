@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/Hero";
 import { TrustBar } from "@/components/TrustBar";
 import { ProblemSection } from "@/components/ProblemSection";
+import { ServicesSection } from "@/components/ServicesSection";
 import { Sparkles, Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -59,36 +60,7 @@ const Index = () => {
         <Hero />
         <TrustBar />
         <ProblemSection />
-
-        {/* Placeholder for subsequent blocks */}
-        <section id="leistungen" className="py-24 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-5xl font-bold text-[#1F2A44] mb-6">Wie ich KMU begleite</h2>
-              <div className="h-1.5 w-20 bg-[#6D5EF5] rounded-full mx-auto mb-8"></div>
-              <p className="text-lg text-slate-500 font-medium">
-                Vom ersten Workshop bis zur operativen Umsetzung — <br />
-                ich bin Ihr Partner für zukunftssicheres Marketing.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                { title: "Social Media & Content", desc: "Automatisierte Workflows für plattformübergreifende Präsenz ohne Qualitätsverlust." },
-                { title: "KI-Webseiten", desc: "Moderne Webpräsenzen, die mitdenken und Nutzererlebnisse personalisieren." },
-                { title: "Prozessberatung", desc: "Effizienzsteigerung durch KI-Tools, die Zeit für das Wesentliche schaffen." }
-              ].map((service, index) => (
-                <div key={index} className="p-8 rounded-[2rem] bg-[#F8F9FC] border border-slate-50 hover:border-[#6D5EF5]/30 hover:shadow-xl transition-all group">
-                   <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                     <ArrowRight className="w-6 h-6 text-[#6D5EF5]" />
-                   </div>
-                   <h3 className="text-xl font-bold text-[#1F2A44] mb-4">{service.title}</h3>
-                   <p className="text-slate-500 leading-relaxed font-medium">{service.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ServicesSection />
       </main>
 
       {/* Footer */}
