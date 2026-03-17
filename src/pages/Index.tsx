@@ -5,6 +5,7 @@ import { TrustBar } from "@/components/TrustBar";
 import { ProblemSection } from "@/components/ProblemSection";
 import { ServicesSection } from "@/components/ServicesSection";
 import { BenefitsSection } from "@/components/BenefitsSection";
+import { AboutSection } from "@/components/AboutSection";
 import { Sparkles, Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -63,6 +64,7 @@ const Index = () => {
         <ProblemSection />
         <ServicesSection />
         <BenefitsSection />
+        <AboutSection />
       </main>
 
       {/* Footer */}
