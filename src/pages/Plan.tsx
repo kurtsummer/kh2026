@@ -41,6 +41,268 @@ interface DayPlan {
   meals: Meal[];
 }
 
+const BREAKFAST_POOL: Omit<Meal, "type">[] = [
+  {
+    name: "Haferflocken mit frischen Beeren",
+    calories: 350,
+    time: "10 Min",
+    imageUrl: "https://images.unsplash.com/photo-1490474418645-177b353a1d40?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["50g Haferflocken", "100g frische Beeren", "150ml Milch oder Haferdrink", "1 TL Honig", "Prise Zimt"],
+    instructions: [
+      "Haferflocken und Milch in einen kleinen Topf geben.",
+      "Unter Rühren bei mittlerer Hitze aufkochen, dann 3-4 Min. köcheln lassen, bis es cremig ist.",
+      "Vom Herd nehmen, Honig und Zimt unterrühren.",
+      "In eine Schüssel füllen und mit gewaschenen Beeren garnieren."
+    ]
+  },
+  {
+    name: "Avocado-Vollkornbrot mit Ei",
+    calories: 420,
+    time: "12 Min",
+    imageUrl: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["2 Scheiben Vollkornbrot", "1/2 reife Avocado", "1 Ei", "Prise Chiliflocken", "Salz & Pfeffer"],
+    instructions: [
+      "Das Ei in einem kleinen Topf ca. 7 Minuten wachsweich kochen.",
+      "In der Zwischenzeit das Brot toasten.",
+      "Die Avocadohälfte mit einer Gabel direkt auf dem Brot zerdrücken.",
+      "Das Ei abschrecken, pellen, halbieren und auf das Avocado-Brot legen.",
+      "Mit Salz, Pfeffer und Chiliflocken bestreuen."
+    ]
+  },
+  {
+    name: "Griechischer Joghurt mit Nüssen",
+    calories: 380,
+    time: "5 Min",
+    imageUrl: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["200g Griechischer Joghurt", "30g Walnüsse oder Mandeln", "1 EL Honig", "1/2 Apfel"],
+    instructions: [
+      "Den Joghurt in eine Schüssel geben.",
+      "Den Apfel waschen und in feine Spalten schneiden.",
+      "Die Nüsse grob hacken.",
+      "Apfel und Nüsse auf dem Joghurt verteilen und mit Honig beträufeln."
+    ]
+  },
+  {
+    name: "Rührei mit Tomaten & Basilikum",
+    calories: 310,
+    time: "10 Min",
+    imageUrl: "https://images.unsplash.com/photo-1525811902-f23426213fd0?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["2 Bio-Eier", "5 Kirschtomaten", "Frischer Basilikum", "1 TL Butter", "1 Scheibe Brot"],
+    instructions: [
+      "Die Eier in einer Tasse verquirlen und mit Salz und Pfeffer würzen.",
+      "Die Tomaten halbieren. Butter in einer Pfanne schmelzen.",
+      "Tomaten kurz anbraten, dann die Eimasse hinzufügen.",
+      "Bei mittlerer Hitze stocken lassen und dabei vorsichtig rühren.",
+      "Mit frischem Basilikum bestreuen und zum Brot servieren."
+    ]
+  },
+  {
+    name: "Bananen-Protein-Pancakes",
+    calories: 450,
+    time: "15 Min",
+    imageUrl: "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["1 reife Banane", "2 Eier", "30g Haferflocken (gemahlen)", "Prise Backpulver", "Öl zum Braten"],
+    instructions: [
+      "Die Banane in einer Schüssel mit einer Gabel zu Brei zerdrücken.",
+      "Eier, gemahlene Haferflocken und Backpulver hinzufügen und zu einem glatten Teig verrühren.",
+      "Etwas Öl in einer Pfanne erhitzen.",
+      "Kleine Teigportionen in die Pfanne geben und von beiden Seiten ca. 2 Min. goldbraun backen."
+    ]
+  },
+  {
+    name: "Chia-Pudding mit Mango",
+    calories: 320,
+    time: "5 Min (+ Einweichzeit)",
+    imageUrl: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["3 EL Chiasamen", "200ml Kokos- oder Mandelmilch", "1/2 reife Mango", "1 TL Ahornsirup"],
+    instructions: [
+      "Chiasamen mit der Milch und dem Ahornsirup in einem Glas verrühren.",
+      "Mindestens 2 Stunden oder über Nacht im Kühlschrank quellen lassen.",
+      "Die Mango schälen und das Fruchtfleisch pürieren oder fein würfeln.",
+      "Das Mangopüree vor dem Servieren auf den Pudding geben."
+    ]
+  },
+  {
+    name: "Schnelles Shakshuka",
+    calories: 390,
+    time: "20 Min",
+    imageUrl: "https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["200ml stückige Tomaten", "1 Ei", "1/2 rote Paprika", "1/4 Zwiebel", "Prise Kreuzkümmel"],
+    instructions: [
+      "Zwiebel und Paprika klein schneiden und in einer Pfanne mit Öl dünsten.",
+      "Tomaten und Kreuzkümmel hinzufügen, ca. 5 Min. köcheln lassen.",
+      "Mit einem Löffel eine Mulde in die Sauce drücken und das Ei vorsichtig hineinschlagen.",
+      "Deckel auf die Pfanne setzen und ca. 5-7 Min. garen, bis das Eiweiß gestockt ist."
+    ]
+  },
+  {
+    name: "Vollkorn-Sandwich mit Pute",
+    calories: 360,
+    time: "8 Min",
+    imageUrl: "https://images.unsplash.com/photo-1521390188846-e2a39b7ef4a8?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["2 Scheiben Vollkornbrot", "50g Putenbrust (Aufschnitt)", "1 EL Frischkäse", "Gurkenscheiben", "Salatblatt"],
+    instructions: [
+      "Beide Brotscheiben dünn mit Frischkäse bestreichen.",
+      "Eine Seite mit Salat, Putenbrust und Gurkenscheiben belegen.",
+      "Die zweite Brotscheibe darauflegen und das Sandwich diagonal halbieren."
+    ]
+  },
+  {
+    name: "Omelett mit Spinat & Feta",
+    calories: 410,
+    time: "12 Min",
+    imageUrl: "https://images.unsplash.com/photo-1510629900260-7052fec3dd41?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["2 Eier", "Eine Handvoll frischer Spinat", "30g Feta", "1 TL Öl", "Salz & Pfeffer"],
+    instructions: [
+      "Eier verquirlen und würzen. Feta grob zerbröseln.",
+      "Öl in der Pfanne erhitzen und den Spinat kurz zusammenfallen lassen.",
+      "Die Eimasse über den Spinat gießen.",
+      "Den Feta darauf verteilen und das Omelett bei mittlerer Hitze stocken lassen.",
+      "Einmal in der Mitte zusammenklappen und servieren."
+    ]
+  },
+  {
+    name: "Hüttenkäse mit Apfel & Zimt",
+    calories: 280,
+    time: "5 Min",
+    imageUrl: "https://images.unsplash.com/photo-1551326344-42d6de2ad40c?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["200g Hüttenkäse", "1 Apfel", "1 TL Zimt", "10g Mandelsplitter"],
+    instructions: [
+      "Den Hüttenkäse in eine Schüssel geben.",
+      "Den Apfel waschen, entkernen und klein würfeln.",
+      "Apfelwürfel und Mandelsplitter über den Hüttenkäse geben.",
+      "Großzügig mit Zimt bestreuen."
+    ]
+  },
+  {
+    name: "Beeren-Smoothie-Bowl",
+    calories: 340,
+    time: "7 Min",
+    imageUrl: "https://images.unsplash.com/photo-1494597564530-801f4467382c?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["150g TK-Beeren", "1 Banane", "50ml Hafermilch", "20g Knuspermüsli", "Chia-Samen"],
+    instructions: [
+      "Gefrorene Beeren, Banane und Milch im Mixer zu einer dicken Masse pürieren.",
+      "In eine Schüssel füllen.",
+      "Mit Knuspermüsli und einer Prise Chia-Samen garnieren und sofort löffeln."
+    ]
+  },
+  {
+    name: "Gekochtes Ei mit Vollkornstangen",
+    calories: 320,
+    time: "10 Min",
+    imageUrl: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["1 Ei", "2 Scheiben Vollkornbrot", "Etwas Butter", "Salz"],
+    instructions: [
+      "Das Ei ca. 6-7 Minuten kochen (Eigelb noch weich).",
+      "In der Zwischenzeit das Brot toasten und mit wenig Butter bestreichen.",
+      "Das Brot in ca. 2 cm breite Streifen (Stangen) schneiden.",
+      "Das Ei im Eierbecher köpfen und die Brotstangen in das weiche Eigelb dippen."
+    ]
+  },
+  {
+    name: "French Toast (Gesund)",
+    calories: 430,
+    time: "15 Min",
+    imageUrl: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["2 Scheiben Vollkornbrot", "1 Ei", "50ml Milch", "Prise Zimt", "Ahornsirup"],
+    instructions: [
+      "Ei, Milch und Zimt in einem tiefen Teller verquirlen.",
+      "Die Brotscheiben von beiden Seiten darin einweichen, bis sie die Flüssigkeit aufgenommen haben.",
+      "In einer Pfanne mit wenig Öl von beiden Seiten ca. 3 Min. goldbraun braten.",
+      "Mit wenig Ahornsirup beträufeln."
+    ]
+  },
+  {
+    name: "Frühstücks-Burrito",
+    calories: 460,
+    time: "12 Min",
+    imageUrl: "https://images.unsplash.com/photo-1585238342024-78d387f4a707?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["1 Vollkorn-Tortilla", "1 Ei", "30g Bohnen (Dose)", "2 EL Salsa", "Wenig Käse"],
+    instructions: [
+      "Das Ei in einer Pfanne als Rührei zubereiten.",
+      "Die Tortilla kurz in einer Pfanne oder Mikrowelle erwärmen.",
+      "Rührei, abgetropfte Bohnen, Salsa und Käse in die Mitte der Tortilla geben.",
+      "Die Seiten einschlagen und fest aufrollen."
+    ]
+  },
+  {
+    name: "Warmer Grießbrei",
+    calories: 330,
+    time: "10 Min",
+    imageUrl: "https://images.unsplash.com/photo-1551326344-42d6de2ad40c?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["40g Dinkelgrieß", "250ml Milch oder Pflanzendrink", "1 EL Pflaumenmus", "Zimt"],
+    instructions: [
+      "Milch in einem Topf aufkochen.",
+      "Den Grieß unter ständigem Rühren einrieseln lassen.",
+      "Bei geringer Hitze ca. 2-3 Min. unter Rühren quellen lassen.",
+      "In eine Schüssel füllen, Pflaumenmus daraufgeben und mit Zimt bestreuen."
+    ]
+  },
+  {
+    name: "Granola-Quark-Bowl",
+    calories: 390,
+    time: "5 Min",
+    imageUrl: "https://images.unsplash.com/photo-1494390248081-4e521a5940db?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["250g Magerquark", "30g Granola (Knuspermüsli)", "Schuss Sprudelwasser", "Ein paar Heidelbeeren"],
+    instructions: [
+      "Den Quark mit einem Schuss Sprudelwasser glatt und cremig rühren.",
+      "In eine Schüssel geben.",
+      "Granola und gewaschene Heidelbeeren darauf verteilen."
+    ]
+  },
+  {
+    name: "Knäckebrot mit Lachs",
+    calories: 290,
+    time: "5 Min",
+    imageUrl: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["3 Scheiben Knäckebrot", "50g Räucherlachs", "2 EL Frischkäse", "Etwas Meerrettich"],
+    instructions: [
+      "Knäckebrot mit Frischkäse bestreichen.",
+      "Einen kleinen Klecks Meerrettich daraufgeben.",
+      "Mit Räucherlachs belegen und nach Belieben mit Dill garnieren."
+    ]
+  },
+  {
+    name: "Apfel-Zimt-Baked Oats",
+    calories: 410,
+    time: "25 Min",
+    imageUrl: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["50g Haferflocken", "1/2 zerdrückte Banane", "50ml Milch", "1/2 Apfel", "Zimt"],
+    instructions: [
+      "Haferflocken, Banane, Milch und Zimt mischen.",
+      "In eine kleine ofenfeste Form füllen.",
+      "Den Apfel klein schneiden und unterheben oder obenauf legen.",
+      "Bei 180 Grad ca. 20 Minuten backen, bis es fest ist."
+    ]
+  },
+  {
+    name: "Herzhafter Tofu-Scramble",
+    calories: 340,
+    time: "15 Min",
+    imageUrl: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["150g Tofu (natur)", "Prise Kurkuma (für die Farbe)", "Etwas Kala Namak (Schwefelsalz für Ei-Geschmack)", "Paprika"],
+    instructions: [
+      "Den Tofu mit einer Gabel direkt in der Schüssel fein zerbröseln.",
+      "In einer Pfanne mit etwas Öl anbraten.",
+      "Kurkuma und klein geschnittene Paprika hinzufügen.",
+      "Mit Kala Namak abschmecken (Vorsicht, erst zum Schluss zugeben)."
+    ]
+  },
+  {
+    name: "Overnight Oats Peanut Butter",
+    calories: 440,
+    time: "5 Min (+ Über Nacht)",
+    imageUrl: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?auto=format&fit=crop&w=800&q=80",
+    ingredients: ["50g Haferflocken", "150ml Milch", "1 TL Erdnussbutter", "1/2 Banane"],
+    instructions: [
+      "Haferflocken und Milch in einem Glas mischen.",
+      "Über Nacht in den Kühlschrank stellen.",
+      "Morgens die Erdnussbutter unterrühren.",
+      "Banane in Scheiben schneiden und obenauf legen."
+    ]
+  }
+];
+
 const Plan = () => {
   const navigate = useNavigate();
   const [plan, setPlan] = useState<DayPlan[]>([]);
@@ -155,7 +417,7 @@ const Plan = () => {
             "Quark anrühren: Den Magerquark in eine Schüssel geben. Den Schnittlauch in feine Röllchen schneiden und unter den Quark rühren. Mit einem Spritzer Zitrone, Salz und Pfeffer abschmecken.",
             "Gemüse garen: Die Zucchini und Paprika in mundgerechte Stücke schneiden. In der Pfanne des Steaks (nachdem man es herausgenommen hat) ca. 6-7 Minuten dünsten.",
             "Ruhephase: Das Steak kurz ruhen lassen (ca. 2 Min.), damit sich der Fleischsaft verteilt.",
-            "Anrichten: Das Putensteak zusammen mit dem gedünsteten Gemüse auf einem Teller anrichten und den Kräuterquark als proteinreichen Dip dazu servieren."
+            "Anrichten: Das Putensteak zusammen mit dem gedünsteten Gemüse auf einem teller anrichten und den Kräuterquark als proteinreichen Dip dazu servieren."
           ]
         },
       ],
@@ -180,48 +442,42 @@ const Plan = () => {
 
     const selectedPool = recipes[data.diet as keyof typeof recipes] || recipes.Omnivor;
 
-    const mockPlan = days.map(day => ({
-      day,
-      meals: [
-        { 
-          type: "Frühstück", 
-          name: "Haferflocken mit frischen Beeren", 
-          calories: Math.round(data.calories * 0.25), 
-          time: "10 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1490474418645-177b353a1d40?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["50g zarte Haferflocken", "100g frische Beeren (Erdbeeren, Heidelbeeren)", "150ml Milch oder Haferdrink", "1 TL Honig oder Agavendicksaft", "Prise Zimt"],
-          instructions: [
-            "Basis kochen: Die Haferflocken zusammen mit der Milch (oder dem Haferdrink) in einen kleinen Topf geben.",
-            "Quellen lassen: Unter ständigem Rühren bei mittlerer Hitze zum Kochen bringen. Sobald es blubbert, die Hitze sofort reduzieren.",
-            "Konsistenz: Ca. 3-4 Minuten köcheln lassen, bis die Haferflocken die Flüssigkeit aufgenommen haben und ein cremiger Brei entstanden ist.",
-            "Beeren vorbereiten: Während der Brei köchelt, die Beeren waschen und bei Bedarf (z.B. Erdbeeren) halbieren.",
-            "Süßen: Den Honig und den Zimt unter den warmen Haferbrei rühren.",
-            "Anrichten: Den Brei in eine Schüssel füllen und die frischen Beeren obenauf verteilen. Für extra Crunch können ein paar Nüsse hinzugefügt werden."
-          ]
-        },
-        { 
-          type: "Mittagessen", 
-          ...selectedPool[Math.floor(Math.random() * selectedPool.length)],
-          type: "Mittagessen"
-        },
-        { 
-          type: "Abendessen", 
-          name: "Bunte Protein-Salat-Bowl", 
-          calories: Math.round(data.calories * 0.35), 
-          time: "15 Min", 
-          imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
-          ingredients: ["100g gemischter Blattsalat", "1 Dose Thunfisch (im eigenen Saft) oder 150g Kichererbsen", "1/2 Avocado", "5 Kirschtomaten", "1 EL Joghurt-Dressing", "Kürbiskerne"],
-          instructions: [
-            "Salat-Basis: Den gemischten Salat gründlich in kaltem Wasser waschen und in einer Salatschleuder trocken schleudern.",
-            "Gemüse vorbereiten: Die Kirschtomaten waschen und halbieren. Die Avocado halbieren, den Kern entfernen und das Fruchtfleisch mit einem Löffel herausheben und in Scheiben schneiden.",
-            "Proteinquelle: Den Thunfisch (oder die Kichererbsen) in ein Sieb geben, abspülen und gut abtropfen lassen.",
-            "Anrichten: Den Salat in eine große Schüssel geben. Den Thunfisch/Kichererbsen, die Avocado und die Tomaten kreisförmig darauf platzieren (sieht appetitlicher aus).",
-            "Dressing: Das Joghurt-Dressing über die Zutaten träufeln. Wichtig: Erst kurz vor dem Verzehr hinzufügen, damit der Salat knackig bleibt.",
-            "Topping: Zum Schluss eine Handvoll Kürbiskerne über die Bowl streuen für gesunde Fette und einen angenehmen Biss."
-          ]
-        }
-      ].map(m => ({ ...m, type: m.type })) as Meal[]
-    }));
+    const mockPlan = days.map(day => {
+      // Pick random unique breakfasts if possible or just random from 20
+      const randomBreakfast = BREAKFAST_POOL[Math.floor(Math.random() * BREAKFAST_POOL.length)];
+      
+      return {
+        day,
+        meals: [
+          { 
+            type: "Frühstück", 
+            ...randomBreakfast,
+            type: "Frühstück"
+          },
+          { 
+            type: "Mittagessen", 
+            ...selectedPool[Math.floor(Math.random() * selectedPool.length)],
+            type: "Mittagessen"
+          },
+          { 
+            type: "Abendessen", 
+            name: "Bunte Protein-Salat-Bowl", 
+            calories: Math.round(data.calories * 0.35), 
+            time: "15 Min", 
+            imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=800&q=80",
+            ingredients: ["100g gemischter Blattsalat", "1 Dose Thunfisch (im eigenen Saft) oder 150g Kichererbsen", "1/2 Avocado", "5 Kirschtomaten", "1 EL Joghurt-Dressing", "Kürbiskerne"],
+            instructions: [
+              "Salat-Basis: Den gemischten Salat gründlich in kaltem Wasser waschen und in einer Salatschleuder trocken schleudern.",
+              "Gemüse vorbereiten: Die Kirschtomaten waschen und halbieren. Die Avocado halbieren, den Kern entfernen und das Fruchtfleisch mit einem Löffel herausheben und in Scheiben schneiden.",
+              "Proteinquelle: Den Thunfisch (oder die Kichererbsen) in ein Sieb geben, abspülen und gut abtropfen lassen.",
+              "Anrichten: Den Salat in eine große Schüssel geben. Den Thunfisch/Kichererbsen, die Avocado und die Tomaten kreisförmig darauf platzieren (sieht appetitlicher aus).",
+              "Dressing: Das Joghurt-Dressing über die Zutaten träufeln. Wichtig: Erst kurz vor dem Verzehr hinzufügen, damit der Salat knackig bleibt.",
+              "Topping: Zum Schluss eine Handvoll Kürbiskerne über die Bowl streuen für gesunde Fette und einen angenehmen Biss."
+            ]
+          }
+        ].map(m => ({ ...m, type: m.type })) as Meal[]
+      };
+    });
 
     setPlan(mockPlan);
   };
