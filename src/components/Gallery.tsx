@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { ZoomIn, Camera, ExternalLink, Sparkles, Heart, Smile, Users, X } from "lucide-react";
+import { ZoomIn, Utensils, Sparkles, Heart, Coffee, Wine, X, ChefHat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
-  DialogTitle,
   DialogClose,
 } from "@/components/ui/dialog";
 
@@ -23,21 +22,21 @@ export const Gallery = () => {
 
   const filters = [
     { name: "Alle", icon: <Sparkles className="w-4 h-4" /> },
-    { name: "Porträts", icon: <Smile className="w-4 h-4" /> },
-    { name: "Hochzeiten", icon: <Heart className="w-4 h-4" /> },
-    { name: "Business", icon: <Users className="w-4 h-4" /> },
-    { name: "Events", icon: <Camera className="w-4 h-4" /> },
+    { name: "Speisen", icon: <Utensils className="w-4 h-4" /> },
+    { name: "Ambiente", icon: <Heart className="w-4 h-4" /> },
+    { name: "Getränke", icon: <Wine className="w-4 h-4" /> },
+    { name: "Küche", icon: <ChefHat className="w-4 h-4" /> },
   ];
 
   const items: GalleryItem[] = [
-    { id: 1, category: "Porträts", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2000&auto=format&fit=crop", title: "Lächeln am Strand", color: "bg-[#FF7E67]" },
-    { id: 2, category: "Hochzeiten", image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop", title: "Farbenfrohe Hochzeit", color: "bg-[#45B7AF]" },
-    { id: 3, category: "Business", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop", title: "Modernes Agenturleben", color: "bg-[#FFD93D]" },
-    { id: 4, category: "Porträts", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2000&auto=format&fit=crop", title: "Natürliches Outdoor-Shooting", color: "bg-[#FF7E67]" },
-    { id: 5, category: "Events", image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop", title: "Festival der Farben", color: "bg-[#2D3436]" },
-    { id: 6, category: "Hochzeiten", image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2000&auto=format&fit=crop", title: "Glücksmomente pur", color: "bg-[#45B7AF]" },
-    { id: 7, category: "Business", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop", title: "Das Team lacht", color: "bg-[#FFD93D]" },
-    { id: 8, category: "Events", image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2000&auto=format&fit=crop", title: "Professionelle Konferenz", color: "bg-[#2D3436]" },
+    { id: 1, category: "Speisen", image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2000&auto=format&fit=crop", title: "Zartes Rindersteak", color: "bg-[#FF7E67]" },
+    { id: 2, category: "Ambiente", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2000&auto=format&fit=crop", title: "Unser gemütlicher Gastraum", color: "bg-[#45B7AF]" },
+    { id: 3, category: "Getränke", image: "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=2000&auto=format&fit=crop", title: "Frische Cocktails", color: "bg-[#FFD93D]" },
+    { id: 4, category: "Speisen", image: "https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=2000&auto=format&fit=crop", title: "Mediterrane Pasta", color: "bg-[#FF7E67]" },
+    { id: 5, category: "Küche", image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop", title: "Frische Zutaten", color: "bg-[#2D3436]" },
+    { id: 6, category: "Ambiente", image: "https://images.unsplash.com/photo-1550966841-3ee2964680d8?q=80&w=2000&auto=format&fit=crop", title: "Abendstimmung", color: "bg-[#45B7AF]" },
+    { id: 7, category: "Getränke", image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=2000&auto=format&fit=crop", title: "Ausgewählte Weine", color: "bg-[#FFD93D]" },
+    { id: 8, category: "Speisen", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=2000&auto=format&fit=crop", title: "Frische Pizza", color: "bg-[#2D3436]" },
   ];
 
   const filteredItems = activeFilter === "Alle" 
@@ -46,17 +45,16 @@ export const Gallery = () => {
 
   return (
     <section id="gallery" className="py-24 bg-white relative overflow-hidden">
-      {/* Decorative Blob */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF7E67]/5 rounded-full blur-[100px] -z-1" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#45B7AF]/5 rounded-full blur-[100px] -z-1" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16">
           <div className="space-y-6">
-             <h2 className="text-[#FF7E67] font-black tracking-widest uppercase text-sm">Portfolio</h2>
-             <h3 className="text-4xl md:text-6xl font-black text-[#2D3436] leading-tight">Ein Meer aus <span className="text-[#45B7AF]">Farben</span>.</h3>
+             <h2 className="text-[#FF7E67] font-black tracking-widest uppercase text-sm">Galerie</h2>
+             <h3 className="text-4xl md:text-6xl font-black text-[#2D3436] leading-tight">Ein Blick in <span className="text-[#45B7AF]">unsere Welt</span>.</h3>
              <p className="text-xl text-[#2D3436]/60 font-medium max-w-xl">
-               Hier ein kleiner Einblick in meine bisherigen Abenteuer. Jedes Foto erzählt eine eigene, fröhliche Geschichte.
+               Lassen Sie sich von unseren Impressionen inspirieren. Bei uns trifft Genuss auf Atmosphäre.
              </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -100,9 +98,6 @@ export const Gallery = () => {
                        >
                           <ZoomIn className="w-6 h-6" />
                        </button>
-                       <button className={`${item.color} hover:opacity-90 p-4 rounded-3xl text-white transition-all shadow-2xl group-hover:-rotate-6`} aria-label="Projekt Details">
-                          <ExternalLink className="w-6 h-6" />
-                       </button>
                     </div>
                  </div>
               </div>
@@ -111,14 +106,15 @@ export const Gallery = () => {
         </div>
 
         <div className="mt-20 text-center">
-           <Button variant="outline" className="border-4 border-[#FF7E67] text-[#FF7E67] rounded-full px-12 py-8 text-xl font-black group hover:bg-[#FF7E67] hover:text-white transition-all duration-500 shadow-xl shadow-[#FF7E67]/10">
-              <Camera className="mr-3 w-6 h-6 group-hover:rotate-12 transition-transform" />
-              Lass mehr Farben rein!
+           <Button asChild variant="outline" className="border-4 border-[#FF7E67] text-[#FF7E67] rounded-full px-12 py-8 text-xl font-black group hover:bg-[#FF7E67] hover:text-white transition-all duration-500 shadow-xl shadow-[#FF7E67]/10">
+              <a href="#reservation">
+                <Coffee className="mr-3 w-6 h-6 group-hover:rotate-12 transition-transform" />
+                Besuchen Sie uns live!
+              </a>
            </Button>
         </div>
       </div>
 
-      {/* Lightbox Modal */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
         <DialogContent className="max-w-2xl w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-white/95 backdrop-blur-lg border-none rounded-[60px] shadow-2xl animate-in zoom-in-95 duration-300">
           <DialogHeader className="absolute top-8 right-8 z-50">
@@ -149,11 +145,11 @@ export const Gallery = () => {
                   <div className="w-20 h-2 bg-[#FF7E67] mx-auto rounded-full" />
                 </div>
                 <p className="text-[#2D3436]/60 font-medium leading-relaxed max-w-sm mx-auto">
-                  Dieses Bild wurde mit viel Liebe zum Detail in unserem Studio in Musterhausen aufgenommen. Wir legen großen Wert auf lebendige Farben und echte Emotionen.
+                  Genießen Sie die besondere Atmosphäre im Restaurant Max. Jedes Detail wurde sorgfältig ausgewählt, um Ihnen ein unvergessliches Erlebnis zu bieten.
                 </p>
                 <div className="pt-8 border-t border-[#2D3436]/5">
-                  <Button className="w-full bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-3xl py-10 font-black uppercase tracking-widest text-sm shadow-2xl shadow-[#FF7E67]/20 border-none transition-all hover:scale-105 active:scale-95">
-                    Dieses Shooting anfragen!
+                  <Button asChild className="w-full bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-3xl py-10 font-black uppercase tracking-widest text-sm shadow-2xl shadow-[#FF7E67]/20 border-none transition-all hover:scale-105 active:scale-95">
+                    <a href="#reservation" onClick={() => setSelectedImage(null)}>Tisch reservieren</a>
                   </Button>
                 </div>
               </div>

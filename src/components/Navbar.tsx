@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Camera, Sparkles, Smile } from "lucide-react";
+import { Menu, X, Utensils, Sparkles, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -16,10 +16,10 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Über mich", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Portfolio", href: "#gallery" },
-    { name: "Bewertungen", href: "#testimonials" },
+    { name: "Speisekarte", href: "#menu" },
+    { name: "Über uns", href: "#about" },
+    { name: "Galerie", href: "#gallery" },
+    { name: "Reservierung", href: "#reservation" },
     { name: "Kontakt", href: "#contact" },
   ];
 
@@ -34,13 +34,13 @@ export const Navbar = () => {
       aria-label="Hauptnavigation"
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <Link to="/" className="flex items-center group gap-4" aria-label="Max Macht Fotos Homepage">
+        <Link to="/" className="flex items-center group gap-4" aria-label="Restaurant Max Homepage">
           <div className={`p-3 rounded-2xl transition-all duration-500 shadow-xl group-hover:rotate-12 group-hover:scale-110 ${isScrolled ? "bg-[#FF7E67]" : "bg-white shadow-inner group-hover:bg-[#FF7E67]"}`}>
-             <Camera className={`w-7 h-7 transition-colors duration-500 ${isScrolled ? "text-white" : "text-[#FF7E67] group-hover:text-white"}`} />
+             <Utensils className={`w-7 h-7 transition-colors duration-500 ${isScrolled ? "text-white" : "text-[#FF7E67] group-hover:text-white"}`} />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-tighter leading-none text-[#2D3436]">Max Macht Fotos</h1>
-            <p className="text-[10px] uppercase font-black text-[#45B7AF] tracking-[0.4em] leading-none mt-1">Gute Laune Studio</p>
+            <h1 className="text-2xl font-black tracking-tighter leading-none text-[#2D3436]">Restaurant Max</h1>
+            <p className="text-[10px] uppercase font-black text-[#45B7AF] tracking-[0.4em] leading-none mt-1">Kulinarik in Musterhausen</p>
           </div>
         </Link>
 
@@ -50,7 +50,7 @@ export const Navbar = () => {
             {navLinks.map((link) => (
               <a
                 key={link.name}
-                href={`/${link.href}`}
+                href={link.href}
                 className="text-xs font-black uppercase tracking-widest text-[#2D3436] hover:text-[#FF7E67] transition-all relative group flex items-center gap-1.5"
               >
                 {link.name}
@@ -58,8 +58,8 @@ export const Navbar = () => {
               </a>
             ))}
           </div>
-          <Button className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-full px-10 py-7 text-sm font-black uppercase tracking-widest shadow-2xl shadow-[#FF7E67]/20 border-none transition-all hover:scale-105 active:scale-95">
-            Lass uns lachen!
+          <Button asChild className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-full px-10 py-7 text-sm font-black uppercase tracking-widest shadow-2xl shadow-[#FF7E67]/20 border-none transition-all hover:scale-105 active:scale-95">
+            <a href="#reservation">Tisch reservieren</a>
           </Button>
         </div>
 
@@ -80,16 +80,16 @@ export const Navbar = () => {
           {navLinks.map((link) => (
             <a
               key={link.name}
-              href={`/${link.href}`}
+              href={link.href}
               className="text-2xl font-black text-[#2D3436] uppercase tracking-widest border-b-4 border-[#FAF9F6] pb-6 last:border-0 hover:text-[#FF7E67] transition-all flex items-center justify-between"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
-              <Smile className="text-[#FFD93D] w-8 h-8" />
+              <Heart className="text-[#FF7E67] w-8 h-8" />
             </a>
           ))}
-          <Button className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-[32px] w-full py-10 text-xl font-black uppercase tracking-widest shadow-2xl shadow-[#FF7E67]/30 border-none mt-4">
-            Lass uns lachen!
+          <Button asChild className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-[32px] w-full py-10 text-xl font-black uppercase tracking-widest shadow-2xl shadow-[#FF7E67]/30 border-none mt-4">
+            <a href="#reservation" onClick={() => setIsMobileMenuOpen(false)}>Tisch reservieren</a>
           </Button>
         </div>
       )}

@@ -1,35 +1,35 @@
-import { Star, Quote, Smile, Heart, Sparkles } from "lucide-react";
+import { Star, Quote, Smile, Heart, Sparkles, Utensils } from "lucide-react";
 
 export const Testimonials = () => {
   const testimonials = [
     {
-      name: "Julia & Marc",
-      role: "Brautpaar",
-      text: "Max hat unsere Hochzeit in so wundervollen, bunten Bildern festgehalten. Wir haben uns von Anfang an super wohl gefühlt. Die Fotos strahlen pure Lebensfreude aus!",
+      name: "Sabine & Thomas",
+      role: "Stammgäste",
+      text: "Das Schnitzel ist einfach Weltklasse! Aber was uns immer wieder herzieht, ist die herzliche Art von Max und seinem Team. Man fühlt sich wie bei Freunden.",
       rating: 5,
       image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=200&auto=format&fit=crop",
       color: "bg-[#FF7E67]/10 border-[#FF7E67]/20 text-[#FF7E67]",
     },
     {
-      name: "Andreas K.",
-      role: "CEO von InnovateX",
-      text: "Endlich mal keine langweiligen Business-Fotos! Max hat das Team perfekt in Szene gesetzt – modern, frisch und unglaublich sympathisch. Absolut top!",
+      name: "Markus R.",
+      role: "Gourmet-Blogger",
+      text: "Eine echte Entdeckung in Musterhausen. Die Kombination aus traditioneller Küche und modernen Akzenten ist perfekt gelungen. Die Weinauswahl ist exzellent!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
       color: "bg-[#45B7AF]/10 border-[#45B7AF]/20 text-[#45B7AF]",
     },
     {
-      name: "Sarah M.",
-      role: "Mutter von zwei Rackern",
-      text: "Ein tolles Erlebnis! Max hat so viel Energie und Geduld. Die Kinder hatten riesigen Spaß und die Bilder sind so natürlich und farbenfroh geworden.",
+      name: "Lena S.",
+      role: "Veggie-Fan",
+      text: "Endlich ein Restaurant, das auch vegetarische Gerichte mit viel Liebe und Kreativität zubereitet. Die hausgemachte Pasta mit Trüffel war ein Traum!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop",
       color: "bg-[#FFD93D]/10 border-[#FFD93D]/20 text-[#FFD93D]",
     },
     {
-      name: "Felix H.",
-      role: "Event-Manager",
-      text: "Die Fotos von unserem Festival sind der Hammer! Max hat die Stimmung und alle bunten Details perfekt eingefangen. Man hört die Musik quasi beim Anschauen.",
+      name: "Christian H.",
+      role: "Unternehmer",
+      text: "Wir haben unsere Firmenfeier hier ausgerichtet. Tolles Ambiente, super Service und das Essen kam für alle 30 Personen gleichzeitig und heiß auf den Tisch. Top!",
       rating: 5,
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
       color: "bg-[#2D3436]/10 border-[#2D3436]/20 text-[#2D3436]",
@@ -38,16 +38,15 @@ export const Testimonials = () => {
 
   return (
     <section id="testimonials" className="py-24 bg-[#FFFCF8] relative overflow-hidden">
-      {/* Playful Floating Shapes */}
       <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-[#FF7E67]/10 rounded-full blur-[120px] -z-1" />
       <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-[#45B7AF]/10 rounded-full blur-[100px] -z-1" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <h2 className="text-[#FF7E67] font-black tracking-widest uppercase text-sm">Glückliche Kunden</h2>
-          <h3 className="text-4xl md:text-6xl font-black text-[#2D3436] leading-tight">Was unsere <span className="text-[#45B7AF]">Fans</span> sagen.</h3>
+          <h2 className="text-[#FF7E67] font-black tracking-widest uppercase text-sm">Gästestimmen</h2>
+          <h3 className="text-4xl md:text-6xl font-black text-[#2D3436] leading-tight">Was unsere <span className="text-[#45B7AF]">Gäste</span> sagen.</h3>
           <p className="text-xl text-[#2D3436]/60 font-medium">
-            Wir lieben es, Menschen zum Lächeln zu bringen – und das Echo ist einfach fantastisch!
+            Zufriedene Gäste sind unser größtes Lob – und das Echo ist einfach fantastisch!
           </p>
         </div>
 
@@ -93,7 +92,7 @@ export const Testimonials = () => {
         
         <div className="mt-24 bg-white p-12 rounded-[60px] shadow-xl flex flex-col md:flex-row items-center justify-around gap-12 border-2 border-[#FF7E67]/10">
            <div className="text-center space-y-3">
-              <p className="text-5xl font-black text-[#FF7E67]">4.9/5</p>
+              <p className="text-5xl font-black text-[#FF7E67]">4.8/5</p>
               <div className="flex text-[#FFD93D] justify-center scale-110">
                  {[...Array(5)].map((_, i) => (
                    <Star key={i} className="w-6 h-6 fill-current" />
@@ -109,17 +108,17 @@ export const Testimonials = () => {
                  <Heart className="w-8 h-8 text-[#45B7AF] fill-current" />
               </div>
               <p className="text-2xl font-black text-[#2D3436]">100% Liebe</p>
-              <p className="text-[#2D3436]/40 text-sm uppercase font-black tracking-widest">In jedem Klick</p>
+              <p className="text-[#2D3436]/40 text-sm uppercase font-black tracking-widest">In jedem Teller</p>
            </div>
 
            <div className="hidden md:block w-px h-24 bg-[#2D3436]/5" />
 
            <div className="text-center space-y-3 group cursor-default">
               <div className="bg-[#FFD93D]/10 p-4 rounded-3xl w-fit mx-auto group-hover:-rotate-12 transition-transform">
-                 <Sparkles className="w-8 h-8 text-[#FFD93D] fill-current" />
+                 <Utensils className="w-8 h-8 text-[#FFD93D]" />
               </div>
-              <p className="text-2xl font-black text-[#2D3436]">Magic Moments</p>
-              <p className="text-[#2D3436]/40 text-sm uppercase font-black tracking-widest">Garantiert</p>
+              <p className="text-2xl font-black text-[#2D3436]">Frische Garantie</p>
+              <p className="text-[#2D3436]/40 text-sm uppercase font-black tracking-widest">Regional & Saisonal</p>
            </div>
         </div>
       </div>

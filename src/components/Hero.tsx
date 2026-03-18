@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Camera, Heart, Sparkles } from "lucide-react";
+import { ArrowRight, Star, Utensils, Heart, Sparkles, ChefHat } from "lucide-react";
 
 export const Hero = () => {
   const avatarImages = [
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop",
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop"
+    "https://images.unsplash.com/photo-1550966841-3ee2964680d8?q=80&w=150&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=150&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=150&auto=format&fit=crop"
   ];
 
   return (
@@ -20,25 +20,27 @@ export const Hero = () => {
         <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
           <div className="inline-flex items-center gap-2 bg-[#FF7E67]/10 text-[#FF7E67] px-4 py-2 rounded-full text-sm font-bold tracking-wide">
             <Sparkles className="w-4 h-4 fill-current" />
-            <span>Musterhausens fröhlichstes Fotostudio</span>
+            <span>Musterhausens feinste Kulinarik</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-sans font-black leading-[1.1] text-[#2D3436]">
-            Lachen,<br />
-            <span className="text-[#FF7E67]">das ansteckt.</span>
+            Genuss,<br />
+            <span className="text-[#FF7E67]">der verbindet.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-[#2D3436]/70 max-w-lg leading-relaxed">
-            Wir halten Ihre glücklichsten Momente in lebendigen, farbenfrohen Bildern fest. Authentisch, voller Energie und einfach Max Mustermann.
+          <p className="text-lg md:text-xl text-[#2D3436]/70 max-w-lg leading-relaxed font-medium">
+            Willkommen im Restaurant Max – Ihrem Ort für ehrliche Küche, frische Zutaten und herzliche Gastfreundschaft im Herzen von Musterhausen.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-full px-8 py-7 text-lg font-bold group shadow-lg shadow-[#FF7E67]/20 border-none">
-              Jetzt Termin sichern
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <Button asChild className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-full px-8 py-7 text-lg font-bold group shadow-lg shadow-[#FF7E67]/20 border-none">
+              <a href="#reservation">
+                Tisch reservieren
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </Button>
-            <Button variant="outline" className="border-[#45B7AF] text-[#45B7AF] hover:bg-[#45B7AF]/5 rounded-full px-8 py-7 text-lg font-bold">
-              Bildergalerie entdecken
+            <Button asChild variant="outline" className="border-[#45B7AF] text-[#45B7AF] hover:bg-[#45B7AF]/5 rounded-full px-8 py-7 text-lg font-bold">
+              <a href="#menu">Speisekarte ansehen</a>
             </Button>
           </div>
 
@@ -48,7 +50,7 @@ export const Hero = () => {
                 <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-gray-100 overflow-hidden shadow-md">
                   <img 
                     src={src} 
-                    alt={`Glücklicher Kunde ${i + 1}`} 
+                    alt={`Zufriedener Gast ${i + 1}`} 
                     className="w-full h-full object-cover" 
                     loading="lazy"
                   />
@@ -56,7 +58,7 @@ export const Hero = () => {
               ))}
             </div>
             <div>
-              <p className="font-bold text-[#2D3436]">Über 300+ strahlende Kunden</p>
+              <p className="font-bold text-[#2D3436]">Über 1.200+ zufriedene Genießer</p>
               <div className="flex text-[#FFD93D]">
                 {[1, 2, 3, 4, 5].map((s) => (
                   <Star key={s} className="w-4 h-4 fill-current" />
@@ -69,8 +71,8 @@ export const Hero = () => {
         <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-200">
           <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5] border-[12px] border-white rotate-2 hover:rotate-0 transition-transform duration-500 bg-gray-100">
             <img
-              src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?q=80&w=2070&auto=format&fit=crop"
-              alt="Fröhliche Fotografie Atmosphäre im Studio"
+              src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop"
+              alt="Frisch zubereitetes Gericht bei Restaurant Max"
               className="w-full h-full object-cover"
               loading="eager"
             />
@@ -84,20 +86,20 @@ export const Hero = () => {
           <div className="absolute bottom-12 -left-12 bg-white p-6 rounded-[24px] shadow-2xl z-20 hidden md:block border border-[#FF7E67]/10 animate-bounce-slow">
             <div className="flex items-center gap-4">
               <div className="bg-[#FF7E67]/10 p-3 rounded-2xl">
-                <Heart className="text-[#FF7E67] w-6 h-6 fill-current" aria-hidden="true" />
+                <ChefHat className="text-[#FF7E67] w-6 h-6" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-xs text-[#2D3436]/50 uppercase tracking-wider font-black">Nächster freier Spot</p>
-                <p className="text-lg font-black text-[#2D3436]">Morgen, 10:00 Uhr</p>
+                <p className="text-xs text-[#2D3436]/50 uppercase tracking-wider font-black">Heute Spezial</p>
+                <p className="text-lg font-black text-[#2D3436]">Kalbsschnitzel "Muster-Art"</p>
               </div>
             </div>
           </div>
 
           <div className="absolute top-20 -right-4 bg-white p-4 rounded-2xl shadow-xl z-20 hidden lg:flex items-center gap-3 border border-[#45B7AF]/10 -rotate-6">
              <div className="bg-[#45B7AF]/10 p-2 rounded-xl">
-                <Camera className="text-[#45B7AF] w-5 h-5" aria-hidden="true" />
+                <Utensils className="text-[#45B7AF] w-5 h-5" aria-hidden="true" />
              </div>
-             <p className="text-sm font-bold text-[#2D3436]">5.0 Sterne Rating</p>
+             <p className="text-sm font-bold text-[#2D3436]">Hervorragende Küche</p>
           </div>
         </div>
       </div>

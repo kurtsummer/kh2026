@@ -1,70 +1,84 @@
-import { Camera, Image, ShieldCheck, Heart, Smile, Sparkles } from "lucide-react";
+import { Heart, Star, Sparkles, Utensils, Award, ChefHat } from "lucide-react";
 
 export const About = () => {
-  const values = [
-    {
-      icon: <Smile className="w-8 h-8" />,
-      title: "Gute Laune",
-      text: "Bei uns gibt es keine steifen Posen. Wir lachen, wir haben Spaß – und das sieht man auf den Fotos!",
-      color: "bg-[#FF7E67]/10 text-[#FF7E67]",
-    },
-    {
-      icon: <Sparkles className="w-8 h-8" />,
-      title: "Kreativität",
-      text: "Wir lieben bunte Farben und unkonventionelle Hintergründe für einzigartige Bilder.",
-      color: "bg-[#45B7AF]/10 text-[#45B7AF]",
-    },
-    {
-      icon: <Camera className="w-8 h-8" />,
-      title: "Modernste Technik",
-      text: "Brillante Farben und gestochen scharfe Details durch High-End-Equipment.",
-      color: "bg-[#FFD93D]/10 text-[#FFD93D]",
-    },
-    {
-      icon: <Heart className="w-8 h-8" />,
-      title: "Herzblut",
-      text: "Jedes Shooting ist für uns eine neue Geschichte, die wir mit Liebe zum Detail erzählen.",
-      color: "bg-[#2D3436]/10 text-[#2D3436]",
-    },
-  ];
-
   return (
     <section id="about" className="py-24 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="relative group order-2 lg:order-1">
-          <div className="relative z-10 rounded-[40px] overflow-hidden aspect-[3/4] shadow-2xl transition-transform duration-500 group-hover:scale-[1.02] -rotate-2 border-[12px] border-white">
-            <img
-              src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop"
-              alt="Max Mustermann - Der fröhliche Fotograf"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="absolute -top-10 -left-10 w-48 h-48 bg-[#FF7E67] rounded-full -z-10 animate-pulse opacity-10 blur-3xl" />
-          <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#45B7AF] rounded-full -z-10 animate-pulse delay-200 opacity-10 blur-3xl" />
-        </div>
+      {/* Decorative Elements */}
+      <div className="absolute top-1/4 right-0 w-96 h-96 bg-[#FFD93D]/10 rounded-full blur-[100px] -z-1" />
+      <div className="absolute bottom-1/4 left-0 w-80 h-80 bg-[#45B7AF]/10 rounded-full blur-[100px] -z-1" />
 
-        <div className="space-y-12 order-1 lg:order-2">
-          <div className="space-y-6">
-            <h2 className="text-[#FF7E67] font-black tracking-widest uppercase text-sm">Hinter der Kamera</h2>
-            <h3 className="text-4xl md:text-6xl font-black text-[#2D3436] leading-tight">
-              Hi, ich bin Max!<br />
-              <span className="text-[#45B7AF]">Dein Fotograf aus Musterhausen.</span>
-            </h3>
-            <p className="text-xl text-[#2D3436]/70 leading-relaxed font-medium">
-              Vergessen Sie langweilige Porträts. In meinem Studio bringen wir Farbe ins Spiel! Seit über 10 Jahren fange ich das wahre Leben ein – ungeschminkt, voller Energie und mit einem Lächeln im Gesicht. 
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-8">
-            {values.map((value) => (
-              <div key={value.title} className="bg-[#FAF9F6] p-8 rounded-[32px] group hover:bg-white hover:shadow-xl transition-all duration-300">
-                <div className={`${value.color} p-4 rounded-2xl w-fit mb-6 shadow-sm group-hover:scale-110 transition-transform`}>
-                  {value.icon}
+      <div className="container mx-auto px-6 md:px-12">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="relative animate-in fade-in slide-in-from-left-8 duration-700">
+             <div className="relative z-10 rounded-[60px] overflow-hidden shadow-2xl aspect-square border-[12px] border-[#FFFCF8] -rotate-3 hover:rotate-0 transition-transform duration-500 bg-gray-100">
+               <img 
+                 src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2074&auto=format&fit=crop" 
+                 alt="Max Mustermann in der Küche" 
+                 className="w-full h-full object-cover"
+               />
+             </div>
+             
+             {/* Floating Badge */}
+             <div className="absolute -bottom-10 -right-10 bg-[#FFD93D] p-10 rounded-[48px] shadow-2xl z-20 max-w-[240px] rotate-6 group hover:rotate-0 transition-transform">
+                <div className="bg-white/30 p-4 rounded-3xl w-fit mb-4">
+                  <Award className="w-10 h-10 text-[#2D3436]" />
                 </div>
-                <h4 className="font-black text-[#2D3436] text-xl mb-3">{value.title}</h4>
-                <p className="text-sm text-[#2D3436]/60 leading-relaxed font-medium">{value.text}</p>
+                <p className="text-xl font-black text-[#2D3436] leading-tight italic">"Kochen ist Leidenschaft."</p>
+                <p className="text-sm font-bold text-[#2D3436]/60 mt-2 uppercase tracking-widest">– Max Mustermann</p>
+             </div>
+
+             <div className="absolute -top-10 -left-10 w-48 h-48 bg-[#45B7AF] rounded-full -z-10 mix-blend-multiply opacity-20 blur-3xl animate-pulse" />
+          </div>
+
+          <div className="space-y-10 animate-in fade-in slide-in-from-right-8 duration-700 delay-200">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 bg-[#FF7E67]/10 text-[#FF7E67] px-4 py-2 rounded-full text-sm font-bold tracking-wide">
+                <ChefHat className="w-4 h-4 fill-current" />
+                <span>Unsere Geschichte</span>
               </div>
-            ))}
+              <h2 className="text-4xl md:text-6xl font-black text-[#2D3436] leading-tight">
+                Die Seele von <span className="text-[#45B7AF]">Musterhausen</span>.
+              </h2>
+              <p className="text-xl text-[#2D3436]/60 font-medium leading-relaxed">
+                Seit über 15 Jahren steht das Restaurant Max für Qualität, Tradition und eine Prise moderner Kreativität. Max Mustermann, unser Chef de Cuisine, bringt seine Liebe zum Handwerk in jeden Teller ein.
+              </p>
+              <p className="text-lg text-[#2D3436]/60 font-medium leading-relaxed">
+                Was als kleiner Familienbetrieb begann, hat sich zu einem Treffpunkt für alle entwickelt, die ehrliches Essen in entspannter Atmosphäre schätzen. Wir kennen unsere Lieferanten persönlich und wissen genau, woher unsere Zutaten kommen.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-8 pt-8 border-t border-[#2D3436]/10">
+              <div className="space-y-4 group">
+                <div className="bg-[#45B7AF]/10 p-4 rounded-3xl w-fit group-hover:scale-110 transition-transform">
+                  <Heart className="text-[#45B7AF] w-8 h-8 fill-current" />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black text-[#2D3436]">Mit Herz</h4>
+                  <p className="text-[#2D3436]/60 font-bold uppercase text-xs tracking-widest mt-1">Gastfreundschaft pur</p>
+                </div>
+              </div>
+
+              <div className="space-y-4 group">
+                <div className="bg-[#FF7E67]/10 p-4 rounded-3xl w-fit group-hover:scale-110 transition-transform">
+                  <Utensils className="text-[#FF7E67] w-8 h-8" />
+                </div>
+                <div>
+                  <h4 className="text-2xl font-black text-[#2D3436]">Lokal</h4>
+                  <p className="text-[#2D3436]/60 font-bold uppercase text-xs tracking-widest mt-1">Zutaten aus der Region</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-[#2D3436] p-8 rounded-[40px] text-white flex items-center gap-6 shadow-2xl relative group overflow-hidden">
+               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -mr-10 -mt-10 group-hover:scale-150 transition-transform duration-700" />
+               <div className="bg-white/10 p-4 rounded-2xl">
+                 <Sparkles className="text-[#FFD93D] w-10 h-10" />
+               </div>
+               <div>
+                 <p className="text-sm font-bold text-white/50 uppercase tracking-[0.2em] mb-1">Musterhausener Gastro-Preis</p>
+                 <p className="text-xl font-black">Bestes Restaurant 2023</p>
+               </div>
+            </div>
           </div>
         </div>
       </div>
