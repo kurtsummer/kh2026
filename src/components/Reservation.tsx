@@ -13,57 +13,57 @@ export const Reservation = () => {
         <div className="max-w-6xl mx-auto bg-white dark:bg-zinc-900 rounded-[64px] shadow-3xl overflow-hidden border border-[#D4AF37]/10 grid lg:grid-cols-2 group">
           
           {/* Reservation Info */}
-          <div className="p-12 md:p-20 space-y-12 bg-[#800020] text-white relative overflow-hidden">
-            <div className="absolute top-0 right-0 p-12 opacity-10 group-hover:rotate-45 transition-transform duration-700">
-               <Coffee size={240} className="text-white" />
+          <div className="p-12 md:p-20 space-y-12 bg-white dark:bg-zinc-900 text-[#3D2B1F] dark:text-[#FDF5E6] relative overflow-hidden border-r border-[#D4AF37]/10">
+            <div className="absolute top-0 right-0 p-12 opacity-5 group-hover:rotate-45 transition-transform duration-700">
+               <Coffee size={240} className="text-[#800020]" />
             </div>
             
             <div className="space-y-6 relative z-10">
-              <div className="inline-flex items-center gap-2 bg-white/10 px-6 py-2 rounded-full text-xs font-black uppercase tracking-[0.3em] border border-white/20">
+              <div className="inline-flex items-center gap-2 bg-[#800020]/5 px-6 py-2 rounded-full text-xs font-black uppercase tracking-[0.3em] border border-[#800020]/10">
                 <Sparkles className="w-4 h-4 text-[#D4AF37]" />
-                <span>Exklusivität</span>
+                <span className="text-[#800020]">Exklusivität</span>
               </div>
               <h2 className="text-5xl md:text-7xl font-serif font-black leading-tight tracking-tighter">
                 Einen Platz <br />
                 <span className="text-[#D4AF37]">sichern.</span>
               </h2>
-              <p className="text-xl text-white/70 font-medium max-w-sm leading-relaxed font-serif italic">
+              <p className="text-xl text-[#3D2B1F]/70 dark:text-[#FDF5E6]/70 font-medium max-w-sm leading-relaxed font-serif italic">
                 Reservieren Sie Ihren Lieblingstisch für ein ausgiebiges Kaffeekränzchen oder ein entspanntes Frühstück.
               </p>
             </div>
 
             <div className="space-y-8 relative z-10">
               <div className="flex items-start gap-6">
-                <div className="p-4 bg-white/10 rounded-[28px] border border-white/10">
+                <div className="p-4 bg-[#800020]/5 rounded-[28px] border border-[#800020]/10">
                   <Heart className="w-8 h-8 text-[#D4AF37]" />
                 </div>
                 <div>
-                   <p className="text-lg font-black font-serif">Klassischer Service</p>
-                   <p className="text-sm font-medium text-white/50">Wir legen Wert auf Etikette und Zuvorkommenheit, ganz nach alter Schule.</p>
+                   <p className="text-lg font-black font-serif text-[#3D2B1F] dark:text-[#FDF5E6]">Klassischer Service</p>
+                   <p className="text-sm font-medium text-[#3D2B1F]/50 dark:text-[#FDF5E6]/50">Wir legen Wert auf Etikette und Zuvorkommenheit, ganz nach alter Schule.</p>
                 </div>
               </div>
               
               <div className="flex items-start gap-6">
-                <div className="p-4 bg-white/10 rounded-[28px] border border-white/10">
+                <div className="p-4 bg-[#800020]/5 rounded-[28px] border border-[#800020]/10">
                   <Star className="w-8 h-8 text-[#D4AF37]" />
                 </div>
                 <div>
-                   <p className="text-lg font-black font-serif">Besondere Anlässe</p>
-                   <p className="text-sm font-medium text-white/50">Für größere Gruppen oder Feierlichkeiten bereiten wir gerne eine Tafel vor.</p>
+                   <p className="text-lg font-black font-serif text-[#3D2B1F] dark:text-[#FDF5E6]">Besondere Anlässe</p>
+                   <p className="text-sm font-medium text-[#3D2B1F]/50 dark:text-[#FDF5E6]/50">Für größere Gruppen oder Feierlichkeiten bereiten wir gerne eine Tafel vor.</p>
                 </div>
               </div>
             </div>
 
             <div className="pt-12 relative z-10">
-               <div className="inline-block p-6 bg-white/5 backdrop-blur-md rounded-[32px] border border-white/10 shadow-2xl">
+               <div className="inline-block p-6 bg-[#FDF5E6] dark:bg-white/5 backdrop-blur-md rounded-[32px] border border-[#D4AF37]/20 shadow-xl">
                   <p className="text-[10px] font-black uppercase tracking-widest text-[#D4AF37] mb-2">Max Mustermanns Motto</p>
-                  <p className="text-xl font-serif font-black italic">"Kaffee ist Kultur, und Kultur braucht Raum."</p>
+                  <p className="text-xl font-serif font-black italic text-[#800020]">"Kaffee ist Kultur, und Kultur braucht Raum."</p>
                </div>
             </div>
           </div>
 
           {/* Reservation Form */}
-          <div className="p-12 md:p-20 space-y-10 bg-[#FDF5E6] dark:bg-zinc-900">
+          <div className="p-12 md:p-20 space-y-10 bg-[#FDF5E6] dark:bg-zinc-800">
             <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-4">
