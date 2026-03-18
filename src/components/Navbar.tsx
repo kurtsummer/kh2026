@@ -34,14 +34,14 @@ export const Navbar = () => {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white">
+          <div className="w-10 h-10 bg-indigo-900 rounded-xl flex items-center justify-center text-white">
             <span className="font-bold text-xl">+</span>
           </div>
           <div>
-            <h1 className="font-bold text-xl text-teal-900 leading-none">
+            <h1 className="font-bold text-xl text-slate-900 leading-none">
               Praxis Mustermann
             </h1>
-            <p className="text-xs text-teal-700 font-medium">Hausarztpraxis</p>
+            <p className="text-xs text-indigo-600 font-bold uppercase tracking-wider">Hausarztpraxis</p>
           </div>
         </div>
 
@@ -51,13 +51,13 @@ export const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-teal-900 hover:text-teal-600 transition-colors"
+              className="text-sm font-semibold text-slate-600 hover:text-indigo-600 transition-colors"
             >
               {link.name}
             </a>
           ))}
           <Button
-            className="bg-teal-600 hover:bg-teal-700 text-white rounded-full px-6 gap-2"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full px-6 gap-2 shadow-lg shadow-indigo-200"
             onClick={() => {
               const element = document.getElementById('kontakt');
               element?.scrollIntoView({ behavior: 'smooth' });
@@ -70,7 +70,7 @@ export const Navbar = () => {
 
         {/* Mobile Menu Toggle */}
         <button
-          className="md:hidden text-teal-900"
+          className="md:hidden text-slate-900"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
@@ -79,19 +79,19 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-teal-50 p-6 flex flex-col gap-4 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-xl border-t border-slate-50 p-6 flex flex-col gap-4 animate-in slide-in-from-top duration-300">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-lg font-medium text-teal-900"
+              className="text-lg font-bold text-slate-900"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
             </a>
           ))}
           <Button
-            className="bg-teal-600 hover:bg-teal-700 text-white rounded-full w-full gap-2"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-full w-full gap-2 shadow-lg"
             onClick={() => {
               setIsMobileMenuOpen(false);
               const element = document.getElementById('kontakt');
