@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Scissors } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -15,11 +16,11 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Über uns", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Galerie", href: "#gallery" },
-    { name: "Bewertungen", href: "#testimonials" },
-    { name: "Kontakt", href: "#contact" },
+    { name: "Über uns", href: "/#about" },
+    { name: "Services", href: "/#services" },
+    { name: "Galerie", href: "/#gallery" },
+    { name: "Bewertungen", href: "/#testimonials" },
+    { name: "Kontakt", href: "/#contact" },
   ];
 
   return (
@@ -29,16 +30,18 @@ export const Navbar = () => {
           ? "bg-white/80 backdrop-blur-md py-4 shadow-sm"
           : "bg-transparent py-6"
       }`}
+      role="navigation"
+      aria-label="Hauptnavigation"
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2 group">
+        <Link to="/" className="flex items-center gap-2 group" aria-label="Max Mustermann Salon Homepage">
           <div className="bg-[#8DA399] p-2 rounded-full text-white group-hover:rotate-12 transition-transform">
-            <Scissors className="w-5 h-5" />
+            <Scissors className="w-5 h-5" aria-hidden="true" />
           </div>
           <span className="text-xl font-bold tracking-tight text-[#2D3436]">
             Max Mustermann <span className="text-[#8DA399] font-light">| Salon</span>
           </span>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
@@ -60,8 +63,10 @@ export const Navbar = () => {
         <button
           className="md:hidden text-[#2D3436]"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </div>
 

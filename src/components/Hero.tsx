@@ -55,9 +55,9 @@ export const Hero = () => {
 
         <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-200">
           <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5]">
-            <img 
-              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop" 
-              alt="Professional Haircut" 
+            <img
+              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop"
+              alt="Friseur bei der Arbeit an einem Kunden im Salon Mustermann"
               className="w-full h-full object-cover"
             />
           </div>
@@ -66,10 +66,10 @@ export const Hero = () => {
           <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#B4D3B2] rounded-full -z-10 mix-blend-multiply opacity-50 blur-3xl" />
           
           {/* Floating Card */}
-          <div className="absolute bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl z-20 hidden md:block animate-bounce-slow">
+          <div className="absolute bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-xl z-20 hidden md:block animate-bounce-slow" role="complementary" aria-label="Verfügbarkeit">
             <div className="flex items-center gap-4">
               <div className="bg-[#8DA399]/20 p-3 rounded-xl">
-                <Scissors className="text-[#8DA399] w-6 h-6" />
+                <Scissors className="text-[#8DA399] w-6 h-6" aria-hidden="true" />
               </div>
               <div>
                 <p className="text-xs text-[#2D3436]/50 uppercase tracking-wider font-bold">Nächster freier Termin</p>

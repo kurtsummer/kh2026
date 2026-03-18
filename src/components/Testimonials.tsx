@@ -46,7 +46,7 @@ export const Testimonials = () => {
               </p>
 
               <div className="flex items-center gap-4">
-                <img src={review.avatar} alt={review.name} className="w-12 h-12 rounded-full object-cover" />
+                <img src={review.avatar} alt={`Porträt von ${review.name}`} className="w-12 h-12 rounded-full object-cover" />
                 <div>
                   <p className="font-bold text-[#2D3436]">{review.name}</p>
                   <p className="text-sm text-[#2D3436]/50">{review.role}</p>

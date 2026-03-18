@@ -8,9 +8,9 @@ export const About = () => {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-4 pt-12">
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-lg">
-                <img 
-                  src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Salon Interior" 
+                <img
+                  src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?q=80&w=2070&auto=format&fit=crop"
+                  alt="Innenansicht des modernen Salons in Musterhausen"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
@@ -25,9 +25,9 @@ export const About = () => {
                 <p className="font-bold text-lg">Meisterbetrieb</p>
               </div>
               <div className="rounded-3xl overflow-hidden aspect-[3/4] shadow-lg">
-                <img 
-                  src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?q=80&w=1974&auto=format&fit=crop" 
-                  alt="Stylist working" 
+                <img
+                  src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?q=80&w=1974&auto=format&fit=crop"
+                  alt="Nahaufnahme eines Haarschnitts"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>

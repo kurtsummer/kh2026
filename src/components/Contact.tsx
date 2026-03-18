@@ -74,18 +74,18 @@ export const Contact = () => {
             <h4 className="text-2xl font-bold text-[#2D3436] mb-8">Schreiben Sie uns</h4>
             <form className="space-y-6">
               <div className="space-y-2">
-                <label className="text-sm font-bold text-[#2D3436]/60 ml-1">Name</label>
-                <Input placeholder="Ihr Name" className="rounded-2xl border-none shadow-sm focus-visible:ring-[#8DA399] h-12" />
+                <label htmlFor="contact-name" className="text-sm font-bold text-[#2D3436]/60 ml-1">Name</label>
+                <Input id="contact-name" placeholder="Ihr Name" className="rounded-2xl border-none shadow-sm focus-visible:ring-[#8DA399] h-12" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-[#2D3436]/60 ml-1">E-Mail</label>
-                <Input type="email" placeholder="ihre@email.de" className="rounded-2xl border-none shadow-sm focus-visible:ring-[#8DA399] h-12" />
+                <label htmlFor="contact-email" className="text-sm font-bold text-[#2D3436]/60 ml-1">E-Mail</label>
+                <Input id="contact-email" type="email" placeholder="ihre@email.de" className="rounded-2xl border-none shadow-sm focus-visible:ring-[#8DA399] h-12" />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold text-[#2D3436]/60 ml-1">Nachricht</label>
-                <Textarea placeholder="Wie können wir Ihnen helfen?" className="rounded-[24px] border-none shadow-sm focus-visible:ring-[#8DA399] min-h-[150px]" />
+                <label htmlFor="contact-message" className="text-sm font-bold text-[#2D3436]/60 ml-1">Nachricht</label>
+                <Textarea id="contact-message" placeholder="Wie können wir Ihnen helfen?" className="rounded-[24px] border-none shadow-sm focus-visible:ring-[#8DA399] min-h-[150px]" />
               </div>
-              <Button className="w-full bg-[#8DA399] hover:bg-[#7A8E85] text-white rounded-2xl h-14 text-lg font-bold">
+              <Button type="submit" className="w-full bg-[#8DA399] hover:bg-[#7A8E85] text-white rounded-2xl h-14 text-lg font-bold">
                 Nachricht senden
               </Button>
             </form>
