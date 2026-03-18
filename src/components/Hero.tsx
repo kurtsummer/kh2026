@@ -71,8 +71,8 @@ export const Hero = () => {
         <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-200">
           <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5] border-[12px] border-white dark:border-zinc-800 rotate-2 hover:rotate-0 transition-transform duration-500 bg-gray-100 dark:bg-zinc-800">
             <img
-              src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2074&auto=format&fit=crop"
-              alt="Traditionelles Kaffeehaus-Ambiente"
+              src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=2071&auto=format&fit=crop"
+              alt="Traditionelles altes Wiener Kaffeehaus-Ambiente"
               className="w-full h-full object-cover"
               loading="eager"
             />
