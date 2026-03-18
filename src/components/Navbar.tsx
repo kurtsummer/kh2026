@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Home, Search, Phone } from "lucide-react";
+import { Menu, X, Plane, Search, Phone, Palmtree } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
@@ -17,54 +17,54 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: "Start", href: "#" },
-    { name: "Immobilien", href: "#immobilien" },
+    { name: "Reiseziele", href: "#reiseziele" },
     { name: "Leistungen", href: "#leistungen" },
-    { name: "Über mich", href: "#ueber-mich" },
+    { name: "Über uns", href: "#ueber-uns" },
     { name: "Kontakt", href: "#kontakt" },
   ];
 
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4",
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md py-3"
+          ? "bg-white/80 backdrop-blur-xl shadow-lg py-3"
           : "bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 group cursor-pointer">
           <div className={cn(
-            "w-10 h-10 rounded-xl flex items-center justify-center transition-colors",
-            isScrolled ? "bg-slate-900 text-white" : "bg-white text-slate-900 shadow-lg"
+            "w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-12",
+            isScrolled ? "bg-sky-600 text-white shadow-lg shadow-sky-200" : "bg-white text-sky-600 shadow-xl"
           )}>
-            <Home className="w-6 h-6" />
+            <Plane className="w-6 h-6" />
           </div>
           <div>
             <h1 className={cn(
-              "font-bold text-xl leading-none transition-colors",
+              "font-black text-2xl tracking-tighter leading-none transition-colors",
               isScrolled ? "text-slate-900" : "text-white"
             )}>
               Max Mustermann
             </h1>
             <p className={cn(
-              "text-[10px] font-bold uppercase tracking-[0.2em] transition-colors",
-              isScrolled ? "text-amber-600" : "text-amber-400"
+              "text-[10px] font-black uppercase tracking-[0.3em] transition-colors",
+              isScrolled ? "text-sky-600" : "text-sky-300"
             )}>
-              Immobilienagentur
+              Reisebüro Musterhausen
             </p>
           </div>
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               className={cn(
-                "text-sm font-semibold transition-colors hover:text-amber-500",
-                isScrolled ? "text-slate-600" : "text-white/90"
+                "text-sm font-bold tracking-wide transition-all hover:scale-105 active:scale-95",
+                isScrolled ? "text-slate-600 hover:text-sky-600" : "text-white/90 hover:text-white"
               )}
             >
               {link.name}
@@ -72,56 +72,57 @@ export const Navbar = () => {
           ))}
           <Button
             className={cn(
-              "rounded-full px-6 gap-2 transition-all shadow-lg",
-              isScrolled 
-                ? "bg-slate-900 hover:bg-slate-800 text-white" 
-                : "bg-amber-500 hover:bg-amber-600 text-white shadow-amber-500/20"
+              "rounded-full px-8 h-12 font-bold transition-all shadow-xl hover:shadow-2xl active:scale-95",
+              isScrolled
+                ? "bg-sky-600 hover:bg-sky-700 text-white shadow-sky-200"
+                : "bg-white hover:bg-slate-50 text-sky-600 shadow-white/20"
             )}
             onClick={() => {
               const element = document.getElementById('kontakt');
               element?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            <Phone className="w-4 h-4" />
-            Beratung anfordern
+            <Phone className="w-4 h-4 mr-2" />
+            Urlaub planen
           </Button>
         </div>
 
         {/* Mobile Menu Toggle */}
         <button
           className={cn(
-            "md:hidden p-2 rounded-lg transition-colors",
-            isScrolled ? "text-slate-900 bg-slate-100" : "text-white bg-white/10 backdrop-blur-sm"
+            "md:hidden p-3 rounded-2xl transition-all active:scale-95",
+            isScrolled ? "text-slate-900 bg-slate-100 shadow-inner" : "text-white bg-white/10 backdrop-blur-md"
           )}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-2xl border-t border-slate-50 p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-300">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-2xl shadow-2xl border-t border-slate-50 p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-500 rounded-b-[3rem]">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-xl font-bold text-slate-900 hover:text-amber-600 transition-colors"
+              className="text-2xl font-black text-slate-900 hover:text-sky-600 transition-colors flex items-center justify-between group"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
+              <Palmtree className="w-6 h-6 text-sky-200 group-hover:text-sky-500 transition-colors" />
             </a>
           ))}
           <Button
-            className="bg-amber-500 hover:bg-amber-600 text-white rounded-full w-full py-6 text-lg gap-2 shadow-xl shadow-amber-500/20"
+            className="bg-sky-600 hover:bg-sky-700 text-white rounded-[2rem] w-full py-8 text-xl font-black gap-3 shadow-2xl shadow-sky-200 transition-all active:scale-95"
             onClick={() => {
               setIsMobileMenuOpen(false);
               const element = document.getElementById('kontakt');
               element?.scrollIntoView({ behavior: 'smooth' });
             }}
           >
-            <Phone className="w-5 h-5" />
-            Beratung anfordern
+            <Phone className="w-6 h-6" />
+            Urlaub planen
           </Button>
         </div>
       )}

@@ -1,60 +1,58 @@
-import { Clock, Info, ShieldCheck } from "lucide-react";
+import { Clock, Info, CalendarCheck } from "lucide-react";
 
 const schedule = [
-  { days: "Montag", morning: "08:00 - 12:00", afternoon: "15:00 - 18:00" },
-  { days: "Dienstag", morning: "08:00 - 12:00", afternoon: "15:00 - 18:00" },
-  { days: "Mittwoch", morning: "08:00 - 12:00", afternoon: "geschlossen" },
-  { days: "Donnerstag", morning: "08:00 - 12:00", afternoon: "15:00 - 19:00" },
-  { days: "Freitag", morning: "08:00 - 12:00", afternoon: "geschlossen" },
+  { days: "Montag", hours: "09:00 - 13:00 & 14:00 - 18:00" },
+  { days: "Dienstag", hours: "09:00 - 13:00 & 14:00 - 18:00" },
+  { days: "Mittwoch", hours: "09:00 - 13:00 (Nachmittags Termine)" },
+  { days: "Donnerstag", hours: "09:00 - 13:00 & 14:00 - 19:00" },
+  { days: "Freitag", hours: "09:00 - 13:00 & 14:00 - 18:00" },
+  { days: "Samstag", hours: "10:00 - 13:00 (Nur nach Vereinbarung)" },
 ];
 
 export const OpeningHours = () => {
   return (
-    <section id="sprechzeiten" className="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="oeffnungszeiten" className="py-32 bg-slate-50 relative overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
-        <div className="bg-indigo-900 rounded-[3.5rem] p-10 md:p-20 text-white shadow-3xl relative overflow-hidden border border-indigo-800">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-800/40 rounded-full blur-3xl -mr-32 -mt-32" />
+        <div className="bg-sky-900 rounded-[4rem] p-12 md:p-24 text-white shadow-[0_50px_100px_-20px_rgba(12,74,110,0.4)] relative overflow-hidden border-8 border-white">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-sky-800/40 rounded-full blur-3xl -mr-40 -mt-40" />
           
           <div className="relative z-10">
-            <div className="flex items-center gap-5 mb-12">
-              <div className="w-16 h-16 rounded-[1.5rem] bg-indigo-800 border border-indigo-700 flex items-center justify-center shadow-inner">
-                <Clock className="w-8 h-8 text-indigo-300" />
+            <div className="flex items-center gap-8 mb-16">
+              <div className="w-20 h-20 rounded-[2rem] bg-sky-800 border-4 border-sky-700 flex items-center justify-center shadow-inner group hover:rotate-12 transition-transform duration-500">
+                <Clock className="w-10 h-10 text-sky-300" />
               </div>
               <div>
-                <h2 className="text-3xl font-black mb-1">Sprechzeiten</h2>
-                <p className="text-indigo-400 font-bold text-xs uppercase tracking-[0.2em]">Immer für Sie erreichbar</p>
+                <h2 className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">Öffnungszeiten</h2>
+                <p className="text-sky-400 font-black text-[10px] uppercase tracking-[0.4em]">Wir sind für Sie da</p>
               </div>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               {schedule.map((item) => (
                 <div 
                   key={item.days} 
-                  className="flex flex-col md:flex-row md:items-center justify-between py-5 border-b border-indigo-800 last:border-0 group"
+                  className="flex flex-col md:flex-row md:items-center justify-between py-6 border-b-2 border-sky-800/50 last:border-0 group"
                 >
-                  <span className="font-black text-xl tracking-tight group-hover:text-indigo-300 transition-colors">{item.days}</span>
-                  <div className="flex items-center gap-6 text-indigo-100/80 font-bold">
-                    <span className="text-lg">{item.morning}</span>
-                    <span className="h-4 w-px bg-indigo-800" />
-                    <span className="text-lg">{item.afternoon}</span>
+                  <span className="font-black text-2xl tracking-tighter group-hover:text-amber-400 transition-colors italic">{item.days}</span>
+                  <div className="flex items-center gap-6 text-sky-100 font-bold">
+                    <span className="text-xl">{item.hours}</span>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-16 p-8 bg-indigo-950/40 rounded-[2rem] border border-indigo-800 flex gap-6 items-start">
-              <div className="w-12 h-12 bg-rose-600/20 rounded-2xl flex items-center justify-center shrink-0 border border-rose-500/20">
-                <Info className="w-6 h-6 text-rose-500" />
+            <div className="mt-20 p-10 bg-sky-950/50 rounded-[3rem] border-4 border-sky-800 flex gap-8 items-center group hover:bg-sky-950 transition-colors duration-500">
+              <div className="w-16 h-16 bg-amber-400 rounded-2xl flex items-center justify-center shrink-0 border-4 border-white group-hover:rotate-6 transition-transform">
+                <CalendarCheck className="w-8 h-8 text-sky-950" />
               </div>
               <div className="space-y-3">
-                <p className="font-black text-rose-500 uppercase tracking-widest text-xs">Wichtiger Hinweis</p>
-                <p className="text-sm text-indigo-200 leading-relaxed font-medium">
-                  Außerhalb der Sprechzeiten erreichen Sie den ärztlichen Notdienst unter der bundeseinheitlichen Rufnummer <span className="text-white font-black underline decoration-indigo-500 underline-offset-4">116 117</span>.
+                <p className="font-black text-amber-400 uppercase tracking-[0.3em] text-[10px]">Wunschtermin vereinbaren</p>
+                <p className="text-lg text-sky-100 leading-tight font-bold">
+                  Gerne beraten wir Sie auch außerhalb unserer regulären Öffnungszeiten. Rufen Sie uns einfach an!
                 </p>
-                <div className="flex items-center gap-2 text-white font-black text-sm">
-                  <ShieldCheck className="w-4 h-4 text-green-500" />
-                  <span>Lebensbedrohlicher Notfall? Wählen Sie sofort die 112.</span>
-                </div>
+                <p className="text-white font-black text-2xl tracking-tighter underline decoration-amber-400 decoration-4 underline-offset-8">
+                  01234 / 567890
+                </p>
               </div>
             </div>
           </div>

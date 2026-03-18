@@ -1,87 +1,102 @@
 import { 
-  Home, 
-  Search, 
-  BarChart3, 
-  Handshake, 
-  Calculator, 
-  Camera 
+  Palmtree, 
+  Plane, 
+  Ship, 
+  Map, 
+  ShieldCheck, 
+  Compass,
+  Briefcase,
+  Ticket
 } from "lucide-react";
 
 const services = [
   {
-    title: "Immobilienverkauf",
-    description: "Wir vermarkten Ihre Immobilie zum bestmöglichen Preis mit modernster Technik und großem Netzwerk.",
-    icon: Home,
+    title: "Pauschalreisen",
+    description: "Sorglos in den Urlaub mit unseren attraktiven Komplettpaketen inkl. Flug, Hotel und Transfer.",
+    icon: Palmtree,
+    color: "bg-sky-50 text-sky-600",
+    border: "border-sky-100"
+  },
+  {
+    title: "Kreuzfahrten",
+    description: "Entdecken Sie die Weltmeere auf den modernsten Schiffen von AIDA, TUI Cruises und vielen mehr.",
+    icon: Ship,
     color: "bg-amber-50 text-amber-600",
     border: "border-amber-100"
   },
   {
-    title: "Marktwertanalyse",
-    description: "Kostenlose und unverbindliche Wertermittlung Ihrer Immobilie auf Basis aktueller Marktdaten in Musterhausen.",
-    icon: BarChart3,
-    color: "bg-blue-50 text-blue-600",
-    border: "border-blue-100"
+    title: "Individualreisen",
+    description: "Wir stellen Ihre Traumreise ganz nach Ihren persönlichen Wünschen und Vorstellungen zusammen.",
+    icon: Map,
+    color: "bg-sky-50 text-sky-600",
+    border: "border-sky-100"
   },
   {
-    title: "Suchservice",
-    description: "Finden Sie Ihr Traumobjekt noch bevor es offiziell gelistet wird – durch unseren exklusiven Suchservice.",
-    icon: Search,
+    title: "Geschäftsreisen",
+    description: "Professionelle Planung und Buchung für Ihre Business-Trips – effizient und unkompliziert.",
+    icon: Briefcase,
     color: "bg-amber-50 text-amber-600",
     border: "border-amber-100"
   },
   {
-    title: "Beratung & Strategie",
-    description: "Individuelle Beratung für Kapitalanleger, Projektentwickler und private Bauherren.",
-    icon: Handshake,
-    color: "bg-blue-50 text-blue-600",
-    border: "border-blue-100"
+    title: "Reiseversicherung",
+    description: "Gehen Sie auf Nummer sicher mit dem passenden Reiseschutz für alle Eventualitäten.",
+    icon: ShieldCheck,
+    color: "bg-sky-50 text-sky-600",
+    border: "border-sky-100"
   },
   {
-    title: "Finanzierungsvermittlung",
-    description: "Wir unterstützen Sie bei der Suche nach der passenden Finanzierung durch unsere Bankpartner.",
-    icon: Calculator,
+    title: "Last Minute",
+    description: "Spontane Auszeit gesucht? Finden Sie bei uns die besten Schnäppchen für Kurzentschlossene.",
+    icon: Ticket,
     color: "bg-amber-50 text-amber-600",
     border: "border-amber-100"
-  },
-  {
-    title: "Profifotografie & Video",
-    description: "High-End-Präsentation Ihrer Immobilie durch professionelle Fotos, Drohnenaufnahmen und 360°-Rundgänge.",
-    icon: Camera,
-    color: "bg-blue-50 text-blue-600",
-    border: "border-blue-100"
   }
 ];
 
 export const Services = () => {
   return (
     <section id="leistungen" className="py-32 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-24 space-y-4">
-          <div className="inline-flex items-center gap-2 bg-slate-900 text-white px-5 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em]">
-            Unsere Expertise
+      {/* Decorative Elements */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-sky-50 rounded-full blur-3xl opacity-50" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-50" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-24 space-y-6">
+          <div className="inline-flex items-center gap-3 bg-sky-600 text-white px-8 py-3 rounded-full text-sm font-black uppercase tracking-[0.3em] shadow-lg shadow-sky-100">
+            <Compass className="w-5 h-5 animate-spin-slow" />
+            Unsere Leistungen
           </div>
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 leading-tight">
-            Umfassender Service <br />
-            <span className="text-amber-500">aus einer Hand</span>
+          <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter">
+            Ihr Weg zum <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-sky-400 italic">perfekten Urlaub</span>
           </h2>
-          <p className="text-slate-500 max-w-2xl mx-auto text-xl font-medium leading-relaxed">
-            Wir begleiten Sie mit Leidenschaft und Fachkompetenz bei jedem Schritt Ihres Immobiliengeschäfts in Musterhausen.
+          <p className="text-slate-500 max-w-2xl mx-auto text-xl font-bold leading-relaxed">
+            Wir kümmern uns um jedes Detail Ihrer Reise, damit Sie sich voll und ganz auf das Erleben konzentrieren können.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {services.map((service, index) => (
             <div 
               key={index}
-              className={`group p-12 rounded-[3.5rem] bg-slate-50/50 border ${service.border} hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] transition-all duration-700 hover:-translate-y-2`}
+              className={`group p-12 rounded-[4rem] bg-white border-4 ${service.border} hover:border-transparent hover:shadow-[0_40px_80px_-15px_rgba(0,186,255,0.15)] transition-all duration-700 hover:-translate-y-4 relative overflow-hidden`}
             >
-              <div className={`w-20 h-20 rounded-3xl ${service.color} flex items-center justify-center mb-10 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-sm`}>
-                <service.icon className="w-10 h-10" />
+              <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700">
+                <service.icon className="w-32 h-32 rotate-12" />
               </div>
-              <h3 className="text-3xl font-black text-slate-900 mb-6 tracking-tight">{service.title}</h3>
-              <p className="text-slate-500 leading-relaxed text-lg font-medium">
+              
+              <div className={`w-24 h-24 rounded-[2.5rem] ${service.color} flex items-center justify-center mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl`}>
+                <service.icon className="w-12 h-12" />
+              </div>
+              <h3 className="text-3xl font-black text-slate-900 mb-6 tracking-tight group-hover:text-sky-600 transition-colors">{service.title}</h3>
+              <p className="text-slate-500 leading-relaxed text-lg font-bold">
                 {service.description}
               </p>
+              
+              <div className="mt-10 flex items-center gap-2 text-sky-600 font-black uppercase tracking-widest text-sm opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
+                Mehr erfahren <ArrowRight className="w-4 h-4" />
+              </div>
             </div>
           ))}
         </div>
@@ -89,3 +104,9 @@ export const Services = () => {
     </section>
   );
 };
+
+const ArrowRight = ({ className }: { className?: string }) => (
+  <svg className={className} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+  </svg>
+);
