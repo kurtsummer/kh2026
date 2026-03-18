@@ -17,11 +17,11 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Karte", href: "#menu" },
-    { name: "Über uns", href: "#about" },
-    { name: "Galerie", href: "#gallery" },
-    { name: "Reservierung", href: "#reservation" },
-    { name: "Kontakt", href: "#contact" },
+    { name: "Karte", href: "/#menu" },
+    { name: "Über uns", href: "/#about" },
+    { name: "Galerie", href: "/#gallery" },
+    { name: "Reservierung", href: "/#reservation" },
+    { name: "Kontakt", href: "/#contact" },
   ];
 
   return (
@@ -55,14 +55,14 @@ export const Navbar = () => {
                 className="text-xs font-black uppercase tracking-widest text-[#3D2B1F] dark:text-[#FDF5E6]/80 dark:hover:text-[#D4AF37] hover:text-[#800020] transition-all relative group flex items-center gap-1.5"
               >
                 {link.name}
-                <Star className="w-3 h-3 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity fill-current" />
+                <Star className="w-3 h-3 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity fill-current text-[#D4AF37]" />
               </a>
             ))}
           </div>
           <div className="flex items-center gap-4">
             <ThemeToggle />
             <Button asChild className="bg-[#800020] dark:bg-[#D4AF37] hover:bg-[#4A0E0E] dark:hover:bg-[#E5C35E] text-white dark:text-[#1A0A0A] rounded-full px-10 py-7 text-sm font-black uppercase tracking-widest shadow-2xl shadow-[#800020]/20 border-none transition-all hover:scale-105 active:scale-95">
-              <a href="#reservation">Tisch reservieren</a>
+              <a href="/#reservation">Tisch reservieren</a>
             </Button>
           </div>
         </div>
@@ -92,11 +92,11 @@ export const Navbar = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
-              <Heart className="text-[#D4AF37] w-8 h-8 fill-current" />
+              <Heart className="text-[#D4AF37] w-8 h-8 fill-current text-[#D4AF37]" />
             </a>
           ))}
           <Button asChild className="bg-[#800020] dark:bg-[#D4AF37] hover:bg-[#4A0E0E] dark:hover:bg-[#E5C35E] text-white dark:text-[#1A0A0A] rounded-[32px] w-full py-10 text-xl font-black uppercase tracking-widest shadow-2xl shadow-[#800020]/30 border-none mt-4">
-            <a href="#reservation" onClick={() => setIsMobileMenuOpen(false)}>Tisch reservieren</a>
+            <a href="/#reservation" onClick={() => setIsMobileMenuOpen(false)}>Tisch reservieren</a>
           </Button>
         </div>
       )}

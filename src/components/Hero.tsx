@@ -34,13 +34,13 @@ export const Hero = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <button className="bg-[#800020] hover:bg-[#4A0E0E] text-white rounded-full px-8 py-7 text-lg font-bold group shadow-lg shadow-[#800020]/20 border-none transition-all duration-300">
-              <a href="#menu" className="flex items-center">
+              <a href="/#menu" className="flex items-center">
                 Zur Karte
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </button>
             <button className="border-2 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white rounded-full px-8 py-7 text-lg font-bold transition-all duration-300 bg-transparent">
-              <a href="#reservation">Platz reservieren</a>
+              <a href="/#reservation">Platz reservieren</a>
             </button>
           </div>
 

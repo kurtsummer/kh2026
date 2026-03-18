@@ -5,6 +5,14 @@ import { Button } from "@/components/ui/button";
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const footerLinks = [
+    { name: "Karte", href: "/#menu" },
+    { name: "Über uns", href: "/#about" },
+    { name: "Galerie", href: "/#gallery" },
+    { name: "Reservierung", href: "/#reservation" },
+    { name: "Kontakt", href: "/#contact" },
+  ];
+
   return (
     <footer className="bg-[#1A0A0A] text-white py-24 relative overflow-hidden transition-colors duration-500">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-[120px] -z-0 translate-x-1/2 -translate-y-1/2" />
@@ -23,7 +31,7 @@ export const Footer = () => {
               </div>
             </Link>
             <p className="text-white/60 font-medium leading-relaxed max-w-sm font-serif italic">
-              Wir pflegen die Wiener Kaffeehauskultur mit Hingabe und Leidenschaft. Treten Sie ein in eine Welt voller Genuss und Beständigkeit.
+              Wir pflegen die Wiener Kaffeehauskultur mit Hingabe und Leidenschaft. Treten Sie ein in eine world voller Genuss und Beständigkeit.
             </p>
             <div className="flex gap-4">
               {[Instagram, Facebook, Mail].map((Icon, i) => (
@@ -41,14 +49,14 @@ export const Footer = () => {
           <div className="space-y-8">
             <h3 className="text-xl font-black uppercase tracking-widest text-[#D4AF37]">Hausmenü</h3>
             <nav className="flex flex-col gap-4">
-              {["Karte", "Über uns", "Galerie", "Reservierung", "Jobs"].map((item) => (
+              {footerLinks.map((item) => (
                 <a
-                  key={item}
-                  href={`#${item.toLowerCase().replace(" ", "")}`}
+                  key={item.name}
+                  href={item.href}
                   className="text-white/70 hover:text-[#D4AF37] transition-colors font-bold flex items-center gap-2 group"
                 >
                   <Star className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity fill-current text-[#D4AF37]" />
-                  {item}
+                  {item.name}
                 </a>
               ))}
             </nav>

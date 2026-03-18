@@ -167,7 +167,7 @@ export const Menu = () => {
 
         <div className="mt-20 text-center">
            <button className="border-4 border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white rounded-full px-12 py-8 text-xl font-black uppercase tracking-[0.2em] transition-all duration-500 shadow-2xl bg-transparent">
-              <a href="#reservation">Komplette Karte laden</a>
+              <a href="/#reservation">Platz reservieren</a>
            </button>
         </div>
       </div>
