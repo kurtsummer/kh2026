@@ -13,8 +13,8 @@ const Impressum = () => {
             <h2 className="text-2xl font-black text-[#16332C] mb-4">Angaben gemäß § 5 TMG</h2>
             <p>
               Max Mustermann<br />
-              Restaurant Max<br />
-              Hauptstraße 42<br />
+              Café Mustermann<br />
+              Musterstraße 123<br />
               12345 Musterhausen
             </p>
           </section>
@@ -23,7 +23,7 @@ const Impressum = () => {
             <h2 className="text-2xl font-black text-[#16332C] mb-4">Kontakt</h2>
             <p>
               Telefon: +49 (0) 123 456 789<br />
-              E-Mail: hallo@restaurant-max.de
+              E-Mail: hallo@cafe-mustermann.de
             </p>
           </section>
 

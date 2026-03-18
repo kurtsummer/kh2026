@@ -1,307 +1,179 @@
 import { useState } from "react";
-import { Utensils, Coffee, Wine, ChefHat, Star, X, Heart, Info, Download, FileText } from "lucide-react";
+import { Coffee, Cake, Utensils, Star, Heart, Croissant, Milk, Cookie } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-  DialogClose,
-} from "@/components/ui/dialog";
-
-interface MenuItem {
-  name: string;
-  price: string;
-  detail: string;
-  longDetail?: string;
-  allergens?: string[];
-}
-
-interface MenuCategory {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  longDescription: string;
-  items: MenuItem[];
-  color: string;
-  bg: string;
-}
 
 export const Menu = () => {
-  const [selectedCategory, setSelectedCategory] = useState<MenuCategory | null>(null);
+  const [activeCategory, setActiveCategory] = useState("all");
 
-  const categories: MenuCategory[] = [
-    {
-      icon: <Utensils className="w-10 h-10" />,
-      title: "Vorspeisen",
-      description: "Ein feiner Start in Ihr Menü.",
-      longDescription: "Unsere Vorspeisen bereiten Ihren Gaumen auf das Haupterlebnis vor. Wir setzen auf leichte Texturen und frische Aromen.",
-      items: [
-        { 
-          name: "Hausgebeizter Lachs", 
-          price: "14.50€", 
-          detail: "mit Senf-Dill-Sauce & Röstbrot",
-          longDetail: "24 Stunden in einer speziellen Beize aus Meersalz, braunem Zucker und frischem Dill gereift. Serviert mit hausgemachtem Sauerteigbrot.",
-          allergens: ["Fisch", "Gluten", "Senf"]
-        },
-        { 
-          name: "Musterhausener Marktsalat", 
-          price: "9.80€", 
-          detail: "mit Honig-Senf-Dressing & Nüssen",
-          longDetail: "Knackige Blattsalate direkt vom Bio-Hof nebenan, verfeinert mit gerösteten Walnüssen und einem Dressing aus regionalem Waldhonig.",
-          allergens: ["Schalenfrüchte", "Senf"]
-        },
-        {
-          name: "Rinder-Carpaccio",
-          price: "16.90€",
-          detail: "mit Trüffel-Mayonnaise & Grana Padano",
-          longDetail: "Hauchdünne Scheiben vom Weiderind, garniert mit Wildkräutern und 24 Monate gereiftem Hartkäse.",
-          allergens: ["Milch", "Ei"]
-        }
-      ],
-      color: "bg-[#16332C]",
-      bg: "bg-[#16332C]/5",
-    },
-    {
-      icon: <ChefHat className="w-10 h-10" />,
-      title: "Hauptspeisen",
-      description: "Das Herzstück unserer Küche.",
-      longDescription: "Hier zeigt Max seine ganze Kunst. Traditionelle Rezepte treffen auf modernes Handwerk und beste Fleischqualität.",
-      items: [
-        { 
-          name: "Original Wiener Schnitzel", 
-          price: "24.50€", 
-          detail: "vom Kalb, mit Preiselbeeren & Kartoffelsalat",
-          longDetail: "In der Pfanne in Butterschmalz goldgelb ausgebacken. Wir verwenden ausschließlich Fleisch vom regionalen Kalb.",
-          allergens: ["Gluten", "Ei", "Milch"]
-        },
-        { 
-          name: "Hausgemachte Pasta", 
-          price: "18.90€", 
-          detail: "mit Steinpilzen & Trüffelöl",
-          longDetail: "Täglich frisch produzierte Tagliatelle in einer cremigen Weißweinsauce mit aromatischen Waldpilzen.",
-          allergens: ["Gluten", "Ei", "Milch"]
-        },
-        {
-          name: "Zanderfilet kross gebraten",
-          price: "22.50€",
-          detail: "auf Rahmwirsing & Salzkartoffeln",
-          longDetail: "Frisch gefangener Zander mit knuspriger Haut, serviert auf einem Bett aus feinem Sahnigem Kohlgemüse.",
-          allergens: ["Fisch", "Milch"]
-        }
-      ],
-      color: "bg-[#C5A059]",
-      bg: "bg-[#C5A059]/5",
-    },
-    {
-      icon: <Wine className="w-10 h-10" />,
-      title: "Getränke",
-      description: "Perfekte Begleiter für Ihr Mahl.",
-      longDescription: "Unsere Weinkarte wird monatlich kuratiert, um die perfekte Harmonie zu unseren saisonalen Gerichten zu bieten.",
-      items: [
-        { 
-          name: "Musterhausener Weißburgunder", 
-          price: "6.50€", 
-          detail: "0.2l - frisch & fruchtig",
-          longDetail: "Vom Weingut Müller aus der Region. Noten von grünem Apfel und Birne, sehr mineralisch im Abgang.",
-          allergens: ["Sulfite"]
-        },
-        { 
-          name: "Hausgemachte Limonade", 
-          price: "4.80€", 
-          detail: "0.4l - Zitrone-Ingwer oder Beere",
-          longDetail: "Mit frischen Früchten und wenig Rohrzucker täglich frisch angesetzt. Ohne künstliche Zusätze.",
-        },
-        {
-          name: "Craft Bier 'Max Spezial'",
-          price: "5.20€",
-          detail: "0.33l - Unfiltriertes Pale Ale",
-          longDetail: "Gebraut in der Musterhausener Braumanufaktur exklusiv für unser Haus. Hopfig und charakterstark.",
-          allergens: ["Gluten"]
-        }
-      ],
-      color: "bg-[#5C4033]",
-      bg: "bg-[#5C4033]/5",
-    },
-    {
-      icon: <Coffee className="w-10 h-10" />,
-      title: "Desserts",
-      description: "Ein süßer Abschluss.",
-      longDescription: "Denn für ein Dessert gibt es immer einen extra Platz im Magen. Unsere Nachspeisen sind hausgemacht und sündhaft gut.",
-      items: [
-        { 
-          name: "Warmer Schokokuchen", 
-          price: "8.50€", 
-          detail: "mit flüssigem Kern & Vanilleeis",
-          longDetail: "Hergestellt aus 70%iger Valrhona Schokolade. 12 Minuten Backzeit für den perfekten flüssigen Kern.",
-          allergens: ["Gluten", "Ei", "Milch"]
-        },
-        { 
-          name: "Apfelstrudel", 
-          price: "7.20€", 
-          detail: "nach altem Familienrezept",
-          longDetail: "Hauchdünner gezogener Teig mit Äpfeln aus dem Alten Land, Rosinen und einer Prise Zimt. Serviert mit Vanillesauce.",
-          allergens: ["Gluten", "Milch", "Schalenfrüchte"]
-        },
-        {
-          name: "Beeren-Tiramisu",
-          price: "7.90€",
-          detail: "fruchtige Variante des Klassikers",
-          longDetail: "Mit Mascarpone-Creme, Löffelbiskuit und einer Auswahl an Waldbeeren statt Kaffee.",
-          allergens: ["Gluten", "Ei", "Milch"]
-        }
-      ],
-      color: "bg-[#16332C]",
-      bg: "bg-[#16332C]/5",
-    },
+  const categories = [
+    { id: "all", name: "Alle", icon: <Utensils className="w-5 h-5" /> },
+    { id: "coffee", name: "Kaffee & Co.", icon: <Coffee className="w-5 h-5" /> },
+    { id: "cakes", name: "Kuchen & Torten", icon: <Cake className="w-5 h-5" /> },
+    { id: "breakfast", name: "Frühstück", icon: <Croissant className="w-5 h-5" /> },
   ];
 
+  const menuItems = [
+    {
+      id: 1,
+      name: "Max' Hausespresso",
+      price: "2.80€",
+      category: "coffee",
+      description: "Hauseigene Röstung, 100% Arabica, kräftiges Aroma mit Schokoladennote.",
+      image: "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?q=80&w=800&auto=format&fit=crop",
+      badge: "Beliebt",
+      icons: [<Coffee className="w-4 h-4" />]
+    },
+    {
+      id: 2,
+      name: "Omas Apfelkuchen",
+      price: "4.50€",
+      category: "cakes",
+      description: "Nach traditionellem Familienrezept mit frischen Äpfeln aus Musterhausen.",
+      image: "https://images.unsplash.com/photo-1568571780765-9276ac3b7592?q=80&w=800&auto=format&fit=crop",
+      badge: "Hausgemacht",
+      icons: [<Cake className="w-4 h-4" />]
+    },
+    {
+      id: 3,
+      name: "Musterhausener Frühstück",
+      price: "14.90€",
+      category: "breakfast",
+      description: "Regionale Wurst & Käse, Bio-Eier, frische Brötchen und ein Glas O-Saft.",
+      image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop",
+      badge: "Regiona",
+      icons: [<Croissant className="w-4 h-4" />]
+    },
+    {
+      id: 4,
+      name: "Cappuccino Italiano",
+      price: "3.60€",
+      category: "coffee",
+      description: "Samtiger Milchschaum trifft auf unseren kräftigen Espresso.",
+      image: "https://images.unsplash.com/photo-1534778101976-62847782c213?q=80&w=800&auto=format&fit=crop",
+      icons: [<Milk className="w-4 h-4" />]
+    },
+    {
+      id: 5,
+      name: "Schokoladen-Traum",
+      price: "4.80€",
+      category: "cakes",
+      description: "Zartbitterschokolade, Sahne und ein Hauch von Gold.",
+      image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
+      badge: "Premium",
+      icons: [<Cookie className="w-4 h-4" />]
+    },
+    {
+      id: 6,
+      name: "Avocado-Brot",
+      price: "11.50€",
+      category: "breakfast",
+      description: "Vollkornbrot mit Avocado, pochiertem Ei und Chiliflocken.",
+      image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=800&auto=format&fit=crop",
+      icons: [<Utensils className="w-4 h-4" />]
+    }
+  ];
+
+  const filteredItems = activeCategory === "all" 
+    ? menuItems 
+    : menuItems.filter(item => item.category === activeCategory);
+
   return (
-    <section id="menu" className="py-24 bg-[#FDF8F1] dark:bg-[#0A1A17] relative overflow-hidden transition-colors duration-500">
-      <div className="absolute top-1/2 left-0 w-64 h-64 bg-[#16332C]/5 rounded-full blur-[80px] -z-1" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#C5A059]/5 rounded-full blur-[100px] -z-1" />
+    <section id="menu" className="py-24 bg-[#FDF8F1] dark:bg-[#16332C]/10 transition-colors duration-500 overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#C5A059]/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#16332C]/5 rounded-full blur-3xl -z-10" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <h2 className="text-[#C5A059] font-black tracking-widest uppercase text-sm">Unsere Speisekarte</h2>
-          <h3 className="text-4xl md:text-6xl font-black text-[#16332C] dark:text-[#FDF8F1] leading-tight">
-            Ehrliche Küche, <span className="text-[#C5A059]">echter Geschmack</span>.
-          </h3>
-          <p className="text-lg text-[#16332C]/60 dark:text-[#FDF8F1]/60 font-medium max-w-xl mx-auto">
-            Wir verwenden ausschließlich frische Produkte aus der Region Musterhausen. Entdecken Sie unsere saisonalen Spezialitäten.
-          </p>
-          <div className="pt-4">
-            <Button asChild variant="outline" className="border-2 border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-white rounded-full px-8 py-6 font-bold group transition-all duration-300 shadow-lg shadow-[#C5A059]/10 bg-transparent">
-              <a href="#" download="Speisekarte_Restaurant_Max.pdf">
-                <FileText className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                Speisekarte als PDF (Download)
-                <Download className="ml-2 w-4 h-4 opacity-50 group-hover:translate-y-0.5 transition-transform" />
-              </a>
-            </Button>
+        <div className="text-center space-y-4 mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700">
+           <div className="inline-flex items-center gap-2 bg-[#16332C]/10 dark:bg-[#C5A059]/10 text-[#16332C] dark:text-[#C5A059] px-6 py-2 rounded-full text-sm font-black uppercase tracking-widest">
+            <Star className="w-4 h-4" />
+            <span>Unsere Karte</span>
           </div>
+          <h2 className="text-5xl md:text-6xl font-black text-[#16332C] dark:text-[#FDF8F1] tracking-tight">
+            Genuss für <span className="text-[#C5A059]">jeden Moment.</span>
+          </h2>
+          <p className="text-lg text-[#16332C]/60 dark:text-[#FDF8F1]/60 max-w-2xl mx-auto font-medium">
+            Entdecken Sie unsere handverlesenen Spezialitäten. Frisch zubereitet und mit Liebe serviert.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {categories.map((cat, index) => (
-            <div
-              key={cat.title}
-              className={`group ${cat.bg} dark:bg-zinc-800/40 p-8 rounded-[48px] border-2 border-transparent hover:border-white dark:hover:border-[#C5A059]/20 hover:bg-white dark:hover:bg-zinc-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 flex flex-col`}
+        {/* Categories Grid */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`flex items-center gap-3 px-8 py-4 rounded-full text-sm font-black uppercase tracking-widest transition-all duration-300 shadow-xl border-2 ${
+                activeCategory === cat.id
+                  ? "bg-[#16332C] text-white border-[#16332C] scale-105"
+                  : "bg-white text-[#16332C] border-transparent hover:border-[#C5A059] hover:text-[#C5A059]"
+              }`}
             >
-              <div className={`${cat.color} text-white p-5 rounded-[32px] mb-8 shadow-lg group-hover:rotate-6 transition-transform w-fit mx-auto`}>
+              <div className={activeCategory === cat.id ? "text-[#C5A059]" : "text-gray-400"}>
                 {cat.icon}
               </div>
-              <h4 className="text-2xl font-black text-[#16332C] dark:text-[#FDF8F1] mb-2 text-center">{cat.title}</h4>
-              <p className="text-[#16332C]/60 dark:text-[#FDF8F1]/60 text-sm mb-8 font-medium leading-relaxed text-center">{cat.description}</p>
-              
-              <div className="space-y-6 flex-grow">
-                {cat.items.slice(0, 2).map((item) => (
-                  <div key={item.name} className="space-y-1">
-                    <div className="flex justify-between items-baseline gap-2">
-                      <span className="font-black text-[#16332C] dark:text-[#FDF8F1] leading-tight">{item.name}</span>
-                      <span className="text-[#C5A059] font-black">{item.price}</span>
-                    </div>
-                    <p className="text-xs text-[#16332C]/50 dark:text-[#FDF8F1]/40 font-bold">{item.detail}</p>
-                  </div>
-                ))}
-              </div>
+              {cat.name}
+            </button>
+          ))}
+        </div>
 
-              <div className="pt-8 mt-8 border-t border-[#16332C]/5 dark:border-white/10 w-full">
-                <Button 
-                  onClick={() => setSelectedCategory(cat)}
-                  variant="ghost" 
-                  className="text-[#16332C] dark:text-[#FDF8F1] hover:bg-[#16332C]/5 dark:hover:bg-white/5 rounded-full w-full py-6 font-bold flex items-center gap-2 group/btn"
-                >
-                  <Info className={`w-4 h-4 transition-transform group-hover/btn:scale-125 text-[#C5A059]`} />
-                  Mehr Details
+        {/* Menu Items Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {filteredItems.map((item, index) => (
+            <div
+              key={item.id}
+              className="group bg-white dark:bg-zinc-900 rounded-[40px] overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 border border-[#16332C]/5 dark:border-white/5 animate-in fade-in slide-in-from-bottom-12 duration-700"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
+                {item.badge && (
+                   <span className="absolute top-6 left-6 bg-[#C5A059] text-white px-4 py-2 rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl">
+                    {item.badge}
+                  </span>
+                )}
+                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md p-3 rounded-2xl text-[#16332C] shadow-lg flex items-center gap-2">
+                   <Heart className="w-4 h-4 text-red-500 fill-current" />
+                </div>
+              </div>
+              
+              <div className="p-8 space-y-6">
+                <div className="flex justify-between items-start">
+                  <div className="space-y-1">
+                    <h3 className="text-2xl font-black text-[#16332C] dark:text-[#FDF8F1] group-hover:text-[#C5A059] transition-colors">
+                      {item.name}
+                    </h3>
+                    <div className="flex gap-2">
+                      {item.icons.map((icon, idx) => (
+                        <span key={idx} className="text-[#C5A059]/50">{icon}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <span className="text-xl font-black text-[#C5A059] bg-[#C5A059]/10 px-4 py-2 rounded-2xl">
+                    {item.price}
+                  </span>
+                </div>
+                
+                <p className="text-[#16332C]/60 dark:text-[#FDF8F1]/60 leading-relaxed font-medium">
+                  {item.description}
+                </p>
+
+                <Button className="w-full bg-[#16332C]/5 dark:bg-white/5 hover:bg-[#C5A059] hover:text-white text-[#16332C] dark:text-[#FDF8F1] rounded-2xl py-6 font-black uppercase tracking-widest transition-all duration-300 border-none shadow-none">
+                  Bestellen
                 </Button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Categories Detail Dialog */}
-        <Dialog open={!!selectedCategory} onOpenChange={(open) => !open && setSelectedCategory(null)}>
-          <DialogContent className="max-w-3xl w-[95vw] max-h-[90vh] p-0 overflow-hidden bg-[#FDF8F1] dark:bg-zinc-900 rounded-[48px] border-none shadow-2xl">
-            <DialogHeader className="p-10 pb-0 relative">
-              <div className="flex items-center gap-6 mb-4">
-                <div className={`${selectedCategory?.color} text-white p-4 rounded-3xl shadow-lg`}>
-                  {selectedCategory?.icon}
-                </div>
-                <div>
-                  <DialogTitle className="text-3xl font-black text-[#16332C] dark:text-[#FDF8F1]">{selectedCategory?.title}</DialogTitle>
-                  <DialogDescription className="text-lg text-[#16332C]/60 dark:text-[#FDF8F1]/60 font-medium">
-                    {selectedCategory?.longDescription}
-                  </DialogDescription>
-                </div>
-              </div>
-              <DialogClose className="absolute top-10 right-10 p-3 bg-white dark:bg-zinc-800 text-[#16332C] dark:text-[#FDF8F1] rounded-2xl hover:bg-[#C5A059] hover:text-white transition-all shadow-sm">
-                <X className="w-6 h-6" />
-              </DialogClose>
-            </DialogHeader>
-
-            <div className="p-10 pt-6 overflow-y-auto">
-              <div className="grid gap-8">
-                {selectedCategory?.items.map((item, idx) => (
-                  <div key={idx} className="bg-white dark:bg-zinc-800/60 p-8 rounded-[32px] group hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#C5A059]/20">
-                    <div className="flex justify-between items-start mb-3">
-                      <div>
-                        <h5 className="text-xl font-black text-[#16332C] dark:text-[#FDF8F1] group-hover:text-[#C5A059] transition-colors">{item.name}</h5>
-                        <p className="text-sm font-black text-[#C5A059] uppercase tracking-wider mt-1">{item.detail}</p>
-                      </div>
-                      <span className="text-2xl font-black text-[#16332C] dark:text-[#FDF8F1]">{item.price}</span>
-                    </div>
-                    <p className="text-[#16332C]/70 dark:text-[#FDF8F1]/70 leading-relaxed font-medium mb-4">
-                      {item.longDetail}
-                    </p>
-                    {item.allergens && (
-                      <div className="flex items-center gap-2 pt-4 border-t border-[#16332C]/5 dark:border-white/10">
-                        <span className="text-[10px] font-black text-[#16332C]/40 dark:text-[#FDF8F1]/40 uppercase tracking-widest">Allergene:</span>
-                        <div className="flex gap-2">
-                          {item.allergens.map((a) => (
-                            <span key={a} className="text-[10px] font-black bg-[#16332C]/5 dark:bg-white/5 text-[#16332C]/60 dark:text-[#FDF8F1]/60 px-2 py-0.5 rounded-md">
-                              {a}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-              
-              <div className="mt-12 text-center bg-white/50 dark:bg-white/5 p-8 rounded-[40px] border-2 border-dashed border-[#C5A059]/30">
-                <p className="text-[#16332C] dark:text-[#FDF8F1] font-bold flex items-center justify-center gap-2">
-                  <Heart className="w-5 h-5 text-[#C5A059] fill-current" />
-                  Guten Appetit wünscht Max & sein Team!
-                </p>
-                <Button 
-                   asChild
-                   className="mt-6 bg-[#16332C] dark:bg-[#C5A059] hover:bg-[#1E3A34] dark:hover:bg-[#D4B36D] text-white dark:text-[#16332C] rounded-full px-10 py-6 font-black border-none shadow-lg"
-                >
-                   <a href="#reservation" onClick={() => setSelectedCategory(null)}>Diesen Tisch reservieren</a>
-                </Button>
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
-
-        <div className="mt-24 text-center bg-[#16332C] dark:bg-[#C5A059] p-16 rounded-[60px] text-white dark:text-[#16332C] shadow-2xl relative overflow-hidden group transition-colors duration-500">
-           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 dark:bg-black/5 rounded-full blur-[100px] -z-1 group-hover:scale-125 transition-transform duration-1000" />
-           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#C5A059]/10 dark:bg-black/5 rounded-full blur-[100px] -z-1" />
-           
-           <div className="relative z-10 space-y-8">
-              <div className="bg-white/20 dark:bg-black/10 p-4 rounded-3xl w-fit mx-auto animate-bounce">
-                <Star className="w-10 h-10 text-[#C5A059] dark:text-[#16332C] fill-current" />
-              </div>
-              <h4 className="text-3xl md:text-5xl font-black">Besondere Wünsche?</h4>
-              <p className="text-white/90 dark:text-[#16332C]/90 text-xl font-medium max-w-2xl mx-auto">
-                Ob vegan, glutenfrei oder spezielle Allergien – sprechen Sie uns einfach an. Wir kreieren gerne ein individuelles Gericht für Sie!
-              </p>
-              <Button asChild className="bg-[#C5A059] dark:bg-[#16332C] hover:bg-[#D4B36D] dark:hover:bg-[#1E3A34] text-[#16332C] dark:text-white rounded-full px-12 py-8 text-xl font-black shadow-2xl border-none transition-all hover:scale-105 active:scale-95">
-                 <a href="#contact">Fragen stellen</a>
-              </Button>
-           </div>
+        <div className="mt-20 text-center">
+           <Button asChild variant="outline" className="border-4 border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-white rounded-full px-12 py-8 text-xl font-black uppercase tracking-[0.2em] transition-all duration-500 shadow-2xl">
+              <a href="#reservation">Komplette Karte laden</a>
+           </Button>
         </div>
       </div>
     </section>

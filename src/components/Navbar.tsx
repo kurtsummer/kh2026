@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Utensils, Star, Heart } from "lucide-react";
+import { Menu, X, Coffee, Star, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
@@ -17,7 +17,7 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Speisekarte", href: "#menu" },
+    { name: "Karte", href: "#menu" },
     { name: "Über uns", href: "#about" },
     { name: "Galerie", href: "#gallery" },
     { name: "Reservierung", href: "#reservation" },
@@ -35,13 +35,13 @@ export const Navbar = () => {
       aria-label="Hauptnavigation"
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <Link to="/" className="flex items-center group gap-4" aria-label="Restaurant Max Homepage">
+        <Link to="/" className="flex items-center group gap-4" aria-label="Café Mustermann Homepage">
           <div className={`p-3 rounded-2xl transition-all duration-500 shadow-xl group-hover:rotate-12 group-hover:scale-110 ${isScrolled ? "bg-[#C5A059]" : "bg-white dark:bg-zinc-800 shadow-inner group-hover:bg-[#C5A059]"}`}>
-             <Utensils className={`w-7 h-7 transition-colors duration-500 ${isScrolled ? "text-white" : "text-[#C5A059] group-hover:text-white"}`} />
+             <Coffee className={`w-7 h-7 transition-colors duration-500 ${isScrolled ? "text-white" : "text-[#C5A059] group-hover:text-white"}`} />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-tighter leading-none text-[#16332C] dark:text-[#FDF8F1]">Restaurant Max</h1>
-            <p className="text-[10px] uppercase font-black text-[#C5A059] tracking-[0.4em] leading-none mt-1">Kulinarik & Gemütlichkeit</p>
+            <h1 className="text-2xl font-black tracking-tighter leading-none text-[#16332C] dark:text-[#FDF8F1]">Café Mustermann</h1>
+            <p className="text-[10px] uppercase font-black text-[#C5A059] tracking-[0.4em] leading-none mt-1">Kaffee & Kuchen in Musterhausen</p>
           </div>
         </Link>
 

@@ -18,7 +18,7 @@ const Datenschutz = () => {
           <section className="bg-white p-10 rounded-[40px] shadow-sm border border-[#16332C]/5">
             <h2 className="text-2xl font-black text-[#16332C] mb-4">2. Datenerfassung auf dieser Website</h2>
             <h3 className="text-xl font-black mb-2 text-[#C5A059]">Wer ist verantwortlich für die Datenerfassung?</h3>
-            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber: Restaurant Max, Inhaber Max Mustermann. Die Kontaktdaten finden Sie im Impressum.</p>
+            <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber: Café Mustermann, Inhaber Max Mustermann. Die Kontaktdaten finden Sie im Impressum.</p>
             <h3 className="text-xl font-black mt-6 mb-2 text-[#C5A059]">Wie erfassen wir Ihre Daten?</h3>
             <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei handelt es sich z. B. um Daten, die Sie in ein Reservierungs- oder Kontaktformular eingeben (Name, E-Mail, Datum, Gästeanzahl). Andere Daten werden automatisch durch unsere IT-Systeme erfasst (z. B. IP-Adresse, Browser-Typ).</p>
           </section>

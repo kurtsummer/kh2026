@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Utensils, Heart, Wine, ChefHat } from "lucide-react";
+import { ArrowRight, Star, Coffee, Heart, Croissant, Clock } from "lucide-react";
 
 export const Hero = () => {
   const avatarImages = [
@@ -20,27 +20,27 @@ export const Hero = () => {
         <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
           <div className="inline-flex items-center gap-2 bg-[#16332C]/10 dark:bg-[#C5A059]/10 text-[#16332C] dark:text-[#C5A059] px-4 py-2 rounded-full text-sm font-bold tracking-wide">
             <Star className="w-4 h-4 fill-current text-[#C5A059]" />
-            <span>Kulinarische Perfektion in Musterhausen</span>
+            <span>Das gemütlichste Café in Musterhausen</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl font-sans font-black leading-[1.1] text-[#16332C] dark:text-[#FDF8F1]">
-            Genuss,<br />
-            <span className="text-[#C5A059]">der in Erinnerung bleibt.</span>
+            Kaffee,<br />
+            <span className="text-[#C5A059]">der die Seele wärmt.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-[#16332C]/70 dark:text-[#FDF8F1]/70 max-w-lg leading-relaxed font-medium">
-            Entdecken Sie ehrliche Kochkunst, erlesene Weine und eine Atmosphäre, die zum Verweilen einlädt. Willkommen im Restaurant Max.
+            Frisch geröstete Bohnen, hausgemachte Torten und ein Lächeln von Max Mustermann. Treten Sie ein in Ihr zweites Wohnzimmer.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
             <Button asChild className="bg-[#16332C] dark:bg-[#C5A059] hover:bg-[#1E3A34] dark:hover:bg-[#D4B36D] text-white dark:text-[#16332C] rounded-full px-8 py-7 text-lg font-bold group shadow-lg shadow-[#16332C]/20 border-none">
-              <a href="#reservation">
-                Tisch reservieren
+              <a href="#menu">
+                Karte ansehen
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
             <Button asChild variant="outline" className="border-2 border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-white rounded-full px-8 py-7 text-lg font-bold transition-all duration-300 bg-transparent">
-              <a href="#menu">Speisekarte entdecken</a>
+              <a href="#reservation">Tisch reservieren</a>
             </Button>
           </div>
 
@@ -58,7 +58,7 @@ export const Hero = () => {
               ))}
             </div>
             <div>
-              <p className="font-bold text-[#16332C] dark:text-[#FDF8F1]">Über 1.200+ glückliche Genießer</p>
+              <p className="font-bold text-[#16332C] dark:text-[#FDF8F1]">Über 2.500+ Kaffeeliebhaber</p>
               <div className="flex text-[#C5A059]">
                 {[1, 2, 3, 4, 5].map((s) => (
                   <Star key={s} className="w-4 h-4 fill-current" />
@@ -71,8 +71,8 @@ export const Hero = () => {
         <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-200">
           <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5] border-[12px] border-white dark:border-zinc-800 rotate-2 hover:rotate-0 transition-transform duration-500 bg-gray-100 dark:bg-zinc-800">
             <img
-              src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop"
-              alt="Frisch zubereitetes Gourmet-Gericht bei Restaurant Max"
+              src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop"
+              alt="Frisch gebrühter Kaffee im Café Mustermann"
               className="w-full h-full object-cover"
               loading="eager"
             />
@@ -86,20 +86,20 @@ export const Hero = () => {
           <div className="absolute bottom-12 -left-12 bg-white dark:bg-zinc-900 p-6 rounded-[24px] shadow-2xl z-20 hidden md:block border border-[#C5A059]/10 animate-bounce-slow">
             <div className="flex items-center gap-4">
               <div className="bg-[#C5A059]/10 p-3 rounded-2xl text-[#C5A059]">
-                <ChefHat className="w-6 h-6" aria-hidden="true" />
+                <Croissant className="w-6 h-6" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-xs text-[#16332C]/50 dark:text-[#FDF8F1]/50 uppercase tracking-wider font-black">Unsere Empfehlung</p>
-                <p className="text-lg font-black text-[#16332C] dark:text-[#FDF8F1]">Hausgereiftes Rindersteak</p>
+                <p className="text-xs text-[#16332C]/50 dark:text-[#FDF8F1]/50 uppercase tracking-wider font-black">Empfehlung</p>
+                <p className="text-lg font-black text-[#16332C] dark:text-[#FDF8F1]">Max' Apfelstrudel</p>
               </div>
             </div>
           </div>
 
           <div className="absolute top-20 -right-4 bg-white dark:bg-zinc-900 p-4 rounded-2xl shadow-xl z-20 hidden lg:flex items-center gap-3 border border-[#16332C]/10 dark:border-white/10 -rotate-6">
              <div className="bg-[#16332C]/10 p-2 rounded-xl">
-                <Wine className="text-[#16332C] dark:text-[#C5A059] w-5 h-5" aria-hidden="true" />
+                <Clock className="text-[#16332C] dark:text-[#C5A059] w-5 h-5" aria-hidden="true" />
              </div>
-             <p className="text-sm font-bold text-[#16332C] dark:text-[#FDF8F1]">Exzellente Weinkarte</p>
+             <p className="text-sm font-bold text-[#16332C] dark:text-[#FDF8F1]">Täglich ab 08:00 Uhr</p>
           </div>
         </div>
       </div>

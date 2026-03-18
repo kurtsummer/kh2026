@@ -1,133 +1,111 @@
-import { Instagram, Facebook, Utensils, Heart, Mail, Phone, MapPin, Star, FileText } from "lucide-react";
+import { Coffee, Instagram, Facebook, Mail, MapPin, Phone, Heart, Star, Send } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#FDF8F1] dark:bg-[#0A1A17] text-[#16332C] dark:text-[#FDF8F1] pt-24 pb-12 border-t border-[#16332C]/5 dark:border-white/5 overflow-hidden relative transition-colors duration-500">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#C5A059]/5 rounded-full blur-[150px] -z-1" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#16332C]/5 rounded-full blur-[150px] -z-1" />
-      
+    <footer className="bg-[#16332C] text-white py-24 relative overflow-hidden transition-colors duration-500">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#C5A059]/10 rounded-full blur-[120px] -z-0 translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#C5A059]/5 rounded-full blur-[100px] -z-0 -translate-x-1/2 translate-y-1/2" />
+
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid lg:grid-cols-4 gap-16 mb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-12 mb-20">
           <div className="space-y-8 col-span-1 lg:col-span-1">
-             <Link to="/" className="inline-block group">
-                <div className="flex items-center gap-4">
-                   <div className="bg-[#16332C] dark:bg-[#C5A059] p-4 rounded-[28px] shadow-xl transition-all group-hover:rotate-12 group-hover:scale-110">
-                      <Utensils className="w-8 h-8 text-white dark:text-[#16332C]" />
-                   </div>
-                   <div>
-                      <h4 className="text-2xl font-black tracking-tighter leading-none">Restaurant Max</h4>
-                      <p className="text-[10px] uppercase font-black text-[#C5A059] tracking-[0.4em] mt-1">Kulinarik & Gemütlichkeit</p>
-                   </div>
-                </div>
-             </Link>
-             <p className="text-[#16332C]/60 dark:text-[#FDF8F1]/60 leading-relaxed text-lg font-medium italic">
-                "Genuss ist eine Kunst, die wir täglich mit Leidenschaft für Sie verfeinern."
-             </p>
-             <div className="flex gap-4">
-                {[
-                  { icon: <Instagram />, color: "hover:bg-[#E1306C] hover:text-white" },
-                  { icon: <Facebook />, color: "hover:bg-[#4267B2] hover:text-white" }
-                ].map((social, i) => (
-                  <button key={i} className={`bg-white dark:bg-zinc-800 hover:shadow-xl p-4 rounded-2xl transition-all hover:scale-110 text-[#16332C]/70 dark:text-[#FDF8F1]/70 shadow-sm border border-[#16332C]/5 dark:border-white/5 ${social.color}`} aria-label={`Social Media ${i}`}>
-                     {social.icon}
-                  </button>
-                ))}
-             </div>
+             <Link to="/" className="flex items-center group gap-4">
+              <div className="p-3 bg-[#C5A059] rounded-2xl transition-all duration-500 shadow-xl group-hover:rotate-12 group-hover:scale-110">
+                 <Coffee className="w-7 h-7 text-white" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-black tracking-tighter leading-none">Café Mustermann</h2>
+                <p className="text-[10px] uppercase font-black text-[#C5A059] tracking-[0.4em] leading-none mt-1">Seit 2009 in Musterhausen</p>
+              </div>
+            </Link>
+            <p className="text-white/60 font-medium leading-relaxed max-w-sm">
+              Wir bringen den besten Kaffee und die leckersten hausgemachten Kuchen direkt zu Ihnen nach Musterhausen. Genießen Sie die Auszeit.
+            </p>
+            <div className="flex gap-4">
+              {[Instagram, Facebook, Mail].map((Icon, i) => (
+                <button
+                  key={i}
+                  className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#C5A059] hover:border-[#C5A059] transition-all duration-300"
+                  aria-label={`Social Icon ${i + 1}`}
+                >
+                  <Icon className="w-5 h-5" />
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="space-y-8">
-             <h5 className="text-xs font-black text-[#C5A059] uppercase tracking-widest mb-6 border-b-4 border-[#C5A059]/10 pb-4 inline-block">Navigation</h5>
-             <ul className="space-y-5">
-                {["Speisekarte", "Über uns", "Galerie", "Reservierung", "Kontakt"].map((link) => (
-                  <li key={link}>
-                    <a 
-                      href={`#${link.toLowerCase().replace("ü", "u").replace(" ", "-")}`} 
-                      className="text-[#16332C]/60 dark:text-[#FDF8F1]/60 hover:text-[#C5A059] transition-all text-sm font-black flex items-center gap-3 group"
-                    >
-                      <div className="w-2 h-2 rounded-full bg-[#C5A059] scale-0 group-hover:scale-100 transition-transform" />
-                      {link}
-                    </a>
-                  </li>
-                ))}
-                <li>
-                  <a 
-                    href="#" 
-                    download="Speisekarte_Restaurant_Max.pdf"
-                    className="text-[#C5A059] hover:text-[#B49352] transition-all text-sm font-black flex items-center gap-3 group mt-4 pt-4 border-t border-[#16332C]/5 dark:border-white/5"
-                  >
-                    <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                    Speisekarte PDF
-                  </a>
-                </li>
-             </ul>
+            <h3 className="text-xl font-black uppercase tracking-widest text-[#C5A059]">Quick Links</h3>
+            <nav className="flex flex-col gap-4">
+              {["Menü", "Über uns", "Galerie", "Reservierung", "Jobs"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item.toLowerCase().replace(" ", "")}`}
+                  className="text-white/70 hover:text-[#C5A059] transition-colors font-bold flex items-center gap-2 group"
+                >
+                  <Star className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity fill-current text-[#C5A059]" />
+                  {item}
+                </a>
+              ))}
+            </nav>
           </div>
 
           <div className="space-y-8">
-             <h5 className="text-xs font-black text-[#16332C] dark:text-[#C5A059] uppercase tracking-widest mb-6 border-b-4 border-[#16332C]/10 dark:border-[#C5A059]/10 pb-4 inline-block">Kontakt</h5>
-             <ul className="space-y-6">
-                <li className="flex gap-4 items-start group">
-                   <div className="bg-[#C5A059]/10 p-3 rounded-2xl text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-white transition-all group-hover:rotate-6">
-                      <Mail className="w-5 h-5" />
-                   </div>
-                   <div>
-                      <p className="text-[10px] font-black text-[#16332C]/30 dark:text-[#FDF8F1]/30 uppercase tracking-widest mb-1 leading-none">E-Mail</p>
-                      <a href="mailto:hallo@restaurant-max.de" className="text-sm font-black hover:text-[#C5A059] transition-colors">hallo@restaurant-max.de</a>
-                   </div>
-                </li>
-                <li className="flex gap-4 items-start group">
-                   <div className="bg-[#16332C]/10 p-3 rounded-2xl text-[#16332C] dark:text-[#C5A059] group-hover:bg-[#16332C] dark:group-hover:bg-[#C5A059] group-hover:text-white dark:group-hover:text-[#16332C] transition-all group-hover:-rotate-6">
-                      <Phone className="w-5 h-5" />
-                   </div>
-                   <div>
-                      <p className="text-[10px] font-black text-[#16332C]/30 dark:text-[#FDF8F1]/30 uppercase tracking-widest mb-1 leading-none">Telefon</p>
-                      <a href="tel:+49123456789" className="text-sm font-black hover:text-[#16332C] dark:hover:text-[#C5A059] transition-colors font-bold">+49 (0) 123 456 789</a>
-                   </div>
-                </li>
-                <li className="flex gap-4 items-start group">
-                   <div className="bg-[#5C4033]/10 p-3 rounded-2xl text-[#5C4033] group-hover:bg-[#5C4033] group-hover:text-white transition-all group-hover:rotate-12">
-                      <MapPin className="w-5 h-5" />
-                   </div>
-                   <div>
-                      <p className="text-[10px] font-black text-[#16332C]/30 dark:text-[#FDF8F1]/30 uppercase tracking-widest mb-1 leading-none">Adresse</p>
-                      <p className="text-sm font-black">Hauptstraße 42, 12345 Musterhausen</p>
-                   </div>
-                </li>
-             </ul>
+            <h3 className="text-xl font-black uppercase tracking-widest text-[#C5A059]">Kontakt & Lage</h3>
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <MapPin className="w-6 h-6 text-[#C5A059] shrink-0" />
+                <p className="text-white/70 font-bold">Musterstraße 123<br />12345 Musterhausen</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Phone className="w-6 h-6 text-[#C5A059] shrink-0" />
+                <p className="text-white/70 font-bold">+49 123 456789</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <Mail className="w-6 h-6 text-[#C5A059] shrink-0" />
+                <p className="text-white/70 font-bold">hallo@cafe-mustermann.de</p>
+              </div>
+            </div>
           </div>
 
           <div className="space-y-8">
-             <h5 className="text-xs font-black text-[#C5A059] uppercase tracking-widest mb-6 border-b-4 border-[#C5A059]/10 pb-4 inline-block">Öffnungszeiten</h5>
-             <ul className="space-y-5">
-                <li className="flex justify-between text-sm text-[#16332C]/60 dark:text-[#FDF8F1]/60">
-                   <span className="font-bold">Di - Sa:</span>
-                   <span className="text-[#16332C] dark:text-[#FDF8F1] font-black">11:30 - 22:00 Uhr</span>
-                </li>
-                <li className="flex justify-between text-sm text-[#16332C]/60 dark:text-[#FDF8F1]/60">
-                   <span className="font-bold">So:</span>
-                   <span className="text-[#16332C] dark:text-[#FDF8F1] font-black">11:00 - 21:00 Uhr</span>
-                </li>
-                <li className="flex justify-between text-sm text-[#16332C]/60 dark:text-[#FDF8F1]/60">
-                   <span className="font-bold">Mo:</span>
-                   <span className="text-[#C5A059] font-black uppercase">Ruhetag</span>
-                </li>
-             </ul>
+            <h3 className="text-xl font-black uppercase tracking-widest text-[#C5A059]">Newsletter</h3>
+            <p className="text-white/70 font-medium leading-relaxed">
+              Erhalten Sie Gutscheine und Neuigkeiten direkt in Ihr Postfach.
+            </p>
+            <div className="relative group">
+               <input 
+                type="email" 
+                placeholder="Ihre Email Adresse" 
+                className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#C5A059] transition-all"
+               />
+               <button className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#C5A059] rounded-xl flex items-center justify-center text-white hover:scale-105 transition-transform">
+                  <Send className="w-5 h-5" />
+               </button>
+            </div>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-[#16332C]/5 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-           <p className="text-[#16332C]/40 dark:text-[#FDF8F1]/40 text-[10px] font-black uppercase tracking-[0.3em]">
-              &copy; {currentYear} RESTAURANT MAX. GENUSS PUR.
-           </p>
-           <div className="flex gap-10">
-              <Link to="/impressum" className="text-[#16332C]/40 dark:text-[#FDF8F1]/40 hover:text-[#C5A059] text-[10px] font-black uppercase tracking-widest transition-colors">Impressum</Link>
-              <Link to="/datenschutz" className="text-[#16332C]/40 dark:text-[#FDF8F1]/40 hover:text-[#C5A059] text-[10px] font-black uppercase tracking-widest transition-colors">Datenschutz</Link>
-           </div>
-           <div className="flex items-center gap-3 text-[#16332C]/20 dark:text-[#FDF8F1]/20 text-[10px] font-black uppercase tracking-widest group cursor-default">
-              MIT <Heart className="w-4 h-4 text-[#C5A059] fill-current group-hover:scale-125 transition-transform" /> & LEIDENSCHAFT GEKOCHT
-           </div>
+        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-2 text-white/40 font-bold text-sm">
+            <span>&copy; {currentYear} Café Mustermann</span>
+            <div className="w-1 h-1 bg-white/20 rounded-full" />
+            <span>Alle Rechte vorbehalten</span>
+          </div>
+          
+          <div className="flex gap-8">
+            <Link to="/impressum" className="text-sm font-bold text-white/40 hover:text-[#C5A059] transition-colors">Impressum</Link>
+            <Link to="/datenschutz" className="text-sm font-bold text-white/40 hover:text-[#C5A059] transition-colors">Datenschutz</Link>
+            <Link to="/agb" className="text-sm font-bold text-white/40 hover:text-[#C5A059] transition-colors">AGB</Link>
+          </div>
+
+          <div className="flex items-center gap-2 text-white/40 font-bold text-sm">
+            Mit <Heart className="w-4 h-4 text-red-500 fill-current animate-pulse" /> gemacht von Tech Buddy
+          </div>
         </div>
       </div>
     </footer>
