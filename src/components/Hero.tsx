@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Star, Utensils, Heart, Sparkles, ChefHat } from "lucide-react";
+import { ArrowRight, Star, Utensils, Heart, Wine, ChefHat } from "lucide-react";
 
 export const Hero = () => {
   const avatarImages = [
@@ -10,44 +10,44 @@ export const Hero = () => {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#FFFCF8]">
-      {/* Vibrant Background Decor */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#45B7AF]/10 -z-10 rounded-l-[100px] hidden lg:block" />
-      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#FF7E67]/10 rounded-full blur-3xl -z-10" />
-      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#FFD93D]/10 rounded-full blur-2xl -z-10" />
+    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#FDF8F1]">
+      {/* Elegant Background Decor */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#16332C]/5 -z-10 rounded-l-[100px] hidden lg:block" />
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-[#C5A059]/10 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#5C4033]/5 rounded-full blur-2xl -z-10" />
 
       <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-12 items-center">
         <div className="space-y-8 animate-in fade-in slide-in-from-left-8 duration-700">
-          <div className="inline-flex items-center gap-2 bg-[#FF7E67]/10 text-[#FF7E67] px-4 py-2 rounded-full text-sm font-bold tracking-wide">
-            <Sparkles className="w-4 h-4 fill-current" />
-            <span>Musterhausens feinste Kulinarik</span>
+          <div className="inline-flex items-center gap-2 bg-[#16332C]/10 text-[#16332C] px-4 py-2 rounded-full text-sm font-bold tracking-wide">
+            <Star className="w-4 h-4 fill-current text-[#C5A059]" />
+            <span>Kulinarische Perfektion in Musterhausen</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-sans font-black leading-[1.1] text-[#2D3436]">
+          <h1 className="text-5xl md:text-7xl font-sans font-black leading-[1.1] text-[#16332C]">
             Genuss,<br />
-            <span className="text-[#FF7E67]">der verbindet.</span>
+            <span className="text-[#C5A059]">der in Erinnerung bleibt.</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-[#2D3436]/70 max-w-lg leading-relaxed font-medium">
-            Willkommen im Restaurant Max – Ihrem Ort für ehrliche Küche, frische Zutaten und herzliche Gastfreundschaft im Herzen von Musterhausen.
+          <p className="text-lg md:text-xl text-[#16332C]/70 max-w-lg leading-relaxed font-medium">
+            Entdecken Sie ehrliche Kochkunst, erlesene Weine und eine Atmosphäre, die zum Verweilen einlädt. Willkommen im Restaurant Max.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Button asChild className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-full px-8 py-7 text-lg font-bold group shadow-lg shadow-[#FF7E67]/20 border-none">
+            <Button asChild className="bg-[#16332C] hover:bg-[#1E3A34] text-white rounded-full px-8 py-7 text-lg font-bold group shadow-lg shadow-[#16332C]/20 border-none">
               <a href="#reservation">
                 Tisch reservieren
                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-            <Button asChild variant="outline" className="border-[#45B7AF] text-[#45B7AF] hover:bg-[#45B7AF]/5 rounded-full px-8 py-7 text-lg font-bold">
-              <a href="#menu">Speisekarte ansehen</a>
+            <Button asChild variant="outline" className="border-2 border-[#C5A059] text-[#C5A059] hover:bg-[#C5A059] hover:text-white rounded-full px-8 py-7 text-lg font-bold transition-all duration-300">
+              <a href="#menu">Speisekarte entdecken</a>
             </Button>
           </div>
 
-          <div className="flex items-center gap-6 pt-8 border-t border-[#2D3436]/10">
+          <div className="flex items-center gap-6 pt-8 border-t border-[#16332C]/10">
             <div className="flex -space-x-3">
               {avatarImages.map((src, i) => (
-                <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-gray-100 overflow-hidden shadow-md">
+                <div key={i} className="w-12 h-12 rounded-full border-4 border-[#FDF8F1] bg-gray-100 overflow-hidden shadow-md">
                   <img 
                     src={src} 
                     alt={`Zufriedener Gast ${i + 1}`} 
@@ -58,8 +58,8 @@ export const Hero = () => {
               ))}
             </div>
             <div>
-              <p className="font-bold text-[#2D3436]">Über 1.200+ zufriedene Genießer</p>
-              <div className="flex text-[#FFD93D]">
+              <p className="font-bold text-[#16332C]">Über 1.200+ glückliche Genießer</p>
+              <div className="flex text-[#C5A059]">
                 {[1, 2, 3, 4, 5].map((s) => (
                   <Star key={s} className="w-4 h-4 fill-current" />
                 ))}
@@ -72,34 +72,34 @@ export const Hero = () => {
           <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5] border-[12px] border-white rotate-2 hover:rotate-0 transition-transform duration-500 bg-gray-100">
             <img
               src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=2070&auto=format&fit=crop"
-              alt="Frisch zubereitetes Gericht bei Restaurant Max"
+              alt="Frisch zubereitetes Gourmet-Gericht bei Restaurant Max"
               className="w-full h-full object-cover"
               loading="eager"
             />
           </div>
           
-          {/* Playful elements */}
-          <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#FFD93D] rounded-full -z-10 mix-blend-multiply opacity-30 blur-2xl animate-pulse" />
-          <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#45B7AF] rounded-full -z-10 mix-blend-multiply opacity-20 blur-3xl" />
+          {/* Subtle Decorative Elements */}
+          <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#C5A059] rounded-full -z-10 mix-blend-multiply opacity-20 blur-2xl animate-pulse" />
+          <div className="absolute -top-10 -left-10 w-64 h-64 bg-[#16332C] rounded-full -z-10 mix-blend-multiply opacity-10 blur-3xl" />
           
           {/* Floating Card */}
-          <div className="absolute bottom-12 -left-12 bg-white p-6 rounded-[24px] shadow-2xl z-20 hidden md:block border border-[#FF7E67]/10 animate-bounce-slow">
+          <div className="absolute bottom-12 -left-12 bg-white p-6 rounded-[24px] shadow-2xl z-20 hidden md:block border border-[#C5A059]/10 animate-bounce-slow">
             <div className="flex items-center gap-4">
-              <div className="bg-[#FF7E67]/10 p-3 rounded-2xl">
-                <ChefHat className="text-[#FF7E67] w-6 h-6" aria-hidden="true" />
+              <div className="bg-[#C5A059]/10 p-3 rounded-2xl text-[#C5A059]">
+                <ChefHat className="w-6 h-6" aria-hidden="true" />
               </div>
               <div>
-                <p className="text-xs text-[#2D3436]/50 uppercase tracking-wider font-black">Heute Spezial</p>
-                <p className="text-lg font-black text-[#2D3436]">Kalbsschnitzel "Muster-Art"</p>
+                <p className="text-xs text-[#16332C]/50 uppercase tracking-wider font-black">Unsere Empfehlung</p>
+                <p className="text-lg font-black text-[#16332C]">Hausgereiftes Rindersteak</p>
               </div>
             </div>
           </div>
 
-          <div className="absolute top-20 -right-4 bg-white p-4 rounded-2xl shadow-xl z-20 hidden lg:flex items-center gap-3 border border-[#45B7AF]/10 -rotate-6">
-             <div className="bg-[#45B7AF]/10 p-2 rounded-xl">
-                <Utensils className="text-[#45B7AF] w-5 h-5" aria-hidden="true" />
+          <div className="absolute top-20 -right-4 bg-white p-4 rounded-2xl shadow-xl z-20 hidden lg:flex items-center gap-3 border border-[#16332C]/10 -rotate-6">
+             <div className="bg-[#16332C]/10 p-2 rounded-xl">
+                <Wine className="text-[#16332C] w-5 h-5" aria-hidden="true" />
              </div>
-             <p className="text-sm font-bold text-[#2D3436]">Hervorragende Küche</p>
+             <p className="text-sm font-bold text-[#16332C]">Exzellente Weinkarte</p>
           </div>
         </div>
       </div>

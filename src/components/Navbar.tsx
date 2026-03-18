@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Utensils, Sparkles, Heart, FileText } from "lucide-react";
+import { Menu, X, Utensils, Star, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -27,7 +27,7 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md py-4 shadow-xl border-b border-[#2D3436]/5"
+          ? "bg-[#FDF8F1]/95 backdrop-blur-md py-4 shadow-xl border-b border-[#16332C]/5"
           : "bg-transparent py-8"
       }`}
       role="navigation"
@@ -35,12 +35,12 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
         <Link to="/" className="flex items-center group gap-4" aria-label="Restaurant Max Homepage">
-          <div className={`p-3 rounded-2xl transition-all duration-500 shadow-xl group-hover:rotate-12 group-hover:scale-110 ${isScrolled ? "bg-[#FF7E67]" : "bg-white shadow-inner group-hover:bg-[#FF7E67]"}`}>
-             <Utensils className={`w-7 h-7 transition-colors duration-500 ${isScrolled ? "text-white" : "text-[#FF7E67] group-hover:text-white"}`} />
+          <div className={`p-3 rounded-2xl transition-all duration-500 shadow-xl group-hover:rotate-12 group-hover:scale-110 ${isScrolled ? "bg-[#C5A059]" : "bg-white shadow-inner group-hover:bg-[#C5A059]"}`}>
+             <Utensils className={`w-7 h-7 transition-colors duration-500 ${isScrolled ? "text-white" : "text-[#C5A059] group-hover:text-white"}`} />
           </div>
           <div>
-            <h1 className="text-2xl font-black tracking-tighter leading-none text-[#2D3436]">Restaurant Max</h1>
-            <p className="text-[10px] uppercase font-black text-[#45B7AF] tracking-[0.4em] leading-none mt-1">Kulinarik in Musterhausen</p>
+            <h1 className="text-2xl font-black tracking-tighter leading-none text-[#16332C]">Restaurant Max</h1>
+            <p className="text-[10px] uppercase font-black text-[#C5A059] tracking-[0.4em] leading-none mt-1">Kulinarik & Gemütlichkeit</p>
           </div>
         </Link>
 
@@ -51,21 +51,21 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-xs font-black uppercase tracking-widest text-[#2D3436] hover:text-[#FF7E67] transition-all relative group flex items-center gap-1.5"
+                className="text-xs font-black uppercase tracking-widest text-[#16332C] hover:text-[#C5A059] transition-all relative group flex items-center gap-1.5"
               >
                 {link.name}
-                <Sparkles className="w-3 h-3 text-[#FFD93D] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Star className="w-3 h-3 text-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity fill-current" />
               </a>
             ))}
           </div>
-          <Button asChild className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-full px-10 py-7 text-sm font-black uppercase tracking-widest shadow-2xl shadow-[#FF7E67]/20 border-none transition-all hover:scale-105 active:scale-95">
+          <Button asChild className="bg-[#16332C] hover:bg-[#1E3A34] text-white rounded-full px-10 py-7 text-sm font-black uppercase tracking-widest shadow-2xl shadow-[#16332C]/20 border-none transition-all hover:scale-105 active:scale-95">
             <a href="#reservation">Tisch reservieren</a>
           </Button>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden text-[#2D3436] p-3 bg-white/50 rounded-2xl backdrop-blur-sm shadow-xl"
+          className="lg:hidden text-[#16332C] p-3 bg-white/50 rounded-2xl backdrop-blur-sm shadow-xl"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-expanded={isMobileMenuOpen}
           aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
@@ -76,19 +76,19 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-[#2D3436]/5 p-10 flex flex-col gap-8 shadow-2xl animate-in slide-in-from-top-6 duration-500 rounded-b-[48px]">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#FDF8F1] border-b border-[#16332C]/5 p-10 flex flex-col gap-8 shadow-2xl animate-in slide-in-from-top-6 duration-500 rounded-b-[48px]">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-2xl font-black text-[#2D3436] uppercase tracking-widest border-b-4 border-[#FAF9F6] pb-6 last:border-0 hover:text-[#FF7E67] transition-all flex items-center justify-between"
+              className="text-2xl font-black text-[#16332C] uppercase tracking-widest border-b-4 border-[#FAF9F6] pb-6 last:border-0 hover:text-[#C5A059] transition-all flex items-center justify-between"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
-              <Heart className="text-[#FF7E67] w-8 h-8" />
+              <Heart className="text-[#C5A059] w-8 h-8 fill-current" />
             </a>
           ))}
-          <Button asChild className="bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-[32px] w-full py-10 text-xl font-black uppercase tracking-widest shadow-2xl shadow-[#FF7E67]/30 border-none mt-4">
+          <Button asChild className="bg-[#16332C] hover:bg-[#1E3A34] text-white rounded-[32px] w-full py-10 text-xl font-black uppercase tracking-widest shadow-2xl shadow-[#16332C]/30 border-none mt-4">
             <a href="#reservation" onClick={() => setIsMobileMenuOpen(false)}>Tisch reservieren</a>
           </Button>
         </div>
