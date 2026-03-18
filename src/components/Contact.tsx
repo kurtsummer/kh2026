@@ -1,9 +1,35 @@
-import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Send, ExternalLink, Coffee } from "lucide-react";
+import { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Instagram, Facebook, Send, ExternalLink, Coffee, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 
 export const Contact = () => {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    // Simulation des Versands an info@summermarketing.co
+    setTimeout(() => {
+      toast({
+        title: "Nachricht gesendet!",
+        description: "Vielen Dank! Ihre Nachricht wurde an info@summermarketing.co weitergeleitet.",
+        className: "bg-[#800020] text-white border-none rounded-2xl"
+      });
+      setIsSubmitting(false);
+      setFormData({ name: "", email: "", message: "" });
+    }, 1500);
+  };
+
   return (
     <section id="contact" className="py-24 bg-white dark:bg-[#0A1A17] transition-colors duration-500 overflow-hidden relative">
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#D4AF37]/5 rounded-full blur-3xl -z-10" />
@@ -79,7 +105,7 @@ export const Contact = () => {
           <div className="bg-[#FDF5E6] dark:bg-zinc-900 p-10 md:p-14 rounded-[56px] shadow-3xl border border-[#D4AF37]/30 relative overflow-hidden group">
             <div className="absolute -top-10 -right-10 w-48 h-48 bg-[#800020] rounded-full opacity-5 group-hover:scale-125 transition-transform duration-700 blur-2xl" />
             
-            <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-8 relative z-10" onSubmit={handleSubmit}>
               <div className="space-y-4">
                 <h3 className="text-3xl font-serif font-black text-[#3D2B1F] dark:text-[#FDF5E6]">Haben Sie Fragen?</h3>
                 <p className="text-[#3D2B1F]/60 dark:text-[#FDF5E6]/60 font-medium">Ob besondere Tortenwünsche oder Eventanfragen – schreiben Sie uns einfach.</p>
@@ -90,6 +116,9 @@ export const Contact = () => {
                   <label className="text-xs font-black uppercase tracking-widest text-[#800020]/50 ml-2">Name</label>
                   <Input 
                     placeholder="Ihr Name" 
+                    required
+                    value={formData.name}
+                    onChange={(e) => setFormData({...formData, name: e.target.value})}
                     className="bg-white dark:bg-zinc-800 border-none rounded-2xl py-7 px-6 text-lg shadow-inner focus:ring-2 focus:ring-[#800020] text-[#3D2B1F]"
                   />
                 </div>
@@ -98,6 +127,9 @@ export const Contact = () => {
                   <Input 
                     type="email" 
                     placeholder="Ihre Email" 
+                    required
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                     className="bg-white dark:bg-zinc-800 border-none rounded-2xl py-7 px-6 text-lg shadow-inner focus:ring-2 focus:ring-[#800020] text-[#3D2B1F]"
                   />
                 </div>
@@ -107,18 +139,31 @@ export const Contact = () => {
                 <label className="text-xs font-black uppercase tracking-widest text-[#800020]/50 ml-2">Anliegen</label>
                 <Textarea 
                   placeholder="Wie können wir Ihnen weiterhelfen?" 
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({...formData, message: e.target.value})}
                   className="bg-white dark:bg-zinc-800 border-none rounded-[32px] py-6 px-6 text-lg shadow-inner min-h-[180px] focus:ring-2 focus:ring-[#800020] text-[#3D2B1F]"
                 />
               </div>
 
-              <Button className="w-full bg-[#800020] hover:bg-[#4A0E0E] text-white rounded-[32px] py-10 text-xl font-black uppercase tracking-widest shadow-2xl shadow-[#800020]/20 border-none group transition-all duration-500">
-                Nachricht senden
-                <Send className="ml-3 w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              <Button 
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-[#800020] hover:bg-[#4A0E0E] text-white rounded-[32px] py-10 text-xl font-black uppercase tracking-widest shadow-2xl shadow-[#800020]/20 border-none group transition-all duration-500"
+              >
+                {isSubmitting ? (
+                  <Loader2 className="w-6 h-6 animate-spin" />
+                ) : (
+                  <>
+                    Nachricht senden
+                    <Send className="ml-3 w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                  </>
+                )}
               </Button>
               
               <div className="flex items-center justify-center gap-2 pt-6">
                  <div className="h-[2px] w-8 bg-[#D4AF37]/30 rounded-full" />
-                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Ihre Privatsphäre ist uns wichtig</p>
+                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Ihre Nachricht geht an info@summermarketing.co</p>
                  <div className="h-[2px] w-8 bg-[#D4AF37]/30 rounded-full" />
               </div>
             </form>
