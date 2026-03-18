@@ -57,7 +57,7 @@ export const Menu = () => {
       price: "5.20€",
       category: "cakes",
       description: "Hausgemachter Ziehteig mit fruchtiger Apfelfüllung und Rosinen.",
-      image: "https://images.unsplash.com/photo-1568571780765-9276ac3b7592?q=80&w=800&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-1603532648955-0393e01ca8c6?q=80&w=800&auto=format&fit=crop",
       badge: "Handgemacht",
       icons: [<Cookie className="w-4 h-4" />]
     },
