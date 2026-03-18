@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Coffee, Star, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { ThemeToggle } from "./ThemeToggle";
+import { Menu, X, Phone, Calendar } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,86 +16,90 @@ export const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Karte", href: "/#menu" },
-    { name: "Über uns", href: "/#about" },
-    { name: "Galerie", href: "/#gallery" },
-    { name: "Reservierung", href: "/#reservation" },
-    { name: "Kontakt", href: "/#contact" },
+    { name: "Start", href: "#" },
+    { name: "Leistungen", href: "#leistungen" },
+    { name: "Über uns", href: "#ueber-uns" },
+    { name: "Sprechzeiten", href: "#sprechzeiten" },
+    { name: "Kontakt", href: "#kontakt" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4",
         isScrolled
-          ? "bg-[#FDF5E6]/95 dark:bg-[#1A0A0A]/95 backdrop-blur-md py-4 shadow-xl border-b border-[#3D2B1F]/5 dark:border-white/10"
-          : "bg-transparent py-8"
-      }`}
-      role="navigation"
-      aria-label="Hauptnavigation"
+          ? "bg-white/90 backdrop-blur-md shadow-sm py-3"
+          : "bg-transparent"
+      )}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <Link to="/" className="flex items-center group gap-4" aria-label="Café Mustermann Homepage">
-          <div className={`p-3 rounded-2xl transition-all duration-500 shadow-xl group-hover:rotate-12 group-hover:scale-110 ${isScrolled ? "bg-[#800020]" : "bg-white dark:bg-zinc-800 shadow-inner group-hover:bg-[#800020]"}`}>
-             <Coffee className={`w-7 h-7 transition-colors duration-500 ${isScrolled ? "text-[#D4AF37]" : "text-[#800020] group-hover:text-[#D4AF37]"}`} />
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white">
+            <span className="font-bold text-xl">+</span>
           </div>
           <div>
-            <h1 className="text-2xl font-serif font-black tracking-tight leading-none text-[#3D2B1F] dark:text-[#FDF5E6]">Café Mustermann</h1>
-            <p className="text-[10px] uppercase font-black text-[#D4AF37] tracking-[0.4em] leading-none mt-1">Wiener Kaffeehauskultur</p>
-          </div>
-        </Link>
-
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-12">
-          <div className="flex items-center gap-10">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-xs font-black uppercase tracking-widest text-[#3D2B1F] dark:text-[#FDF5E6]/80 dark:hover:text-[#D4AF37] hover:text-[#800020] transition-all relative group flex items-center gap-1.5"
-              >
-                {link.name}
-                <Star className="w-3 h-3 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity fill-current text-[#D4AF37]" />
-              </a>
-            ))}
-          </div>
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            <Button asChild className="bg-[#800020] dark:bg-[#D4AF37] hover:bg-[#4A0E0E] dark:hover:bg-[#E5C35E] text-white dark:text-[#1A0A0A] rounded-full px-10 py-7 text-sm font-black uppercase tracking-widest shadow-2xl shadow-[#800020]/20 border-none transition-all hover:scale-105 active:scale-95">
-              <a href="/#reservation">Tisch reservieren</a>
-            </Button>
+            <h1 className="font-bold text-xl text-teal-900 leading-none">
+              Praxis Mustermann
+            </h1>
+            <p className="text-xs text-teal-700 font-medium">Hausarztpraxis</p>
           </div>
         </div>
 
-        {/* Mobile Toggle */}
-        <div className="flex lg:hidden items-center gap-4">
-          <ThemeToggle />
-          <button
-            className="text-[#3D2B1F] dark:text-[#FDF5E6] p-3 bg-white/50 dark:bg-zinc-800/50 rounded-2xl backdrop-blur-sm shadow-xl"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-expanded={isMobileMenuOpen}
-            aria-label={isMobileMenuOpen ? "Menü schließen" : "Menü öffnen"}
-          >
-            {isMobileMenuOpen ? <X size={28} aria-hidden="true" /> : <Menu size={28} aria-hidden="true" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden absolute top-full left-0 right-0 bg-[#FDF5E6] dark:bg-[#1A0A0A] border-b border-[#3D2B1F]/5 dark:border-white/10 p-10 flex flex-col gap-8 shadow-2xl animate-in slide-in-from-top-6 duration-500 rounded-b-[48px]">
+        {/* Desktop Menu */}
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
-              className="text-2xl font-serif font-black text-[#3D2B1F] dark:text-[#FDF5E6] uppercase tracking-widest border-b-4 border-[#3D2B1F]/5 dark:border-white/5 pb-6 last:border-0 hover:text-[#800020] transition-all flex items-center justify-between"
+              className="text-sm font-medium text-teal-900 hover:text-teal-600 transition-colors"
+            >
+              {link.name}
+            </a>
+          ))}
+          <Button
+            className="bg-teal-600 hover:bg-teal-700 text-white rounded-full px-6 gap-2"
+            onClick={() => {
+              const element = document.getElementById('kontakt');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <Calendar className="w-4 h-4" />
+            Termin buchen
+          </Button>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className="md:hidden text-teal-900"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          {isMobileMenuOpen ? <X /> : <Menu />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-teal-50 p-6 flex flex-col gap-4 animate-in slide-in-from-top duration-300">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-lg font-medium text-teal-900"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               {link.name}
-              <Heart className="text-[#D4AF37] w-8 h-8 fill-current text-[#D4AF37]" />
             </a>
           ))}
-          <Button asChild className="bg-[#800020] dark:bg-[#D4AF37] hover:bg-[#4A0E0E] dark:hover:bg-[#E5C35E] text-white dark:text-[#1A0A0A] rounded-[32px] w-full py-10 text-xl font-black uppercase tracking-widest shadow-2xl shadow-[#800020]/30 border-none mt-4">
-            <a href="/#reservation" onClick={() => setIsMobileMenuOpen(false)}>Tisch reservieren</a>
+          <Button
+            className="bg-teal-600 hover:bg-teal-700 text-white rounded-full w-full gap-2"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              const element = document.getElementById('kontakt');
+              element?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <Calendar className="w-4 h-4" />
+            Termin buchen
           </Button>
         </div>
       )}

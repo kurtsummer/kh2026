@@ -1,115 +1,87 @@
-import { Coffee, Instagram, Facebook, Mail, MapPin, Phone, Heart, Star, Send } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const footerLinks = [
-    { name: "Karte", href: "/#menu" },
-    { name: "Über uns", href: "/#about" },
-    { name: "Galerie", href: "/#gallery" },
-    { name: "Reservierung", href: "/#reservation" },
-    { name: "Kontakt", href: "/#contact" },
-  ];
-
   return (
-    <footer className="bg-[#1A0A0A] text-white py-24 relative overflow-hidden transition-colors duration-500">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D4AF37]/10 rounded-full blur-[120px] -z-0 translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#800020]/10 rounded-full blur-[100px] -z-0 -translate-x-1/2 translate-y-1/2" />
-
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-16 lg:gap-12 mb-20">
-          <div className="space-y-8 col-span-1 lg:col-span-1">
-             <Link to="/" className="flex items-center group gap-4">
-              <div className="p-3 bg-[#800020] rounded-2xl transition-all duration-500 shadow-xl group-hover:rotate-12 group-hover:scale-110 border border-[#D4AF37]/40">
-                 <Coffee className="w-7 h-7 text-[#D4AF37]" />
+    <footer className="bg-slate-50 border-t border-slate-100 pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+          <div className="space-y-6">
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 bg-teal-600 rounded-xl flex items-center justify-center text-white">
+                <span className="font-bold text-xl">+</span>
               </div>
               <div>
-                <h2 className="text-2xl font-serif font-black tracking-tighter leading-none">Café Mustermann</h2>
-                <p className="text-[10px] uppercase font-black text-[#D4AF37] tracking-[0.4em] leading-none mt-1">Echte Tradition seit 2009</p>
+                <h1 className="font-bold text-xl text-teal-900 leading-none">
+                  Praxis Mustermann
+                </h1>
+                <p className="text-xs text-teal-700 font-medium">Hausarztpraxis</p>
               </div>
-            </Link>
-            <p className="text-white/60 font-medium leading-relaxed max-w-sm font-serif italic">
-              Wir pflegen die Wiener Kaffeehauskultur mit Hingabe und Leidenschaft. Treten Sie ein in eine world voller Genuss und Beständigkeit.
+            </div>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              Ihre Praxis für Allgemeinmedizin in Musterhausen. Wir begleiten Sie und Ihre Familie 
+              mit Kompetenz und Herz durch alle Lebensphasen.
             </p>
             <div className="flex gap-4">
-              {[Instagram, Facebook, Mail].map((Icon, i) => (
-                <button
-                  key={i}
-                  className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#800020] hover:border-[#D4AF37] transition-all duration-300 shadow-xl"
-                  aria-label={`Social Icon ${i + 1}`}
-                >
-                  <Icon className="w-5 h-5" />
-                </button>
-              ))}
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:text-teal-600 hover:border-teal-600 transition-all">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:text-teal-600 hover:border-teal-600 transition-all">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 hover:text-teal-600 hover:border-teal-600 transition-all">
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
 
-          <div className="space-y-8">
-            <h3 className="text-xl font-black uppercase tracking-widest text-[#D4AF37]">Hausmenü</h3>
-            <nav className="flex flex-col gap-4">
-              {footerLinks.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-white/70 hover:text-[#D4AF37] transition-colors font-bold flex items-center gap-2 group"
-                >
-                  <Star className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity fill-current text-[#D4AF37]" />
-                  {item.name}
-                </a>
-              ))}
-            </nav>
+          <div>
+            <h4 className="font-bold text-teal-950 mb-6">Navigation</h4>
+            <ul className="space-y-4">
+              <li><a href="#" className="text-slate-500 hover:text-teal-600 text-sm">Startseite</a></li>
+              <li><a href="#leistungen" className="text-slate-500 hover:text-teal-600 text-sm">Leistungen</a></li>
+              <li><a href="#ueber-uns" className="text-slate-500 hover:text-teal-600 text-sm">Über uns</a></li>
+              <li><a href="#sprechzeiten" className="text-slate-500 hover:text-teal-600 text-sm">Sprechzeiten</a></li>
+              <li><a href="#kontakt" className="text-slate-500 hover:text-teal-600 text-sm">Kontakt</a></li>
+            </ul>
           </div>
 
-          <div className="space-y-8">
-            <h3 className="text-xl font-black uppercase tracking-widest text-[#D4AF37]">Anfahrt & Kontakt</h3>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <MapPin className="w-6 h-6 text-[#D4AF37] shrink-0" />
-                <p className="text-white/70 font-bold font-serif">Musterstraße 123<br />12345 Musterhausen</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Phone className="w-6 h-6 text-[#D4AF37] shrink-0" />
-                <p className="text-white/70 font-bold font-serif">+49 123 456789</p>
-              </div>
-              <div className="flex items-center gap-4">
-                <Mail className="w-6 h-6 text-[#D4AF37] shrink-0" />
-                <p className="text-white/70 font-bold font-serif">hallo@cafe-mustermann.de</p>
-              </div>
-            </div>
+          <div>
+            <h4 className="font-bold text-teal-950 mb-6">Rechtliches</h4>
+            <ul className="space-y-4">
+              <li><Link to="/impressum" className="text-slate-500 hover:text-teal-600 text-sm">Impressum</Link></li>
+              <li><Link to="/datenschutz" className="text-slate-500 hover:text-teal-600 text-sm">Datenschutz</Link></li>
+              <li><Link to="/agb" className="text-slate-500 hover:text-teal-600 text-sm">AGB</Link></li>
+            </ul>
           </div>
 
-          <div className="space-y-8">
-            <h3 className="text-xl font-black uppercase tracking-widest text-[#D4AF37]">Depesche</h3>
-            <p className="text-white/70 font-medium leading-relaxed font-serif italic">
-              Abonnieren Sie unsere Neuigkeiten und Einladungen zu besonderen Kaffeehaus-Abenden.
+          <div>
+            <h4 className="font-bold text-teal-950 mb-6">Notfall</h4>
+            <p className="text-slate-500 text-sm mb-4">
+              Bei akuten Notfällen außerhalb unserer Öffnungszeiten:
             </p>
-            <div className="relative group">
-               <input 
-                type="email" 
-                placeholder="Ihre Email Adresse" 
-                className="w-full bg-white/5 border border-white/10 rounded-2xl py-5 px-6 text-white placeholder:text-white/30 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] transition-all"
-               />
-               <button className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#800020] rounded-xl flex items-center justify-center text-white hover:scale-105 transition-transform border border-[#D4AF37]/40 shadow-xl">
-                  <Send className="w-5 h-5" />
-               </button>
+            <div className="space-y-3">
+              <div className="p-3 bg-white border border-rose-100 rounded-xl">
+                <p className="text-xs text-slate-400 uppercase font-bold mb-1">Bereitschaftsdienst</p>
+                <p className="text-rose-600 font-bold">116 117</p>
+              </div>
+              <div className="p-3 bg-white border border-rose-100 rounded-xl">
+                <p className="text-xs text-slate-400 uppercase font-bold mb-1">Notruf</p>
+                <p className="text-rose-600 font-bold">112</p>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-2 text-white/40 font-bold text-sm">
-            <span>&copy; {currentYear} Café Mustermann</span>
-            <div className="w-1 h-1 bg-white/20 rounded-full" />
-            <span>Klassisches Kaffeehaus</span>
-          </div>
-          
-          <div className="flex gap-8">
-            <Link to="/impressum" className="text-sm font-bold text-white/40 hover:text-[#D4AF37] transition-colors">Impressum</Link>
-            <Link to="/datenschutz" className="text-sm font-bold text-white/40 hover:text-[#D4AF37] transition-colors">Datenschutz</Link>
-            <Link to="/agb" className="text-sm font-bold text-white/40 hover:text-[#D4AF37] transition-colors">AGB</Link>
-          </div>
+        <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-slate-400 text-sm">
+            © {currentYear} Hausarztpraxis Max Mustermann. Alle Rechte vorbehalten.
+          </p>
+          <p className="text-slate-400 text-xs">
+            Design & Umsetzung durch Tech Buddy
+          </p>
         </div>
       </div>
     </footer>

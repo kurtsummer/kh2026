@@ -1,64 +1,79 @@
-import { MessageSquare, Share2, Globe, Settings2 } from "lucide-react";
+import { 
+  Stethoscope, 
+  Syringe, 
+  Activity, 
+  Heart, 
+  Thermometer, 
+  ClipboardCheck 
+} from "lucide-react";
 
-export const ServicesSection = () => {
-  const services = [
-    {
-      title: "KI-Marketing-Beratung",
-      description: "Klare Strategien und konkrete Empfehlungen, damit Sie wissen, wo KI in Ihrem Marketing wirklich Sinn macht.",
-      icon: <MessageSquare className="w-6 h-6 text-[#6D5EF5]" />,
-    },
-    {
-      title: "Social Media mit KI",
-      description: "Schneller zu besseren Inhalten, effizienteren Prozessen und einer professionellen Präsenz auf den richtigen Kanälen.",
-      icon: <Share2 className="w-6 h-6 text-[#6D5EF5]" />,
-    },
-    {
-      title: "Webseiten mit KI",
-      description: "Moderne Webseiten, die Vertrauen aufbauen, Ihre Leistungen klar vermitteln und mehr Anfragen möglich machen.",
-      icon: <Globe className="w-6 h-6 text-[#6D5EF5]" />,
-    },
-    {
-      title: "Marketing-Automatisierung",
-      description: "Weniger manuelle Aufgaben, bessere Abläufe und mehr Zeit für das Wesentliche in Ihrem Unternehmen.",
-      icon: <Settings2 className="w-6 h-6 text-[#6D5EF5]" />,
-    },
-  ];
+const services = [
+  {
+    title: "Allgemeinmedizin",
+    description: "Umfassende Betreuung bei akuten und chronischen Erkrankungen.",
+    icon: Stethoscope,
+    color: "bg-blue-50 text-blue-600"
+  },
+  {
+    title: "Vorsorge",
+    description: "Regelmäßige Check-ups ab 35, Hautkrebs-Screening und Jugenduntersuchungen.",
+    icon: ClipboardCheck,
+    color: "bg-teal-50 text-teal-600"
+  },
+  {
+    title: "Impfungen",
+    description: "Reiseberatung und Durchführung aller standardmäßigen Schutzimpfungen.",
+    icon: Syringe,
+    color: "bg-purple-50 text-purple-600"
+  },
+  {
+    title: "EKG & Lungenfunktion",
+    description: "Moderne Diagnostik zur Früherkennung von Herz- und Lungenerkrankungen.",
+    icon: Activity,
+    color: "bg-rose-50 text-rose-600"
+  },
+  {
+    title: "Laboruntersuchungen",
+    description: "Tägliche Blutentnahmen und schnelle Auswertung wichtiger Parameter.",
+    icon: Thermometer,
+    color: "bg-orange-50 text-orange-600"
+  },
+  {
+    title: "DMP Programme",
+    description: "Strukturierte Behandlungsprogramme für chronisch Kranke (Diabetes, Asthma, COPD).",
+    icon: Heart,
+    color: "bg-emerald-50 text-emerald-600"
+  }
+];
 
+export const Services = () => {
   return (
-    <section id="leistungen" className="bg-[#F8F9FC] py-24 md:py-32">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-20">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#1F2A44] mb-8 leading-tight">
-            KI-Marketing, das verständlich bleibt und Ergebnisse bringt.
-          </h2>
-          <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed">
-            Ich unterstütze Unternehmen dabei, KI nicht nur zu verstehen, sondern gezielt im Marketing einzusetzen — mit persönlicher Begleitung, professioneller Umsetzung und einem klaren Fokus auf Nutzen statt Technik.
+    <section id="leistungen" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-teal-600 font-bold tracking-wider uppercase text-sm mb-3">Unsere Leistungen</h2>
+          <p className="text-4xl md:text-5xl font-bold text-teal-950 mb-6">
+            Kompetente Medizin für die ganze Familie
+          </p>
+          <p className="text-teal-800/60 max-w-2xl mx-auto text-lg">
+            Wir bieten Ihnen ein breites Spektrum an medizinischen Leistungen, um Ihre Gesundheit 
+            langfristig zu erhalten und zu fördern.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div 
               key={index}
-              className="group bg-white p-8 rounded-[2rem] border border-slate-100 shadow-sm hover:shadow-xl hover:shadow-[#1F2A44]/5 hover:border-[#6D5EF5]/20 transition-all duration-500 flex flex-col items-start text-left"
+              className="group p-8 rounded-[2rem] bg-slate-50 border border-transparent hover:border-teal-100 hover:bg-white hover:shadow-xl transition-all duration-300"
             >
-              <div className="w-12 h-12 rounded-xl bg-[#6D5EF5]/5 flex items-center justify-center mb-8 group-hover:bg-[#6D5EF5]/10 transition-colors duration-300">
-                {service.icon}
+              <div className={`w-14 h-14 rounded-2xl ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <service.icon className="w-7 h-7" />
               </div>
-              
-              <h3 className="text-xl font-bold text-[#1F2A44] mb-4 group-hover:text-[#6D5EF5] transition-colors duration-300">
-                {service.title}
-              </h3>
-              
-              <p className="text-slate-500 text-sm md:text-base leading-relaxed font-medium">
+              <h3 className="text-xl font-bold text-teal-950 mb-3">{service.title}</h3>
+              <p className="text-teal-800/70 leading-relaxed">
                 {service.description}
               </p>
-              
-              <div className="mt-auto pt-8">
-                <div className="h-1 w-8 bg-[#6D5EF5]/20 rounded-full group-hover:w-16 transition-all duration-500"></div>
-              </div>
             </div>
           ))}
         </div>
