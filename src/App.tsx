@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import Impressum from "./pages/Impressum";
 import Datenschutz from "./pages/Datenschutz";
@@ -34,22 +35,24 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <BrowserRouter>
-        <ScrollToHash />
-        <CookieBanner />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/impressum" element={<Impressum />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />
-          <Route path="/agb" element={<AGB />} />
-          <Route path="/generator" element={<Generator />} />
-          <Route path="/plan" element={<Plan />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+      <TooltipProvider>
+        <Toaster />
+        <BrowserRouter>
+          <ScrollToHash />
+          <CookieBanner />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/impressum" element={<Impressum />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
+            <Route path="/agb" element={<AGB />} />
+            <Route path="/generator" element={<Generator />} />
+            <Route path="/plan" element={<Plan />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 

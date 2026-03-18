@@ -18,13 +18,13 @@ export function ThemeToggle() {
     <Button
       variant="ghost"
       size="icon"
-      className="rounded-xl w-10 h-10 bg-white/50 dark:bg-zinc-800/50 hover:bg-primary/10 hover:text-primary transition-all duration-300"
+      className="rounded-xl w-10 h-10 bg-[#16332C]/5 dark:bg-[#C5A059]/10 hover:bg-[#C5A059]/20 hover:text-[#C5A059] transition-all duration-300 border border-[#16332C]/10 dark:border-[#C5A059]/20"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (
-        <Sun className="h-5 w-5 transition-all" />
+        <Sun className="h-5 w-5 transition-all text-[#C5A059]" />
       ) : (
-        <Moon className="h-5 w-5 transition-all" />
+        <Moon className="h-5 w-5 transition-all text-[#16332C]" />
       )}
       <span className="sr-only">Design umschalten</span>
     </Button>

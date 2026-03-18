@@ -158,17 +158,17 @@ export const Menu = () => {
   ];
 
   return (
-    <section id="menu" className="py-24 bg-[#FDF8F1] relative overflow-hidden">
+    <section id="menu" className="py-24 bg-[#FDF8F1] dark:bg-[#0A1A17] relative overflow-hidden transition-colors duration-500">
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-[#16332C]/5 rounded-full blur-[80px] -z-1" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#C5A059]/5 rounded-full blur-[100px] -z-1" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
           <h2 className="text-[#C5A059] font-black tracking-widest uppercase text-sm">Unsere Speisekarte</h2>
-          <h3 className="text-4xl md:text-6xl font-black text-[#16332C] leading-tight">
+          <h3 className="text-4xl md:text-6xl font-black text-[#16332C] dark:text-[#FDF8F1] leading-tight">
             Ehrliche Küche, <span className="text-[#C5A059]">echter Geschmack</span>.
           </h3>
-          <p className="text-lg text-[#16332C]/60 font-medium max-w-xl mx-auto">
+          <p className="text-lg text-[#16332C]/60 dark:text-[#FDF8F1]/60 font-medium max-w-xl mx-auto">
             Wir verwenden ausschließlich frische Produkte aus der Region Musterhausen. Entdecken Sie unsere saisonalen Spezialitäten.
           </p>
           <div className="pt-4">
@@ -186,31 +186,31 @@ export const Menu = () => {
           {categories.map((cat, index) => (
             <div
               key={cat.title}
-              className={`group ${cat.bg} p-8 rounded-[48px] border-2 border-transparent hover:border-white hover:bg-white hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 flex flex-col`}
+              className={`group ${cat.bg} dark:bg-zinc-800/40 p-8 rounded-[48px] border-2 border-transparent hover:border-white dark:hover:border-[#C5A059]/20 hover:bg-white dark:hover:bg-zinc-800 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 flex flex-col`}
             >
               <div className={`${cat.color} text-white p-5 rounded-[32px] mb-8 shadow-lg group-hover:rotate-6 transition-transform w-fit mx-auto`}>
                 {cat.icon}
               </div>
-              <h4 className="text-2xl font-black text-[#16332C] mb-2 text-center">{cat.title}</h4>
-              <p className="text-[#16332C]/60 text-sm mb-8 font-medium leading-relaxed text-center">{cat.description}</p>
+              <h4 className="text-2xl font-black text-[#16332C] dark:text-[#FDF8F1] mb-2 text-center">{cat.title}</h4>
+              <p className="text-[#16332C]/60 dark:text-[#FDF8F1]/60 text-sm mb-8 font-medium leading-relaxed text-center">{cat.description}</p>
               
               <div className="space-y-6 flex-grow">
                 {cat.items.slice(0, 2).map((item) => (
                   <div key={item.name} className="space-y-1">
                     <div className="flex justify-between items-baseline gap-2">
-                      <span className="font-black text-[#16332C] leading-tight">{item.name}</span>
+                      <span className="font-black text-[#16332C] dark:text-[#FDF8F1] leading-tight">{item.name}</span>
                       <span className="text-[#C5A059] font-black">{item.price}</span>
                     </div>
-                    <p className="text-xs text-[#16332C]/50 font-bold">{item.detail}</p>
+                    <p className="text-xs text-[#16332C]/50 dark:text-[#FDF8F1]/40 font-bold">{item.detail}</p>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-8 mt-8 border-t border-[#16332C]/5 w-full">
+              <div className="pt-8 mt-8 border-t border-[#16332C]/5 dark:border-white/10 w-full">
                 <Button 
                   onClick={() => setSelectedCategory(cat)}
                   variant="ghost" 
-                  className="text-[#16332C] hover:bg-[#16332C]/5 rounded-full w-full py-6 font-bold flex items-center gap-2 group/btn"
+                  className="text-[#16332C] dark:text-[#FDF8F1] hover:bg-[#16332C]/5 dark:hover:bg-white/5 rounded-full w-full py-6 font-bold flex items-center gap-2 group/btn"
                 >
                   <Info className={`w-4 h-4 transition-transform group-hover/btn:scale-125 text-[#C5A059]`} />
                   Mehr Details
@@ -222,20 +222,20 @@ export const Menu = () => {
 
         {/* Categories Detail Dialog */}
         <Dialog open={!!selectedCategory} onOpenChange={(open) => !open && setSelectedCategory(null)}>
-          <DialogContent className="max-w-3xl w-[95vw] max-h-[90vh] p-0 overflow-hidden bg-[#FDF8F1] rounded-[48px] border-none shadow-2xl">
+          <DialogContent className="max-w-3xl w-[95vw] max-h-[90vh] p-0 overflow-hidden bg-[#FDF8F1] dark:bg-zinc-900 rounded-[48px] border-none shadow-2xl">
             <DialogHeader className="p-10 pb-0 relative">
               <div className="flex items-center gap-6 mb-4">
                 <div className={`${selectedCategory?.color} text-white p-4 rounded-3xl shadow-lg`}>
                   {selectedCategory?.icon}
                 </div>
                 <div>
-                  <DialogTitle className="text-3xl font-black text-[#16332C]">{selectedCategory?.title}</DialogTitle>
-                  <DialogDescription className="text-lg text-[#16332C]/60 font-medium">
+                  <DialogTitle className="text-3xl font-black text-[#16332C] dark:text-[#FDF8F1]">{selectedCategory?.title}</DialogTitle>
+                  <DialogDescription className="text-lg text-[#16332C]/60 dark:text-[#FDF8F1]/60 font-medium">
                     {selectedCategory?.longDescription}
                   </DialogDescription>
                 </div>
               </div>
-              <DialogClose className="absolute top-10 right-10 p-3 bg-white text-[#16332C] rounded-2xl hover:bg-[#C5A059] hover:text-white transition-all shadow-sm">
+              <DialogClose className="absolute top-10 right-10 p-3 bg-white dark:bg-zinc-800 text-[#16332C] dark:text-[#FDF8F1] rounded-2xl hover:bg-[#C5A059] hover:text-white transition-all shadow-sm">
                 <X className="w-6 h-6" />
               </DialogClose>
             </DialogHeader>
@@ -243,23 +243,23 @@ export const Menu = () => {
             <div className="p-10 pt-6 overflow-y-auto">
               <div className="grid gap-8">
                 {selectedCategory?.items.map((item, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-[32px] group hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#C5A059]/20">
+                  <div key={idx} className="bg-white dark:bg-zinc-800/60 p-8 rounded-[32px] group hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-[#C5A059]/20">
                     <div className="flex justify-between items-start mb-3">
                       <div>
-                        <h5 className="text-xl font-black text-[#16332C] group-hover:text-[#C5A059] transition-colors">{item.name}</h5>
+                        <h5 className="text-xl font-black text-[#16332C] dark:text-[#FDF8F1] group-hover:text-[#C5A059] transition-colors">{item.name}</h5>
                         <p className="text-sm font-black text-[#C5A059] uppercase tracking-wider mt-1">{item.detail}</p>
                       </div>
-                      <span className="text-2xl font-black text-[#16332C]">{item.price}</span>
+                      <span className="text-2xl font-black text-[#16332C] dark:text-[#FDF8F1]">{item.price}</span>
                     </div>
-                    <p className="text-[#16332C]/70 leading-relaxed font-medium mb-4">
+                    <p className="text-[#16332C]/70 dark:text-[#FDF8F1]/70 leading-relaxed font-medium mb-4">
                       {item.longDetail}
                     </p>
                     {item.allergens && (
-                      <div className="flex items-center gap-2 pt-4 border-t border-[#16332C]/5">
-                        <span className="text-[10px] font-black text-[#16332C]/40 uppercase tracking-widest">Allergene:</span>
+                      <div className="flex items-center gap-2 pt-4 border-t border-[#16332C]/5 dark:border-white/10">
+                        <span className="text-[10px] font-black text-[#16332C]/40 dark:text-[#FDF8F1]/40 uppercase tracking-widest">Allergene:</span>
                         <div className="flex gap-2">
                           {item.allergens.map((a) => (
-                            <span key={a} className="text-[10px] font-black bg-[#16332C]/5 text-[#16332C]/60 px-2 py-0.5 rounded-md">
+                            <span key={a} className="text-[10px] font-black bg-[#16332C]/5 dark:bg-white/5 text-[#16332C]/60 dark:text-[#FDF8F1]/60 px-2 py-0.5 rounded-md">
                               {a}
                             </span>
                           ))}
@@ -270,14 +270,14 @@ export const Menu = () => {
                 ))}
               </div>
               
-              <div className="mt-12 text-center bg-white/50 p-8 rounded-[40px] border-2 border-dashed border-[#C5A059]/30">
-                <p className="text-[#16332C] font-bold flex items-center justify-center gap-2">
+              <div className="mt-12 text-center bg-white/50 dark:bg-white/5 p-8 rounded-[40px] border-2 border-dashed border-[#C5A059]/30">
+                <p className="text-[#16332C] dark:text-[#FDF8F1] font-bold flex items-center justify-center gap-2">
                   <Heart className="w-5 h-5 text-[#C5A059] fill-current" />
                   Guten Appetit wünscht Max & sein Team!
                 </p>
                 <Button 
                    asChild
-                   className="mt-6 bg-[#16332C] hover:bg-[#1E3A34] text-white rounded-full px-10 py-6 font-black border-none shadow-lg"
+                   className="mt-6 bg-[#16332C] dark:bg-[#C5A059] hover:bg-[#1E3A34] dark:hover:bg-[#D4B36D] text-white dark:text-[#16332C] rounded-full px-10 py-6 font-black border-none shadow-lg"
                 >
                    <a href="#reservation" onClick={() => setSelectedCategory(null)}>Diesen Tisch reservieren</a>
                 </Button>
@@ -286,19 +286,19 @@ export const Menu = () => {
           </DialogContent>
         </Dialog>
 
-        <div className="mt-24 text-center bg-[#16332C] p-16 rounded-[60px] text-white shadow-2xl relative overflow-hidden group">
-           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-[100px] -z-1 group-hover:scale-125 transition-transform duration-1000" />
-           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#C5A059]/10 rounded-full blur-[100px] -z-1" />
+        <div className="mt-24 text-center bg-[#16332C] dark:bg-[#C5A059] p-16 rounded-[60px] text-white dark:text-[#16332C] shadow-2xl relative overflow-hidden group transition-colors duration-500">
+           <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 dark:bg-black/5 rounded-full blur-[100px] -z-1 group-hover:scale-125 transition-transform duration-1000" />
+           <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-[#C5A059]/10 dark:bg-black/5 rounded-full blur-[100px] -z-1" />
            
            <div className="relative z-10 space-y-8">
-              <div className="bg-white/20 p-4 rounded-3xl w-fit mx-auto animate-bounce">
-                <Star className="w-10 h-10 text-[#C5A059] fill-current" />
+              <div className="bg-white/20 dark:bg-black/10 p-4 rounded-3xl w-fit mx-auto animate-bounce">
+                <Star className="w-10 h-10 text-[#C5A059] dark:text-[#16332C] fill-current" />
               </div>
               <h4 className="text-3xl md:text-5xl font-black">Besondere Wünsche?</h4>
-              <p className="text-white/90 text-xl font-medium max-w-2xl mx-auto">
+              <p className="text-white/90 dark:text-[#16332C]/90 text-xl font-medium max-w-2xl mx-auto">
                 Ob vegan, glutenfrei oder spezielle Allergien – sprechen Sie uns einfach an. Wir kreieren gerne ein individuelles Gericht für Sie!
               </p>
-              <Button asChild className="bg-[#C5A059] hover:bg-[#D4B36D] text-[#16332C] rounded-full px-12 py-8 text-xl font-black shadow-2xl border-none transition-all hover:scale-105 active:scale-95">
+              <Button asChild className="bg-[#C5A059] dark:bg-[#16332C] hover:bg-[#D4B36D] dark:hover:bg-[#1E3A34] text-[#16332C] dark:text-white rounded-full px-12 py-8 text-xl font-black shadow-2xl border-none transition-all hover:scale-105 active:scale-95">
                  <a href="#contact">Fragen stellen</a>
               </Button>
            </div>

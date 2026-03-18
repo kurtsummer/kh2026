@@ -32,9 +32,9 @@ export const Gallery = () => {
     { id: 1, category: "Speisen", image: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=2000&auto=format&fit=crop", title: "Zartes Rindersteak", color: "bg-[#16332C]" },
     { id: 2, category: "Ambiente", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2000&auto=format&fit=crop", title: "Unser gemütlicher Gastraum", color: "bg-[#C5A059]" },
     { id: 3, category: "Getränke", image: "https://images.unsplash.com/photo-1510626176961-4b57d4fbad03?q=80&w=2000&auto=format&fit=crop", title: "Frische Cocktails", color: "bg-[#5C4033]" },
-    { id: 4, category: "Speisen", image: "https://images.unsplash.com/photo-1473093226795-af9932fe5855?q=80&w=2000&auto=format&fit=crop", title: "Mediterrane Pasta", color: "bg-[#16332C]" },
+    { id: 4, category: "Speisen", image: "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?q=80&w=2000&auto=format&fit=crop", title: "Mediterrane Pasta", color: "bg-[#16332C]" },
     { id: 5, category: "Küche", image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=2070&auto=format&fit=crop", title: "Frische Zutaten", color: "bg-[#C5A059]" },
-    { id: 6, category: "Ambiente", image: "https://images.unsplash.com/photo-1550966841-3ee2964680d8?q=80&w=2000&auto=format&fit=crop", title: "Abendstimmung", color: "bg-[#5C4033]" },
+    { id: 6, category: "Ambiente", image: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?q=80&w=2000&auto=format&fit=crop", title: "Abendstimmung", color: "bg-[#5C4033]" },
     { id: 7, category: "Getränke", image: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=2000&auto=format&fit=crop", title: "Ausgewählte Weine", color: "bg-[#16332C]" },
     { id: 8, category: "Speisen", image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=2000&auto=format&fit=crop", title: "Frische Holzofenpizza", color: "bg-[#C5A059]" },
   ];
@@ -44,7 +44,7 @@ export const Gallery = () => {
     : items.filter(item => item.category === activeFilter);
 
   return (
-    <section id="gallery" className="py-24 bg-white relative overflow-hidden">
+    <section id="gallery" className="py-24 bg-white dark:bg-[#16332C]/10 relative overflow-hidden transition-colors duration-500">
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#C5A059]/5 rounded-full blur-[100px] -z-1" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#16332C]/5 rounded-full blur-[100px] -z-1" />
 
@@ -52,8 +52,8 @@ export const Gallery = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16">
           <div className="space-y-6">
              <h2 className="text-[#C5A059] font-black tracking-widest uppercase text-sm">Galerie</h2>
-             <h3 className="text-4xl md:text-6xl font-black text-[#16332C] leading-tight">Ein Blick in <span className="text-[#C5A059]">unsere Welt</span>.</h3>
-             <p className="text-xl text-[#16332C]/60 font-medium max-w-xl">
+             <h3 className="text-4xl md:text-6xl font-black text-[#16332C] dark:text-[#FDF8F1] leading-tight">Ein Blick in <span className="text-[#C5A059]">unsere Welt</span>.</h3>
+             <p className="text-xl text-[#16332C]/60 dark:text-[#FDF8F1]/60 font-medium max-w-xl">
                Lassen Sie sich von unseren Impressionen inspirieren. Bei uns trifft kulinarischer Anspruch auf einladende Atmosphäre.
              </p>
           </div>
@@ -64,8 +64,8 @@ export const Gallery = () => {
                 onClick={() => setActiveFilter(filter.name)}
                 className={`rounded-full px-8 py-6 text-sm font-bold uppercase tracking-widest transition-all duration-300 gap-2 border-none shadow-md hover:shadow-xl ${
                   activeFilter === filter.name 
-                    ? "bg-[#16332C] text-white hover:scale-105" 
-                    : "bg-[#FDF8F1] text-[#16332C] hover:bg-white hover:scale-105"
+                    ? "bg-[#16332C] dark:bg-[#C5A059] text-white dark:text-[#16332C] hover:scale-105" 
+                    : "bg-[#FDF8F1] dark:bg-zinc-800 text-[#16332C] dark:text-[#FDF8F1] hover:bg-white dark:hover:bg-zinc-700 hover:scale-105"
                 }`}
               >
                 {filter.icon}
@@ -77,7 +77,7 @@ export const Gallery = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-in fade-in duration-700">
           {filteredItems.map((item) => (
-            <div key={item.id} className="group relative rounded-[48px] overflow-hidden aspect-[4/5] shadow-2xl hover:shadow-[#C5A059]/20 transition-all duration-500 hover:-translate-y-2 border-8 border-white bg-gray-100">
+            <div key={item.id} className="group relative rounded-[48px] overflow-hidden aspect-[4/5] shadow-2xl hover:shadow-[#C5A059]/20 transition-all duration-500 hover:-translate-y-2 border-8 border-white dark:border-zinc-800 bg-gray-100">
               <img
                 src={item.image}
                 alt={item.title}
@@ -116,7 +116,7 @@ export const Gallery = () => {
       </div>
 
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-2xl w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-[#FDF8F1] rounded-[60px] shadow-2xl animate-in zoom-in-95 duration-300 border-none">
+        <DialogContent className="max-w-2xl w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-[#FDF8F1] dark:bg-zinc-900 rounded-[60px] shadow-2xl animate-in zoom-in-95 duration-300 border-none">
           <DialogHeader className="absolute top-8 right-8 z-50">
             <DialogClose className="p-4 bg-[#C5A059] text-white rounded-3xl hover:bg-[#D4B36D] hover:rotate-90 transition-all shadow-2xl border-none">
                <X className="w-8 h-8" />
@@ -137,18 +137,18 @@ export const Gallery = () => {
                   </span>
                 </div>
               </div>
-              <div className="p-12 space-y-8 bg-white text-center">
+              <div className="p-12 space-y-8 bg-white dark:bg-zinc-900 text-center">
                 <div className="space-y-4">
-                  <h3 className="text-4xl font-black text-[#16332C] leading-tight">
+                  <h3 className="text-4xl font-black text-[#16332C] dark:text-[#FDF8F1] leading-tight">
                     {selectedImage.title}
                   </h3>
                   <div className="w-20 h-2 bg-[#C5A059] mx-auto rounded-full" />
                 </div>
-                <p className="text-[#16332C]/60 font-medium leading-relaxed max-w-sm mx-auto">
+                <p className="text-[#16332C]/60 dark:text-[#FDF8F1]/60 font-medium leading-relaxed max-w-sm mx-auto">
                   Erleben Sie die besondere Atmosphäre im Restaurant Max. Jedes Detail wurde sorgfältig ausgewählt, um Ihnen ein unvergessliches kulinarisches Erlebnis zu bieten.
                 </p>
-                <div className="pt-8 border-t border-[#16332C]/5">
-                  <Button asChild className="w-full bg-[#16332C] hover:bg-[#1E3A34] text-white rounded-3xl py-10 font-black uppercase tracking-widest text-sm shadow-2xl shadow-[#16332C]/20 border-none transition-all hover:scale-105 active:scale-95">
+                <div className="pt-8 border-t border-[#16332C]/5 dark:border-white/10">
+                  <Button asChild className="w-full bg-[#16332C] dark:bg-[#C5A059] hover:bg-[#1E3A34] dark:hover:bg-[#D4B36D] text-white dark:text-[#16332C] rounded-3xl py-10 font-black uppercase tracking-widest text-sm shadow-2xl shadow-[#16332C]/20 border-none transition-all hover:scale-105 active:scale-95">
                     <a href="#reservation" onClick={() => setSelectedImage(null)}>Tisch reservieren</a>
                   </Button>
                 </div>

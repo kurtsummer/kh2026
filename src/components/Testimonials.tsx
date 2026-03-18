@@ -37,15 +37,15 @@ export const Testimonials = () => {
   ];
 
   return (
-    <section id="testimonials" className="py-24 bg-[#FDF8F1] relative overflow-hidden">
+    <section id="testimonials" className="py-24 bg-[#FDF8F1] dark:bg-[#0A1A17] relative overflow-hidden transition-colors duration-500">
       <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-[#C5A059]/5 rounded-full blur-[120px] -z-1" />
       <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-[#16332C]/5 rounded-full blur-[100px] -z-1" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
           <h2 className="text-[#C5A059] font-black tracking-widest uppercase text-sm">Gästestimmen</h2>
-          <h3 className="text-4xl md:text-6xl font-black text-[#16332C] leading-tight">Was unsere <span className="text-[#C5A059]">Gäste</span> sagen.</h3>
-          <p className="text-xl text-[#16332C]/60 font-medium">
+          <h3 className="text-4xl md:text-6xl font-black text-[#16332C] dark:text-[#FDF8F1] leading-tight">Was unsere <span className="text-[#C5A059]">Gäste</span> sagen.</h3>
+          <p className="text-xl text-[#16332C]/60 dark:text-[#FDF8F1]/60 font-medium">
             Zufriedene Gäste sind unser größtes Lob – und das Echo ist einfach fantastisch!
           </p>
         </div>
@@ -54,7 +54,7 @@ export const Testimonials = () => {
           {testimonials.map((t, index) => (
             <div 
               key={index} 
-              className={`bg-white p-10 rounded-[48px] border-2 shadow-sm flex flex-col hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group ${t.color.split(' ')[1]}`}
+              className={`bg-white dark:bg-zinc-800/60 p-10 rounded-[48px] border-2 shadow-sm flex flex-col hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group ${t.color.split(' ')[1]} dark:border-white/5`}
             >
               <div className="flex text-[#C5A059] mb-8">
                 {[...Array(t.rating)].map((_, i) => (
@@ -63,18 +63,18 @@ export const Testimonials = () => {
               </div>
               
               <div className="relative mb-10 flex-grow">
-                 <Quote className={`absolute -top-6 -left-6 w-12 h-12 opacity-10 transition-colors group-hover:opacity-30 ${t.color.split(' ')[2]}`} />
-                 <p className="text-[#16332C]/80 text-lg leading-relaxed font-bold italic relative z-10 group-hover:text-[#16332C] transition-colors">
+                 <Quote className={`absolute -top-6 -left-6 w-12 h-12 opacity-10 transition-colors group-hover:opacity-30 ${t.color.split(' ')[2]} dark:text-white`} />
+                 <p className="text-[#16332C]/80 dark:text-[#FDF8F1]/80 text-lg leading-relaxed font-bold italic relative z-10 group-hover:text-[#16332C] dark:group-hover:text-[#FDF8F1] transition-colors">
                    "{t.text}"
                  </p>
               </div>
 
-              <div className="flex items-center gap-4 mt-auto pt-8 border-t border-[#16332C]/5">
+              <div className="flex items-center gap-4 mt-auto pt-8 border-t border-[#16332C]/5 dark:border-white/5">
                 <div className="relative">
                    <img 
                      src={t.image} 
                      alt={t.name} 
-                     className="w-16 h-16 rounded-3xl border-4 border-white shadow-lg group-hover:rotate-6 transition-transform object-cover"
+                     className="w-16 h-16 rounded-3xl border-4 border-white dark:border-zinc-800 shadow-lg group-hover:rotate-6 transition-transform object-cover"
                      loading="lazy"
                    />
                    <div className={`absolute -bottom-2 -right-2 p-1.5 rounded-xl text-white shadow-xl ${t.color.split(' ')[2].replace('text-', 'bg-')}`}>
@@ -82,43 +82,43 @@ export const Testimonials = () => {
                    </div>
                 </div>
                 <div>
-                  <h4 className="font-black text-[#16332C] text-lg leading-tight">{t.name}</h4>
-                  <p className="text-[#16332C]/40 text-xs uppercase tracking-widest font-black mt-1">{t.role}</p>
+                  <h4 className="font-black text-[#16332C] dark:text-[#FDF8F1] text-lg leading-tight">{t.name}</h4>
+                  <p className="text-[#16332C]/40 dark:text-[#FDF8F1]/40 text-xs uppercase tracking-widest font-black mt-1">{t.role}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
         
-        <div className="mt-24 bg-white p-12 rounded-[60px] shadow-xl flex flex-col md:flex-row items-center justify-around gap-12 border-2 border-[#C5A059]/10">
+        <div className="mt-24 bg-white dark:bg-zinc-800 p-12 rounded-[60px] shadow-xl flex flex-col md:flex-row items-center justify-around gap-12 border-2 border-[#C5A059]/10">
            <div className="text-center space-y-3">
-              <p className="text-5xl font-black text-[#16332C]">4.8/5</p>
+              <p className="text-5xl font-black text-[#16332C] dark:text-[#FDF8F1]">4.8/5</p>
               <div className="flex text-[#C5A059] justify-center scale-110">
                  {[...Array(5)].map((_, i) => (
                    <Star key={i} className="w-6 h-6 fill-current" />
                  ))}
               </div>
-              <p className="text-[#16332C]/40 text-sm uppercase font-black tracking-widest pt-2">Google Reviews</p>
+              <p className="text-[#16332C]/40 dark:text-[#FDF8F1]/40 text-sm uppercase font-black tracking-widest pt-2">Google Reviews</p>
            </div>
            
-           <div className="hidden md:block w-px h-24 bg-[#16332C]/5" />
+           <div className="hidden md:block w-px h-24 bg-[#16332C]/5 dark:bg-white/5" />
            
            <div className="text-center space-y-3 group cursor-default">
               <div className="bg-[#C5A059]/10 p-4 rounded-3xl w-fit mx-auto group-hover:rotate-12 transition-transform">
                  <Heart className="text-[#C5A059] w-8 h-8 fill-current" />
               </div>
-              <p className="text-2xl font-black text-[#16332C]">100% Liebe</p>
-              <p className="text-[#16332C]/40 text-sm uppercase font-black tracking-widest">In jedem Teller</p>
+              <p className="text-2xl font-black text-[#16332C] dark:text-[#FDF8F1]">100% Liebe</p>
+              <p className="text-[#16332C]/40 dark:text-[#FDF8F1]/40 text-sm uppercase font-black tracking-widest">In jedem Teller</p>
            </div>
 
-           <div className="hidden md:block w-px h-24 bg-[#16332C]/5" />
+           <div className="hidden md:block w-px h-24 bg-[#16332C]/5 dark:bg-white/5" />
 
            <div className="text-center space-y-3 group cursor-default">
-              <div className="bg-[#16332C]/10 p-4 rounded-3xl w-fit mx-auto group-hover:-rotate-12 transition-transform text-[#16332C]">
+              <div className="bg-[#16332C]/10 dark:bg-[#C5A059]/10 p-4 rounded-3xl w-fit mx-auto group-hover:-rotate-12 transition-transform text-[#16332C] dark:text-[#FDF8F1]">
                  <Utensils className="w-8 h-8" />
               </div>
-              <p className="text-2xl font-black text-[#16332C]">Frische Garantie</p>
-              <p className="text-[#16332C]/40 text-sm uppercase font-black tracking-widest">Regional & Saisonal</p>
+              <p className="text-2xl font-black text-[#16332C] dark:text-[#FDF8F1]">Frische Garantie</p>
+              <p className="text-[#16332C]/40 dark:text-[#FDF8F1]/40 text-sm uppercase font-black tracking-widest">Regional & Saisonal</p>
            </div>
         </div>
       </div>
