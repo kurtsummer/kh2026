@@ -24,7 +24,7 @@ export const Gallery = () => {
       icon: <Heart className="w-5 h-5 text-[#D4AF37]" />
     },
     {
-      src: "https://images.unsplash.com/photo-1521017432531-fbd92d744264?q=80&w=800&auto=format&fit=crop",
+      src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop",
       title: "Klassische Zeitungshalter",
       category: "Tradition",
       icon: <Star className="w-5 h-5 text-[#D4AF37]" />

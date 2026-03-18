@@ -160,10 +160,6 @@ export const Menu = () => {
                 <p className="text-[#3D2B1F]/60 dark:text-[#FDF5E6]/60 leading-relaxed font-medium">
                   {item.description}
                 </p>
-
-                <button className="w-full bg-[#800020]/5 dark:bg-white/5 hover:bg-[#800020] hover:text-white text-[#800020] dark:text-[#FDF5E6] rounded-2xl py-6 font-black uppercase tracking-widest transition-all duration-300 border border-[#800020]/20 shadow-none">
-                  Bestellen
-                </button>
               </div>
             </div>
           ))}
