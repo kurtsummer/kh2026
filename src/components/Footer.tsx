@@ -1,49 +1,54 @@
-import { Instagram, Facebook, Linkedin, Camera, Heart, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Facebook, Linkedin, Camera, Heart, Mail, Phone, MapPin, Smile, Sparkles, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[#2D3436] text-white pt-24 pb-12 border-t border-white/5 overflow-hidden relative">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#C5A059]/5 rounded-full blur-[150px] -z-1" />
+    <footer className="bg-[#FAF9F6] text-[#2D3436] pt-24 pb-12 border-t border-[#FF7E67]/5 overflow-hidden relative">
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF7E67]/5 rounded-full blur-[150px] -z-1" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#45B7AF]/5 rounded-full blur-[150px] -z-1" />
       
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="grid lg:grid-cols-4 gap-16 mb-20">
           <div className="space-y-8 col-span-1 lg:col-span-1">
              <Link to="/" className="inline-block group">
-                <div className="flex items-center gap-3">
-                   <div className="bg-[#C5A059] p-3 rounded-2xl shadow-lg transition-transform group-hover:rotate-12">
-                      <Camera className="w-8 h-8 text-white" />
+                <div className="flex items-center gap-4">
+                   <div className="bg-[#FF7E67] p-4 rounded-[28px] shadow-xl transition-all group-hover:rotate-12 group-hover:scale-110">
+                      <Camera className="w-8 h-8 text-white fill-current" />
                    </div>
                    <div>
-                      <h4 className="text-xl font-serif font-bold tracking-tight">Max Mustermann</h4>
-                      <p className="text-[10px] uppercase font-bold text-[#C5A059] tracking-widest leading-none">Fotografie</p>
+                      <h4 className="text-2xl font-black tracking-tighter leading-none">Max Macht Fotos</h4>
+                      <p className="text-[10px] uppercase font-black text-[#45B7AF] tracking-[0.4em] leading-none mt-1">Gute Laune Studio</p>
                    </div>
                 </div>
              </Link>
-             <p className="text-white/60 leading-relaxed text-sm italic">
-                "Ein Foto ist die Rückfahrkarte zu einem Moment, der sonst für immer verloren wäre."
+             <p className="text-[#2D3436]/60 leading-relaxed text-lg font-medium italic">
+                "Weil das Leben viel zu bunt ist, um es nur in Schwarz-Weiß zu sehen."
              </p>
              <div className="flex gap-4">
-                {[<Instagram key="i"/>, <Facebook key="f"/>, <Linkedin key="l"/>].map((icon, i) => (
-                  <button key={i} className="bg-white/5 hover:bg-white/10 p-3 rounded-xl transition-all hover:scale-110 text-white/70 hover:text-[#C5A059] shadow-sm" aria-label={`Social Media ${i}`}>
-                     {icon}
+                {[
+                  { icon: <Instagram />, color: "hover:bg-[#E1306C] hover:text-white" },
+                  { icon: <Facebook />, color: "hover:bg-[#4267B2] hover:text-white" },
+                  { icon: <Linkedin />, color: "hover:bg-[#2867B2] hover:text-white" }
+                ].map((social, i) => (
+                  <button key={i} className={`bg-white hover:shadow-xl p-4 rounded-2xl transition-all hover:scale-110 text-[#2D3436]/70 shadow-sm border border-gray-100 ${social.color}`} aria-label={`Social Media ${i}`}>
+                     {social.icon}
                   </button>
                 ))}
              </div>
           </div>
 
           <div className="space-y-8">
-             <h5 className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-6 border-b border-[#C5A059]/20 pb-4 inline-block">Navigation</h5>
-             <ul className="space-y-4">
+             <h5 className="text-xs font-black text-[#FF7E67] uppercase tracking-widest mb-6 border-b-4 border-[#FF7E67]/10 pb-4 inline-block">Die Tour</h5>
+             <ul className="space-y-5">
                 {["Über mich", "Services", "Portfolio", "Bewertungen", "Kontakt"].map((link) => (
                   <li key={link}>
                     <a 
                       href={`#${link.toLowerCase().replace("ü", "u").replace(" ", "-")}`} 
-                      className="text-white/60 hover:text-white transition-colors text-sm font-medium flex items-center gap-2 group"
+                      className="text-[#2D3436]/60 hover:text-[#FF7E67] transition-all text-sm font-black flex items-center gap-3 group"
                     >
-                      <div className="w-1.5 h-1.5 rounded-full bg-[#C5A059] opacity-0 group-hover:opacity-100 transition-opacity" />
+                      <div className="w-2 h-2 rounded-full bg-[#45B7AF] scale-0 group-hover:scale-100 transition-transform" />
                       {link}
                     </a>
                   </li>
@@ -52,67 +57,67 @@ export const Footer = () => {
           </div>
 
           <div className="space-y-8">
-             <h5 className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-6 border-b border-[#C5A059]/20 pb-4 inline-block">Kontakt</h5>
+             <h5 className="text-xs font-black text-[#45B7AF] uppercase tracking-widest mb-6 border-b-4 border-[#45B7AF]/10 pb-4 inline-block">Meld dich!</h5>
              <ul className="space-y-6">
                 <li className="flex gap-4 items-start group">
-                   <div className="bg-white/5 p-2 rounded-lg text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-white transition-all">
-                      <Mail className="w-4 h-4" />
+                   <div className="bg-[#FF7E67]/10 p-3 rounded-2xl text-[#FF7E67] group-hover:bg-[#FF7E67] group-hover:text-white transition-all group-hover:rotate-6">
+                      <Mail className="w-5 h-5" />
                    </div>
                    <div>
-                      <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-1 leading-none">E-Mail</p>
-                      <a href="mailto:hello@mustermann-fotografie.de" className="text-sm font-medium hover:text-[#C5A059] transition-colors">hello@mustermann-fotografie.de</a>
+                      <p className="text-[10px] font-black text-[#2D3436]/30 uppercase tracking-widest mb-1 leading-none">E-Mail</p>
+                      <a href="mailto:hallo@max-macht-fotos.de" className="text-sm font-black hover:text-[#FF7E67] transition-colors">hallo@max-macht-fotos.de</a>
                    </div>
                 </li>
                 <li className="flex gap-4 items-start group">
-                   <div className="bg-white/5 p-2 rounded-lg text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-white transition-all">
-                      <Phone className="w-4 h-4" />
+                   <div className="bg-[#45B7AF]/10 p-3 rounded-2xl text-[#45B7AF] group-hover:bg-[#45B7AF] group-hover:text-white transition-all group-hover:-rotate-6">
+                      <Phone className="w-5 h-5" />
                    </div>
                    <div>
-                      <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-1 leading-none">Telefon</p>
-                      <a href="tel:+49123456789" className="text-sm font-medium hover:text-[#C5A059] transition-colors">+49 (0) 123 456 789</a>
+                      <p className="text-[10px] font-black text-[#2D3436]/30 uppercase tracking-widest mb-1 leading-none">Telefon</p>
+                      <a href="tel:+49123456789" className="text-sm font-black hover:text-[#45B7AF] transition-colors">+49 (0) 123 456 789</a>
                    </div>
                 </li>
                 <li className="flex gap-4 items-start group">
-                   <div className="bg-white/5 p-2 rounded-lg text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-white transition-all">
-                      <MapPin className="w-4 h-4" />
+                   <div className="bg-[#FFD93D]/10 p-3 rounded-2xl text-[#FFD93D] group-hover:bg-[#FFD93D] group-hover:text-white transition-all group-hover:rotate-12">
+                      <MapPin className="w-5 h-5" />
                    </div>
                    <div>
-                      <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-1 leading-none">Studio</p>
-                      <p className="text-sm font-medium">Fotogasse 12, 12345 Musterhausen</p>
+                      <p className="text-[10px] font-black text-[#2D3436]/30 uppercase tracking-widest mb-1 leading-none">Location</p>
+                      <p className="text-sm font-black">Regenbogengasse 1, 12345 Musterhausen</p>
                    </div>
                 </li>
              </ul>
           </div>
 
           <div className="space-y-8">
-             <h5 className="text-xs font-bold text-[#C5A059] uppercase tracking-widest mb-6 border-b border-[#C5A059]/20 pb-4 inline-block">Öffnungszeiten</h5>
-             <ul className="space-y-4">
-                <li className="flex justify-between text-sm text-white/60">
-                   <span>Mo - Fr:</span>
-                   <span className="text-white font-medium">09:00 - 18:00 Uhr</span>
+             <h5 className="text-xs font-black text-[#FFD93D] uppercase tracking-widest mb-6 border-b-4 border-[#FFD93D]/10 pb-4 inline-block">Wann wir lachen</h5>
+             <ul className="space-y-5">
+                <li className="flex justify-between text-sm text-[#2D3436]/60">
+                   <span className="font-bold">Mo - Fr:</span>
+                   <span className="text-[#2D3436] font-black">09:00 - 18:00 Uhr</span>
                 </li>
-                <li className="flex justify-between text-sm text-white/60">
-                   <span>Sa:</span>
-                   <span className="text-white font-medium">10:00 - 14:00 Uhr</span>
+                <li className="flex justify-between text-sm text-[#2D3436]/60">
+                   <span className="font-bold">Sa:</span>
+                   <span className="text-[#2D3436] font-black">10:00 - 14:00 Uhr</span>
                 </li>
-                <li className="flex justify-between text-sm text-white/60 border-t border-white/5 pt-4">
-                   <span>Shooting-Termine nach Vereinbarung auch außerhalb der Zeiten.</span>
+                <li className="flex justify-between text-sm text-[#2D3436]/60 border-t border-[#2D3436]/5 pt-5 italic font-medium">
+                   <span>Shooting-Termine nach Vereinbarung auch nachts oder am Sonntag!</span>
                 </li>
              </ul>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-           <p className="text-white/40 text-xs font-bold uppercase tracking-[0.2em]">
-              &copy; {currentYear} MAX MUSTERMANN FOTOGRAFIE. ALLE RECHTE VORBEHALTEN.
+        <div className="pt-12 border-t border-[#2D3436]/5 flex flex-col md:flex-row justify-between items-center gap-8">
+           <p className="text-[#2D3436]/40 text-[10px] font-black uppercase tracking-[0.3em]">
+              &copy; {currentYear} MAX MACHT FOTOS. STAY HAPPY!
            </p>
-           <div className="flex gap-8">
-              <Link to="/impressum" className="text-white/30 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors">Impressum</Link>
-              <Link to="/datenschutz" className="text-white/30 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors">Datenschutz</Link>
-              <Link to="/agb" className="text-white/30 hover:text-white text-xs font-bold uppercase tracking-widest transition-colors">AGB</Link>
+           <div className="flex gap-10">
+              <Link to="/impressum" className="text-[#2D3436]/40 hover:text-[#FF7E67] text-[10px] font-black uppercase tracking-widest transition-colors">Impressum</Link>
+              <Link to="/datenschutz" className="text-[#2D3436]/40 hover:text-[#45B7AF] text-[10px] font-black uppercase tracking-widest transition-colors">Datenschutz</Link>
+              <Link to="/agb" className="text-[#2D3436]/40 hover:text-[#FFD93D] text-[10px] font-black uppercase tracking-widest transition-colors">AGB</Link>
            </div>
-           <div className="flex items-center gap-2 text-white/20 text-xs font-bold">
-              MADE WITH <Heart className="w-3 h-3 text-red-900 fill-current animate-pulse" /> IN MUSTERHAUSEN
+           <div className="flex items-center gap-3 text-[#2D3436]/20 text-[10px] font-black uppercase tracking-widest group cursor-default">
+              MADE WITH <Heart className="w-4 h-4 text-[#FF7E67] fill-current group-hover:scale-125 transition-transform" /> AND <Sparkles className="w-4 h-4 text-[#45B7AF] fill-current group-hover:rotate-45 transition-transform" />
            </div>
         </div>
       </div>
