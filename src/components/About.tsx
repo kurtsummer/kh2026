@@ -8,10 +8,13 @@ export const About = () => {
           <div className="order-2 lg:order-1 relative">
             <div className="relative">
               <div className="aspect-[4/5] rounded-[3rem] overflow-hidden border-[12px] border-white shadow-2xl relative z-10">
-                <img 
-                  src="https://images.unsplash.com/photo-1559839734-2b71f1e598c6?q=80&w=1000&auto=format&fit=crop" 
-                  alt="Das Team" 
+                <img
+                  src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&q=80&w=1000"
+                  alt="Das Team"
                   className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg";
+                  }}
                 />
               </div>
               <div className="absolute -bottom-10 -right-10 bg-indigo-900 p-10 rounded-[2.5rem] shadow-2xl max-w-[280px] hidden md:block z-20">

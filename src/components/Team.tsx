@@ -3,19 +3,19 @@ const team = [
     name: "Dr. med. Max Mustermann",
     role: "Facharzt für Allgemeinmedizin",
     specialty: "Chirotherapie & Akupunktur",
-    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?q=80&w=1000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=800"
   },
   {
     name: "Erika Musterfrau",
     role: "Praxisleitung",
     specialty: "Präventionsassistentin",
-    image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?q=80&w=1000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=800"
   },
   {
     name: "Julia Beispiel",
     role: "Medizinische Fachangestellte",
     specialty: "Impfspezialistin & Labor",
-    image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=1000&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&q=80&w=800"
   }
 ];
 
@@ -42,6 +42,9 @@ export const Team = () => {
                   src={member.image} 
                   alt={member.name} 
                   className="w-full h-full object-cover filter brightness-[1.02] contrast-[1.02] group-hover:scale-110 transition-transform duration-1000"
+                  onError={(e) => {
+                    e.currentTarget.src = "/placeholder.svg";
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-10">
                   <p className="text-white font-bold tracking-wider uppercase text-[10px] mb-2">{member.specialty}</p>

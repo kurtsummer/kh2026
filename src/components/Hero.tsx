@@ -47,10 +47,13 @@ export const Hero = () => {
 
         <div className="relative">
           <div className="relative z-10 rounded-[3rem] overflow-hidden shadow-[0_32px_64px_-12px_rgba(0,0,0,0.14)] border-[12px] border-white">
-            <img 
-              src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?q=80&w=1000&auto=format&fit=crop" 
-              alt="Dr. Max Mustermann" 
+            <img
+              src="https://images.unsplash.com/photo-1576091160550-217359f4ecf8?auto=format&fit=crop&q=80&w=1000"
+              alt="Dr. Max Mustermann"
               className="w-full h-[650px] object-cover"
+              onError={(e) => {
+                e.currentTarget.src = "/placeholder.svg";
+              }}
             />
           </div>
           {/* Professional Accents */}
