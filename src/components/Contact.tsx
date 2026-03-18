@@ -18,16 +18,42 @@ export const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulation des Versands an info@summermarketing.co
-    setTimeout(() => {
-      toast({
-        title: "Nachricht gesendet!",
-        description: "Vielen Dank! Ihre Nachricht wurde an info@summermarketing.co weitergeleitet.",
-        className: "bg-[#800020] text-white border-none rounded-2xl"
+    try {
+      const response = await fetch("https://formspree.io/f/xvzwdnbp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          subject: `Neue Kontaktanfrage im Café Mustermann von ${formData.name}`,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _replyto: formData.email
+        })
       });
+
+      if (response.ok) {
+        toast({
+          title: "Nachricht gesendet!",
+          description: "Vielen Dank! Wir haben Ihre Nachricht erhalten und melden uns in Kürze.",
+          className: "bg-[#800020] text-white border-none rounded-2xl"
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error("Fehler beim Senden");
+      }
+    } catch (error) {
+      toast({
+        title: "Fehler beim Senden",
+        description: "Bitte versuchen Sie es später erneut.",
+        variant: "destructive",
+        className: "rounded-2xl"
+      });
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 1500);
+    }
   };
 
   return (
@@ -163,7 +189,7 @@ export const Contact = () => {
               
               <div className="flex items-center justify-center gap-2 pt-6">
                  <div className="h-[2px] w-8 bg-[#D4AF37]/30 rounded-full" />
-                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Ihre Nachricht geht an info@summermarketing.co</p>
+                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Ihre Nachricht geht an uns</p>
                  <div className="h-[2px] w-8 bg-[#D4AF37]/30 rounded-full" />
               </div>
             </form>

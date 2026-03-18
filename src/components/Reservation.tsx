@@ -12,55 +12,51 @@ export const Reservation = () => {
     date: "",
     guests: "",
     time: "",
-    name: ""
+    name: "",
+    contact: ""
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Formspree oder ähnlicher Dienst würde hier stehen. 
-    // Wir simulieren den Versand an info@summermarketing.co
     try {
-      const response = await fetch("https://formspree.io/f/xvgzlowq", {
+      const response = await fetch("https://formspree.io/f/xvzwdnbp", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "Accept": "application/json"
         },
         body: JSON.stringify({
-          email: "info@summermarketing.co", // Empfänger
-          subject: `Neue Reservierung von ${formData.name}`,
-          message: `Neue Reservierung erhalten:
-            Name: ${formData.name}
-            Datum: ${formData.date}
-            Personen: ${formData.guests}
-            Uhrzeit: ${formData.time}`
+          subject: `Neue Reservierung im Café Mustermann von ${formData.name}`,
+          name: formData.name,
+          datum: formData.date,
+          personen: formData.guests,
+          uhrzeit: formData.time,
+          kontakt: formData.contact,
+          _replyto: formData.contact // Formspree nutzt dies für die Antwort-Funktion
         })
       });
 
       if (response.ok) {
         toast({
-          title: "Anfrage gesendet!",
-          description: "Wir haben Ihre Reservierungsanfrage erhalten und melden uns in Kürze.",
+          title: "Anfrage erfolgreich gesendet!",
+          description: "Wir haben Ihre Reservierungsanfrage erhalten und bestätigen diese in Kürze.",
           className: "bg-[#800020] text-white border-none rounded-2xl"
         });
-        setFormData({ date: "", guests: "", time: "", name: "" });
+        setFormData({ date: "", guests: "", time: "", name: "", contact: "" });
       } else {
-        throw new Error();
+        throw new Error("Fehler beim Senden");
       }
     } catch (error) {
-      // Da wir keinen echten API-Key haben, zeigen wir trotzdem Erfolg für die Demo an, 
-      // oder wir weisen darauf hin, dass es ein Mock ist.
-      // Hier simulieren wir den Erfolg für den Nutzer:
-      setTimeout(() => {
-        toast({
-          title: "Anfrage gesendet!",
-          description: "Vielen Dank! Ihre Anfrage wurde an info@summermarketing.co weitergeleitet.",
-          className: "bg-[#800020] text-white border-none rounded-2xl"
-        });
-        setIsSubmitting(false);
-        setFormData({ date: "", guests: "", time: "", name: "" });
-      }, 1500);
+      toast({
+        title: "Fehler beim Senden",
+        description: "Bitte versuchen Sie es später erneut oder rufen Sie uns direkt an.",
+        variant: "destructive",
+        className: "rounded-2xl"
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -182,6 +178,17 @@ export const Reservation = () => {
                 </div>
               </div>
 
+              <div className="space-y-4">
+                 <label className="text-xs font-black uppercase tracking-widest text-[#3D2B1F]/50 dark:text-[#FDF5E6]/50 ml-2">E-Mail oder Telefon</label>
+                 <Input 
+                  placeholder="Ihre Kontaktdaten" 
+                  required
+                  value={formData.contact}
+                  onChange={(e) => setFormData({...formData, contact: e.target.value})}
+                  className="bg-white dark:bg-zinc-800 border-none rounded-2xl py-7 px-6 text-lg shadow-inner focus:ring-2 focus:ring-[#800020] text-[#3D2B1F]"
+                />
+              </div>
+
               <Button 
                 type="submit"
                 disabled={isSubmitting}
@@ -199,7 +206,7 @@ export const Reservation = () => {
 
               <div className="flex items-center justify-center gap-2 pt-4">
                  <div className="h-[2px] w-8 bg-[#D4AF37]/30 rounded-full" />
-                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Anfrage geht an info@summermarketing.co</p>
+                 <p className="text-[10px] font-black uppercase tracking-[0.3em] text-[#D4AF37]">Wir bestätigen Ihre Reservierung</p>
                  <div className="h-[2px] w-8 bg-[#D4AF37]/30 rounded-full" />
               </div>
             </form>
