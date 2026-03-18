@@ -120,40 +120,40 @@ export const Gallery = () => {
 
       {/* Lightbox Modal */}
       <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
-        <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 overflow-hidden bg-white/95 backdrop-blur-lg border-none rounded-[40px] shadow-2xl">
-          <DialogHeader className="absolute top-6 right-6 z-50">
-            <DialogClose className="p-3 bg-[#FF7E67] text-white rounded-2xl hover:bg-[#E66B56] hover:rotate-90 transition-all shadow-xl">
-               <X className="w-6 h-6" />
+        <DialogContent className="max-w-2xl w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-white/95 backdrop-blur-lg border-none rounded-[60px] shadow-2xl animate-in zoom-in-95 duration-300">
+          <DialogHeader className="absolute top-8 right-8 z-50">
+            <DialogClose className="p-4 bg-[#FF7E67] text-white rounded-3xl hover:bg-[#E66B56] hover:rotate-90 transition-all shadow-2xl border-none">
+               <X className="w-8 h-8" />
             </DialogClose>
           </DialogHeader>
           
           {selectedImage && (
-            <div className="flex flex-col lg:flex-row h-full">
-              <div className="lg:w-2/3 h-[50vh] lg:h-full bg-gray-100 relative">
-                <img 
-                  src={selectedImage.image} 
-                  alt={selectedImage.title} 
+            <div className="flex flex-col h-full overflow-y-auto scrollbar-hide">
+              <div className="relative aspect-[4/5] bg-gray-100 shrink-0">
+                <img
+                  src={selectedImage.image}
+                  alt={selectedImage.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute top-6 left-6">
-                  <span className={`${selectedImage.color} text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-2xl shadow-xl`}>
+                <div className="absolute top-8 left-8">
+                  <span className={`${selectedImage.color} text-white text-[10px] font-black uppercase tracking-widest px-5 py-2.5 rounded-2xl shadow-2xl`}>
                     {selectedImage.category}
                   </span>
                 </div>
               </div>
-              <div className="lg:w-1/3 p-12 flex flex-col justify-center space-y-8 bg-white">
+              <div className="p-12 space-y-8 bg-white text-center">
                 <div className="space-y-4">
                   <h3 className="text-4xl font-black text-[#2D3436] leading-tight">
                     {selectedImage.title}
                   </h3>
-                  <div className="w-16 h-2 bg-[#FF7E67] rounded-full" />
+                  <div className="w-20 h-2 bg-[#FF7E67] mx-auto rounded-full" />
                 </div>
-                <p className="text-[#2D3436]/60 font-medium leading-relaxed">
+                <p className="text-[#2D3436]/60 font-medium leading-relaxed max-w-sm mx-auto">
                   Dieses Bild wurde mit viel Liebe zum Detail in unserem Studio in Musterhausen aufgenommen. Wir legen großen Wert auf lebendige Farben und echte Emotionen.
                 </p>
                 <div className="pt-8 border-t border-[#2D3436]/5">
-                  <Button className="w-full bg-[#2D3436] hover:bg-[#3D4446] text-white rounded-3xl py-8 font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-105">
-                    Ähnliches Shooting anfragen
+                  <Button className="w-full bg-[#FF7E67] hover:bg-[#E66B56] text-white rounded-3xl py-10 font-black uppercase tracking-widest text-sm shadow-2xl shadow-[#FF7E67]/20 border-none transition-all hover:scale-105 active:scale-95">
+                    Dieses Shooting anfragen!
                   </Button>
                 </div>
               </div>
