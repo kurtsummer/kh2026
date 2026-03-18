@@ -2,6 +2,13 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Camera, Heart, Sparkles } from "lucide-react";
 
 export const Hero = () => {
+  const avatarImages = [
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop",
+    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop"
+  ];
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#FFFCF8]">
       {/* Vibrant Background Decor */}
@@ -35,11 +42,16 @@ export const Hero = () => {
             </Button>
           </div>
 
-          <div className="flex items-center gap-6 pt-8 border-t border-[#2D3436]/5">
+          <div className="flex items-center gap-6 pt-8 border-t border-[#2D3436]/10">
             <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map((i) => (
+              {avatarImages.map((src, i) => (
                 <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-gray-100 overflow-hidden shadow-md">
-                  <img src={`https://i.pravatar.cc/150?u=smile${i}`} alt="Happy Customer" className="w-full h-full object-cover" />
+                  <img 
+                    src={src} 
+                    alt={`Glücklicher Kunde ${i + 1}`} 
+                    className="w-full h-full object-cover" 
+                    loading="lazy"
+                  />
                 </div>
               ))}
             </div>
@@ -55,11 +67,12 @@ export const Hero = () => {
         </div>
 
         <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-200">
-          <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5] border-[12px] border-white rotate-2 hover:rotate-0 transition-transform duration-500">
+          <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5] border-[12px] border-white rotate-2 hover:rotate-0 transition-transform duration-500 bg-gray-100">
             <img
-              src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=2076&auto=format&fit=crop"
-              alt="Fröhliche Fotografie Atmosphäre"
+              src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?q=80&w=2070&auto=format&fit=crop"
+              alt="Fröhliche Fotografie Atmosphäre im Studio"
               className="w-full h-full object-cover"
+              loading="eager"
             />
           </div>
           

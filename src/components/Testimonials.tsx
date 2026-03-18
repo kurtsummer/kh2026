@@ -7,7 +7,7 @@ export const Testimonials = () => {
       role: "Brautpaar",
       text: "Max hat unsere Hochzeit in so wundervollen, bunten Bildern festgehalten. Wir haben uns von Anfang an super wohl gefühlt. Die Fotos strahlen pure Lebensfreude aus!",
       rating: 5,
-      image: "https://i.pravatar.cc/150?u=juliarc",
+      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=200&auto=format&fit=crop",
       color: "bg-[#FF7E67]/10 border-[#FF7E67]/20 text-[#FF7E67]",
     },
     {
@@ -15,7 +15,7 @@ export const Testimonials = () => {
       role: "CEO von InnovateX",
       text: "Endlich mal keine langweiligen Business-Fotos! Max hat das Team perfekt in Szene gesetzt – modern, frisch und unglaublich sympathisch. Absolut top!",
       rating: 5,
-      image: "https://i.pravatar.cc/150?u=andreask",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop",
       color: "bg-[#45B7AF]/10 border-[#45B7AF]/20 text-[#45B7AF]",
     },
     {
@@ -23,7 +23,7 @@ export const Testimonials = () => {
       role: "Mutter von zwei Rackern",
       text: "Ein tolles Erlebnis! Max hat so viel Energie und Geduld. Die Kinder hatten riesigen Spaß und die Bilder sind so natürlich und farbenfroh geworden.",
       rating: 5,
-      image: "https://i.pravatar.cc/150?u=sarahmi",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop",
       color: "bg-[#FFD93D]/10 border-[#FFD93D]/20 text-[#FFD93D]",
     },
     {
@@ -31,7 +31,7 @@ export const Testimonials = () => {
       role: "Event-Manager",
       text: "Die Fotos von unserem Festival sind der Hammer! Max hat die Stimmung und alle bunten Details perfekt eingefangen. Man hört die Musik quasi beim Anschauen.",
       rating: 5,
-      image: "https://i.pravatar.cc/150?u=felixh",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop",
       color: "bg-[#2D3436]/10 border-[#2D3436]/20 text-[#2D3436]",
     }
   ];
@@ -75,7 +75,8 @@ export const Testimonials = () => {
                    <img 
                      src={t.image} 
                      alt={t.name} 
-                     className="w-16 h-16 rounded-3xl border-4 border-white shadow-lg group-hover:rotate-6 transition-transform"
+                     className="w-16 h-16 rounded-3xl border-4 border-white shadow-lg group-hover:rotate-6 transition-transform object-cover"
+                     loading="lazy"
                    />
                    <div className={`absolute -bottom-2 -right-2 p-1.5 rounded-xl text-white shadow-xl ${t.color.split(' ')[2].replace('text-', 'bg-')}`}>
                       <Smile className="w-4 h-4" />
