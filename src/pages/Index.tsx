@@ -8,6 +8,7 @@ import { BenefitsSection } from "@/components/BenefitsSection";
 import { AboutSection } from "@/components/AboutSection";
 import { ProcessSection } from "@/components/ProcessSection";
 import { FinalCTA } from "@/components/FinalCTA";
+import { Footer } from "@/components/Footer";
 import { Sparkles, Menu, X, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
@@ -71,29 +72,7 @@ const Index = () => {
         <FinalCTA />
       </main>
 
-      {/* Footer */}
-      <footer className="py-16 border-t border-slate-100 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-            <Link to="/" className="flex items-center gap-2.5">
-              <div className="bg-[#1F2A44] p-1.5 rounded-lg">
-                <Sparkles className="w-4 h-4 text-[#6D5EF5]" />
-              </div>
-              <span className="font-extrabold text-xl tracking-tight text-[#1F2A44]">AI Marketing</span>
-            </Link>
-            
-            <div className="flex gap-8 text-sm font-semibold text-slate-500">
-              <a href="#" className="hover:text-[#6D5EF5] transition-colors">Impressum</a>
-              <a href="#" className="hover:text-[#6D5EF5] transition-colors">Datenschutz</a>
-              <a href="#" className="hover:text-[#6D5EF5] transition-colors">LinkedIn</a>
-            </div>
-          </div>
-          
-          <div className="text-center text-slate-400 text-sm font-medium">
-            © {new Date().getFullYear()} AI Marketing Professional. Alle Rechte vorbehalten.
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
