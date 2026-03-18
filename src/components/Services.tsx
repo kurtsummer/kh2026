@@ -1,76 +1,91 @@
-import { Check } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Camera, Users, Building, Calendar, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export const Services = () => {
-  const servicesData = {
-    damen: [
-      { name: "Waschen, Schneiden, Stylen", price: "ab 55€", desc: "Inkl. Beratung, Haarwäsche und Föhnen." },
-      { name: "Färben & Coloration", price: "ab 70€", desc: "Brillante Farben und langanhaltender Glanz." },
-      { name: "Balayage / Highlights", price: "ab 120€", desc: "Natürliche Farbverläufe mit modernster Technik." },
-      { name: "Festfrisur / Hochstecken", price: "ab 85€", desc: "Für Ihren besonderen Anlass." },
-    ],
-    herren: [
-      { name: "Herrenschnitt Classic", price: "28€", desc: "Präziser Maschinenschnitt oder Schere." },
-      { name: "Waschen, Schneiden, Styling", price: "35€", desc: "Das volle Programm für den modernen Mann." },
-      { name: "Bartpflege & Konturen", price: "ab 15€", desc: "Perfekt getrimmt und gepflegt." },
-      { name: "Grauhaarkaschierung", price: "25€", desc: "Dezente Abdeckung für ein natürliches Ergebnis." },
-    ],
-    styling: [
-      { name: "Augenbrauen zupfen", price: "12€", desc: "Perfekte Form für Ihr Gesicht." },
-      { name: "Wimpern färben", price: "15€", desc: "Für einen intensiven Augenaufschlag." },
-      { name: "Intensive Haarpflegekur", price: "18€", desc: "Tiefenpflege für geschädigtes Haar." },
-      { name: "Kopfmassage", price: "10€", desc: "10 Minuten pure Entspannung." },
-    ]
-  };
+  const services = [
+    {
+      icon: <Users className="w-8 h-8" />,
+      title: "Porträtfotografie",
+      description: "Einzel-, Paar- oder Familien-Porträts, die Ihre Persönlichkeit und Verbindung einfangen.",
+      price: "Ab 149€",
+      features: ["60 Min. Shooting", "10 bearbeitete Bilder", "Online-Galerie", "Individuelle Beratung"],
+    },
+    {
+      icon: <Calendar className="w-8 h-8" />,
+      title: "Hochzeitsreportagen",
+      description: "Die schönsten Momente Ihres großen Tages in emotionalen und zeitlosen Bildern festgehalten.",
+      price: "Ab 899€",
+      features: ["Ganztagesbegleitung", "Alle Bilder hochauflösend", "USB-Stick mit Box", "Verlobungsshooting inkl."],
+    },
+    {
+      icon: <Building className="w-8 h-8" />,
+      title: "Business & Corporate",
+      description: "Professionelle Mitarbeiterfotos und Imagebilder für Ihren modernen Unternehmensauftritt.",
+      price: "Auf Anfrage",
+      features: ["Vor-Ort Shooting möglich", "Retusche inklusive", "Nutzungsrechte für Print & Web", "Individuelle Pakete"],
+    },
+    {
+      icon: <Camera className="w-8 h-8" />,
+      title: "Eventbegleitung",
+      description: "Konzerte, Firmenfeiern oder private Jubiläen – wir halten die Atmosphäre Ihres Events fest.",
+      price: "Ab 299€",
+      features: ["Dokumentarischer Stil", "Schnelle Lieferung", "High-End Bearbeitung", "Alle Highlights"],
+    },
+  ];
 
   return (
-    <section id="services" className="py-24 bg-[#F8F9FA]">
-      <div className="container mx-auto px-6 md:px-12 text-center">
-        <div className="max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-[#8DA399] font-bold tracking-widest uppercase text-sm">Unsere Leistungen</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-[#2D3436]">Was wir für Sie tun</h3>
-          <p className="text-lg text-[#2D3436]/60">
-            Wir bieten eine breite Palette an Dienstleistungen für jeden Haartyp und Stil. 
-            Entdecken Sie unsere Preise und Behandlungen.
-          </p>
+    <section id="services" className="py-24 bg-[#FAF9F6] relative overflow-hidden">
+      <div className="container mx-auto px-6 md:px-12 relative z-10">
+        <div className="text-center max-w-2xl mx-auto mb-20 space-y-4">
+          <h2 className="text-[#C5A059] font-semibold tracking-widest uppercase text-sm">Leistungen</h2>
+          <h3 className="text-4xl md:text-5xl font-serif font-bold text-[#2D3436]">
+            Exzellentes Handwerk für jeden Anlass.
+          </h3>
+          <div className="w-24 h-1 bg-[#C5A059] mx-auto mt-6" />
         </div>
 
-        <Tabs defaultValue="damen" className="w-full max-w-5xl mx-auto">
-          <TabsList className="bg-white p-1 rounded-full shadow-sm mb-12 border border-[#8DA399]/20 h-auto flex flex-wrap justify-center">
-            <TabsTrigger value="damen" className="rounded-full px-8 py-3 data-[state=active]:bg-[#8DA399] data-[state=active]:text-white text-lg">Damen</TabsTrigger>
-            <TabsTrigger value="herren" className="rounded-full px-8 py-3 data-[state=active]:bg-[#8DA399] data-[state=active]:text-white text-lg">Herren</TabsTrigger>
-            <TabsTrigger value="styling" className="rounded-full px-8 py-3 data-[state=active]:bg-[#8DA399] data-[state=active]:text-white text-lg">Extra & Styling</TabsTrigger>
-          </TabsList>
-
-          {Object.entries(servicesData).map(([key, services]) => (
-            <TabsContent key={key} value={key} className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="grid md:grid-cols-2 gap-6">
-                {services.map((service, idx) => (
-                  <div key={idx} className="bg-white p-8 rounded-[32px] text-left border border-[#8DA399]/10 hover:border-[#8DA399]/40 hover:shadow-xl transition-all group">
-                    <div className="flex justify-between items-start mb-2">
-                      <h4 className="text-xl font-bold text-[#2D3436] group-hover:text-[#8DA399] transition-colors">{service.name}</h4>
-                      <span className="text-xl font-bold text-[#8DA399]">{service.price}</span>
-                    </div>
-                    <p className="text-[#2D3436]/60 mb-4">{service.desc}</p>
-                    <div className="flex items-center gap-2 text-xs font-bold text-[#8DA399] opacity-0 group-hover:opacity-100 transition-opacity">
-                      <Check className="w-4 h-4" />
-                      JETZT BUCHEN
-                    </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <div
+              key={service.title}
+              className="group bg-white p-8 rounded-3xl shadow-sm border border-[#2D3436]/5 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col"
+            >
+              <div className="bg-[#C5A059]/10 text-[#C5A059] p-4 rounded-2xl w-fit mb-6 transition-colors group-hover:bg-[#2D3436] group-hover:text-white">
+                {service.icon}
+              </div>
+              <h4 className="text-xl font-bold text-[#2D3436] mb-2">{service.title}</h4>
+              <p className="text-[#2D3436]/60 text-sm mb-6 flex-grow">{service.description}</p>
+              
+              <div className="space-y-3 mb-8">
+                {service.features.map((feature) => (
+                  <div key={feature} className="flex items-center gap-2 text-xs text-[#2D3436]/70">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#C5A059]" />
+                    {feature}
                   </div>
                 ))}
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
 
-        <div className="mt-16 p-8 bg-[#E9D5CA]/30 rounded-[40px] max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="text-left">
-            <h4 className="text-2xl font-bold text-[#2D3436]">Nicht das Richtige dabei?</h4>
-            <p className="text-[#2D3436]/70">Rufen Sie uns an für eine individuelle Preisauskunft.</p>
-          </div>
-          <a href="tel:+49123456789" className="text-2xl font-bold text-[#8DA399] hover:underline">
-            0123 / 456 789
-          </a>
+              <div className="pt-6 border-t border-[#2D3436]/5 flex items-center justify-between">
+                <span className="font-serif font-bold text-[#2D3436]">{service.price}</span>
+                <Button variant="ghost" size="sm" className="text-[#C5A059] hover:text-[#2D3436] p-0 group-hover:translate-x-1 transition-transform">
+                   Details <ArrowRight className="ml-1 w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-20 text-center bg-[#2D3436] p-12 rounded-[40px] text-white shadow-2xl relative overflow-hidden">
+           <div className="absolute top-0 right-0 w-64 h-64 bg-[#C5A059]/10 rounded-full blur-3xl -z-1" />
+           <div className="relative z-10 space-y-6">
+              <h4 className="text-2xl md:text-3xl font-serif font-bold">Nicht das Passende gefunden?</h4>
+              <p className="text-white/70 max-w-xl mx-auto">
+                Wir erstellen Ihnen gerne ein individuelles Angebot, das exakt auf Ihre Wünsche und Ihr Budget zugeschnitten ist.
+              </p>
+              <Button className="bg-[#C5A059] hover:bg-[#A68B5B] text-white rounded-full px-10 py-7 text-lg shadow-lg">
+                 Individuelles Angebot anfordern
+              </Button>
+           </div>
         </div>
       </div>
     </section>

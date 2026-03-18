@@ -1,94 +1,109 @@
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, ArrowRight, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-24 bg-white">
+    <section id="contact" className="py-24 bg-[#FAF9F6]">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-20 items-start">
           <div className="space-y-12">
-            <div className="space-y-4">
-              <h2 className="text-[#8DA399] font-bold tracking-widest uppercase text-sm">Kontakt</h2>
-              <h3 className="text-4xl md:text-5xl font-bold text-[#2D3436]">Besuchen Sie uns in Musterhausen</h3>
-              <p className="text-lg text-[#2D3436]/60">
-                Wir freuen uns darauf, Sie bald persönlich in unserem Salon begrüßen zu dürfen.
-              </p>
+            <div className="space-y-6">
+               <h2 className="text-[#C5A059] font-semibold tracking-widest uppercase text-sm">Kontakt</h2>
+               <h3 className="text-4xl md:text-5xl font-serif font-bold text-[#2D3436]">Lassen Sie uns Ihre Geschichte erzählen.</h3>
+               <p className="text-lg text-[#2D3436]/70 leading-relaxed max-w-lg">
+                 Haben Sie Fragen zu meinen Leistungen oder möchten Sie direkt ein Shooting buchen? Ich freue mich auf Ihre Nachricht!
+               </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-[#8DA399]">
-                  <MapPin className="w-6 h-6" />
-                  <span className="font-bold uppercase tracking-wider text-xs">Standort</span>
-                </div>
-                <p className="text-[#2D3436]/70">
-                  Hauptstraße 123<br />
-                  12345 Musterhausen
-                </p>
-              </div>
+            <div className="space-y-8">
+               <div className="flex gap-6 group">
+                  <div className="bg-white p-4 rounded-2xl shadow-sm text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-white transition-colors duration-300">
+                     <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                     <p className="text-xs font-bold text-[#2D3436]/50 uppercase tracking-widest mb-1">E-Mail Adresse</p>
+                     <a href="mailto:hello@mustermann-fotografie.de" className="text-lg font-bold text-[#2D3436] hover:text-[#C5A059] transition-colors">hello@mustermann-fotografie.de</a>
+                  </div>
+               </div>
 
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-[#8DA399]">
-                  <Clock className="w-6 h-6" />
-                  <span className="font-bold uppercase tracking-wider text-xs">Öffnungszeiten</span>
-                </div>
-                <div className="text-[#2D3436]/70 space-y-1">
-                  <p className="flex justify-between"><span>Mo - Fr:</span> <span>09:00 - 18:30</span></p>
-                  <p className="flex justify-between"><span>Sa:</span> <span>08:30 - 14:00</span></p>
-                  <p className="flex justify-between"><span>So:</span> <span>Geschlossen</span></p>
-                </div>
-              </div>
+               <div className="flex gap-6 group">
+                  <div className="bg-white p-4 rounded-2xl shadow-sm text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-white transition-colors duration-300">
+                     <Phone className="w-6 h-6" />
+                  </div>
+                  <div>
+                     <p className="text-xs font-bold text-[#2D3436]/50 uppercase tracking-widest mb-1">Telefon</p>
+                     <a href="tel:+49123456789" className="text-lg font-bold text-[#2D3436] hover:text-[#C5A059] transition-colors">+49 (0) 123 456 789</a>
+                  </div>
+               </div>
 
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-[#8DA399]">
-                  <Phone className="w-6 h-6" />
-                  <span className="font-bold uppercase tracking-wider text-xs">Anrufen</span>
-                </div>
-                <p className="text-[#2D3436]/70">0123 / 456 789</p>
-              </div>
-
-              <div className="space-y-4">
-                <div className="flex items-center gap-3 text-[#8DA399]">
-                  <Mail className="w-6 h-6" />
-                  <span className="font-bold uppercase tracking-wider text-xs">Schreiben</span>
-                </div>
-                <p className="text-[#2D3436]/70">info@salon-mustermann.de</p>
-              </div>
+               <div className="flex gap-6 group">
+                  <div className="bg-white p-4 rounded-2xl shadow-sm text-[#C5A059] group-hover:bg-[#C5A059] group-hover:text-white transition-colors duration-300">
+                     <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                     <p className="text-xs font-bold text-[#2D3436]/50 uppercase tracking-widest mb-1">Studio Adresse</p>
+                     <p className="text-lg font-bold text-[#2D3436]">Fotogasse 12, 12345 Musterhausen</p>
+                  </div>
+               </div>
             </div>
 
-            {/* Mock Map */}
-            <div className="w-full h-64 bg-gray-100 rounded-[40px] relative overflow-hidden group border border-[#8DA399]/10">
-              <div className="absolute inset-0 bg-[url('https://api.mapbox.com/styles/v1/mapbox/light-v10/static/10.0,51.0,12/800x400?access_token=pk.xxx')] bg-cover bg-center grayscale opacity-50"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-white p-4 rounded-2xl shadow-xl flex flex-col items-center">
-                  <MapPin className="w-8 h-8 text-[#8DA399] fill-current animate-bounce" />
-                  <span className="text-xs font-bold text-[#2D3436] mt-2">Max Mustermann Salon</span>
-                </div>
-              </div>
+            <div className="space-y-6 pt-12 border-t border-[#2D3436]/10">
+               <p className="text-xs font-bold text-[#2D3436]/50 uppercase tracking-widest">Folgen Sie mir</p>
+               <div className="flex gap-4">
+                  {[
+                    { icon: <Instagram />, label: "Instagram" },
+                    { icon: <Facebook />, label: "Facebook" },
+                    { icon: <Linkedin />, label: "LinkedIn" }
+                  ].map((social, i) => (
+                    <button key={i} className="bg-white p-4 rounded-2xl shadow-sm text-[#2D3436] hover:text-[#C5A059] transition-colors" aria-label={social.label}>
+                       {social.icon}
+                    </button>
+                  ))}
+               </div>
             </div>
           </div>
 
-          <div className="bg-[#F8F9FA] p-10 md:p-12 rounded-[48px] border border-[#8DA399]/10">
-            <h4 className="text-2xl font-bold text-[#2D3436] mb-8">Schreiben Sie uns</h4>
-            <form className="space-y-6">
-              <div className="space-y-2">
-                <label htmlFor="contact-name" className="text-sm font-bold text-[#2D3436]/60 ml-1">Name</label>
-                <Input id="contact-name" placeholder="Ihr Name" className="rounded-2xl border-none shadow-sm focus-visible:ring-[#8DA399] h-12" />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="contact-email" className="text-sm font-bold text-[#2D3436]/60 ml-1">E-Mail</label>
-                <Input id="contact-email" type="email" placeholder="ihre@email.de" className="rounded-2xl border-none shadow-sm focus-visible:ring-[#8DA399] h-12" />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="contact-message" className="text-sm font-bold text-[#2D3436]/60 ml-1">Nachricht</label>
-                <Textarea id="contact-message" placeholder="Wie können wir Ihnen helfen?" className="rounded-[24px] border-none shadow-sm focus-visible:ring-[#8DA399] min-h-[150px]" />
-              </div>
-              <Button type="submit" className="w-full bg-[#8DA399] hover:bg-[#7A8E85] text-white rounded-2xl h-14 text-lg font-bold">
-                Nachricht senden
-              </Button>
-            </form>
+          <div className="bg-white p-12 rounded-[40px] shadow-2xl relative overflow-hidden">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-[#C5A059]/5 rounded-full blur-3xl -z-1" />
+             <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid md:grid-cols-2 gap-8">
+                   <div className="space-y-2">
+                      <label className="text-xs font-bold text-[#2D3436] uppercase tracking-widest ml-1">Name</label>
+                      <Input placeholder="Ihren Namen eingeben" className="bg-[#FAF9F6] border-none rounded-2xl py-6 px-6 focus:ring-2 focus:ring-[#C5A059] transition-shadow shadow-inner" />
+                   </div>
+                   <div className="space-y-2">
+                      <label className="text-xs font-bold text-[#2D3436] uppercase tracking-widest ml-1">E-Mail</label>
+                      <Input type="email" placeholder="ihre@email.de" className="bg-[#FAF9F6] border-none rounded-2xl py-6 px-6 focus:ring-2 focus:ring-[#C5A059] transition-shadow shadow-inner" />
+                   </div>
+                </div>
+
+                <div className="space-y-2">
+                   <label className="text-xs font-bold text-[#2D3436] uppercase tracking-widest ml-1">Anlass</label>
+                   <select className="w-full bg-[#FAF9F6] border-none rounded-2xl py-4 px-6 focus:ring-2 focus:ring-[#C5A059] transition-shadow shadow-inner text-[#2D3436]/60 appearance-none">
+                      <option>Wählen Sie eine Leistung</option>
+                      <option>Porträtfotografie</option>
+                      <option>Hochzeitsreportage</option>
+                      <option>Business-Shooting</option>
+                      <option>Eventbegleitung</option>
+                      <option>Sonstiges</option>
+                   </select>
+                </div>
+
+                <div className="space-y-2">
+                   <label className="text-xs font-bold text-[#2D3436] uppercase tracking-widest ml-1">Nachricht</label>
+                   <Textarea placeholder="Erzählen Sie mir von Ihrem Vorhaben..." className="bg-[#FAF9F6] border-none rounded-2xl py-6 px-6 h-40 focus:ring-2 focus:ring-[#C5A059] transition-shadow shadow-inner resize-none" />
+                </div>
+
+                <Button className="w-full bg-[#2D3436] hover:bg-[#3D4446] text-white rounded-2xl py-8 text-lg font-bold group shadow-xl transition-all">
+                   Nachricht absenden
+                   <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <p className="text-[10px] text-center text-[#2D3436]/40 uppercase font-bold tracking-widest">
+                   Mit dem Absenden akzeptieren Sie unsere <a href="/datenschutz" className="underline hover:text-[#C5A059]">Datenschutzbestimmungen</a>.
+                </p>
+             </form>
           </div>
         </div>
       </div>
