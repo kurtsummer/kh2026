@@ -56,8 +56,8 @@ export const Hero = () => {
         <div className="relative animate-in fade-in slide-in-from-right-8 duration-700 delay-200">
           <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl aspect-[4/5]">
             <img
-              src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop"
-              alt="Friseur bei der Arbeit an einem Kunden im Salon Mustermann"
+              src="/hero-image.png"
+              alt="Max Mustermann bei der Arbeit an einem Kunden in seinem modernen Salon"
               className="w-full h-full object-cover"
             />
           </div>
