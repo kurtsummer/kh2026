@@ -18,10 +18,10 @@ export const Gallery = () => {
     { id: 2, category: "Hochzeiten", image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop", title: "Farbenfrohe Hochzeit", color: "bg-[#45B7AF]" },
     { id: 3, category: "Business", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop", title: "Modernes Agenturleben", color: "bg-[#FFD93D]" },
     { id: 4, category: "Porträts", image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=2000&auto=format&fit=crop", title: "Natürliches Outdoor-Shooting", color: "bg-[#FF7E67]" },
-    { id: 5, category: "Events", image: "https://images.unsplash.com/photo-1514525253361-bee8718a740b?q=80&w=2000&auto=format&fit=crop", title: "Festival der Farben", color: "bg-[#2D3436]" },
+    { id: 5, category: "Events", image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop", title: "Festival der Farben", color: "bg-[#2D3436]" },
     { id: 6, category: "Hochzeiten", image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2000&auto=format&fit=crop", title: "Glücksmomente pur", color: "bg-[#45B7AF]" },
     { id: 7, category: "Business", image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=2000&auto=format&fit=crop", title: "Das Team lacht", color: "bg-[#FFD93D]" },
-    { id: 8, category: "Events", image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2000&auto=format&fit=crop", title: "Professionelle Konferenz", color: "bg-[#2D3436]" },
+    { id: 8, category: "Events", image: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=2000&auto=format&fit=crop", title: "Professionelle Konferenz", color: "bg-[#2D3436]" },
   ];
 
   const filteredItems = activeFilter === "Alle" 
