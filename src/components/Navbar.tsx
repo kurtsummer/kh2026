@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Utensils, Sparkles, Heart } from "lucide-react";
+import { Menu, X, Utensils, Sparkles, Heart, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 

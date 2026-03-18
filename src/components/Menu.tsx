@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Utensils, Coffee, Wine, ChefHat, Star, Sparkles, X, Heart, Info } from "lucide-react";
+import { Utensils, Coffee, Wine, ChefHat, Star, Sparkles, X, Heart, Info, Download, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -171,6 +171,15 @@ export const Menu = () => {
           <p className="text-lg text-[#2D3436]/60 font-medium max-w-xl mx-auto">
             Wir verwenden ausschließlich frische Produkte aus der Region Musterhausen. Entdecken Sie unsere saisonalen Spezialitäten.
           </p>
+          <div className="pt-4">
+            <Button asChild variant="outline" className="border-2 border-[#FF7E67] text-[#FF7E67] hover:bg-[#FF7E67] hover:text-white rounded-full px-8 py-6 font-bold group transition-all duration-300 shadow-lg shadow-[#FF7E67]/10">
+              <a href="#" download="Speisekarte_Restaurant_Max.pdf">
+                <FileText className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
+                Speisekarte als PDF (Download)
+                <Download className="ml-2 w-4 h-4 opacity-50 group-hover:translate-y-0.5 transition-transform" />
+              </a>
+            </Button>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

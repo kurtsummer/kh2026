@@ -1,4 +1,4 @@
-import { Instagram, Facebook, Utensils, Heart, Mail, Phone, MapPin, Sparkles, Star, Clock } from "lucide-react";
+import { Instagram, Facebook, Utensils, Heart, Mail, Phone, MapPin, Sparkles, Star, Clock, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export const Footer = () => {
@@ -43,8 +43,8 @@ export const Footer = () => {
              <ul className="space-y-5">
                 {["Speisekarte", "Über uns", "Galerie", "Reservierung", "Kontakt"].map((link) => (
                   <li key={link}>
-                    <a 
-                      href={`#${link.toLowerCase().replace("ü", "u").replace(" ", "-")}`} 
+                    <a
+                      href={`#${link.toLowerCase().replace("ü", "u").replace(" ", "-")}`}
                       className="text-[#2D3436]/60 hover:text-[#FF7E67] transition-all text-sm font-black flex items-center gap-3 group"
                     >
                       <div className="w-2 h-2 rounded-full bg-[#45B7AF] scale-0 group-hover:scale-100 transition-transform" />
@@ -52,6 +52,16 @@ export const Footer = () => {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <a
+                    href="#"
+                    download="Speisekarte_Restaurant_Max.pdf"
+                    className="text-[#FF7E67] hover:text-[#E66B56] transition-all text-sm font-black flex items-center gap-3 group mt-4 pt-4 border-t border-[#2D3436]/5"
+                  >
+                    <FileText className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    PDF Download
+                  </a>
+                </li>
              </ul>
           </div>
 
