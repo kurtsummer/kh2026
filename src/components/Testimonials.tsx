@@ -15,7 +15,7 @@ export const Testimonials = () => {
       role: "Kritiker",
       content: "Endlich ein Café, das die Melange richtig zubereitet. Die Bedienung ist zuvorkommend und der Gastgarten im Sommer ein Traum.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1552058544-1271d75d4c92?q=80&w=150&auto=format&fit=crop",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop",
       icon: <Zap className="w-5 h-5" />
     },
     {
