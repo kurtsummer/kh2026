@@ -1,9 +1,25 @@
 import { useState } from "react";
-import { ZoomIn, Camera, ExternalLink, Sparkles, Heart, Smile, Users } from "lucide-react";
+import { ZoomIn, Camera, ExternalLink, Sparkles, Heart, Smile, Users, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogClose,
+} from "@/components/ui/dialog";
+
+interface GalleryItem {
+  id: number;
+  category: string;
+  image: string;
+  title: string;
+  color: string;
+}
 
 export const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState("Alle");
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
 
   const filters = [
     { name: "Alle", icon: <Sparkles className="w-4 h-4" /> },
@@ -13,7 +29,7 @@ export const Gallery = () => {
     { name: "Events", icon: <Camera className="w-4 h-4" /> },
   ];
 
-  const items = [
+  const items: GalleryItem[] = [
     { id: 1, category: "Porträts", image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=2000&auto=format&fit=crop", title: "Lächeln am Strand", color: "bg-[#FF7E67]" },
     { id: 2, category: "Hochzeiten", image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop", title: "Farbenfrohe Hochzeit", color: "bg-[#45B7AF]" },
     { id: 3, category: "Business", image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=2000&auto=format&fit=crop", title: "Modernes Agenturleben", color: "bg-[#FFD93D]" },
@@ -63,11 +79,12 @@ export const Gallery = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-in fade-in duration-700">
           {filteredItems.map((item) => (
-            <div key={item.id} className="group relative rounded-[48px] overflow-hidden aspect-[4/5] shadow-2xl hover:shadow-[#FF7E67]/20 transition-all duration-500 hover:-translate-y-2 border-8 border-white">
+            <div key={item.id} className="group relative rounded-[48px] overflow-hidden aspect-[4/5] shadow-2xl hover:shadow-[#FF7E67]/20 transition-all duration-500 hover:-translate-y-2 border-8 border-white bg-gray-100">
               <img
                 src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#2D3436]/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-10">
                  <div className="space-y-3 translate-y-6 group-hover:translate-y-0 transition-transform duration-500">
@@ -76,7 +93,11 @@ export const Gallery = () => {
                     </span>
                     <h4 className="text-white text-2xl font-black leading-tight">{item.title}</h4>
                     <div className="flex items-center gap-4 pt-6">
-                       <button className="bg-white/20 hover:bg-white text-[#2D3436] p-4 rounded-3xl backdrop-blur-md transition-all group-hover:rotate-6 shadow-xl" aria-label="Zoom Bild">
+                       <button 
+                         onClick={() => setSelectedImage(item)}
+                         className="bg-white/20 hover:bg-white text-[#2D3436] p-4 rounded-3xl backdrop-blur-md transition-all group-hover:rotate-6 shadow-xl" 
+                         aria-label="Bild vergrößern"
+                       >
                           <ZoomIn className="w-6 h-6" />
                        </button>
                        <button className={`${item.color} hover:opacity-90 p-4 rounded-3xl text-white transition-all shadow-2xl group-hover:-rotate-6`} aria-label="Projekt Details">
@@ -96,6 +117,50 @@ export const Gallery = () => {
            </Button>
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+        <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 overflow-hidden bg-white/95 backdrop-blur-lg border-none rounded-[40px] shadow-2xl">
+          <DialogHeader className="absolute top-6 right-6 z-50">
+            <DialogClose className="p-3 bg-[#FF7E67] text-white rounded-2xl hover:bg-[#E66B56] hover:rotate-90 transition-all shadow-xl">
+               <X className="w-6 h-6" />
+            </DialogClose>
+          </DialogHeader>
+          
+          {selectedImage && (
+            <div className="flex flex-col lg:flex-row h-full">
+              <div className="lg:w-2/3 h-[50vh] lg:h-full bg-gray-100 relative">
+                <img 
+                  src={selectedImage.image} 
+                  alt={selectedImage.title} 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-6 left-6">
+                  <span className={`${selectedImage.color} text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-2xl shadow-xl`}>
+                    {selectedImage.category}
+                  </span>
+                </div>
+              </div>
+              <div className="lg:w-1/3 p-12 flex flex-col justify-center space-y-8 bg-white">
+                <div className="space-y-4">
+                  <h3 className="text-4xl font-black text-[#2D3436] leading-tight">
+                    {selectedImage.title}
+                  </h3>
+                  <div className="w-16 h-2 bg-[#FF7E67] rounded-full" />
+                </div>
+                <p className="text-[#2D3436]/60 font-medium leading-relaxed">
+                  Dieses Bild wurde mit viel Liebe zum Detail in unserem Studio in Musterhausen aufgenommen. Wir legen großen Wert auf lebendige Farben und echte Emotionen.
+                </p>
+                <div className="pt-8 border-t border-[#2D3436]/5">
+                  <Button className="w-full bg-[#2D3436] hover:bg-[#3D4446] text-white rounded-3xl py-8 font-black uppercase tracking-widest text-sm shadow-xl transition-all hover:scale-105">
+                    Ähnliches Shooting anfragen
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
