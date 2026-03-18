@@ -110,10 +110,6 @@ export const Footer = () => {
             <Link to="/datenschutz" className="text-sm font-bold text-white/40 hover:text-[#D4AF37] transition-colors">Datenschutz</Link>
             <Link to="/agb" className="text-sm font-bold text-white/40 hover:text-[#D4AF37] transition-colors">AGB</Link>
           </div>
-
-          <div className="flex items-center gap-2 text-white/40 font-bold text-sm">
-            Mit <Heart className="w-4 h-4 text-[#800020] fill-current animate-pulse" /> serviert von Tech Buddy
-          </div>
         </div>
       </div>
     </footer>
