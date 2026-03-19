@@ -25,7 +25,7 @@ const events = [
   }
 ];
 
-const Events = () => {
+export const Events = () => {
   return (
     <section id="events" className="py-24 px-6 bg-[#FFFDF5] overflow-hidden">
       <div className="max-w-7xl mx-auto">

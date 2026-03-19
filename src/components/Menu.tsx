@@ -27,7 +27,7 @@ const menuItems = {
   ],
 };
 
-const Menu = () => {
+export const Menu = () => {
   const [activeCategory, setActiveCategory] = useState('drinks');
 
   return (

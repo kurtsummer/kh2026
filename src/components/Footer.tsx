@@ -1,7 +1,7 @@
 import React from 'react';
 import { Beer, Instagram, Facebook, Twitter, Heart } from 'lucide-react';
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <footer className="bg-[#FFFDF5] pt-24 pb-12 px-6 border-t border-[#2D241E]/5">
       <div className="max-w-7xl mx-auto">

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 
-const Hero = () => {
+export const Hero = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}

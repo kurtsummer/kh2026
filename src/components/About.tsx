@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heart, Beer, Users } from 'lucide-react';
 
-const About = () => {
+export const About = () => {
   return (
     <section id="about" className="py-24 px-6 bg-[#FFFDF5]">
       <div className="max-w-7xl mx-auto">

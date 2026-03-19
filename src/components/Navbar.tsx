@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Beer, Menu, X } from 'lucide-react';
 
-const Navbar = () => {
+export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

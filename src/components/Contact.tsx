@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail, Phone, MapPin, Instagram, Facebook, Send } from 'lucide-react';
 
-const Contact = () => {
+export const Contact = () => {
   return (
     <section id="contact" className="py-24 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
