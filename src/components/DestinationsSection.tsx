@@ -1,9 +1,19 @@
-import { destinations } from "@/data/destinations";
+import { useState } from "react";
+import { destinations, Destination } from "@/data/destinations";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Star, Clock, MapPin, ArrowUpRight } from "lucide-react";
+import { Star, Clock, MapPin, ArrowUpRight, CheckCircle2, Plane, Palmtree, Map, Ship } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 export const DestinationsSection = () => {
+  const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+
   return (
     <section id="reiseziele" className="py-32 bg-slate-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -75,7 +85,10 @@ export const DestinationsSection = () => {
                   ))}
                 </div>
 
-                <Button className="w-full h-16 bg-slate-900 hover:bg-sky-600 text-white rounded-[1.5rem] text-lg font-black gap-3 transition-all group shadow-xl">
+                <Button 
+                  onClick={() => setSelectedDestination(item)}
+                  className="w-full h-16 bg-slate-900 hover:bg-sky-600 text-white rounded-[1.5rem] text-lg font-black gap-3 transition-all group shadow-xl"
+                >
                   Details ansehen
                   <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Button>
@@ -90,6 +103,91 @@ export const DestinationsSection = () => {
           </Button>
         </div>
       </div>
+
+      <Dialog open={!!selectedDestination} onOpenChange={(open) => !open && setSelectedDestination(null)}>
+        <DialogContent className="max-w-4xl p-0 overflow-hidden rounded-[3rem] border-none shadow-3xl bg-white">
+          {selectedDestination && (
+            <div className="grid md:grid-cols-2">
+              <div className="relative h-[300px] md:h-full overflow-hidden">
+                <img 
+                  src={selectedDestination.imageUrl} 
+                  alt={selectedDestination.title} 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-10 left-10 text-white">
+                   <div className="flex items-center gap-2 mb-2">
+                      <MapPin className="w-5 h-5 text-sky-400" />
+                      <span className="font-bold">{selectedDestination.location}</span>
+                   </div>
+                   <h2 className="text-4xl font-black tracking-tighter italic leading-none">{selectedDestination.title}</h2>
+                </div>
+              </div>
+
+              <div className="p-12 space-y-10">
+                <div className="flex items-center justify-between">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Kategorie</p>
+                    <div className="flex items-center gap-2 font-black text-sky-600 text-lg">
+                       {selectedDestination.category === 'Strand' && <Palmtree className="w-5 h-5" />}
+                       {selectedDestination.category === 'Stadt' && <Map className="w-5 h-5" />}
+                       {selectedDestination.category === 'Kreuzfahrt' && <Ship className="w-5 h-5" />}
+                       {selectedDestination.category === 'Abenteuer' && <Plane className="w-5 h-5 rotate-45" />}
+                       {selectedDestination.category}
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Bewertung</p>
+                    <div className="flex items-center gap-2 font-black text-amber-500 text-2xl">
+                       <Star className="w-6 h-6 fill-amber-500" />
+                       {selectedDestination.rating}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tighter">Über diese Reise</h3>
+                  <p className="text-slate-500 font-bold leading-relaxed text-lg">
+                    {selectedDestination.description}
+                  </p>
+                </div>
+
+                <div className="space-y-6">
+                  <h3 className="text-2xl font-black text-slate-900 tracking-tighter">Ihre Highlights</h3>
+                  <div className="grid gap-4">
+                    {selectedDestination.highlights.map((h, i) => (
+                      <div key={i} className="flex items-center gap-4 group">
+                        <div className="w-8 h-8 rounded-xl bg-sky-50 flex items-center justify-center shrink-0 border-2 border-sky-100 group-hover:bg-sky-600 group-hover:border-sky-600 transition-all">
+                           <CheckCircle2 className="w-4 h-4 text-sky-600 group-hover:text-white" />
+                        </div>
+                        <span className="font-bold text-slate-700">{h}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-8 border-t-4 border-slate-50 flex items-center justify-between gap-8">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Preis p.P.</p>
+                    <p className="text-4xl font-black text-slate-900 tracking-tighter">€{selectedDestination.price.toLocaleString('de-DE')}</p>
+                  </div>
+                  <Button 
+                    className="h-20 px-10 bg-sky-600 hover:bg-sky-700 text-white rounded-[2rem] text-xl font-black gap-4 shadow-2xl shadow-sky-200 transition-all active:scale-95 flex-1"
+                    onClick={() => {
+                        setSelectedDestination(null);
+                        const contact = document.getElementById('kontakt');
+                        contact?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Jetzt Anfragen
+                    <ArrowUpRight className="w-6 h-6" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
