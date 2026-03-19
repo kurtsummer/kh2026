@@ -1,73 +1,58 @@
-import { Clock, Calendar, AlertCircle } from "lucide-react";
+import { Clock, CalendarCheck } from "lucide-react";
+
+const schedule = [
+  { days: "Montag", hours: "09:00 - 13:00 & 14:00 - 18:00" },
+  { days: "Dienstag", hours: "09:00 - 13:00 & 14:00 - 18:00" },
+  { days: "Mittwoch", hours: "09:00 - 13:00 (Nachmittags Termine)" },
+  { days: "Donnerstag", hours: "09:00 - 13:00 & 14:00 - 19:00" },
+  { days: "Freitag", hours: "09:00 - 13:00 & 14:00 - 18:00" },
+  { days: "Samstag", hours: "10:00 - 13:00 (Nur nach Vereinbarung)" },
+];
 
 export const OpeningHours = () => {
-  const hours = [
-    { day: "Montag", time: "08:30 – 18:00 Uhr" },
-    { day: "Dienstag", time: "08:30 – 18:00 Uhr" },
-    { day: "Mittwoch", time: "08:30 – 14:00 Uhr" },
-    { day: "Donnerstag", time: "10:00 – 19:30 Uhr" },
-    { day: "Freitag", time: "08:30 – 16:00 Uhr" },
-    { day: "Samstag", time: "Nach Vereinbarung" },
-    { day: "Sonntag", time: "Geschlossen" },
-  ];
-
   return (
-    <section id="oeffnungszeiten" className="py-24 bg-[#f8fafc] overflow-hidden relative">
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-white -z-10" />
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="space-y-10">
-            <div className="space-y-4">
-              <span className="text-cyan-600 font-black uppercase tracking-widest text-sm bg-cyan-50 px-4 py-2 rounded-full inline-block">
-                Besuch planen
-              </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                Unsere Öffnungszeiten in <br />
-                <span className="text-cyan-600">Musterhausen.</span>
-              </h2>
-            </div>
-            
-            <p className="text-xl text-slate-600 font-medium leading-relaxed">
-              Planen Sie Ihren Besuch ganz bequem nach Ihren zeitlichen Möglichkeiten. Wir legen großen Wert auf Pünktlichkeit, um Ihnen unnötige Wartezeiten zu ersparen.
-            </p>
-
-            <div className="p-8 bg-cyan-50 rounded-[2rem] border border-cyan-100 flex items-start gap-6 group">
-              <div className="w-12 h-12 rounded-2xl bg-cyan-600 text-white flex items-center justify-center flex-shrink-0 animate-pulse">
-                <AlertCircle className="w-6 h-6" />
+    <section id="oeffnungszeiten" className="py-32 bg-slate-50 dark:bg-slate-900/50 relative overflow-hidden transition-colors duration-500">
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
+        <div className="bg-sky-900 dark:bg-slate-900 rounded-[4rem] p-12 md:p-24 text-white shadow-[0_50px_100px_-20px_rgba(12,74,110,0.4)] relative overflow-hidden border-8 border-white dark:border-slate-800">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-sky-800/40 dark:bg-sky-500/10 rounded-full blur-3xl -mr-40 -mt-40" />
+          
+          <div className="relative z-10">
+            <div className="flex items-center gap-8 mb-16">
+              <div className="w-20 h-20 rounded-[2rem] bg-sky-800 dark:bg-sky-500/20 border-4 border-sky-700 dark:border-sky-500/30 flex items-center justify-center shadow-inner group hover:rotate-12 transition-transform duration-500">
+                <Clock className="w-10 h-10 text-sky-300 dark:text-sky-400" />
               </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-bold text-slate-900">Termine nur nach Vereinbarung</h3>
-                <p className="text-slate-600 font-medium">
-                  Um die bestmögliche Behandlungsqualität zu gewährleisten, bitten wir Sie um eine telefonische Terminreservierung.
-                </p>
+              <div>
+                <h2 className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">Öffnungszeiten</h2>
+                <p className="text-sky-400 dark:text-sky-500 font-black text-[10px] uppercase tracking-[0.4em]">Wir sind für Sie da</p>
               </div>
             </div>
-          </div>
 
-          <div className="relative group">
-            <div className="absolute -inset-6 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-[3rem] blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
-            <div className="relative bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-slate-200 border border-slate-50 overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-50/50 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-              
-              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-slate-100">
-                <div className="w-12 h-12 rounded-2xl bg-cyan-100 text-cyan-600 flex items-center justify-center">
-                  <Clock className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-black text-slate-900">Wochenplan</h3>
-              </div>
-
-              <div className="space-y-5">
-                {hours.map((item, idx) => (
-                  <div key={idx} className="flex justify-between items-center group/item p-2 rounded-xl transition-colors hover:bg-slate-50">
-                    <span className="text-lg font-bold text-slate-700 flex items-center gap-3">
-                      <Calendar className="w-4 h-4 text-cyan-400 opacity-0 group-hover/item:opacity-100 transition-opacity" />
-                      {item.day}
-                    </span>
-                    <span className={`text-lg font-black ${item.time === "Geschlossen" ? "text-slate-400" : "text-cyan-600"}`}>
-                      {item.time}
-                    </span>
+            <div className="space-y-8">
+              {schedule.map((item) => (
+                <div 
+                  key={item.days} 
+                  className="flex flex-col md:flex-row md:items-center justify-between py-6 border-b-2 border-sky-800/50 dark:border-sky-500/10 last:border-0 group"
+                >
+                  <span className="font-black text-2xl tracking-tighter group-hover:text-amber-400 transition-colors italic">{item.days}</span>
+                  <div className="flex items-center gap-6 text-sky-100 dark:text-sky-400 font-bold">
+                    <span className="text-xl">{item.hours}</span>
                   </div>
-                ))}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-20 p-10 bg-sky-950/50 dark:bg-slate-950/50 rounded-[3rem] border-4 border-sky-800 dark:border-sky-500/20 flex gap-8 items-center group hover:bg-sky-950 dark:hover:bg-slate-950 transition-colors duration-500">
+              <div className="w-16 h-16 bg-amber-400 rounded-2xl flex items-center justify-center shrink-0 border-4 border-white dark:border-slate-800 group-hover:rotate-6 transition-transform">
+                <CalendarCheck className="w-8 h-8 text-sky-950 dark:text-slate-900" />
+              </div>
+              <div className="space-y-3">
+                <p className="font-black text-amber-400 uppercase tracking-[0.3em] text-[10px]">Wunschtermin vereinbaren</p>
+                <p className="text-lg text-sky-100 dark:text-sky-400 leading-tight font-bold">
+                  Gerne beraten wir Sie auch außerhalb unserer regulären Öffnungszeiten. Rufen Sie uns einfach an!
+                </p>
+                <p className="text-white font-black text-2xl tracking-tighter underline decoration-amber-400 decoration-4 underline-offset-8">
+                  01234 / 567890
+                </p>
               </div>
             </div>
           </div>

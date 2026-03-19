@@ -1,83 +1,103 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Check, Heart, Waves, Footprints, Thermometer } from "lucide-react";
+import { 
+  Palmtree, 
+  Ship, 
+  Map, 
+  ShieldCheck, 
+  Compass,
+  Briefcase,
+  Ticket,
+  ArrowRight
+} from "lucide-react";
 
 const services = [
   {
-    title: "Medizinische Fußpflege",
-    description: "Fachgerechte Behandlung von Hühneraugen, eingewachsenen Nägeln und Hornhautproblemen.",
-    icon: <Heart className="w-6 h-6" />,
-    color: "bg-cyan-100 text-cyan-600",
-    features: ["Fachgerechtes Nagelkürzen", "Entfernung von Hornhaut", "Hühneraugen-Behandlung"],
+    title: "Pauschalreisen",
+    description: "Sorglos in den Urlaub mit unseren attraktiven Komplettpaketen inkl. Flug, Hotel und Transfer.",
+    icon: Palmtree,
+    color: "bg-sky-50 dark:bg-sky-500/10 text-sky-600 dark:text-sky-400",
+    border: "border-sky-100 dark:border-sky-500/20"
   },
   {
-    title: "Kosmetische Fußpflege",
-    description: "Ästhetische Pflege für Ihre Füße, inklusive Nagelverschönerung und entspannender Massage.",
-    icon: <Waves className="w-6 h-6" />,
-    color: "bg-teal-100 text-teal-600",
-    features: ["Wellness-Fußbad", "Nagelhautpflege", "Nagel-Lackierung"],
+    title: "Kreuzfahrten",
+    description: "Entdecken Sie die Weltmeere auf den modernsten Schiffen von AIDA, TUI Cruises und vielen mehr.",
+    icon: Ship,
+    color: "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400",
+    border: "border-amber-100 dark:border-amber-500/20"
   },
   {
-    title: "Diabetische Fußpflege",
-    description: "Spezialisierte Pflege für Diabetiker unter Einhaltung strengster Hygiene- und Sicherheitsregeln.",
-    icon: <Thermometer className="w-6 h-6" />,
-    color: "bg-blue-100 text-blue-600",
-    features: ["Sensibilitätsprüfung", "Verletzungsfreie Pflege", "Individuelle Beratung"],
+    title: "Individualreisen",
+    description: "Wir stellen Ihre Traumreise ganz nach Ihren persönlichen Wünschen und Vorstellungen zusammen.",
+    icon: Map,
+    color: "bg-sky-50 dark:bg-sky-500/10 text-sky-600 dark:text-sky-400",
+    border: "border-sky-100 dark:border-sky-500/20"
   },
   {
-    title: "Spangenbehandlung",
-    description: "Sanfte Korrektur bei eingewachsenen oder Rollnägeln ohne chirurgischen Eingriff.",
-    icon: <Footprints className="w-6 h-6" />,
-    color: "bg-cyan-200 text-cyan-700",
-    features: ["3TO Spangentechnik", "Druckentlastung", "Langfristige Korrektur"],
+    title: "Geschäftsreisen",
+    description: "Professionelle Planung und Buchung für Ihre Business-Trips – effizient und unkompliziert.",
+    icon: Briefcase,
+    color: "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400",
+    border: "border-amber-100 dark:border-amber-500/20"
   },
+  {
+    title: "Reiseversicherung",
+    description: "Gehen Sie auf Nummer sicher mit dem passenden Reiseschutz für alle Eventualitäten.",
+    icon: ShieldCheck,
+    color: "bg-sky-50 dark:bg-sky-500/10 text-sky-600 dark:text-sky-400",
+    border: "border-sky-100 dark:border-sky-500/20"
+  },
+  {
+    title: "Last Minute",
+    description: "Spontane Auszeit gesucht? Finden Sie bei uns die besten Schnäppchen für Kurzentschlossene.",
+    icon: Ticket,
+    color: "bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400",
+    border: "border-amber-100 dark:border-amber-500/20"
+  }
 ];
 
-export const ServicesSection = () => {
+export const Services = () => {
   return (
-    <section id="leistungen" className="py-24 bg-white relative overflow-hidden">
-      {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-[#f8fafc] to-white -z-10" />
-      
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
-            Umfassende Pflege für Ihre <br />
-            <span className="text-cyan-600">Füße und Ihr Wohlbefinden.</span>
+    <section id="leistungen" className="py-32 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-500">
+      {/* Decorative Elements */}
+      <div className="absolute -top-24 -left-24 w-96 h-96 bg-sky-50 dark:bg-sky-500/5 rounded-full blur-3xl opacity-50" />
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-50 dark:bg-amber-500/5 rounded-full blur-3xl opacity-50" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="text-center mb-24 space-y-6">
+          <div className="inline-flex items-center gap-3 bg-sky-600 text-white px-8 py-3 rounded-full text-sm font-black uppercase tracking-[0.3em] shadow-lg shadow-sky-100 dark:shadow-sky-900/20">
+            <Compass className="w-5 h-5 animate-spin-slow" />
+            Unsere Leistungen
+          </div>
+          <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
+            Ihr Weg zum <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-sky-400 italic">perfekten Urlaub</span>
           </h2>
-          <p className="text-lg text-slate-600 font-medium leading-relaxed">
-            Ob medizinisch notwendig oder rein zur Entspannung – wir bieten Ihnen maßgeschneiderte Behandlungen in einer ruhigen und hygienischen Atmosphäre.
+          <p className="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-xl font-bold leading-relaxed">
+            Wir kümmern uns um jedes Detail Ihrer Reise, damit Sie sich voll und ganz auf das Erleben konzentrieren können.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="group relative border-none shadow-xl shadow-slate-200/50 rounded-[2.5rem] overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-100"
+            <div 
+              key={index}
+              className={`group p-12 rounded-[4rem] bg-white dark:bg-slate-900 border-4 ${service.border} hover:border-transparent hover:shadow-[0_40px_80px_-15px_rgba(0,186,255,0.15)] transition-all duration-700 hover:-translate-y-4 relative overflow-hidden shadow-sm`}
             >
-              <CardHeader className="p-8 pb-4">
-                <div className={`w-14 h-14 rounded-2xl ${service.color} flex items-center justify-center mb-6 transition-transform group-hover:scale-110 group-hover:rotate-6 duration-500 shadow-sm`}>
-                  {service.icon}
-                </div>
-                <CardTitle className="text-2xl font-bold text-slate-900 mb-4">{service.title}</CardTitle>
-                <CardDescription className="text-slate-600 text-[15px] leading-relaxed font-medium">
-                  {service.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-8 pt-4">
-                <ul className="space-y-3">
-                  {service.features.map((feature, fIdx) => (
-                    <li key={fIdx} className="flex items-center gap-3 text-sm font-bold text-slate-700">
-                      <div className="w-5 h-5 rounded-full bg-cyan-50 flex items-center justify-center">
-                        <Check className="w-3 h-3 text-cyan-600" />
-                      </div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-              <div className="absolute inset-0 border-2 border-transparent group-hover:border-cyan-100 rounded-[2.5rem] pointer-events-none transition-colors" />
-            </Card>
+              <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-700">
+                <service.icon className="w-32 h-32 rotate-12 text-slate-900 dark:text-white" />
+              </div>
+              
+              <div className={`w-24 h-24 rounded-[2.5rem] ${service.color} flex items-center justify-center mb-10 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl`}>
+                <service.icon className="w-12 h-12" />
+              </div>
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-6 tracking-tight group-hover:text-sky-600 dark:group-hover:text-sky-400 transition-colors">{service.title}</h3>
+              <p className="text-slate-500 dark:text-slate-400 leading-relaxed text-lg font-bold">
+                {service.description}
+              </p>
+              
+              <div className="mt-10 flex items-center gap-2 text-sky-600 dark:text-sky-400 font-black uppercase tracking-widest text-sm opacity-0 group-hover:opacity-100 transition-all transform translate-y-4 group-hover:translate-y-0">
+                Mehr erfahren <ArrowRight className="w-4 h-4" />
+              </div>
+            </div>
           ))}
         </div>
       </div>

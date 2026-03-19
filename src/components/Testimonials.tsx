@@ -26,9 +26,9 @@ const testimonials = [
 
 export const Testimonials = () => {
   return (
-    <section className="py-32 bg-sky-900 overflow-hidden relative">
+    <section className="py-32 bg-sky-900 dark:bg-slate-950 overflow-hidden relative transition-colors duration-500">
       {/* Decorative patterns */}
-      <div className="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 opacity-20 dark:opacity-10 pointer-events-none overflow-hidden">
         <div className="absolute -top-24 -right-24 w-[600px] h-[600px] border-4 border-amber-400/20 rounded-full animate-pulse" />
         <div className="absolute -bottom-48 -left-48 w-[800px] h-[800px] border-4 border-white/10 rounded-full animate-spin-slow" />
       </div>
@@ -42,15 +42,15 @@ export const Testimonials = () => {
             Echte Erlebnisse <br />
             <span className="text-amber-400 italic">unserer Reisenden</span>
           </h2>
-          <p className="text-sky-100 max-w-2xl mx-auto text-xl font-bold leading-relaxed">
+          <p className="text-sky-100 dark:text-sky-400/80 max-w-2xl mx-auto text-xl font-bold leading-relaxed">
             Nichts motiviert uns mehr als die glücklichen Gesichter unserer Kunden nach ihrer Rückkehr.
           </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
           {testimonials.map((t, i) => (
-            <div key={i} className="bg-white/10 backdrop-blur-3xl border-4 border-white/10 p-12 rounded-[4rem] flex flex-col justify-between hover:bg-white/20 transition-all duration-700 group hover:-translate-y-4 relative">
-              <div className="absolute top-8 right-8 text-white/5 group-hover:text-amber-400/20 transition-colors duration-700">
+            <div key={i} className="bg-white/10 dark:bg-slate-900/40 backdrop-blur-3xl border-4 border-white/10 dark:border-slate-800/50 p-12 rounded-[4rem] flex flex-col justify-between hover:bg-white/20 dark:hover:bg-slate-800/60 transition-all duration-700 group hover:-translate-y-4 relative">
+              <div className="absolute top-8 right-8 text-white/5 dark:text-sky-400/5 group-hover:text-amber-400/20 transition-colors duration-700">
                 <t.icon className="w-24 h-24 rotate-12" />
               </div>
               

@@ -1,103 +1,116 @@
-import React from 'react';
-import { Mail, Phone, MapPin, Instagram, Facebook, Send, Clock } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Compass } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 
 export const Contact = () => {
   return (
-    <section id="contact" className="py-32 px-6 bg-[#FAF6F0] dark:bg-[#0F0A08] relative transition-colors duration-500">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-20">
+    <section id="kontakt" className="py-32 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-500">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-24 items-start">
           <div className="space-y-12">
-            <div>
-              <div className="inline-block px-4 py-1 border border-[#D48806]/30 rounded-full text-[#D48806] text-[10px] font-black uppercase tracking-[0.3em] mb-6">
-                Kontakt & Standort
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-3 bg-sky-600 text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg shadow-sky-100 dark:shadow-sky-900/20">
+                Kontakt
               </div>
-              <h2 className="text-5xl md:text-7xl font-black text-[#2D241E] dark:text-white mb-8 tracking-tighter uppercase italic-font-pub">Besuch <span className="text-[#D48806]">uns.</span></h2>
-              <p className="text-xl text-[#2D241E]/60 dark:text-[#F5E6D3]/60 font-serif leading-relaxed max-w-md italic">
-                Wir freuen uns auf deinen Besuch. Ob Feierabendbier oder Familienfeier – bei uns bist du richtig.
+              <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
+                Bereit für <br />
+                <span className="text-sky-600 dark:text-sky-400 italic">die nächste Reise?</span>
+              </h2>
+              <p className="text-slate-500 dark:text-slate-400 text-xl font-bold leading-relaxed max-w-xl">
+                Egal ob Sie schon genaue Vorstellungen haben oder erst einmal Inspiration suchen – wir freuen uns auf Ihre Nachricht oder Ihren Besuch in Musterhausen.
               </p>
             </div>
-            
-            <div className="grid sm:grid-cols-2 gap-10">
-              <div className="space-y-10">
-                <div className="flex gap-6 items-start">
-                  <div className="bg-white dark:bg-[#D48806]/10 p-4 rounded-xl border border-[#2D241E]/5 dark:border-[#D48806]/20 shadow-sm">
-                    <MapPin className="text-[#D48806] w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-black text-[#2D241E] dark:text-white text-[11px] uppercase tracking-widest mb-2">Anschrift</h4>
-                    <p className="text-[#2D241E]/60 dark:text-[#F5E6D3]/60 font-serif leading-relaxed">Hauptstraße 1<br />12345 Musterhausen</p>
-                  </div>
-                </div>
 
-                <div className="flex gap-6 items-start">
-                  <div className="bg-white dark:bg-[#D48806]/10 p-4 rounded-xl border border-[#2D241E]/5 dark:border-[#D48806]/20 shadow-sm">
-                    <Phone className="text-[#D48806] w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-black text-[#2D241E] dark:text-white text-[11px] uppercase tracking-widest mb-2">Reservierung</h4>
-                    <p className="text-[#2D241E]/60 dark:text-[#F5E6D3]/60 font-serif leading-relaxed">+49 (0) 123 4567890</p>
-                  </div>
+            <div className="space-y-10">
+              <div className="flex gap-8 group cursor-pointer">
+                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border-4 border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
+                  <MapPin className="text-slate-400 dark:text-slate-500 w-10 h-10 group-hover:text-white transition-colors" />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <h4 className="font-black text-slate-900 dark:text-white text-2xl mb-1 tracking-tighter">Besuchen Sie uns</h4>
+                  <p className="text-slate-500 dark:text-slate-400 font-bold text-xl leading-snug tracking-tight">Hauptstraße 42, 12345 Musterhausen</p>
+                  <p className="text-sky-600 dark:text-sky-400 text-[10px] font-black uppercase tracking-[0.3em] mt-3 hover:text-sky-700 dark:hover:text-sky-300 transition-colors inline-flex items-center gap-3 group-hover:translate-x-2 transition-transform duration-500">
+                    Route bei Google Maps
+                    <div className="w-2 h-2 rounded-full bg-sky-600 dark:bg-sky-400 animate-pulse" />
+                  </p>
                 </div>
               </div>
 
-              <div className="space-y-10">
-                <div className="flex gap-6 items-start">
-                  <div className="bg-white dark:bg-[#D48806]/10 p-4 rounded-xl border border-[#2D241E]/5 dark:border-[#D48806]/20 shadow-sm">
-                    <Clock className="text-[#D48806] w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-black text-[#2D241E] dark:text-white text-[11px] uppercase tracking-widest mb-2">Wir sind da</h4>
-                    <div className="space-y-1.5 text-sm font-serif text-[#2D241E]/60 dark:text-[#F5E6D3]/60">
-                      <p><span className="text-[#D48806] font-bold">Di-Do:</span> 17:00 - 23:00</p>
-                      <p><span className="text-[#D48806] font-bold">Fr-Sa:</span> 17:00 - 01:00</p>
-                      <p><span className="text-[#D48806] font-bold">So:</span> 15:00 - 22:00</p>
-                      <p className="text-red-500 font-black uppercase text-[9px] tracking-[0.2em] mt-3">Montag Ruhetag</p>
-                    </div>
-                  </div>
+              <div className="flex gap-8 group cursor-pointer">
+                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border-4 border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 group-hover:bg-amber-400 group-hover:-rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
+                  <Phone className="text-slate-400 dark:text-slate-500 w-10 h-10 group-hover:text-white transition-colors" />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <h4 className="font-black text-slate-900 dark:text-white text-2xl mb-1 tracking-tighter text-sky-600 dark:text-sky-400">Rufen Sie an</h4>
+                  <p className="text-slate-500 dark:text-slate-400 font-black text-3xl tracking-tighter italic">01234 / 567 890</p>
+                  <p className="text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mt-2 flex items-center gap-3">
+                    Mo - Fr: 09:00 - 18:00 Uhr
+                    <span className="inline-block w-3 h-3 bg-green-500 rounded-full animate-ping" />
+                  </p>
                 </div>
               </div>
-            </div>
 
-            <div className="pt-8 border-t border-[#2D241E]/5 dark:border-[#D48806]/10 flex gap-8">
-              <a href="#" className="flex items-center gap-2 text-[#D48806] hover:text-[#2D241E] dark:hover:text-[#F5E6D3] transition-colors font-black text-[10px] uppercase tracking-[0.3em]">
-                <Instagram size={16} /> Instagram
-              </a>
-              <a href="#" className="flex items-center gap-2 text-[#D48806] hover:text-[#2D241E] dark:hover:text-[#F5E6D3] transition-colors font-black text-[10px] uppercase tracking-[0.3em]">
-                <Facebook size={16} /> Facebook
-              </a>
+              <div className="flex gap-8 group cursor-pointer">
+                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border-4 border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
+                  <Mail className="text-slate-400 dark:text-slate-500 w-10 h-10 group-hover:text-white transition-colors" />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <h4 className="font-black text-slate-900 dark:text-white text-2xl mb-1 tracking-tighter">Schreiben Sie uns</h4>
+                  <p className="text-slate-500 dark:text-slate-400 font-bold text-xl tracking-tight">info@mustermann-reisen.de</p>
+                  <p className="text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mt-3">Rückmeldung garantiert am selben Tag</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="bg-white dark:bg-[#1A0F0A] p-10 md:p-16 rounded-[2rem] text-[#2D241E] dark:text-[#F5E6D3] shadow-2xl border border-[#2D241E]/5 dark:border-[#D48806]/20 relative overflow-hidden transition-colors duration-500">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#D48806]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+          <div className="bg-sky-900 dark:bg-slate-900 p-12 md:p-20 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(12,74,110,0.4)] relative overflow-hidden group border-8 border-white dark:border-slate-800">
+            {/* Decorative background glow */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 dark:bg-sky-500/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-white/20 transition-all duration-1000" />
             
-            <h3 className="text-3xl font-black mb-4 uppercase tracking-tight text-[#2D241E] dark:text-white">Tisch reservieren</h3>
-            <p className="text-[#2D241E]/50 dark:text-[#F5E6D3]/50 font-serif mb-10 text-lg italic">Plane deinen Abend bei uns. Wir reservieren dir einen gemütlichen Platz.</p>
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-amber-400 rounded-[2.5rem] flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-[24deg] transition-all duration-700 border-8 border-white dark:border-slate-800">
+              <Compass className="w-16 h-16 text-sky-950 -rotate-12 group-hover:-rotate-[24deg] transition-all duration-700 animate-spin-slow" />
+            </div>
             
-            <form className="space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black text-[#D48806] uppercase tracking-[0.3em]">Dein Name</label>
-                  <input type="text" placeholder="Max Mustermann" className="w-full bg-[#FAF6F0] dark:bg-[#0F0A08] border border-[#2D241E]/10 dark:border-[#D48806]/20 rounded-sm px-6 py-4 focus:outline-none focus:border-[#D48806] transition-all text-[#2D241E] dark:text-[#F5E6D3] placeholder:text-[#2D241E]/20" />
+            <form className="space-y-10 relative z-10" onSubmit={(e) => e.preventDefault()}>
+              <div className="space-y-3">
+                <h3 className="text-4xl font-black text-white tracking-tighter">Anfrage senden</h3>
+                <p className="text-sky-200 dark:text-sky-400 font-bold tracking-tight">Wir planen Ihre Traumreise gemeinsam.</p>
+              </div>
+
+              <div className="space-y-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Name</label>
+                    <Input placeholder="Ihr Name" className="rounded-2xl border-white/20 dark:border-white/10 focus:border-amber-400 h-16 font-bold px-8 bg-white/5 dark:bg-white/5 text-white placeholder:text-sky-300 focus:ring-amber-400/20 transition-all" />
+                  </div>
+                  <div className="space-y-3">
+                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">E-Mail</label>
+                    <Input type="email" placeholder="beispiel@mail.de" className="rounded-2xl border-white/20 dark:border-white/10 focus:border-amber-400 h-16 font-bold px-8 bg-white/5 dark:bg-white/5 text-white placeholder:text-sky-300 focus:ring-amber-400/20 transition-all" />
+                  </div>
                 </div>
+                
                 <div className="space-y-3">
-                  <label className="text-[10px] font-black text-[#D48806] uppercase tracking-[0.3em]">Gästeanzahl</label>
-                  <select className="w-full bg-[#FAF6F0] dark:bg-[#0F0A08] border border-[#2D241E]/10 dark:border-[#D48806]/20 rounded-sm px-6 py-4 focus:outline-none focus:border-[#D48806] transition-all appearance-none text-[#2D241E] dark:text-[#F5E6D3]">
-                    <option>2 Personen</option>
-                    <option>4 Personen</option>
-                    <option>6 Personen</option>
-                    <option>Größere Gruppe (10+)</option>
+                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Reiseart</label>
+                  <select className="w-full h-16 rounded-2xl border-white/20 dark:border-white/10 focus:border-amber-400 px-8 bg-sky-950 dark:bg-slate-950 text-white font-bold appearance-none cursor-pointer focus:ring-amber-400/20 shadow-inner transition-all">
+                    <option className="bg-sky-950 dark:bg-slate-950">Pauschalreise</option>
+                    <option className="bg-sky-950 dark:bg-slate-950">Kreuzfahrt</option>
+                    <option className="bg-sky-950 dark:bg-slate-950">Städtereise</option>
+                    <option className="bg-sky-950 dark:bg-slate-950">Flug & Hotel</option>
+                    <option className="bg-sky-950 dark:bg-slate-950">Sonstiges</option>
                   </select>
                 </div>
+
+                <div className="space-y-3">
+                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Wünsche</label>
+                  <Textarea placeholder="Wohin soll es gehen? Wann möchten Sie verreisen?" className="min-h-[160px] rounded-[2.5rem] border-white/20 dark:border-white/10 focus:border-amber-400 font-bold p-8 bg-white/5 dark:bg-white/5 text-white placeholder:text-sky-300 resize-none focus:ring-amber-400/20 transition-all" />
+                </div>
+
+                <Button className="w-full bg-amber-400 hover:bg-amber-500 text-sky-950 rounded-[2rem] h-24 text-2xl font-black gap-4 shadow-2xl transition-all hover:scale-[1.05] active:scale-95 group">
+                  Urlaubsanfrage senden
+                  <Send className="w-8 h-8 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
+                </Button>
               </div>
-              <div className="space-y-3">
-                <label className="text-[10px] font-black text-[#D48806] uppercase tracking-[0.3em]">Wunschtermin</label>
-                <input type="datetime-local" className="w-full bg-[#FAF6F0] dark:bg-[#0F0A08] border border-[#2D241E]/10 dark:border-[#D48806]/20 rounded-sm px-6 py-4 focus:outline-none focus:border-[#D48806] transition-all text-[#2D241E] dark:text-[#F5E6D3] dark:[color-scheme:dark]" />
-              </div>
-              <button className="w-full bg-[#2D241E] dark:bg-[#D48806] text-white dark:text-[#1A0F0A] font-black py-6 rounded-sm shadow-2xl hover:bg-[#D48806] dark:hover:bg-[#F5E6D3] transition-all flex items-center justify-center gap-4 group uppercase tracking-[0.4em] text-[11px]">
-                Jetzt anfragen
-                <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
             </form>
           </div>
         </div>
@@ -105,5 +118,3 @@ export const Contact = () => {
     </section>
   );
 };
-
-export default Contact;
