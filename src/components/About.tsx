@@ -1,65 +1,76 @@
 import React from 'react';
-import { Heart, Beer, Users } from 'lucide-react';
+import { Heart, Beer, Users, Quote } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="py-24 px-6 bg-[#FFFDF5]">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="about" className="py-32 px-6 bg-[#0F0A08] relative overflow-hidden">
+      {/* Decorative wood grain background subtle */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')]" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           <div className="relative group">
-            <div className="absolute -inset-4 bg-[#E6B325]/20 rounded-[2rem] blur-2xl group-hover:bg-[#E6B325]/30 transition-all duration-500" />
-            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+            {/* Vintage Frame Effect */}
+            <div className="absolute -inset-4 border border-[#D48806]/20 rounded-2xl" />
+            <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] transform -rotate-2 group-hover:rotate-0 transition-transform duration-700">
               <img 
-                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop" 
-                alt="Max Mustermann" 
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1597075095353-83321473266e?q=80&w=1000&auto=format&fit=crop" 
+                alt="Cozy Pub Interior" 
+                className="w-full h-full object-cover grayscale-[0.2] sepia-[0.2] contrast-[1.1]"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0F0A08] via-transparent to-transparent opacity-60" />
             </div>
-            <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-3xl shadow-xl max-w-[240px] hidden md:block">
-              <p className="text-[#2D241E] italic font-medium leading-relaxed">
-                "Ein Pub ist mehr als nur ein Ort zum Trinken – es ist das Wohnzimmer unserer Stadt."
+            
+            <div className="absolute -bottom-10 -right-6 bg-[#1A0F0A] border border-[#D48806]/30 p-10 rounded-xl shadow-2xl max-w-[280px] hidden md:block transform rotate-3">
+              <Quote className="text-[#D48806] w-8 h-8 mb-4 opacity-50" />
+              <p className="text-[#F5E6D3] italic font-serif text-lg leading-relaxed">
+                "Hier zählt nicht, was du arbeitest, sondern dass du da bist."
               </p>
-              <p className="mt-4 font-bold text-[#E6B325]">— Max Mustermann</p>
+              <div className="mt-6 flex items-center gap-3">
+                <div className="w-8 h-[1px] bg-[#D48806]" />
+                <p className="font-bold text-[#D48806] text-sm uppercase tracking-widest">Max Mustermann</p>
+              </div>
             </div>
           </div>
 
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl font-black text-[#2D241E]">
-                Tradition trifft auf <br />
-                <span className="text-[#E6B325]">Musterhäuser Gemütlichkeit</span>
+          <div className="space-y-12">
+            <div className="space-y-6">
+              <div className="inline-block px-4 py-1 border border-[#D48806]/30 rounded-full text-[#D48806] text-xs font-black uppercase tracking-[0.3em]">
+                Unsere Geschichte
+              </div>
+              <h2 className="text-5xl md:text-6xl font-black text-white leading-tight">
+                Tradition, die man <br />
+                <span className="text-[#D48806]">schmecken kann.</span>
               </h2>
-              <p className="text-lg text-[#2D241E]/70 leading-relaxed">
-                Max Mustermann eröffnete die Braustube im Herzen von Musterhausen mit einer einfachen Vision: Einen Ort zu schaffen, an dem sich jeder – vom Handwerker bis zum Anwalt – wie zu Hause fühlt.
+              <p className="text-xl text-[#F5E6D3]/70 leading-relaxed font-serif">
+                Seit fast drei Jahrzehnten ist Mustermann's Braustube der Ankerpunkt in Musterhausen. Was als kleine Kellerbar begann, ist heute ein Ort, an dem Geschichten geschrieben werden. 
               </p>
             </div>
 
-            <div className="grid gap-6">
+            <div className="grid sm:grid-cols-2 gap-8">
               {[
                 {
-                  icon: <Heart className="w-6 h-6 text-white" />,
-                  title: 'Mit Liebe geführt',
-                  desc: 'Ein Familienbetrieb in zweiter Generation mit Herzblut.'
+                  icon: <Beer className="w-6 h-6 text-[#1A0F0A]" />,
+                  title: 'Eigene Rezeptur',
+                  desc: 'Unser "Muster-Helles" wird nach Familienrezept gebraut.'
                 },
                 {
-                  icon: <Beer className="w-6 h-6 text-white" />,
-                  title: 'Echtes Handwerk',
-                  desc: 'Wir führen 12 verschiedene Fassbiere und regionale Spezialitäten.'
+                  icon: <Users className="w-6 h-6 text-[#1A0F0A]" />,
+                  title: 'Für Alle Da',
+                  desc: 'Vom Stammtisch bis zur Firmenfeier – Platz für 150 Gäste.'
                 },
                 {
-                  icon: <Users className="w-6 h-6 text-white" />,
-                  title: 'Gemeinschaft',
-                  desc: 'Regelmäßige Stammtische und Platz für über 150 Gäste.'
+                  icon: <Heart className="w-6 h-6 text-[#1A0F0A]" />,
+                  title: 'Gastgeber aus Leidenschaft',
+                  desc: 'Persönlicher Service wird bei uns großgeschrieben.'
                 }
               ].map((item, i) => (
-                <div key={i} className="flex gap-4 items-start">
-                  <div className="bg-[#E6B325] p-3 rounded-2xl shadow-lg shrink-0">
+                <div key={i} className="group p-6 rounded-2xl border border-[#D48806]/10 hover:border-[#D48806]/40 transition-all bg-[#1A0F0A]/50">
+                  <div className="bg-[#D48806] w-12 h-12 rounded-lg flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform">
                     {item.icon}
                   </div>
-                  <div>
-                    <h3 className="font-bold text-xl text-[#2D241E]">{item.title}</h3>
-                    <p className="text-[#2D241E]/60">{item.desc}</p>
-                  </div>
+                  <h3 className="font-black text-xl text-white mb-2 uppercase tracking-tight">{item.title}</h3>
+                  <p className="text-[#F5E6D3]/60 font-serif leading-relaxed">{item.desc}</p>
                 </div>
               ))}
             </div>
