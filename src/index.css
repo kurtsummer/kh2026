@@ -6,52 +6,51 @@
 
 @layer base {
   :root {
-    --background: 42 45% 94%; /* #F8F3E8 equivalent */
-    --foreground: 24 11% 15%; /* #2F2A26 equivalent */
+    --background: 35 40% 95%; /* Warmes Champagner #FAF3E0 */
+    --foreground: 0 0% 15%; /* Fast Schwarz für Text */
     
     --card: 0 0% 100%;
-    --card-foreground: 24 11% 15%;
+    --card-foreground: 0 0% 15%;
  
     --popover: 0 0% 100%;
-    --popover-foreground: 24 11% 15%;
+    --popover-foreground: 0 0% 15%;
  
-    --primary: 43 55% 51%; /* #C9A13B equivalent */
-    --primary-foreground: 42 45% 94%;
+    --primary: 43 70% 50%; /* Leuchtendes Gold #D4AF37 */
+    --primary-foreground: 35 40% 95%;
  
-    --secondary: 23 34% 12%; /* #2B1D14 equivalent */
-    --secondary-foreground: 42 45% 94%;
+    --secondary: 0 68% 18%; /* Tiefes Weinrot/Burgunder #4A0E0E */
+    --secondary-foreground: 35 40% 95%;
  
-    --muted: 42 20% 85%;
-    --muted-foreground: 24 11% 35%;
+    --muted: 35 20% 88%;
+    --muted-foreground: 0 0% 40%;
  
-    --accent: 0 54% 40%; /* #9E2F2F equivalent */
-    --accent-foreground: 42 45% 94%;
+    --accent: 43 70% 50%;
+    --accent-foreground: 35 40% 95%;
  
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 42 45% 94%;
+    --destructive-foreground: 35 40% 95%;
 
-    --border: 43 55% 51% / 0.2;
-    --input: 43 55% 51% / 0.2;
-    --ring: 43 55% 51%;
+    --border: 43 70% 50% / 0.2;
+    --input: 43 70% 50% / 0.2;
+    --ring: 43 70% 50%;
  
-    --radius: 0.75rem;
+    --radius: 1rem; /* Etwas runder für "Herzlichkeit" */
   }
 
   .dark {
-    --background: 23 34% 8%; /* Darker version of secondary #2B1D14 */
-    --foreground: 42 45% 94%; /* Ivory #F8F3E8 */
+    --background: 0 68% 8%; /* Fast schwarzes Burgunder */
+    --foreground: 35 40% 92%;
     
-    --card: 23 34% 12%;
-    --card-foreground: 42 45% 94%;
+    --card: 0 68% 12%;
+    --card-foreground: 35 40% 92%;
  
-    --popover: 23 34% 12%;
-    --popover-foreground: 42 45% 94%;
+    --popover: 0 68% 12%;
+    --popover-foreground: 35 40% 92%;
  
-    --muted: 23 34% 20%;
-    --muted-foreground: 42 45% 70%;
+    --muted: 0 68% 15%;
+    --muted-foreground: 35 20% 70%;
  
-    --border: 43 55% 51% / 0.3;
-    --input: 43 55% 51% / 0.3;
+    --border: 43 70% 50% / 0.3;
   }
 }
 
@@ -64,11 +63,10 @@
     line-height: 1.6;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-bold text-secondary dark:text-primary;
+    @apply font-serif font-bold text-secondary dark:text-primary tracking-tight;
   }
 }
 
-/* Helper classes that should also be dark-mode aware if possible */
 .bg-ivory {
   @apply bg-background;
 }
