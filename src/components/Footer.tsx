@@ -39,17 +39,17 @@ export const Footer = () => {
             <h4 className="font-black text-[10px] uppercase tracking-[0.4em] text-amber-400 mb-10">Navigation</h4>
             <ul className="space-y-6">
               {[
-                { name: 'Startseite', href: '#' },
-                { name: 'Reiseziele', href: '#reiseziele' },
-                { name: 'Leistungen', href: '#leistungen' },
-                { name: 'Über uns', href: '#ueber-uns' },
-                { name: 'Kontakt', href: '#kontakt' }
+                { name: 'Startseite', href: '/' },
+                { name: 'Reiseziele', href: '/reiseziele' },
+                { name: 'Leistungen', href: '/#leistungen' },
+                { name: 'Über uns', href: '/#ueber-uns' },
+                { name: 'Kontakt', href: '/#kontakt' }
               ].map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-sky-100 hover:text-amber-400 text-lg font-black flex items-center group transition-colors italic tracking-tighter">
+                  <Link to={link.href} className="text-sky-100 hover:text-amber-400 text-lg font-black flex items-center group transition-colors italic tracking-tighter">
                     {link.name}
                     <ArrowUpRight className="w-5 h-5 ml-3 opacity-0 group-hover:opacity-100 transition-all -translate-y-1 group-hover:translate-y-0 text-amber-400" />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
