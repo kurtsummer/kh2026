@@ -10,9 +10,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
-              <img src="/logo.png" alt="Karl-Heinz Logo" className="h-10 w-auto brightness-0 invert" />
+              <img src="/logo.png" alt="Karl-Heinz Logo" className="h-10 w-auto" />
               <span className="font-serif text-2xl font-bold text-primary">Karl-Heinz</span>
             </Link>
+
             <p className="text-white/60 leading-relaxed max-w-xs">
               Sympathische Live-Musik für Ihre besonderen Momente. Hits, Evergreens und deutsche Klassiker mit Herz und Charme.
             </p>

@@ -26,7 +26,7 @@ const Contact = () => {
     <section id="contact" className="py-24 bg-ivory relative overflow-hidden">
       {/* Decorative patterns */}
       <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
-        <img src="/logo.png" alt="" className="w-64 grayscale" />
+        <img src="/logo.png" alt="" className="w-64" />
       </div>
 
       <div className="container mx-auto px-4">
