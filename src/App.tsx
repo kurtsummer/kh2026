@@ -12,6 +12,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { CookieBanner } from "./components/CookieBanner";
+import { TravelConcierge } from "./components/TravelConcierge";
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -42,7 +43,9 @@ const App = () => (
         <BrowserRouter>
           <ScrollToHash />
           <CookieBanner />
+          <TravelConcierge />
           <Routes>
+
             <Route path="/" element={<Index />} />
             <Route path="/reiseziele" element={<Destinations />} />
             <Route path="/impressum" element={<Impressum />} />
