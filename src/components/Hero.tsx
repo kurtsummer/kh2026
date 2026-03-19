@@ -1,168 +1,91 @@
 import { Button } from "@/components/ui/button";
-import { Search, MapPin, Plane, ArrowRight, Palmtree, Star, Compass, Ship } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { ArrowRight, CheckCircle2, Star } from "lucide-react";
 
 export const Hero = () => {
-  const navigate = useNavigate();
-  const [searchDestination, setSearchDestination] = useState("");
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchDestination.trim()) {
-      navigate(`/reiseziele?search=${encodeURIComponent(searchDestination)}`);
-    } else {
-      navigate("/reiseziele");
-    }
-  };
-
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden bg-sky-900">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000"
-          alt="Tropical Beach"
-          className="w-full h-full object-cover opacity-60 scale-105 animate-slow-zoom"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-sky-900/60 via-transparent to-sky-900/90" />
-      </div>
-      
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
-        <div className="lg:col-span-7 space-y-10">
-          <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-xl text-white px-6 py-3 rounded-full text-sm font-black border border-white/20 shadow-2xl animate-in fade-in slide-in-from-left duration-700">
-            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-            Ihr Reiseexperte in Musterhausen seit über 15 Jahren
+    <div className="relative min-h-[95vh] flex items-center pt-20 overflow-hidden bg-[#f8fafc]">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-cyan-50/50 rounded-l-[10rem] -z-10 hidden lg:block" />
+      <div className="absolute -top-20 -left-20 w-96 h-96 bg-teal-50 rounded-full blur-3xl -z-10 opacity-60" />
+      <div className="absolute bottom-20 right-20 w-64 h-64 bg-cyan-100 rounded-full blur-3xl -z-10 opacity-40" />
+
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="space-y-8 animate-in fade-in slide-in-from-left duration-1000">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-cyan-50 text-cyan-700 font-bold text-sm tracking-wide">
+            <Star className="w-4 h-4 fill-cyan-500 text-cyan-500" />
+            Professionelle Fusspflege in Musterhausen
           </div>
           
-          <h1 className="text-6xl md:text-9xl font-black text-white leading-[0.9] tracking-tighter animate-in fade-in slide-in-from-bottom duration-1000">
-            Zeit für <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-400 to-orange-500 drop-shadow-sm">Abenteuer.</span>
-          </h1>
+          <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
+            Gesunde Füße für ein <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-500">
+              leichtes Lebensgefühl.
+            </span>
+          </h2>
           
-          <p className="text-xl md:text-2xl text-sky-50 max-w-2xl leading-relaxed font-bold drop-shadow-md animate-in fade-in slide-in-from-bottom duration-1000 delay-200">
-            Von einsamen Stränden bis zu pulsierenden Metropolen – Max Mustermann findet für Sie die perfekte Reise. Persönlich, kompetent und direkt vor Ort in Musterhausen.
+          <p className="text-xl text-slate-600 max-w-xl leading-relaxed font-medium">
+            Willkommen in der Praxis von <span className="text-slate-900 font-bold">Max Mustermann</span>. Wir bieten Ihnen medizinische und kosmetische Fusspflege auf höchstem Niveau – für Ihr Wohlbefinden bei jedem Schritt.
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
-            <Link to="/reiseziele">
-              <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white rounded-[2rem] px-12 h-20 text-xl font-black shadow-[0_20px_50px_rgba(245,158,11,0.3)] transition-all hover:scale-105 active:scale-95 group w-full sm:w-auto">
-                Angebote entdecken
-                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
-              </Button>
-            </Link>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-md rounded-[2rem] px-12 h-20 text-xl font-black gap-3 transition-all border-4 shadow-2xl"
-              onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <Button 
+              size="lg" 
+              className="rounded-2xl h-16 px-8 text-lg font-bold bg-cyan-600 hover:bg-cyan-700 shadow-xl shadow-cyan-200 transition-all hover:scale-105 active:scale-95 group"
+              onClick={() => {
+                document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' });
+              }}
             >
-              <Compass className="w-6 h-6 text-amber-400" />
-              Reiseberatung
+              Termin vereinbaren
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="rounded-2xl h-16 px-8 text-lg font-bold border-2 border-slate-200 hover:bg-slate-50 transition-all active:scale-95"
+              onClick={() => {
+                document.getElementById('leistungen')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Unsere Leistungen
             </Button>
           </div>
 
-          <div className="flex flex-wrap items-center gap-12 pt-6">
-
-            <div className="flex flex-col">
-              <span className="text-5xl font-black text-white leading-none">2.5k+</span>
-              <span className="text-xs font-black text-sky-200 uppercase tracking-[0.3em] mt-2">Zufriedene Urlauber</span>
+          <div className="grid grid-cols-2 gap-6 pt-8 border-t border-slate-200/60">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-600">
+                <CheckCircle2 className="w-6 h-6" />
+              </div>
+              <span className="font-bold text-slate-700">Staatlich geprüft</span>
             </div>
-            <div className="h-12 w-px bg-white/20 hidden sm:block" />
-            <div className="flex flex-col">
-              <span className="text-5xl font-black text-white leading-none">120+</span>
-              <span className="text-xs font-black text-sky-200 uppercase tracking-[0.3em] mt-2">Reiseziele weltweit</span>
-            </div>
-            <div className="h-12 w-px bg-white/20 hidden sm:block" />
-            <div className="flex flex-col">
-              <span className="text-5xl font-black text-white leading-none">100%</span>
-              <span className="text-xs font-black text-sky-200 uppercase tracking-[0.3em] mt-2">Persönlicher Service</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center text-teal-600">
+                <CheckCircle2 className="w-6 h-6" />
+              </div>
+              <span className="font-bold text-slate-700">Höchste Hygiene</span>
             </div>
           </div>
         </div>
 
-        {/* Floating Quick Search Card */}
-        <div className="lg:col-span-5 relative hidden lg:block perspective-1000">
-          <div className="bg-white/95 backdrop-blur-2xl p-12 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] border-4 border-white/50 space-y-10 animate-in zoom-in duration-1000 delay-300">
-            <div className="space-y-3">
-              <div className="w-16 h-2 bg-sky-500 rounded-full" />
-              <h3 className="text-4xl font-black text-slate-900 tracking-tighter italic">Traumurlaub finden</h3>
-              <p className="text-slate-500 font-bold">Wohin soll die Reise gehen?</p>
-            </div>
-
-            <form onSubmit={handleSearch} className="space-y-8">
-              <div className="space-y-3">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Reiseart</label>
-                <div className="relative group">
-                  <div className="absolute left-5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-sky-100 rounded-xl text-sky-600 transition-colors group-hover:bg-sky-600 group-hover:text-white">
-                    <Palmtree className="w-5 h-5" />
-                  </div>
-                  <select className="w-full h-16 pl-16 pr-8 bg-slate-50 border-none rounded-[1.5rem] text-slate-900 font-black text-lg appearance-none cursor-pointer focus:ring-4 focus:ring-sky-500/20 transition-all">
-                    <option>Pauschalreise</option>
-                    <option>Städtereise</option>
-                    <option>Kreuzfahrt</option>
-                    <option>Flug + Hotel</option>
-                    <option>Last Minute</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Destination</label>
-                <div className="relative group">
-                  <div className="absolute left-5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-orange-100 rounded-xl text-orange-600 transition-colors group-hover:bg-orange-600 group-hover:text-white">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Land oder Stadt"
-                    value={searchDestination}
-                    onChange={(e) => setSearchDestination(e.target.value)}
-                    className="w-full h-16 pl-16 pr-8 bg-slate-50 border-none rounded-[1.5rem] text-slate-900 font-black text-lg placeholder:text-slate-300 focus:ring-4 focus:ring-sky-500/20 transition-all"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Dauer</label>
-                  <select className="w-full h-16 px-8 bg-slate-50 border-none rounded-[1.5rem] text-slate-900 font-black text-lg appearance-none cursor-pointer focus:ring-4 focus:ring-sky-500/20 transition-all">
-                    <option>1 Woche</option>
-                    <option>2 Wochen</option>
-                    <option>Kurztrip</option>
-                  </select>
-                </div>
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Budget</label>
-                  <select className="w-full h-16 px-8 bg-slate-50 border-none rounded-[1.5rem] text-slate-900 font-black text-lg appearance-none cursor-pointer focus:ring-4 focus:ring-sky-500/20 transition-all">
-                    <option>Beliebig</option>
-                    <option>bis 1000€</option>
-                    <option>bis 2500€</option>
-                    <option>Luxus</option>
-                  </select>
-                </div>
-              </div>
-
-              <Button type="submit" className="w-full h-20 bg-slate-900 hover:bg-slate-800 text-white rounded-[2rem] text-xl font-black gap-4 shadow-2xl transition-all group active:scale-95">
-                <Search className="w-6 h-6 group-hover:rotate-12 transition-transform" />
-                Urlaub finden
-              </Button>
-            </form>
-
-          </div>
-
-          {/* Decorative Floating Icon */}
-          <div className="absolute -bottom-10 -right-10 bg-amber-400 text-white p-8 rounded-[3rem] shadow-[0_30px_60px_rgba(245,158,11,0.4)] z-20 flex items-center gap-5 animate-bounce-slow border-8 border-white">
-            <div className="w-16 h-16 bg-white/20 rounded-[1.5rem] flex items-center justify-center">
-              <Ship className="w-8 h-8" />
-            </div>
-            <div>
-              <p className="text-xl font-black leading-none mb-1 italic">Top Deal</p>
-              <p className="text-xs font-black opacity-80 uppercase tracking-[0.2em]">Karibik Kreuzfahrt</p>
+        <div className="relative group animate-in fade-in slide-in-from-right duration-1000 delay-200">
+          <div className="absolute -inset-4 bg-gradient-to-br from-cyan-200 to-teal-200 rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
+          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
+            <img 
+              src="https://images.unsplash.com/photo-1519415510236-85591199260e?auto=format&fit=crop&q=80&w=1000" 
+              alt="Foot Care Treatment"
+              className="w-full h-full object-cover aspect-[4/5] scale-105 group-hover:scale-100 transition-transform duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
+            <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20">
+              <p className="text-white font-bold text-lg leading-tight">
+                "Gesunde Füße sind die Basis für Ihre Mobilität und Lebensqualität."
+              </p>
+              <p className="text-cyan-100 text-sm font-semibold mt-2 uppercase tracking-widest">
+                — Max Mustermann
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };

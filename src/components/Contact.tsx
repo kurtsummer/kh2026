@@ -1,117 +1,109 @@
-import { Mail, Phone, MapPin, Send, MessageCircle, Palmtree, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Phone, Mail, MapPin, Send, Instagram, Facebook, Calendar } from "lucide-react";
 
 export const Contact = () => {
   return (
-    <section id="kontakt" className="py-32 bg-white relative overflow-hidden">
+    <section id="kontakt" className="py-24 bg-white relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-1/4 h-full bg-cyan-50/20 rounded-l-[10rem] -z-10" />
+      
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-24 items-start">
+        <div className="grid lg:grid-cols-2 gap-20 items-stretch">
           <div className="space-y-12">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-3 bg-sky-600 text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg shadow-sky-100">
-                Kontakt
-              </div>
-              <h2 className="text-5xl md:text-7xl font-black text-slate-900 leading-[0.9] tracking-tighter">
-                Bereit für <br />
-                <span className="text-sky-600 italic">die nächste Reise?</span>
+              <span className="text-cyan-600 font-black uppercase tracking-widest text-sm bg-cyan-50 px-4 py-2 rounded-full inline-block">
+                Kontakt aufnehmen
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                Ihr Weg zu uns in die <br />
+                <span className="text-cyan-600">Praxis Mustermann.</span>
               </h2>
-              <p className="text-slate-500 text-xl font-bold leading-relaxed max-w-xl">
-                Egal ob Sie schon genaue Vorstellungen haben oder erst einmal Inspiration suchen – wir freuen uns auf Ihre Nachricht oder Ihren Besuch in Musterhausen.
+              <p className="text-xl text-slate-600 font-medium leading-relaxed">
+                Wir freuen uns darauf, von Ihnen zu hören! Ob Terminwunsch oder Frage zu unseren Leistungen – wir sind für Sie da.
               </p>
             </div>
 
-            <div className="space-y-10">
-              <div className="flex gap-8 group cursor-pointer">
-                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 border-4 border-slate-100 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
-                  <MapPin className="text-slate-400 w-10 h-10 group-hover:text-white transition-colors" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h4 className="font-black text-slate-900 text-2xl mb-1 tracking-tighter">Besuchen Sie uns</h4>
-                  <p className="text-slate-500 font-bold text-xl leading-snug tracking-tight">Hauptstraße 42, 12345 Musterhausen</p>
-                  <p className="text-sky-600 text-[10px] font-black uppercase tracking-[0.3em] mt-3 hover:text-sky-700 transition-colors inline-flex items-center gap-3 group-hover:translate-x-2 transition-transform duration-500">
-                    Route bei Google Maps
-                    <div className="w-2 h-2 rounded-full bg-sky-600 animate-pulse" />
-                  </p>
-                </div>
-              </div>
+            <div className="grid gap-8">
+              {[
+                { icon: <Phone className="w-6 h-6" />, title: "Telefon", desc: "01234 56789", sub: "Mo-Fr, 08:30 - 18:00 Uhr", link: "tel:+49123456789" },
+                { icon: <Mail className="w-6 h-6" />, title: "E-Mail", desc: "kontakt@fusspflege-mustermann.de", sub: "Wir antworten i.d.R. innerhalb 24h", link: "mailto:kontakt@fusspflege-mustermann.de" },
+                { icon: <MapPin className="w-6 h-6" />, title: "Standort", desc: "Musterstraße 12, 12345 Musterhausen", sub: "Parkplätze direkt vor der Tür", link: "#" },
+              ].map((item, idx) => (
+                <a 
+                  key={idx} 
+                  href={item.link}
+                  className="group flex gap-8 items-start p-8 rounded-[2.5rem] bg-[#f8fafc] border border-slate-50 transition-all hover:bg-white hover:shadow-xl hover:shadow-cyan-100/50 hover:-translate-y-1"
+                >
+                  <div className="w-16 h-16 rounded-2xl bg-white shadow-lg shadow-slate-200 flex items-center justify-center text-cyan-600 transition-transform group-hover:scale-110 group-hover:rotate-6 duration-500">
+                    {item.icon}
+                  </div>
+                  <div className="space-y-1 pt-1">
+                    <h3 className="text-xl font-black text-slate-900 leading-none">{item.title}</h3>
+                    <p className="text-lg font-bold text-slate-700">{item.desc}</p>
+                    <p className="text-sm font-medium text-slate-400 uppercase tracking-widest">{item.sub}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
 
-              <div className="flex gap-8 group cursor-pointer">
-                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 border-4 border-slate-100 flex items-center justify-center shrink-0 group-hover:bg-amber-400 group-hover:-rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
-                  <Phone className="text-slate-400 w-10 h-10 group-hover:text-white transition-colors" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h4 className="font-black text-slate-900 text-2xl mb-1 tracking-tighter text-sky-600">Rufen Sie an</h4>
-                  <p className="text-slate-500 font-black text-3xl tracking-tighter italic">01234 / 567 890</p>
-                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em] mt-2 flex items-center gap-3">
-                    Mo - Fr: 09:00 - 18:00 Uhr
-                    <span className="inline-block w-3 h-3 bg-green-500 rounded-full animate-ping" />
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-8 group cursor-pointer">
-                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 border-4 border-slate-100 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
-                  <Mail className="text-slate-400 w-10 h-10 group-hover:text-white transition-colors" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h4 className="font-black text-slate-900 text-2xl mb-1 tracking-tighter">Schreiben Sie uns</h4>
-                  <p className="text-slate-500 font-bold text-xl tracking-tight">info@mustermann-reisen.de</p>
-                  <p className="text-slate-400 text-[10px] font-black uppercase tracking-[0.3em] mt-3">Rückmeldung garantiert am selben Tag</p>
-                </div>
+            <div className="flex items-center gap-6 pt-6">
+              <span className="text-slate-900 font-black uppercase tracking-widest text-sm">Folgen Sie uns:</span>
+              <div className="flex gap-4">
+                <a href="#" className="w-12 h-12 rounded-2xl bg-[#f8fafc] flex items-center justify-center text-slate-600 hover:bg-cyan-600 hover:text-white transition-all hover:scale-110">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-12 h-12 rounded-2xl bg-[#f8fafc] flex items-center justify-center text-slate-600 hover:bg-cyan-600 hover:text-white transition-all hover:scale-110">
+                  <Facebook className="w-5 h-5" />
+                </a>
               </div>
             </div>
           </div>
 
-          <div className="bg-sky-900 p-12 md:p-20 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(12,74,110,0.4)] relative overflow-hidden group border-8 border-white">
-            {/* Decorative background glow */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-white/20 transition-all duration-1000" />
-            
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-amber-400 rounded-[2.5rem] flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-[24deg] transition-all duration-700 border-8 border-white">
-              <Compass className="w-16 h-16 text-sky-950 -rotate-12 group-hover:-rotate-[24deg] transition-all duration-700 animate-spin-slow" />
-            </div>
-            
-            <form className="space-y-10 relative z-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="space-y-3">
-                <h3 className="text-4xl font-black text-white tracking-tighter">Anfrage senden</h3>
-                <p className="text-sky-200 font-bold tracking-tight">Wir planen Ihre Traumreise gemeinsam.</p>
+          <div className="relative group">
+            <div className="absolute -inset-6 bg-gradient-to-br from-cyan-100 to-teal-100 rounded-[3rem] blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
+            <div className="relative bg-white p-10 rounded-[3rem] shadow-2xl shadow-slate-200 border border-slate-50 flex flex-col h-full">
+              <div className="flex items-center gap-4 mb-10 pb-6 border-b border-slate-100">
+                <div className="w-12 h-12 rounded-2xl bg-cyan-100 text-cyan-600 flex items-center justify-center">
+                  <Calendar className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-black text-slate-900">Online-Anfrage</h3>
               </div>
 
-              <div className="space-y-8">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Name</label>
-                    <Input placeholder="Ihr Name" className="rounded-2xl border-white/20 focus:border-amber-400 h-16 font-bold px-8 bg-white/5 text-white placeholder:text-sky-300 focus:ring-amber-400/20" />
+              <form className="space-y-6 flex-grow" onSubmit={(e) => e.preventDefault()}>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-700 uppercase tracking-widest ml-4">Name</label>
+                    <Input className="h-14 rounded-2xl border-2 border-slate-50 bg-[#f8fafc] focus:border-cyan-500 focus:bg-white transition-all px-6 text-lg font-medium" placeholder="Ihren Namen eingeben" />
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">E-Mail</label>
-                    <Input type="email" placeholder="beispiel@mail.de" className="rounded-2xl border-white/20 focus:border-amber-400 h-16 font-bold px-8 bg-white/5 text-white placeholder:text-sky-300 focus:ring-amber-400/20" />
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-slate-700 uppercase tracking-widest ml-4">E-Mail</label>
+                    <Input type="email" className="h-14 rounded-2xl border-2 border-slate-50 bg-[#f8fafc] focus:border-cyan-500 focus:bg-white transition-all px-6 text-lg font-medium" placeholder="Ihre E-Mail eingeben" />
                   </div>
                 </div>
-                
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Reiseart</label>
-                  <select className="w-full h-16 rounded-2xl border-white/20 focus:border-amber-400 px-8 bg-sky-950 text-white font-bold appearance-none cursor-pointer focus:ring-amber-400/20 shadow-inner">
-                    <option className="bg-sky-950">Pauschalreise</option>
-                    <option className="bg-sky-950">Kreuzfahrt</option>
-                    <option className="bg-sky-950">Städtereise</option>
-                    <option className="bg-sky-950">Flug & Hotel</option>
-                    <option className="bg-sky-950">Sonstiges</option>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700 uppercase tracking-widest ml-4">Interesse an</label>
+                  <select className="w-full h-14 rounded-2xl border-2 border-slate-50 bg-[#f8fafc] focus:border-cyan-500 focus:bg-white transition-all px-6 text-lg font-medium outline-none appearance-none">
+                    <option>Medizinische Fußpflege</option>
+                    <option>Wellness Fußpflege</option>
+                    <option>Spangenbehandlung</option>
+                    <option>Sonstiges / Beratung</option>
                   </select>
                 </div>
-
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Wünsche</label>
-                  <Textarea placeholder="Wohin soll es gehen? Wann möchten Sie verreisen?" className="min-h-[160px] rounded-[2.5rem] border-white/20 focus:border-amber-400 font-bold p-8 bg-white/5 text-white placeholder:text-sky-300 resize-none focus:ring-amber-400/20" />
+                <div className="space-y-2">
+                  <label className="text-sm font-bold text-slate-700 uppercase tracking-widest ml-4">Ihre Nachricht</label>
+                  <Textarea className="min-h-[150px] rounded-[2rem] border-2 border-slate-50 bg-[#f8fafc] focus:border-cyan-500 focus:bg-white transition-all px-6 py-4 text-lg font-medium" placeholder="Wie können wir Ihnen helfen?" />
                 </div>
-
-                <Button className="w-full bg-amber-400 hover:bg-amber-500 text-sky-950 rounded-[2rem] h-24 text-2xl font-black gap-4 shadow-2xl transition-all hover:scale-[1.05] active:scale-95 group">
-                  Urlaubsanfrage senden
-                  <Send className="w-8 h-8 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
+                <div className="flex items-center gap-3 ml-4">
+                  <input type="checkbox" className="w-5 h-5 rounded-lg border-2 border-slate-200 text-cyan-600 focus:ring-cyan-500" />
+                  <span className="text-sm font-medium text-slate-500">Ich stimme der Datenschutzerklärung zu.</span>
+                </div>
+                <Button className="w-full h-16 rounded-2xl text-xl font-black bg-cyan-600 hover:bg-cyan-700 shadow-2xl shadow-cyan-200 transition-all hover:scale-105 active:scale-95 group mt-4">
+                  Nachricht absenden
+                  <Send className="ml-3 w-6 h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </Button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
