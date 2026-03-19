@@ -38,13 +38,14 @@ const MusicHelper = () => {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="bg-white rounded-3xl shadow-2xl p-6 w-[320px] mb-4 border border-primary/20"
+            className="bg-white dark:bg-card rounded-3xl shadow-2xl p-6 w-[320px] mb-4 border border-primary/20"
           >
             <div className="flex justify-between items-center mb-4">
-              <h4 className="font-serif font-bold text-secondary flex items-center gap-2">
+              <h4 className="font-serif font-bold text-secondary dark:text-primary flex items-center gap-2">
                 <Sparkles size={18} className="text-primary" />
                 Musik-Helfer
               </h4>
+
               <button onClick={() => setIsOpen(false)} className="text-text/40 hover:text-text">
                 <X size={20} />
               </button>

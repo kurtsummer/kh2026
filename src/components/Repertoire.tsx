@@ -13,15 +13,16 @@ const Repertoire = () => {
 
   const filteredSongs = REPERTOIRE.filter(song => {
     const matchesCategory = activeCategory === "Alle" || song.category === activeCategory;
-    const matchesSearch = 
-      song.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch =
+      song.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       song.artist.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   return (
-    <section id="repertoire" className="py-24 bg-white">
+    <section id="repertoire" className="py-24 bg-white dark:bg-card">
       <div className="container mx-auto px-4">
+
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary font-serif">Unser Repertoire</h2>
           <p className="text-lg text-text/80 max-w-2xl mx-auto mb-10">

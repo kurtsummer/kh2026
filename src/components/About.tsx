@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-white relative overflow-hidden">
+    <section id="about" className="py-24 bg-white dark:bg-card relative overflow-hidden">
       <div className="container mx-auto px-4">
+
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

@@ -88,42 +88,42 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Ihr Name</Label>
-                    <Input id="name" placeholder="Vor- und Nachname" required className="border-primary/20" />
+                    <Label htmlFor="name" className="dark:text-foreground">Ihr Name</Label>
+                    <Input id="name" placeholder="Vor- und Nachname" required className="border-primary/20 dark:bg-background" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">E-Mail Adresse</Label>
-                    <Input id="email" type="email" placeholder="beispiel@mail.de" required className="border-primary/20" />
+                    <Label htmlFor="email" className="dark:text-foreground">E-Mail Adresse</Label>
+                    <Input id="email" type="email" placeholder="beispiel@mail.de" required className="border-primary/20 dark:bg-background" />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="occasion">Anlass der Feier</Label>
-                    <Input id="occasion" placeholder="z.B. Hochzeit, Geburtstag..." required className="border-primary/20" />
+                    <Label htmlFor="occasion" className="dark:text-foreground">Anlass der Feier</Label>
+                    <Input id="occasion" placeholder="z.B. Hochzeit, Geburtstag..." required className="border-primary/20 dark:bg-background" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="date">Datum (optional)</Label>
+                    <Label htmlFor="date" className="dark:text-foreground">Datum (optional)</Label>
                     <div className="relative">
                       <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-text/40 h-4 w-4" />
-                      <Input id="date" type="date" className="pl-10 border-primary/20" />
+                      <Input id="date" type="date" className="pl-10 border-primary/20 dark:bg-background" />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="location">Veranstaltungsort</Label>
-                  <Input id="location" placeholder="Ort oder Location" className="border-primary/20" />
+                  <Label htmlFor="location" className="dark:text-foreground">Veranstaltungsort</Label>
+                  <Input id="location" placeholder="Ort oder Location" className="border-primary/20 dark:bg-background" />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Ihre Nachricht</Label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Erzählen Sie uns ein wenig über Ihre geplante Feier..." 
-                    rows={4} 
-                    required 
-                    className="border-primary/20"
+                  <Label htmlFor="message" className="dark:text-foreground">Ihre Nachricht</Label>
+                  <Textarea
+                    id="message"
+                    placeholder="Erzählen Sie uns ein wenig über Ihre geplante Feier..."
+                    rows={4}
+                    required
+                    className="border-primary/20 dark:bg-background"
                   />
                 </div>
 

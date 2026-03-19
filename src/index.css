@@ -30,11 +30,28 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 42 45% 94%;
 
-    --border: 43 55% 51%;
-    --input: 43 55% 51%;
+    --border: 43 55% 51% / 0.2;
+    --input: 43 55% 51% / 0.2;
     --ring: 43 55% 51%;
  
     --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 23 34% 8%; /* Darker version of secondary #2B1D14 */
+    --foreground: 42 45% 94%; /* Ivory #F8F3E8 */
+    
+    --card: 23 34% 12%;
+    --card-foreground: 42 45% 94%;
+ 
+    --popover: 23 34% 12%;
+    --popover-foreground: 42 45% 94%;
+ 
+    --muted: 23 34% 20%;
+    --muted-foreground: 42 45% 70%;
+ 
+    --border: 43 55% 51% / 0.3;
+    --input: 43 55% 51% / 0.3;
   }
 }
 
@@ -47,22 +64,23 @@
     line-height: 1.6;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-serif font-bold text-secondary;
+    @apply font-serif font-bold text-secondary dark:text-primary;
   }
 }
 
+/* Helper classes that should also be dark-mode aware if possible */
 .bg-ivory {
-  background-color: #F8F3E8;
+  @apply bg-background;
 }
 
 .text-gold {
-  color: #C9A13B;
+  @apply text-primary;
 }
 
 .border-gold {
-  border-color: #C9A13B;
+  @apply border-primary;
 }
 
 .bg-gold {
-  background-color: #C9A13B;
+  @apply bg-primary;
 }

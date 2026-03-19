@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
+
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
@@ -30,24 +32,27 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-text hover:text-primary transition-colors"
+                className="text-sm font-medium text-text dark:text-foreground hover:text-primary transition-colors"
               >
                 {link.name}
               </a>
             ))}
+            <ThemeToggle />
             <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
               <a href="#contact">Jetzt anfragen</a>
             </Button>
           </div>
 
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-4">
+            <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-text hover:text-primary transition-colors"
+              className="text-text dark:text-foreground hover:text-primary transition-colors"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
+
         </div>
       </div>
 
