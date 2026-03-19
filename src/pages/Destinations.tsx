@@ -1,9 +1,10 @@
 import { useState, useMemo, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { destinations, Destination } from "@/data/destinations";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { DestinationCard } from "@/components/DestinationCard";
+
 import { DestinationDetails } from "@/components/DestinationDetails";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
