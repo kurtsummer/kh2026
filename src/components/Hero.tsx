@@ -13,7 +13,7 @@ export const Hero = () => {
         <div className="space-y-8 animate-in fade-in slide-in-from-left duration-1000">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-cyan-50 text-cyan-700 font-bold text-sm tracking-wide">
             <Star className="w-4 h-4 fill-cyan-500 text-cyan-500" />
-            Professionelle Fusspflege in Musterhausen
+            Professionelle Fußpflege in Musterhausen
           </div>
           
           <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 leading-[1.1]">
@@ -24,7 +24,7 @@ export const Hero = () => {
           </h2>
           
           <p className="text-xl text-slate-600 max-w-xl leading-relaxed font-medium">
-            Willkommen in der Praxis von <span className="text-slate-900 font-bold">Max Mustermann</span>. Wir bieten Ihnen medizinische und kosmetische Fusspflege auf höchstem Niveau – für Ihr Wohlbefinden bei jedem Schritt.
+            Willkommen in der Praxis von <span className="text-slate-900 font-bold">Max Mustermann</span>. Wir bieten Ihnen medizinische und kosmetische Fußpflege auf höchstem Niveau – für Ihr Wohlbefinden bei jedem Schritt.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -69,9 +69,9 @@ export const Hero = () => {
         <div className="relative group animate-in fade-in slide-in-from-right duration-1000 delay-200">
           <div className="absolute -inset-4 bg-gradient-to-br from-cyan-200 to-teal-200 rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
           <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
-            <img 
-              src="https://images.unsplash.com/photo-1519415510236-85591199260e?auto=format&fit=crop&q=80&w=1000" 
-              alt="Foot Care Treatment"
+            <img
+              src="https://images.unsplash.com/photo-1519415510236-85591199260e?auto=format&fit=crop&q=80&w=1000"
+              alt="Fachgerechte Fußpflege-Behandlung"
               className="w-full h-full object-cover aspect-[4/5] scale-105 group-hover:scale-100 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />

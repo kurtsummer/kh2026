@@ -17,7 +17,7 @@ export const Footer = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-black tracking-tighter leading-none">
-                  Podologie <br /> Mustermann
+                  Podologie & <br /> Fußpflege
                 </h3>
               </div>
             </Link>

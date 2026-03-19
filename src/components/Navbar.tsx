@@ -56,7 +56,7 @@ export const Navbar = () => {
               "font-bold text-lg md:text-xl tracking-tight leading-none transition-colors",
               isScrolled || !isHome ? "text-slate-900" : "text-white"
             )}>
-              Podologie Mustermann
+              Podologie & Fußpflege
             </h1>
             <p className={cn(
               "text-[10px] font-semibold uppercase tracking-widest transition-colors mt-0.5",
