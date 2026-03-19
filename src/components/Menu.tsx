@@ -16,13 +16,13 @@ const menuItems = {
     { name: 'Naturtrüber Apfelsaft', price: '4,20 €', desc: 'Von Streuobstwiesen aus der Nachbarschaft (0,4l)' },
   ],
   food: [
-    { name: 'Der "Braumeister" Burger', price: '17,90 €', desc: 'Saftiges Beef, Malzbier-Zwiebeln, Bergkäse & Speck', popular: true },
-    { name: 'Original Wiener Schnitzel', price: '22,50 €', desc: 'Vom Kalb, dazu lauwarmem Kartoffel-Gurkensalat' },
+    { name: 'Der "Braumeister" Burger', price: '17,90 €', desc: 'Saftiges Beef, Malzbier-Zwiebeln, Bergkäse & Speck', popular: true, img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=400&auto=format&fit=crop" },
+    { name: 'Original Wiener Schnitzel', price: '22,50 €', desc: 'Vom Kalb, dazu lauwarmem Kartoffel-Gurkensalat', img: "https://images.unsplash.com/photo-1599923266141-6156a5247385?q=80&w=400&auto=format&fit=crop" },
     { name: 'Kässpätzle "Musterhausen"', price: '14,80 €', desc: 'Mit drei Sorten Bergkäse und echten Röstzwiebeln' },
     { name: 'Rindergulasch in Dunkelbiersauce', price: '19,20 €', desc: 'Zart geschmort mit handgedrehten Semmelknödeln' },
   ],
   snacks: [
-    { name: 'Muster-Brotzeit', price: '13,50 €', desc: 'Schinken, Bergkäse, Obatzda & krustiges Bauernbrot' },
+    { name: 'Muster-Brotzeit', price: '13,50 €', desc: 'Schinken, Bergkäse, Obatzda & krustiges Bauernbrot', img: "https://images.unsplash.com/photo-1541014741259-de529411b96a?q=80&w=400&auto=format&fit=crop" },
     { name: 'Ofenwarme Riesenbrezn', price: '2,80 €', desc: 'Täglich frisch gebacken, mit grobem Meersalz' },
     { name: 'Würzige Stout-Nüsse', price: '4,50 €', desc: 'In Schwarzbier und Honig geröstete Nussmischung' },
   ],
@@ -62,28 +62,34 @@ export const Menu = () => {
           ))}
         </div>
 
-        {/* Menu Grid - Chalkboard Style */}
-        <div className="grid lg:grid-cols-2 gap-x-16 gap-y-12 animate-in fade-in duration-700">
-          {menuItems[activeCategory as keyof typeof menuItems].map((item, i) => (
+        {/* Menu Grid - With Food Images for "Friendly" look */}
+        <div className="grid lg:grid-cols-2 gap-x-12 gap-y-12 animate-in fade-in duration-700">
+          {menuItems[activeCategory as keyof typeof menuItems].map((item: any, i) => (
             <div 
               key={i} 
-              className="group relative flex flex-col pb-6 border-b border-[#2D241E]/5 dark:border-[#D48806]/10"
+              className="group flex gap-6 items-start pb-8 border-b border-[#2D241E]/5 dark:border-[#D48806]/10"
             >
-              <div className="flex justify-between items-baseline mb-3">
-                <div className="flex items-center gap-4">
-                  <h3 className="text-2xl font-black text-[#2D241E] dark:text-[#F5E6D3] group-hover:text-[#D48806] transition-colors uppercase tracking-tight">
-                    {item.name}
-                  </h3>
-                  {item.popular && (
-                    <span className="bg-[#D48806]/10 text-[#D48806] text-[9px] font-black px-2 py-0.5 rounded uppercase tracking-[0.2em] border border-[#D48806]/20">
-                      Favorit
-                    </span>
-                  )}
+              {item.img && (
+                <div className="w-24 h-24 shrink-0 rounded-xl overflow-hidden border border-[#D48806]/20 shadow-lg hidden sm:block">
+                  <img src={item.img} alt={item.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                 </div>
-                <div className="flex-grow border-b border-dotted border-[#D48806]/20 mx-4" />
-                <span className="text-xl font-black text-[#D48806] tabular-nums">{item.price}</span>
+              )}
+              <div className="flex-grow">
+                <div className="flex justify-between items-baseline mb-2">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <h3 className="text-xl font-black text-[#2D241E] dark:text-[#F5E6D3] group-hover:text-[#D48806] transition-colors uppercase tracking-tight">
+                      {item.name}
+                    </h3>
+                    {item.popular && (
+                      <span className="bg-[#D48806]/10 text-[#D48806] text-[8px] font-black px-1.5 py-0.5 rounded uppercase tracking-[0.2em] border border-[#D48806]/20">
+                        Top
+                      </span>
+                    )}
+                  </div>
+                  <span className="text-lg font-black text-[#D48806] tabular-nums ml-4">{item.price}</span>
+                </div>
+                <p className="text-[#2D241E]/50 dark:text-[#F5E6D3]/50 font-serif italic text-base leading-relaxed">{item.desc}</p>
               </div>
-              <p className="text-[#2D241E]/50 dark:text-[#F5E6D3]/50 font-serif italic text-lg leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>

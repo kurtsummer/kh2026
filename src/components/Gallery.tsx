@@ -1,106 +1,61 @@
-import { useState } from "react";
-import { Coffee, Cake, Heart, Star, Utensils, Zap, Clock, Users, Camera } from "lucide-react";
+import React from 'react';
 
-export const Gallery = () => {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
+const Gallery = () => {
   const images = [
     {
-      src: "https://images.unsplash.com/photo-1541167760496-1628856ab772?q=80&w=800&auto=format&fit=crop",
-      title: "Wiener Melange",
-      category: "Kaffeekultur",
-      icon: <Coffee className="w-5 h-5 text-[#D4AF37]" />
+      url: "https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=800&auto=format&fit=crop",
+      title: "Atmosphäre",
+      size: "col-span-2 row-span-2"
     },
     {
-      src: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop",
-      title: "Frische Sachertorte",
-      category: "Patisserie",
-      icon: <Cake className="w-5 h-5 text-[#D4AF37]" />
+      url: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=800&auto=format&fit=crop",
+      title: "Unsere Bar",
+      size: "col-span-1 row-span-1"
     },
     {
-      src: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
-      title: "Unser Hauptsaal",
-      category: "Ambiente",
-      icon: <Heart className="w-5 h-5 text-[#D4AF37]" />
+      url: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=800&auto=format&fit=crop",
+      title: "Deftige Burger",
+      size: "col-span-1 row-span-1"
     },
     {
-      src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=800&auto=format&fit=crop",
-      title: "Klassische Zeitungshalter",
-      category: "Tradition",
-      icon: <Star className="w-5 h-5 text-[#D4AF37]" />
+      url: "https://images.unsplash.com/photo-1572116469696-31de0f17cc3b?q=80&w=800&auto=format&fit=crop",
+      title: "Gemütliche Ecken",
+      size: "col-span-1 row-span-2"
     },
     {
-      src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
-      title: "Hauseigene Röstung",
-      category: "Qualität",
-      icon: <Zap className="w-5 h-5 text-[#D4AF37]" />
-    },
-    {
-      src: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=800&auto=format&fit=crop",
-      title: "Sonniger Gastgarten",
-      category: "Entspannung",
-      icon: <Clock className="w-5 h-5 text-[#D4AF37]" />
+      url: "https://images.unsplash.com/photo-1532635241-17e820acc59f?q=80&w=800&auto=format&fit=crop",
+      title: "Frisch Gezapft",
+      size: "col-span-1 row-span-1"
     }
   ];
 
   return (
-    <section id="gallery" className="py-24 bg-white dark:bg-[#0A1A17] transition-colors duration-500 overflow-hidden">
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-          <div className="space-y-4 max-w-2xl">
-            <div className="inline-flex items-center gap-2 bg-[#800020]/10 text-[#800020] dark:text-[#D4AF37] px-6 py-2 rounded-full text-sm font-black uppercase tracking-widest border border-[#800020]/20">
-              <Camera className="w-4 h-4" />
-              <span>Visuelle Reise</span>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-serif font-black text-[#3D2B1F] dark:text-[#FDF5E6]">
-              Ein Blick in <br />
-              <span className="text-[#800020]">unsere Welt.</span>
-            </h2>
-            <p className="text-lg text-[#3D2B1F]/60 dark:text-[#FDF5E6]/60 font-medium font-serif italic">
-              Erleben Sie den unverkennbaren Charme des Café Mustermann. Ein Ort, an dem die Zeit ein wenig langsamer geht.
-            </p>
+    <section className="py-32 px-6 bg-white dark:bg-[#0A0706] transition-colors duration-500 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-20">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="h-[1px] w-8 bg-[#D48806]/40" />
+            <span className="text-[#D48806] font-black uppercase tracking-[0.4em] text-[10px]">Eindrücke</span>
+            <div className="h-[1px] w-8 bg-[#D48806]/40" />
           </div>
-          
-          <div className="flex gap-4">
-             <div className="bg-[#800020] p-8 rounded-[32px] text-white shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500 hidden lg:block border-4 border-[#D4AF37]">
-                <p className="text-3xl font-serif font-black">#KaffeeHausMax</p>
-                <p className="text-xs font-black uppercase tracking-widest opacity-70 mt-1">Teilen Sie Ihre Momente</p>
-             </div>
-          </div>
+          <h2 className="text-5xl md:text-7xl font-black text-[#2D241E] dark:text-white mb-6 uppercase italic-font-pub tracking-tight">Impressionen <br className="md:hidden" /> aus der <span className="text-[#D48806]">Braustube</span></h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="relative group cursor-pointer overflow-hidden rounded-[40px] shadow-2xl aspect-square border-8 border-white dark:border-zinc-800"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+        <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-3 gap-4 md:gap-6 h-[600px] md:h-[800px]">
+          {images.map((img, i) => (
+            <div 
+              key={i} 
+              className={`relative overflow-hidden rounded-2xl group cursor-pointer border border-[#2D241E]/5 dark:border-white/5 ${img.size}`}
             >
-              <img
-                src={image.src}
-                alt={image.title}
-                className={`w-full h-full object-cover transition-all duration-1000 ${
-                  hoveredIndex === index ? "scale-110 rotate-1" : "scale-100 rotate-0"
-                }`}
-                loading="lazy"
+              <img 
+                src={img.url} 
+                alt={img.title} 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              
-              <div className={`absolute inset-0 bg-gradient-to-t from-[#800020] via-transparent to-transparent transition-opacity duration-500 flex flex-col justify-end p-10 ${
-                hoveredIndex === index ? "opacity-90" : "opacity-0"
-              }`}>
-                <div className="space-y-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <div className="flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-2 rounded-full w-fit">
-                    {image.icon}
-                    <span className="text-[10px] font-black uppercase tracking-widest text-white">
-                      {image.category}
-                    </span>
-                  </div>
-                  <h3 className="text-2xl font-serif font-black text-white leading-tight">
-                    {image.title}
-                  </h3>
-                  <div className="h-1 w-12 bg-[#D4AF37] rounded-full" />
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
+                <span className="text-white font-black uppercase tracking-widest text-xs border-b border-[#D48806] pb-2">
+                  {img.title}
+                </span>
               </div>
             </div>
           ))}
@@ -109,3 +64,5 @@ export const Gallery = () => {
     </section>
   );
 };
+
+export default Gallery;
