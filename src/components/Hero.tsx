@@ -70,7 +70,7 @@ export const Hero = () => {
           <div className="absolute -inset-4 bg-gradient-to-br from-cyan-200 to-teal-200 rounded-[3rem] blur-2xl opacity-30 group-hover:opacity-50 transition-opacity duration-500" />
           <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-8 border-white">
             <img
-              src="https://images.unsplash.com/photo-1519415510236-85591199260e?auto=format&fit=crop&q=80&w=1000"
+              src="https://images.unsplash.com/photo-1512675846324-90d30ca74ee4?auto=format&fit=crop&q=80&w=1000"
               alt="Fachgerechte Fußpflege-Behandlung"
               className="w-full h-full object-cover aspect-[4/5] scale-105 group-hover:scale-100 transition-transform duration-700"
             />
