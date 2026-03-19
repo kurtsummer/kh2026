@@ -17,14 +17,9 @@ const Hero = () => {
           transition={{ duration: 0.6 }}
           className="flex flex-col items-center"
         >
-          <img 
-            src="/logo.png" 
-            alt="Karl-Heinz Logo" 
-            className="w-48 md:w-64 lg:w-80 h-auto mb-8 drop-shadow-xl"
-          />
-          
           <h1 className="text-4xl md:text-6xl lg:text-7xl mb-6 text-secondary leading-tight">
             Karl-Heinz – Hits & Evergreens <br className="hidden md:block" />
+
             <span className="text-primary italic">für Hochzeiten und Feiern</span>
           </h1>
           
