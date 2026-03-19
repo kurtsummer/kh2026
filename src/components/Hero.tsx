@@ -1,7 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Search, MapPin, Plane, ArrowRight, Palmtree, Star, Compass, Ship } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export const Hero = () => {
+  const navigate = useNavigate();
+  const [searchDestination, setSearchDestination] = useState("");
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchDestination.trim()) {
+      navigate(`/reiseziele?search=${encodeURIComponent(searchDestination)}`);
+    } else {
+      navigate("/reiseziele");
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-20 overflow-hidden bg-sky-900">
       {/* Background Image with Overlay */}
@@ -31,17 +45,25 @@ export const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 animate-in fade-in slide-in-from-bottom duration-1000 delay-500">
-            <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white rounded-[2rem] px-12 h-20 text-xl font-black shadow-[0_20px_50px_rgba(245,158,11,0.3)] transition-all hover:scale-105 active:scale-95 group">
-              Angebote entdecken
-              <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
-            </Button>
-            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 backdrop-blur-md rounded-[2rem] px-12 h-20 text-xl font-black gap-3 transition-all border-4 shadow-2xl">
+            <Link to="/reiseziele">
+              <Button size="lg" className="bg-amber-500 hover:bg-amber-600 text-white rounded-[2rem] px-12 h-20 text-xl font-black shadow-[0_20px_50px_rgba(245,158,11,0.3)] transition-all hover:scale-105 active:scale-95 group w-full sm:w-auto">
+                Angebote entdecken
+                <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
+              </Button>
+            </Link>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white/30 text-white hover:bg-white/10 backdrop-blur-md rounded-[2rem] px-12 h-20 text-xl font-black gap-3 transition-all border-4 shadow-2xl"
+              onClick={() => document.getElementById('kontakt')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               <Compass className="w-6 h-6 text-amber-400" />
               Reiseberatung
             </Button>
           </div>
 
           <div className="flex flex-wrap items-center gap-12 pt-6">
+
             <div className="flex flex-col">
               <span className="text-5xl font-black text-white leading-none">2.5k+</span>
               <span className="text-xs font-black text-sky-200 uppercase tracking-[0.3em] mt-2">Zufriedene Urlauber</span>
@@ -68,7 +90,7 @@ export const Hero = () => {
               <p className="text-slate-500 font-bold">Wohin soll die Reise gehen?</p>
             </div>
 
-            <div className="space-y-8">
+            <form onSubmit={handleSearch} className="space-y-8">
               <div className="space-y-3">
                 <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em]">Reiseart</label>
                 <div className="relative group">
@@ -91,9 +113,11 @@ export const Hero = () => {
                   <div className="absolute left-5 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-orange-100 rounded-xl text-orange-600 transition-colors group-hover:bg-orange-600 group-hover:text-white">
                     <MapPin className="w-5 h-5" />
                   </div>
-                  <input 
-                    type="text" 
-                    placeholder="Land oder Stadt" 
+                  <input
+                    type="text"
+                    placeholder="Land oder Stadt"
+                    value={searchDestination}
+                    onChange={(e) => setSearchDestination(e.target.value)}
                     className="w-full h-16 pl-16 pr-8 bg-slate-50 border-none rounded-[1.5rem] text-slate-900 font-black text-lg placeholder:text-slate-300 focus:ring-4 focus:ring-sky-500/20 transition-all"
                   />
                 </div>
@@ -119,11 +143,12 @@ export const Hero = () => {
                 </div>
               </div>
 
-              <Button className="w-full h-20 bg-slate-900 hover:bg-slate-800 text-white rounded-[2rem] text-xl font-black gap-4 shadow-2xl transition-all group active:scale-95">
+              <Button type="submit" className="w-full h-20 bg-slate-900 hover:bg-slate-800 text-white rounded-[2rem] text-xl font-black gap-4 shadow-2xl transition-all group active:scale-95">
                 <Search className="w-6 h-6 group-hover:rotate-12 transition-transform" />
                 Urlaub finden
               </Button>
-            </div>
+            </form>
+
           </div>
 
           {/* Decorative Floating Icon */}

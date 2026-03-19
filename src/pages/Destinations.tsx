@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { destinations, Destination } from "@/data/destinations";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -6,14 +7,22 @@ import { DestinationCard } from "@/components/DestinationCard";
 import { DestinationDetails } from "@/components/DestinationDetails";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Globe, Filter, X, Palmtree, Map, Ship, Plane, Heart, Leaf } from "lucide-react";
+import { Search, Globe, X, Palmtree, Map, Ship, Plane, Heart, Leaf, Compass } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const Destinations = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedContinent, setSelectedContinent] = useState<string | null>(null);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const initialSearch = queryParams.get("search") || "";
+
+  const [searchTerm, setSearchTerm] = useState(initialSearch);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(queryParams.get("category"));
+  const [selectedContinent, setSelectedContinent] = useState<string | null>(queryParams.get("continent"));
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+
+  useEffect(() => {
+    if (initialSearch) setSearchTerm(initialSearch);
+  }, [initialSearch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
