@@ -9,7 +9,7 @@ export const About = () => {
             <div className="absolute -inset-6 bg-gradient-to-tr from-cyan-100 to-teal-100 rounded-[4rem] blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
             <div className="relative rounded-[3.5rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-200">
               <img
-                src="https://images.unsplash.com/photo-1622223455123-d667c4e5186b?auto=format&fit=crop&q=80&w=1000"
+                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1000"
                 alt="Max Mustermann Podologe"
                 className="w-full h-full object-cover aspect-[4/5] scale-105 group-hover:scale-100 transition-transform duration-700"
               />
