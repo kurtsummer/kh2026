@@ -1,183 +1,76 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Plane, Phone, Palmtree } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { Link, useLocation } from "react-router-dom";
-import { ThemeToggle } from "./ThemeToggle";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { Button } from "./ui/button";
 
-export const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const isHome = location.pathname === "/";
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: "Start", href: "/" },
-    { name: "Reiseziele", href: isHome ? "#reiseziele" : "/reiseziele" },
-    { name: "Leistungen", href: isHome ? "#leistungen" : "/#leistungen" },
-    { name: "Über uns", href: isHome ? "#ueber-uns" : "/#ueber-uns" },
-    { name: "Kontakt", href: isHome ? "#kontakt" : "/#kontakt" },
+    { name: "Startseite", href: "/" },
+    { name: "Über uns", href: "#about" },
+    { name: "Anlässe", href: "#occasions" },
+    { name: "Repertoire", href: "#repertoire" },
+    { name: "Kontakt", href: "#contact" },
   ];
 
-  const handleNavClick = (href: string) => {
-    setIsMobileMenuOpen(false);
-    if (href.startsWith("#")) {
-      const element = document.getElementById(href.replace("#", ""));
-      element?.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4",
-        isScrolled || !isHome
-          ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-lg py-3"
-          : "bg-transparent"
-      )}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3 group cursor-pointer">
-          <div className={cn(
-            "w-12 h-12 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-12 shadow-xl",
-            isScrolled || !isHome 
-              ? "bg-sky-600 text-white shadow-sky-200 dark:shadow-sky-900/20" 
-              : "bg-white text-sky-600"
-          )}>
-            <Plane className="w-6 h-6" />
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-primary/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-20 items-center">
+          <div className="flex-shrink-0 flex items-center">
+            <Link to="/" className="flex items-center gap-2">
+              <img src="/logo.png" alt="Karl-Heinz Logo" className="h-12 w-auto" />
+              <span className="font-serif text-2xl font-bold text-secondary hidden sm:block">Karl-Heinz</span>
+            </Link>
           </div>
-          <div>
-            <h1 className={cn(
-              "font-black text-2xl tracking-tighter leading-none transition-colors",
-              isScrolled || !isHome ? "text-slate-900 dark:text-white" : "text-white"
-            )}>
-              Max Mustermann
-            </h1>
-            <p className={cn(
-              "text-[10px] font-black uppercase tracking-[0.3em] transition-colors",
-              isScrolled || !isHome ? "text-sky-600 dark:text-sky-400" : "text-sky-300"
-            )}>
-              Reisebüro Musterhausen
-            </p>
-          </div>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8 lg:gap-10">
-          {navLinks.map((link) => (
-            link.href.startsWith("#") ? (
-              <button
-                key={link.name}
-                onClick={() => handleNavClick(link.href)}
-                className={cn(
-                  "text-sm font-bold tracking-wide transition-all hover:scale-105 active:scale-95",
-                  isScrolled || !isHome ? "text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400" : "text-white/90 hover:text-white"
-                )}
-              >
-                {link.name}
-              </button>
-            ) : (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={cn(
-                  "text-sm font-bold tracking-wide transition-all hover:scale-105 active:scale-95",
-                  isScrolled || !isHome ? "text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-sky-400" : "text-white/90 hover:text-white"
-                )}
-              >
-                {link.name}
-              </Link>
-            )
-          ))}
           
-          <ThemeToggle />
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-sm font-medium text-text hover:text-primary transition-colors"
+              >
+                {link.name}
+              </a>
+            ))}
+            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
+              <a href="#contact">Jetzt anfragen</a>
+            </Button>
+          </div>
 
-          <Button
-            className={cn(
-              "rounded-full px-8 h-12 font-bold transition-all shadow-xl hover:shadow-2xl active:scale-95",
-              isScrolled || !isHome 
-                ? "bg-sky-600 hover:bg-sky-700 text-white shadow-sky-200 dark:shadow-sky-900/40" 
-                : "bg-white hover:bg-slate-50 text-sky-600 shadow-white/20"
-            )}
-            onClick={() => {
-              const element = document.getElementById('kontakt');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                window.location.href = "/#kontakt";
-              }
-            }}
-          >
-            <Phone className="w-4 h-4 mr-2" />
-            Urlaub planen
-          </Button>
-        </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="flex items-center gap-4 md:hidden">
-          <ThemeToggle />
-          <button
-            className={cn(
-              "p-3 rounded-2xl transition-all active:scale-95",
-              isScrolled || !isHome 
-                ? "text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 shadow-inner" 
-                : "text-white bg-white/10 backdrop-blur-md"
-            )}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-text hover:text-primary transition-colors"
+            >
+              {isOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-2xl shadow-2xl border-t border-slate-50 dark:border-slate-800 p-8 flex flex-col gap-6 animate-in slide-in-from-top duration-500 rounded-b-[3rem]">
-          {navLinks.map((link) => (
-            link.href.startsWith("#") ? (
-              <button
+      {isOpen && (
+        <div className="md:hidden bg-background border-b border-primary/20 animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navLinks.map((link) => (
+              <a
                 key={link.name}
-                className="text-2xl font-black text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors flex items-center justify-between group text-left"
-                onClick={() => handleNavClick(link.href)}
+                href={link.href}
+                className="block px-3 py-4 text-base font-medium text-text hover:text-primary hover:bg-primary/5 rounded-md"
+                onClick={() => setIsOpen(false)}
               >
                 {link.name}
-                <Palmtree className="w-6 h-6 text-sky-200 group-hover:text-sky-500 transition-colors" />
-              </button>
-            ) : (
-              <Link
-                key={link.name}
-                to={link.href}
-                className="text-2xl font-black text-slate-900 dark:text-white hover:text-sky-600 dark:hover:text-sky-400 transition-colors flex items-center justify-between group"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-                <Palmtree className="w-6 h-6 text-sky-200 group-hover:text-sky-500 transition-colors" />
-              </Link>
-            )
-          ))}
-          <Button
-            className="bg-sky-600 hover:bg-sky-700 text-white rounded-[2rem] w-full py-8 text-xl font-black gap-3 shadow-2xl shadow-sky-200 dark:shadow-sky-900/40 transition-all active:scale-95"
-            onClick={() => {
-              setIsMobileMenuOpen(false);
-              const element = document.getElementById('kontakt');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              } else {
-                window.location.href = "/#kontakt";
-              }
-            }}
-          >
-            <Phone className="w-6 h-6" />
-            Urlaub planen
-          </Button>
+              </a>
+            ))}
+            <div className="px-3 py-4">
+              <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                <a href="#contact" onClick={() => setIsOpen(false)}>Jetzt anfragen</a>
+              </Button>
+            </div>
+          </div>
         </div>
       )}
     </nav>

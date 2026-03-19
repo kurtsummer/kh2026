@@ -1,83 +1,68 @@
-import { Award, Globe, Heart, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
-export const About = () => {
+const About = () => {
   return (
-    <section id="ueber-uns" className="py-32 bg-slate-50 dark:bg-slate-900/50 relative overflow-hidden transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <div className="order-2 lg:order-1 relative">
-            <div className="relative">
-              <div className="aspect-[4/5] rounded-[4rem] overflow-hidden border-[16px] border-white dark:border-slate-800 shadow-[0_40px_80px_-15px_rgba(0,0,0,0.1)] relative z-10">
-                <img
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=1000"
-                  alt="Team im Reisebüro"
-                  className="w-full h-full object-cover grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
-                />
-              </div>
-              <div className="absolute -bottom-12 -right-12 bg-sky-600 dark:bg-sky-500 p-12 rounded-[3rem] shadow-2xl max-w-[320px] hidden md:block z-20 group hover:bg-amber-500 transition-colors duration-500 border-8 border-white dark:border-slate-800">
-                <p className="text-white font-black text-6xl mb-3 italic group-hover:scale-110 transition-transform">15+</p>
-                <p className="text-white/80 group-hover:text-white text-sm font-black uppercase tracking-[0.2em] leading-relaxed transition-colors">Jahre Reise-Leidenschaft in Musterhausen</p>
-              </div>
-              {/* Decorative Blur */}
-              <div className="absolute -top-10 -left-10 w-64 h-64 bg-sky-500/10 rounded-full blur-[100px] -z-10" />
+    <section id="about" className="py-24 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative"
+          >
+            <div className="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border-4 border-ivory">
+              <img 
+                src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                alt="Live Musik Atmosphäre" 
+                className="w-full h-full object-cover"
+              />
             </div>
-          </div>
+            <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-primary rounded-2xl -z-10" />
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl -z-10" />
+          </motion.div>
 
-          <div className="order-1 lg:order-2 space-y-10">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 bg-sky-100 dark:bg-sky-500/10 text-sky-700 dark:text-sky-400 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.3em]">
-                Willkommen bei Max Mustermann
-              </div>
-              <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
-                Ihre Träume <br />
-                <span className="text-sky-600 dark:text-sky-400 italic">unser Ziel</span>
-              </h2>
-              <p className="text-slate-500 dark:text-slate-400 text-xl font-bold leading-relaxed">
-                Seit über 15 Jahren verwandelt Max Mustermann Urlaubswünsche in unvergessliche Erlebnisse. Als inhabergeführtes Reisebüro in Musterhausen legen wir Wert auf persönlichen Service und echte Geheimtipps.
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <h2 className="text-primary text-sm font-bold uppercase tracking-widest mb-4">Über Karl-Heinz</h2>
+            <h3 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary">
+              Musik, die verbindet <br className="hidden sm:block" /> und Erinnerungen schafft
+            </h3>
+            <div className="space-y-6 text-text text-lg leading-relaxed">
+              <p>
+                Hinter Karl-Heinz verbirgt sich ein eingespieltes Musikduo, das Ihre Feier mit Herzblut und Leidenschaft begleitet. 
+                Uns geht es nicht um die große Show-Bühne, sondern um die echten Momente – dort, wo gelacht, getanzt und gemeinsam gesungen wird.
+              </p>
+              <p>
+                Mit Gitarre, Keyboard und zweistimmigem Gesang interpretieren wir die großen Evergreens und Hits der letzten Jahrzehnte. 
+                Ob stilvolle Hintergrundmusik zum Dinner oder stimmungsvolle Unterhaltung zum Tanzen: Wir passen uns Ihrem Anlass an.
+              </p>
+              <p>
+                Bodenständigkeit, Zuverlässigkeit und eine Prise Charme – das ist es, was Karl-Heinz ausmacht. Wir freuen uns darauf, 
+                Teil Ihrer Geschichte zu werden.
               </p>
             </div>
-
-            <div className="grid sm:grid-cols-2 gap-8">
-              <div className="flex flex-col gap-4 group p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 hover:border-sky-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-sky-50 dark:bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 group-hover:bg-sky-600 dark:group-hover:bg-sky-500 group-hover:text-white transition-all duration-500">
-                  <Globe className="w-8 h-8" />
-                </div>
-                <div>
-                  <h4 className="font-black text-slate-900 dark:text-white text-xl mb-2">Weltweite Expertise</h4>
-                  <p className="text-slate-400 dark:text-slate-500 text-sm font-bold leading-relaxed">Wir kennen die schönsten Ecken der Welt aus eigener Erfahrung.</p>
-                </div>
+            
+            <div className="mt-10 grid grid-cols-2 gap-6">
+              <div className="p-4 bg-ivory rounded-xl border-l-4 border-primary">
+                <span className="block text-2xl font-serif font-bold text-secondary">10+</span>
+                <span className="text-sm text-text/70">Jahre Erfahrung</span>
               </div>
-              <div className="flex flex-col gap-4 group p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 hover:border-sky-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500">
-                  <Heart className="w-8 h-8" />
-                </div>
-                <div>
-                  <h4 className="font-black text-slate-900 dark:text-white text-xl mb-2">Persönliche Beratung</h4>
-                  <p className="text-slate-400 dark:text-slate-500 text-sm font-bold leading-relaxed">Wir nehmen uns Zeit für Sie – bei uns sind Sie keine Buchungsnummer.</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 group p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 hover:border-sky-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-sky-50 dark:bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0 group-hover:bg-sky-600 dark:group-hover:bg-sky-500 group-hover:text-white transition-all duration-500">
-                  <Award className="w-8 h-8" />
-                </div>
-                <div>
-                  <h4 className="font-black text-slate-900 dark:text-white text-xl mb-2">Bestpreis-Garantie</h4>
-                  <p className="text-slate-400 dark:text-slate-500 text-sm font-bold leading-relaxed">Durch Zugriff auf alle großen Veranstalter finden wir den besten Preis.</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-4 group p-8 bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-sm border-2 border-slate-100 dark:border-slate-800 hover:border-sky-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500">
-                <div className="w-16 h-16 rounded-2xl bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0 group-hover:bg-amber-500 group-hover:text-white transition-all duration-500">
-                  <Users className="w-8 h-8" />
-                </div>
-                <div>
-                  <h4 className="font-black text-slate-900 dark:text-white text-xl mb-2">After-Sales Support</h4>
-                  <p className="text-slate-400 dark:text-slate-500 text-sm font-bold leading-relaxed">Wir sind auch während und nach Ihrer Reise für Sie da.</p>
-                </div>
+              <div className="p-4 bg-ivory rounded-xl border-l-4 border-primary">
+                <span className="block text-2xl font-serif font-bold text-secondary">100+</span>
+                <span className="text-sm text-text/70">Lieder im Repertoire</span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
+
+export default About;

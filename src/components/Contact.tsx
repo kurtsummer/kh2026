@@ -1,120 +1,165 @@
-import { Mail, Phone, MapPin, Send, Compass } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import { Label } from "./ui/label";
+import { toast } from "sonner";
+import { Send, MapPin, Mail, Phone, Calendar } from "lucide-react";
 
-export const Contact = () => {
+const Contact = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate API call
+    setTimeout(() => {
+      setIsSubmitting(false);
+      toast.success("Anfrage erfolgreich gesendet! Wir melden uns in Kürze bei Ihnen.");
+      (e.target as HTMLFormElement).reset();
+    }, 1500);
+  };
+
   return (
-    <section id="kontakt" className="py-32 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-24 items-start">
-          <div className="space-y-12">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-3 bg-sky-600 text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-lg shadow-sky-100 dark:shadow-sky-900/20">
-                Kontakt
-              </div>
-              <h2 className="text-5xl md:text-7xl font-black text-slate-900 dark:text-white leading-[0.9] tracking-tighter">
-                Bereit für <br />
-                <span className="text-sky-600 dark:text-sky-400 italic">die nächste Reise?</span>
-              </h2>
-              <p className="text-slate-500 dark:text-slate-400 text-xl font-bold leading-relaxed max-w-xl">
-                Egal ob Sie schon genaue Vorstellungen haben oder erst einmal Inspiration suchen – wir freuen uns auf Ihre Nachricht oder Ihren Besuch in Musterhausen.
+    <section id="contact" className="py-24 bg-ivory relative overflow-hidden">
+      {/* Decorative patterns */}
+      <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
+        <img src="/logo.png" alt="" className="w-64 grayscale" />
+      </div>
+
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary font-serif">Fragen Sie Ihren Wunschtermin an</h2>
+              <p className="text-lg text-text/80 mb-10 leading-relaxed">
+                Haben Sie Fragen oder möchten Sie direkt prüfen, ob wir an Ihrem Wunschtermin noch Zeit haben? 
+                Schreiben Sie uns eine Nachricht – unverbindlich und unkompliziert. Wir freuen aus auf Ihre Anfrage!
               </p>
-            </div>
-
-            <div className="space-y-10">
-              <div className="flex gap-8 group cursor-pointer">
-                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border-4 border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
-                  <MapPin className="text-slate-400 dark:text-slate-500 w-10 h-10 group-hover:text-white transition-colors" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h4 className="font-black text-slate-900 dark:text-white text-2xl mb-1 tracking-tighter">Besuchen Sie uns</h4>
-                  <p className="text-slate-500 dark:text-slate-400 font-bold text-xl leading-snug tracking-tight">Hauptstraße 42, 12345 Musterhausen</p>
-                  <p className="text-sky-600 dark:text-sky-400 text-[10px] font-black uppercase tracking-[0.3em] mt-3 hover:text-sky-700 dark:hover:text-sky-300 transition-colors inline-flex items-center gap-3 group-hover:translate-x-2 transition-transform duration-500">
-                    Route bei Google Maps
-                    <div className="w-2 h-2 rounded-full bg-sky-600 dark:bg-sky-400 animate-pulse" />
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-8 group cursor-pointer">
-                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border-4 border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 group-hover:bg-amber-400 group-hover:-rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
-                  <Phone className="text-slate-400 dark:text-slate-500 w-10 h-10 group-hover:text-white transition-colors" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h4 className="font-black text-slate-900 dark:text-white text-2xl mb-1 tracking-tighter text-sky-600 dark:text-sky-400">Rufen Sie an</h4>
-                  <p className="text-slate-500 dark:text-slate-400 font-black text-3xl tracking-tighter italic">01234 / 567 890</p>
-                  <p className="text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mt-2 flex items-center gap-3">
-                    Mo - Fr: 09:00 - 18:00 Uhr
-                    <span className="inline-block w-3 h-3 bg-green-500 rounded-full animate-ping" />
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-8 group cursor-pointer">
-                <div className="w-24 h-24 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border-4 border-slate-100 dark:border-slate-800 flex items-center justify-center shrink-0 group-hover:bg-sky-600 group-hover:rotate-12 transition-all duration-500 shadow-xl group-hover:border-transparent">
-                  <Mail className="text-slate-400 dark:text-slate-500 w-10 h-10 group-hover:text-white transition-colors" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <h4 className="font-black text-slate-900 dark:text-white text-2xl mb-1 tracking-tighter">Schreiben Sie uns</h4>
-                  <p className="text-slate-500 dark:text-slate-400 font-bold text-xl tracking-tight">info@mustermann-reisen.de</p>
-                  <p className="text-slate-400 dark:text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mt-3">Rückmeldung garantiert am selben Tag</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="bg-sky-900 dark:bg-slate-900 p-12 md:p-20 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(12,74,110,0.4)] relative overflow-hidden group border-8 border-white dark:border-slate-800">
-            {/* Decorative background glow */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-white/10 dark:bg-sky-500/10 rounded-full blur-[100px] pointer-events-none group-hover:bg-white/20 transition-all duration-1000" />
-            
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-amber-400 rounded-[2.5rem] flex items-center justify-center shadow-2xl rotate-12 group-hover:rotate-[24deg] transition-all duration-700 border-8 border-white dark:border-slate-800">
-              <Compass className="w-16 h-16 text-sky-950 -rotate-12 group-hover:-rotate-[24deg] transition-all duration-700 animate-spin-slow" />
-            </div>
-            
-            <form className="space-y-10 relative z-10" onSubmit={(e) => e.preventDefault()}>
-              <div className="space-y-3">
-                <h3 className="text-4xl font-black text-white tracking-tighter">Anfrage senden</h3>
-                <p className="text-sky-200 dark:text-sky-400 font-bold tracking-tight">Wir planen Ihre Traumreise gemeinsam.</p>
-              </div>
 
               <div className="space-y-8">
-                <div className="grid md:grid-cols-2 gap-8">
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Name</label>
-                    <Input placeholder="Ihr Name" className="rounded-2xl border-white/20 dark:border-white/10 focus:border-amber-400 h-16 font-bold px-8 bg-white/5 dark:bg-white/5 text-white placeholder:text-sky-300 focus:ring-amber-400/20 transition-all" />
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-white rounded-lg shadow-sm text-primary">
+                    <Mail size={24} />
                   </div>
-                  <div className="space-y-3">
-                    <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">E-Mail</label>
-                    <Input type="email" placeholder="beispiel@mail.de" className="rounded-2xl border-white/20 dark:border-white/10 focus:border-amber-400 h-16 font-bold px-8 bg-white/5 dark:bg-white/5 text-white placeholder:text-sky-300 focus:ring-amber-400/20 transition-all" />
+                  <div>
+                    <h4 className="font-bold text-secondary">E-Mail</h4>
+                    <p className="text-text/70">hallo@karl-heinz-musik.de</p>
                   </div>
                 </div>
                 
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Reiseart</label>
-                  <select className="w-full h-16 rounded-2xl border-white/20 dark:border-white/10 focus:border-amber-400 px-8 bg-sky-950 dark:bg-slate-950 text-white font-bold appearance-none cursor-pointer focus:ring-amber-400/20 shadow-inner transition-all">
-                    <option className="bg-sky-950 dark:bg-slate-950">Pauschalreise</option>
-                    <option className="bg-sky-950 dark:bg-slate-950">Kreuzfahrt</option>
-                    <option className="bg-sky-950 dark:bg-slate-950">Städtereise</option>
-                    <option className="bg-sky-950 dark:bg-slate-950">Flug & Hotel</option>
-                    <option className="bg-sky-950 dark:bg-slate-950">Sonstiges</option>
-                  </select>
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-white rounded-lg shadow-sm text-primary">
+                    <Phone size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-secondary">Telefon</h4>
+                    <p className="text-text/70">+49 (0) 123 456 789</p>
+                  </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label className="text-[10px] font-black uppercase tracking-[0.4em] text-amber-400">Wünsche</label>
-                  <Textarea placeholder="Wohin soll es gehen? Wann möchten Sie verreisen?" className="min-h-[160px] rounded-[2.5rem] border-white/20 dark:border-white/10 focus:border-amber-400 font-bold p-8 bg-white/5 dark:bg-white/5 text-white placeholder:text-sky-300 resize-none focus:ring-amber-400/20 transition-all" />
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-white rounded-lg shadow-sm text-primary">
+                    <MapPin size={24} />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-secondary">Einsatzgebiet</h4>
+                    <p className="text-text/70">Großraum Süddeutschland & Österreich (auf Anfrage europaweit)</p>
+                  </div>
                 </div>
-
-                <Button className="w-full bg-amber-400 hover:bg-amber-500 text-sky-950 rounded-[2rem] h-24 text-2xl font-black gap-4 shadow-2xl transition-all hover:scale-[1.05] active:scale-95 group">
-                  Urlaubsanfrage senden
-                  <Send className="w-8 h-8 group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform" />
-                </Button>
               </div>
-            </form>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-primary/10"
+            >
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Ihr Name</Label>
+                    <Input id="name" placeholder="Vor- und Nachname" required className="border-primary/20" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">E-Mail Adresse</Label>
+                    <Input id="email" type="email" placeholder="beispiel@mail.de" required className="border-primary/20" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="occasion">Anlass der Feier</Label>
+                    <Input id="occasion" placeholder="z.B. Hochzeit, Geburtstag..." required className="border-primary/20" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="date">Datum (optional)</Label>
+                    <div className="relative">
+                      <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 text-text/40 h-4 w-4" />
+                      <Input id="date" type="date" className="pl-10 border-primary/20" />
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="location">Veranstaltungsort</Label>
+                  <Input id="location" placeholder="Ort oder Location" className="border-primary/20" />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="message">Ihre Nachricht</Label>
+                  <Textarea 
+                    id="message" 
+                    placeholder="Erzählen Sie uns ein wenig über Ihre geplante Feier..." 
+                    rows={4} 
+                    required 
+                    className="border-primary/20"
+                  />
+                </div>
+
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg shadow-lg hover:shadow-xl transition-all"
+                >
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <motion.div 
+                        animate={{ rotate: 360 }} 
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      >
+                        <Send size={20} />
+                      </motion.div>
+                      Wird gesendet...
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      <Send size={20} />
+                      Unverbindliche Anfrage senden
+                    </span>
+                  )}
+                </Button>
+                
+                <p className="text-[10px] text-center text-text/40">
+                  Mit dem Absenden erklären Sie sich mit unserer Datenschutzerklärung einverstanden.
+                </p>
+              </form>
+            </motion.div>
           </div>
         </div>
       </div>
     </section>
   );
 };
+
+export default Contact;

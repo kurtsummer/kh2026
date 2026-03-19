@@ -1,31 +1,43 @@
-import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { DestinationsSection } from "@/components/DestinationsSection";
-import { Services } from "@/components/ServicesSection";
-import { About } from "@/components/About";
-import { Team } from "@/components/Team";
-import { Testimonials } from "@/components/Testimonials";
-import { OpeningHours } from "@/components/OpeningHours";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Occasions from "@/components/Occasions";
+import Repertoire from "@/components/Repertoire";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+import MusicHelper from "@/components/MusicHelper";
+import { motion, useScroll, useSpring } from "framer-motion";
 
 const Index = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 selection:bg-sky-100 dark:selection:bg-sky-900/50 selection:text-sky-900 dark:selection:text-sky-100 transition-colors duration-500 overflow-x-hidden">
+    <div className="min-h-screen selection:bg-primary/30 selection:text-secondary">
+      {/* Progress Bar */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-1 bg-primary z-[60] origin-left"
+        style={{ scaleX }}
+      />
+      
       <Navbar />
       
       <main>
         <Hero />
-        <DestinationsSection />
-        <Services />
         <About />
-        <Team />
-        <Testimonials />
-        <OpeningHours />
+        <Occasions />
+        <Repertoire />
         <Contact />
       </main>
+      
+      <MusicHelper />
       <Footer />
     </div>
+
   );
 };
 
