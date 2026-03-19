@@ -1,29 +1,24 @@
-import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
-import { ServicesSection } from "@/components/ServicesSection";
-import { About } from "@/components/About";
-import { Pricing } from "@/components/Pricing";
-import { OpeningHours } from "@/components/OpeningHours";
-import { Contact } from "@/components/Contact";
-import { Footer } from "@/components/Footer";
-import { Toaster } from "@/components/ui/toaster";
+import React from 'react';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import About from '../components/About';
+import Menu from '../components/Menu';
+import Events from '../components/Events';
+import Contact from '../components/Contact';
+import Footer from '../components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-900 selection:bg-cyan-100 selection:text-cyan-900 transition-colors duration-500 overflow-x-hidden">
+    <div className="min-h-screen bg-[#FFFDF5] text-[#2D241E] font-sans selection:bg-[#E6B325] selection:text-white">
       <Navbar />
-      
       <main>
         <Hero />
-        <ServicesSection />
         <About />
-        <Pricing />
-        <OpeningHours />
+        <Menu />
+        <Events />
         <Contact />
       </main>
-      
       <Footer />
-      <Toaster />
     </div>
   );
 };

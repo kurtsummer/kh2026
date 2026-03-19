@@ -1,88 +1,64 @@
-import { Award, Heart, CheckCircle, ShieldCheck } from "lucide-react";
+import React from 'react';
+import { Heart, Beer, Users } from 'lucide-react';
 
-export const About = () => {
+const About = () => {
   return (
-    <section id="ueber-mich" className="py-24 bg-[#f8fafc] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+    <section id="about" className="py-24 px-6 bg-[#FFFDF5]">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative group">
-            <div className="absolute -inset-6 bg-gradient-to-tr from-cyan-100 to-teal-100 rounded-[4rem] blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700" />
-            <div className="relative rounded-[3.5rem] overflow-hidden shadow-2xl border-8 border-white bg-slate-200">
-              <img
-                src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1000"
-                alt="Max Mustermann Podologe"
-                className="w-full h-full object-cover aspect-[4/5] scale-105 group-hover:scale-100 transition-transform duration-700"
+            <div className="absolute -inset-4 bg-[#E6B325]/20 rounded-[2rem] blur-2xl group-hover:bg-[#E6B325]/30 transition-all duration-500" />
+            <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
+              <img 
+                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop" 
+                alt="Max Mustermann" 
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/40 to-transparent" />
-              <div className="absolute bottom-8 left-8 right-8 bg-white/10 backdrop-blur-md p-6 rounded-3xl border border-white/20">
-                <p className="text-white font-bold text-lg leading-tight">
-                  "Ihre Füße sind das Fundament Ihrer Gesundheit."
-                </p>
-                <p className="text-cyan-100 text-sm font-semibold mt-2 uppercase tracking-widest">
-                  — Max Mustermann, Inhaber
-                </p>
-              </div>
             </div>
-            
-            {/* Stats / Badges Overlay */}
-            <div className="absolute -bottom-10 -right-10 bg-white p-8 rounded-[2rem] shadow-2xl shadow-cyan-100 border border-slate-50 hidden md:block animate-bounce-slow">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-cyan-600 flex items-center justify-center text-white">
-                  <Award className="w-6 h-6" />
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-slate-900 leading-none">15+</p>
-                  <p className="text-sm font-bold text-slate-500 uppercase tracking-tighter">Jahre Erfahrung</p>
-                </div>
-              </div>
+            <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-3xl shadow-xl max-w-[240px] hidden md:block">
+              <p className="text-[#2D241E] italic font-medium leading-relaxed">
+                "Ein Pub ist mehr als nur ein Ort zum Trinken – es ist das Wohnzimmer unserer Stadt."
+              </p>
+              <p className="mt-4 font-bold text-[#E6B325]">— Max Mustermann</p>
             </div>
           </div>
 
-          <div className="space-y-10">
+          <div className="space-y-8">
             <div className="space-y-4">
-              <span className="text-cyan-600 font-black uppercase tracking-widest text-sm bg-cyan-50 px-4 py-2 rounded-full inline-block mb-4">
-                Über die Praxis
-              </span>
-              <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
-                Kompetenz, Erfahrung und <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-teal-500">
-                  echte Leidenschaft.
-                </span>
+              <h2 className="text-4xl md:text-5xl font-black text-[#2D241E]">
+                Tradition trifft auf <br />
+                <span className="text-[#E6B325]">Musterhäuser Gemütlichkeit</span>
               </h2>
+              <p className="text-lg text-[#2D241E]/70 leading-relaxed">
+                Max Mustermann eröffnete die Braustube im Herzen von Musterhausen mit einer einfachen Vision: Einen Ort zu schaffen, an dem sich jeder – vom Handwerker bis zum Anwalt – wie zu Hause fühlt.
+              </p>
             </div>
-            
-            <p className="text-xl text-slate-600 font-medium leading-relaxed">
-              Mein Name ist Max Mustermann, und ich bin seit über 15 Jahren als staatlich geprüfter Podologe tätig. In meiner Praxis in Musterhausen verbinde ich medizinisches Fachwissen mit einer einfühlsamen Betreuung.
-            </p>
 
             <div className="grid gap-6">
               {[
-                { 
-                  icon: <CheckCircle className="w-6 h-6" />, 
-                  title: "Staatlich geprüfte Podologie", 
-                  desc: "Hochqualifizierte medizinische Ausbildung und ständige Fortbildung.",
-                  color: "bg-cyan-100 text-cyan-600"
+                {
+                  icon: <Heart className="w-6 h-6 text-white" />,
+                  title: 'Mit Liebe geführt',
+                  desc: 'Ein Familienbetrieb in zweiter Generation mit Herzblut.'
                 },
-                { 
-                  icon: <ShieldCheck className="w-6 h-6" />, 
-                  title: "Modernste Standards", 
-                  desc: "Wir arbeiten mit modernsten Geräten unter Einhaltung strengster Hygienerichtlinien.",
-                  color: "bg-teal-100 text-teal-600"
+                {
+                  icon: <Beer className="w-6 h-6 text-white" />,
+                  title: 'Echtes Handwerk',
+                  desc: 'Wir führen 12 verschiedene Fassbiere und regionale Spezialitäten.'
                 },
-                { 
-                  icon: <Heart className="w-6 h-6" />, 
-                  title: "Individuelle Beratung", 
-                  desc: "Jeder Fuß ist einzigartig – wir nehmen uns Zeit für Ihre Bedürfnisse.",
-                  color: "bg-blue-100 text-blue-600"
+                {
+                  icon: <Users className="w-6 h-6 text-white" />,
+                  title: 'Gemeinschaft',
+                  desc: 'Regelmäßige Stammtische und Platz für über 150 Gäste.'
                 }
-              ].map((item, idx) => (
-                <div key={idx} className="flex gap-6 group">
-                  <div className={`flex-shrink-0 w-12 h-12 rounded-2xl ${item.color} flex items-center justify-center transition-transform group-hover:scale-110 duration-500`}>
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4 items-start">
+                  <div className="bg-[#E6B325] p-3 rounded-2xl shadow-lg shrink-0">
                     {item.icon}
                   </div>
-                  <div className="space-y-2">
-                    <h3 className="text-xl font-bold text-slate-900">{item.title}</h3>
-                    <p className="text-slate-600 font-medium">{item.desc}</p>
+                  <div>
+                    <h3 className="font-bold text-xl text-[#2D241E]">{item.title}</h3>
+                    <p className="text-[#2D241E]/60">{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -93,3 +69,5 @@ export const About = () => {
     </section>
   );
 };
+
+export default About;
