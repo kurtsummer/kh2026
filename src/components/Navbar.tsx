@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Beer, Menu as MenuIcon, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -23,62 +24,72 @@ export const Navbar = () => {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 py-4 ${
-        isScrolled ? 'bg-[#1A0F0A]/95 backdrop-blur-md shadow-2xl border-b border-[#D48806]/20' : 'bg-transparent'
+        isScrolled 
+          ? 'bg-white/95 dark:bg-[#1A0F0A]/95 backdrop-blur-md shadow-xl border-b border-[#2D241E]/5 dark:border-[#D48806]/20' 
+          : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
-          <div className="bg-[#D48806] p-2.5 rounded-lg group-hover:rotate-12 transition-all shadow-[0_0_20px_rgba(212,136,6,0.3)]">
-            <Beer className="text-[#1A0F0A] w-6 h-6" />
+          <div className="bg-[#2D241E] dark:bg-[#D48806] p-2.5 rounded-lg group-hover:rotate-12 transition-all shadow-lg dark:shadow-[0_0_20px_rgba(212,136,6,0.3)]">
+            <Beer className="text-white dark:text-[#1A0F0A] w-6 h-6" />
           </div>
           <div className="flex flex-col">
-            <span className="text-xl font-black tracking-tighter text-white leading-none">
+            <span className="text-xl font-black tracking-tighter text-[#2D241E] dark:text-white leading-none uppercase">
               MUSTERMANN'S
             </span>
-            <span className="text-sm font-bold tracking-[0.2em] text-[#D48806] leading-none mt-1">
+            <span className="text-sm font-bold tracking-[0.2em] text-[#D48806] leading-none mt-1 uppercase">
               BRAUSTUBE
             </span>
           </div>
         </a>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden md:flex items-center gap-8 lg:gap-10">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
-              className="text-[#F5E6D3]/80 font-bold text-sm uppercase tracking-widest hover:text-[#D48806] transition-colors relative group/link"
+              className="text-[#2D241E]/70 dark:text-[#F5E6D3]/80 font-bold text-xs uppercase tracking-widest hover:text-[#D48806] transition-colors relative group/link"
             >
               {link.name}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#D48806] transition-all group-hover/link:w-full" />
             </a>
           ))}
+          
+          <div className="h-4 w-px bg-[#2D241E]/10 dark:bg-[#F5E6D3]/10 mx-2" />
+          
+          <ThemeToggle />
+
           <a 
             href="#contact" 
-            className="bg-[#D48806] text-[#1A0F0A] px-8 py-3 rounded-sm font-black text-xs uppercase tracking-widest hover:bg-[#F5E6D3] transition-all transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg"
+            className="bg-[#2D241E] dark:bg-[#D48806] text-white dark:text-[#1A0F0A] px-8 py-3 rounded-sm font-black text-xs uppercase tracking-widest hover:bg-[#D48806] dark:hover:bg-[#F5E6D3] transition-all transform hover:-translate-y-0.5 active:translate-y-0 shadow-lg"
           >
             Reservieren
           </a>
         </div>
 
-        {/* Mobile Toggle */}
-        <button 
-          className="md:hidden text-[#F5E6D3]"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
-        </button>
+        {/* Mobile Toggle & ThemeToggle */}
+        <div className="flex items-center gap-4 md:hidden">
+          <ThemeToggle />
+          <button 
+            className="text-[#2D241E] dark:text-[#F5E6D3]"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <MenuIcon size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-[#1A0F0A] border-b border-[#D48806]/20 p-8 flex flex-col gap-6 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-[#1A0F0A] border-b border-[#2D241E]/5 dark:border-[#D48806]/20 p-8 flex flex-col gap-6 animate-in fade-in slide-in-from-top-4 duration-300">
           {navLinks.map((link) => (
             <a 
               key={link.name} 
               href={link.href}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="text-xl font-bold text-[#F5E6D3] uppercase tracking-wider"
+              className="text-xl font-bold text-[#2D241E] dark:text-[#F5E6D3] uppercase tracking-wider"
             >
               {link.name}
             </a>
