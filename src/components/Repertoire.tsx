@@ -20,7 +20,7 @@ const Repertoire = () => {
   });
 
   return (
-    <section id="repertoire" className="py-24 bg-background dark:bg-card/20">
+    <section id="repertoire" className="py-24 bg-background">
       <div className="container mx-auto px-4">
 
         <div className="text-center mb-16">

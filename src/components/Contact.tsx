@@ -23,7 +23,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background dark:bg-card/10 relative overflow-hidden">
+    <section id="contact" className="py-24 bg-background relative overflow-hidden">
       {/* Decorative patterns */}
 
       <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">

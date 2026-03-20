@@ -30,7 +30,7 @@ const occasions = [
 
 const Occasions = () => {
   return (
-    <section id="occasions" className="py-24 bg-background dark:bg-card/30">
+    <section id="occasions" className="py-24 bg-background">
       <div className="container mx-auto px-4 text-center">
 
         <motion.div

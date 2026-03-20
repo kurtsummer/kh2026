@@ -12,9 +12,9 @@ const Hero = () => {
           alt="Karl-Heinz Duo live" 
           className="w-full h-full object-cover scale-105"
         />
-        {/* Darker overlays for readability */}
-        <div className="absolute inset-0 bg-secondary/70 backdrop-blur-[1px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-secondary/50" />
+        {/* Theme-aware overlay */}
+        <div className="absolute inset-0 bg-secondary/60 dark:bg-black/80 backdrop-blur-[1px] transition-colors duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/20 dark:from-background dark:via-transparent dark:to-black/40 transition-colors duration-500" />
       </div>
 
       <div className="container mx-auto px-4 z-10 text-center">
@@ -30,12 +30,12 @@ const Hero = () => {
             className="w-64 md:w-80 lg:w-[450px] h-auto mb-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.6)]"
           />
           
-          <h1 className="text-4xl md:text-6xl lg:text-7xl mb-6 text-white leading-tight drop-shadow-lg">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl mb-6 text-white dark:text-primary leading-tight drop-shadow-lg">
             Karl-Heinz – Hits & Evergreens <br className="hidden md:block" />
-            <span className="text-primary italic">für Hochzeiten und Feiern</span>
+            <span className="text-primary italic dark:text-white">für Hochzeiten und Feiern</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12 leading-relaxed font-light drop-shadow-sm">
+          <p className="text-lg md:text-xl text-white/90 dark:text-foreground/90 max-w-2xl mx-auto mb-12 leading-relaxed font-light drop-shadow-sm">
             Live-Musik mit Charme und Herz für kleine Hochzeiten, Geburtstage und besondere Momente. 
             Wir bringen die Evergreens, die jeder liebt.
           </p>
@@ -47,7 +47,7 @@ const Hero = () => {
                 Termin anfragen
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg border-primary/50 text-white hover:bg-white/10 hover:border-primary backdrop-blur-sm transition-all duration-300">
+            <Button asChild variant="outline" size="lg" className="h-14 px-10 text-lg border-primary/50 text-white dark:text-primary-foreground hover:bg-white/10 hover:border-primary backdrop-blur-sm transition-all duration-300">
               <a href="#repertoire">
                 <Music className="mr-2 h-5 w-5" />
                 Songliste ansehen
