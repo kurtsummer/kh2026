@@ -60,9 +60,9 @@
   }
   
   html, body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply bg-background text-foreground transition-colors duration-500;
   }
-  
+
   body {
     @apply font-sans antialiased;
     line-height: 1.6;

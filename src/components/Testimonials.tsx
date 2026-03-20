@@ -1,80 +1,68 @@
-import { Star, Quote, Palmtree, Ship, Plane } from "lucide-react";
+import { motion } from "framer-motion";
+import { Quote, Star } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sabine Müller",
-    role: "Malediven Urlauberin",
-    content: "Max Mustermann hat uns die perfekte Hochzeitsreise zusammengestellt. Von der Ankunft bis zum Abflug war alles perfekt organisiert. Ein Traum wurde wahr!",
-    rating: 5,
-    icon: Palmtree
+    name: "Sabine & Thomas",
+    event: "Hochzeit",
+    text: "Karl-Heinz hat unsere kleine Gartenhochzeit musikalisch perfekt begleitet. Die Evergreens kamen bei allen Generationen super an!",
+    rating: 5
   },
   {
-    name: "Thomas Schmidt",
-    role: "Kreuzfahrt-Fan",
-    content: "Die Beratung zur Mittelmeer-Kreuzfahrt war erstklassig. Max kennt die Schiffe in- und auswendig und hat uns wertvolle Tipps für die Landausflüge gegeben.",
-    rating: 5,
-    icon: Ship
+    name: "Familie Müller",
+    event: "70. Geburtstag",
+    text: "Unglaublich sympathisch und bodenständig. Genau die richtige Mischung aus Unterhaltung und musikalischer Qualität.",
+    rating: 5
   },
   {
-    name: "Familie Weber",
-    role: "Städtereise New York",
-    content: "Das Hotel in Manhattan war ein echter Geheimtipp. Super zentral und trotzdem ruhig. Dank der tollen Planung hatten wir eine stressfreie Zeit in NYC.",
-    rating: 5,
-    icon: Plane
+    name: "Erich K.",
+    event: "Firmenjubiläum",
+    text: "Hervorragendes Repertoire! Es war für jeden etwas dabei und die Stimmung war den ganzen Abend über fantastisch.",
+    rating: 5
   }
 ];
 
-export const Testimonials = () => {
+const Testimonials = () => {
   return (
-    <section className="py-32 bg-sky-900 dark:bg-slate-950 overflow-hidden relative transition-colors duration-500">
-      {/* Decorative patterns */}
-      <div className="absolute inset-0 opacity-20 dark:opacity-10 pointer-events-none overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-[600px] h-[600px] border-4 border-amber-400/20 rounded-full animate-pulse" />
-        <div className="absolute -bottom-48 -left-48 w-[800px] h-[800px] border-4 border-white/10 rounded-full animate-spin-slow" />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-24 space-y-6">
-          <div className="inline-flex items-center gap-3 bg-amber-400 text-sky-950 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-amber-400/20">
-            Kundenstimmen
-          </div>
-          <h2 className="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter">
-            Echte Erlebnisse <br />
-            <span className="text-amber-400 italic">unserer Reisenden</span>
-          </h2>
-          <p className="text-sky-100 dark:text-sky-400/80 max-w-2xl mx-auto text-xl font-bold leading-relaxed">
-            Nichts motiviert uns mehr als die glücklichen Gesichter unserer Kunden nach ihrer Rückkehr.
-          </p>
+    <section className="py-24 bg-background overflow-hidden">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-primary text-sm font-bold uppercase tracking-[0.3em] mb-4">Referenzen</h2>
+          <h3 className="text-3xl md:text-4xl lg:text-5xl text-secondary dark:text-primary mb-6">Was unsere Kunden sagen</h3>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((t, i) => (
-            <div key={i} className="bg-white/10 dark:bg-slate-900/40 backdrop-blur-3xl border-4 border-white/10 dark:border-slate-800/50 p-12 rounded-[4rem] flex flex-col justify-between hover:bg-white/20 dark:hover:bg-slate-800/60 transition-all duration-700 group hover:-translate-y-4 relative">
-              <div className="absolute top-8 right-8 text-white/5 dark:text-sky-400/5 group-hover:text-amber-400/20 transition-colors duration-700">
-                <t.icon className="w-24 h-24 rotate-12" />
-              </div>
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-card p-8 rounded-[2rem] border border-primary/10 shadow-xl relative"
+            >
+              <Quote className="absolute top-6 right-8 text-primary/10 w-12 h-12" />
               
+              <div className="flex gap-1 mb-4">
+                {[...Array(t.rating)].map((_, i) => (
+                  <Star key={i} size={16} className="fill-primary text-primary" />
+                ))}
+              </div>
+
+              <p className="text-text dark:text-foreground/80 italic mb-6 leading-relaxed">
+                "{t.text}"
+              </p>
+
               <div>
-                <Quote className="w-16 h-16 text-amber-400 mb-10 opacity-40 group-hover:opacity-100 transition-all duration-700 group-hover:scale-110" />
-                <p className="text-white text-xl leading-relaxed mb-12 font-bold italic tracking-tight">
-                  "{t.content}"
-                </p>
+                <span className="block font-bold text-secondary dark:text-primary">{t.name}</span>
+                <span className="text-sm text-text/50 dark:text-foreground/50">{t.event}</span>
               </div>
-              <div className="space-y-8">
-                <div className="flex gap-2">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-6 h-6 fill-amber-400 text-amber-400 drop-shadow-lg" />
-                  ))}
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-white font-black text-3xl tracking-tighter italic">{t.name}</h4>
-                  <p className="text-amber-400 font-black text-[10px] uppercase tracking-[0.3em] leading-none">{t.role}</p>
-                </div>
-              </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
     </section>
   );
 };
+
+export default Testimonials;

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+
 import { Button } from "./ui/button";
 import { Sparkles, X } from "lucide-react";
 import { REPERTOIRE } from "@/data/repertoire";
@@ -7,8 +8,17 @@ import { REPERTOIRE } from "@/data/repertoire";
 const MusicHelper = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mood, setMood] = useState<string | null>(null);
+  const [showTooltip, setShowTooltip] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (!isOpen) setShowTooltip(true);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, [isOpen]);
 
   const moods = [
+
     { id: "romantic", label: "Romantisch & Gefühlvoll", icon: "❤️" },
     { id: "party", label: "Ausgelassen & Tanzbar", icon: "💃" },
     { id: "classic", label: "Gediegen & Klassisch", icon: "🍷" },
@@ -101,10 +111,27 @@ const MusicHelper = () => {
         ) : null}
       </AnimatePresence>
 
+      <AnimatePresence>
+        {showTooltip && !isOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            className="absolute right-16 bottom-2 bg-primary text-primary-foreground px-4 py-2 rounded-xl text-sm font-bold shadow-xl whitespace-nowrap hidden md:block"
+          >
+            Helfe ich bei der Musikwahl? ✨
+            <div className="absolute top-1/2 -right-1 w-2 h-2 bg-primary rotate-45 -translate-y-1/2" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          setIsOpen(!isOpen);
+          setShowTooltip(false);
+        }}
         className="w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg flex items-center justify-center hover:shadow-xl transition-all"
       >
         <Sparkles size={28} />
