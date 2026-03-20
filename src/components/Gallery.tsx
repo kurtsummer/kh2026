@@ -2,15 +2,16 @@ import { motion } from "framer-motion";
 
 const images = [
   {
-    url: "https://images.unsplash.com/photo-1514525253361-bee8718a300c?auto=format&fit=crop&w=800&q=80",
+    url: "/hero-bg.png",
     title: "Live Atmosphäre"
   },
   {
-    url: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1459749411177-042180ce673c?auto=format&fit=crop&w=800&q=80",
     title: "Gitarre & Gesang"
   },
+
   {
-    url: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=800&q=80",
+    url: "https://images.unsplash.com/photo-1514525253361-bee8718a300c?auto=format&fit=crop&w=800&q=80",
     title: "Stimmungsvolles Licht"
   },
   {
@@ -36,13 +37,15 @@ const Gallery = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden border-2 border-primary/5 shadow-lg"
+              className="group relative aspect-[4/5] rounded-[2rem] overflow-hidden border-2 border-primary/5 shadow-lg bg-primary/5"
             >
-              <img 
-                src={img.url} 
-                alt={img.title} 
+              <img
+                src={img.url}
+                alt={img.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
+
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-8">
                 <span className="text-white font-bold tracking-wide">{img.title}</span>
               </div>
