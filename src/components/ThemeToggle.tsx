@@ -3,7 +3,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -12,11 +12,12 @@ export function ThemeToggle() {
 
   if (!mounted) return <div className="w-10 h-10" />;
 
-  const isDark = theme === "dark";
+  const isDark = resolvedTheme === "dark";
 
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
+
       className="p-2 rounded-full border border-primary/20 bg-background/50 hover:bg-primary/10 transition-colors text-text dark:text-primary"
       aria-label="Design umschalten"
     >

@@ -6,8 +6,8 @@
 
 @layer base {
   :root {
-    --background: 35 40% 95%; /* Warmes Champagner #FAF3E0 */
-    --foreground: 0 0% 15%; /* Fast Schwarz für Text */
+    --background: 35 40% 95%; /* #FAF3E0 */
+    --foreground: 0 0% 15%;
     
     --card: 0 0% 100%;
     --card-foreground: 0 0% 15%;
@@ -15,10 +15,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 15%;
  
-    --primary: 43 70% 50%; /* Leuchtendes Gold #D4AF37 */
+    --primary: 43 70% 50%; /* #D4AF37 */
     --primary-foreground: 35 40% 95%;
  
-    --secondary: 0 68% 18%; /* Tiefes Weinrot/Burgunder #4A0E0E */
+    --secondary: 0 68% 18%; /* #4A0E0E */
     --secondary-foreground: 35 40% 95%;
  
     --muted: 35 20% 88%;
@@ -38,7 +38,7 @@
   }
 
   .dark {
-    --background: 0 68% 8%; /* Fast schwarzes Burgunder */
+    --background: 0 68% 8%; /* #210606 */
     --foreground: 35 40% 92%;
     
     --card: 0 68% 12%;
@@ -58,11 +58,16 @@
   * {
     @apply border-border;
   }
-  body {
-    @apply bg-background text-foreground font-sans antialiased;
-    line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+  
+  html, body {
+    @apply bg-background text-foreground transition-colors duration-300;
   }
+  
+  body {
+    @apply font-sans antialiased;
+    line-height: 1.6;
+  }
+  
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-bold text-secondary dark:text-primary tracking-tight;
   }
@@ -85,5 +90,5 @@
 }
 
 section {
-  @apply transition-colors duration-300;
+  @apply bg-background transition-colors duration-300;
 }
