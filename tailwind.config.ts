@@ -25,24 +25,16 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: '#D4AF37',
-					foreground: '#FAF3E0',
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))',
 				},
 				secondary: {
-					DEFAULT: '#4A0E0E',
-					foreground: '#FAF3E0',
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))',
 				},
 				accent: {
-					DEFAULT: '#D4AF37',
-					foreground: '#FAF3E0',
-				},
-				backgroundAlt: '#FAF3E0',
-
-				text: '#2F2A26',
-				success: '#7A8F72',
-				destructive: {
-					DEFAULT: 'hsl(var(--destructive))',
-					foreground: 'hsl(var(--destructive-foreground))',
+					DEFAULT: 'hsl(var(--accent))',
+					foreground: 'hsl(var(--accent-foreground))',
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
@@ -56,6 +48,7 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
 				},
+				text: 'hsl(var(--foreground))',
 			},
 			fontFamily: {
 				serif: ['Playfair Display', 'serif'],

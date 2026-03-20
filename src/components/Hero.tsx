@@ -12,9 +12,9 @@ const Hero = () => {
           alt="Karl-Heinz Duo live" 
           className="w-full h-full object-cover scale-105"
         />
-        {/* Darker overlays for readability */}
-        <div className="absolute inset-0 bg-secondary/70 backdrop-blur-[1px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-secondary via-transparent to-secondary/50" />
+        {/* Overlays adapt to theme */}
+        <div className="absolute inset-0 bg-secondary/70 dark:bg-black/80 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
       </div>
 
       <div className="container mx-auto px-4 z-10 text-center">
@@ -41,7 +41,7 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
-            <Button asChild size="lg" className="h-14 px-10 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_10px_30px_rgba(201,161,59,0.4)] hover:scale-105 transition-all duration-300">
+            <Button asChild size="lg" className="h-14 px-10 text-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_10px_30px_rgba(212,175,55,0.4)] hover:scale-105 transition-all duration-300">
               <a href="#contact">
                 <Calendar className="mr-2 h-5 w-5" />
                 Termin anfragen
