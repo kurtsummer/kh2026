@@ -34,7 +34,7 @@
     --input: 43 70% 50% / 0.2;
     --ring: 43 70% 50%;
  
-    --radius: 1rem; /* Etwas runder für "Herzlichkeit" */
+    --radius: 1rem;
   }
 
   .dark {
@@ -61,6 +61,7 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-bold text-secondary dark:text-primary tracking-tight;
@@ -68,7 +69,7 @@
 }
 
 .bg-ivory {
-  @apply bg-background;
+  @apply bg-background transition-colors duration-300;
 }
 
 .text-gold {
@@ -81,4 +82,8 @@
 
 .bg-gold {
   @apply bg-primary;
+}
+
+section {
+  @apply transition-colors duration-300;
 }

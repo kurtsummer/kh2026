@@ -23,8 +23,9 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-ivory relative overflow-hidden">
+    <section id="contact" className="py-24 bg-background dark:bg-card/10 relative overflow-hidden">
       {/* Decorative patterns */}
+
       <div className="absolute top-0 right-0 p-10 opacity-5 pointer-events-none">
         <img src="/logo.png" alt="" className="w-64" />
       </div>
@@ -39,42 +40,43 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary font-serif">Fragen Sie Ihren Wunschtermin an</h2>
-              <p className="text-lg text-text/80 mb-10 leading-relaxed">
-                Haben Sie Fragen oder möchten Sie direkt prüfen, ob wir an Ihrem Wunschtermin noch Zeit haben? 
+              <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary dark:text-primary font-serif">Fragen Sie Ihren Wunschtermin an</h2>
+              <p className="text-lg text-text/80 dark:text-foreground/80 mb-10 leading-relaxed">
+                Haben Sie Fragen oder möchten Sie direkt prüfen, ob wir an Ihrem Wunschtermin noch Zeit haben?
                 Schreiben Sie uns eine Nachricht – unverbindlich und unkompliziert. Wir freuen aus auf Ihre Anfrage!
               </p>
 
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-white rounded-lg shadow-sm text-primary">
+                  <div className="p-3 bg-card rounded-lg shadow-sm text-primary">
                     <Mail size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-secondary">E-Mail</h4>
-                    <p className="text-text/70">hallo@karl-heinz-musik.de</p>
+                    <h4 className="font-bold text-secondary dark:text-primary">E-Mail</h4>
+                    <p className="text-text/70 dark:text-foreground/70">hallo@karl-heinz-musik.de</p>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-white rounded-lg shadow-sm text-primary">
+                  <div className="p-3 bg-card rounded-lg shadow-sm text-primary">
                     <Phone size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-secondary">Telefon</h4>
-                    <p className="text-text/70">+49 (0) 123 456 789</p>
+                    <h4 className="font-bold text-secondary dark:text-primary">Telefon</h4>
+                    <p className="text-text/70 dark:text-foreground/70">+49 (0) 123 456 789</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="p-3 bg-white rounded-lg shadow-sm text-primary">
+                  <div className="p-3 bg-card rounded-lg shadow-sm text-primary">
                     <MapPin size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-secondary">Einsatzgebiet</h4>
-                    <p className="text-text/70">Großraum Süddeutschland & Österreich (auf Anfrage europaweit)</p>
+                    <h4 className="font-bold text-secondary dark:text-primary">Einsatzgebiet</h4>
+                    <p className="text-text/70 dark:text-foreground/70">Großraum Süddeutschland & Österreich (auf Anfrage europaweit)</p>
                   </div>
                 </div>
+
               </div>
             </motion.div>
 
@@ -83,8 +85,9 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-primary/10"
+              className="bg-card p-8 md:p-10 rounded-3xl shadow-xl border border-primary/10"
             >
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">

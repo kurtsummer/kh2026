@@ -30,7 +30,7 @@ const occasions = [
 
 const Occasions = () => {
   return (
-    <section id="occasions" className="py-24 bg-ivory dark:bg-background">
+    <section id="occasions" className="py-24 bg-background dark:bg-card/30">
       <div className="container mx-auto px-4 text-center">
 
         <motion.div
@@ -40,8 +40,9 @@ const Occasions = () => {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary">Für jeden Anlass die richtige Note</h2>
-          <p className="text-lg text-text/80">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary dark:text-primary">Für jeden Anlass die richtige Note</h2>
+          <p className="text-lg text-text/80 dark:text-foreground/80">
+
             Egal ob im kleinen Wohnzimmer oder im festlichen Saal – wir bringen die Atmosphäre, die Sie sich wünschen. 
             Besonders spezialisiert sind wir auf private Feiern mit persönlichem Charakter.
           </p>
@@ -55,15 +56,17 @@ const Occasions = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-primary/5 flex flex-col items-center text-center"
+              className="bg-card p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-primary/5 flex flex-col items-center text-center"
             >
+
               <div className={`p-4 rounded-full mb-6 ${item.color}`}>
                 <item.icon size={32} />
               </div>
-              <h3 className="text-xl font-bold mb-4 text-secondary">{item.title}</h3>
-              <p className="text-text/70 leading-relaxed">
+              <h3 className="text-xl font-bold mb-4 text-secondary dark:text-primary">{item.title}</h3>
+              <p className="text-text/70 dark:text-foreground/70 leading-relaxed">
                 {item.description}
               </p>
+
             </motion.div>
           ))}
         </div>

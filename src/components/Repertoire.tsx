@@ -20,15 +20,15 @@ const Repertoire = () => {
   });
 
   return (
-    <section id="repertoire" className="py-24 bg-white dark:bg-card">
+    <section id="repertoire" className="py-24 bg-background dark:bg-card/20">
       <div className="container mx-auto px-4">
 
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary font-serif">Unser Repertoire</h2>
-          <p className="text-lg text-text/80 max-w-2xl mx-auto mb-10">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl mb-6 text-secondary dark:text-primary font-serif">Unser Repertoire</h2>
+          <p className="text-lg text-text/80 dark:text-foreground/80 max-w-2xl mx-auto mb-10">
             Ein Auszug aus unseren beliebtesten Songs. Wir erweitern unser Repertoire ständig und gehen gerne auf Ihre individuellen Wünsche ein.
           </p>
-          
+
           <div className="flex flex-wrap justify-center gap-3 mb-10">
             {categories.map((cat) => (
               <Button
@@ -36,13 +36,14 @@ const Repertoire = () => {
                 variant={activeCategory === cat ? "default" : "outline"}
                 onClick={() => setActiveCategory(cat)}
                 className={`rounded-full px-6 transition-all duration-300 ${
-                  activeCategory === cat 
-                    ? "bg-primary text-primary-foreground shadow-md" 
-                    : "hover:border-primary hover:text-primary"
+                  activeCategory === cat
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "hover:border-primary hover:text-primary dark:text-foreground dark:border-primary/30"
                 }`}
               >
                 {cat}
               </Button>
+
             ))}
           </div>
 
@@ -51,10 +52,11 @@ const Repertoire = () => {
             <Input
               type="text"
               placeholder="Titel oder Interpret suchen..."
-              className="pl-10 h-12 border-primary/20 focus-visible:ring-primary rounded-full"
+              className="pl-10 h-12 border-primary/20 focus-visible:ring-primary rounded-full dark:bg-card dark:text-foreground"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+
           </div>
         </div>
 
@@ -68,28 +70,31 @@ const Repertoire = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="group p-6 rounded-xl border border-primary/10 hover:border-primary/30 hover:bg-ivory/50 transition-all duration-300 shadow-sm flex items-center gap-4"
+                className="group p-6 rounded-xl border border-primary/10 hover:border-primary/30 hover:bg-primary/5 bg-card transition-all duration-300 shadow-sm flex items-center gap-4"
               >
+
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 shrink-0">
                   <Music2 size={20} />
                 </div>
                 <div className="overflow-hidden">
-                  <h4 className="font-bold text-secondary truncate">{song.title}</h4>
-                  <p className="text-sm text-text/60 truncate">{song.artist}</p>
+                  <h4 className="font-bold text-secondary dark:text-primary truncate">{song.title}</h4>
+                  <p className="text-sm text-text/60 dark:text-foreground/60 truncate">{song.artist}</p>
                   <span className="text-[10px] uppercase tracking-wider text-primary/70 font-bold mt-1 block">
                     {song.category}
                   </span>
                 </div>
+
               </motion.div>
             ))}
           </AnimatePresence>
         </div>
 
         {filteredSongs.length === 0 && (
-          <div className="text-center py-20 bg-ivory/30 rounded-3xl border-2 border-dashed border-primary/10">
-            <p className="text-text/50 italic">Keine passenden Songs gefunden. Fragen Sie uns einfach nach Ihrem Wunschtitel!</p>
+          <div className="text-center py-20 bg-primary/5 rounded-3xl border-2 border-dashed border-primary/10">
+            <p className="text-text/50 dark:text-foreground/50 italic">Keine passenden Songs gefunden. Fragen Sie uns einfach nach Ihrem Wunschtitel!</p>
           </div>
         )}
+
       </div>
     </section>
   );

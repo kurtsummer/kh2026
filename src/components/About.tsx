@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-white dark:bg-card relative overflow-hidden">
+    <section id="about" className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
 
         <div className="max-w-3xl mx-auto text-center">
@@ -32,15 +32,16 @@ const About = () => {
             </div>
             
             <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-lg mx-auto">
-              <div className="p-6 bg-ivory rounded-2xl border-l-4 border-primary shadow-sm">
-                <span className="block text-3xl font-serif font-bold text-secondary">10+</span>
-                <span className="text-sm text-text/70 uppercase tracking-wider font-semibold">Jahre Erfahrung</span>
+              <div className="p-6 bg-card rounded-2xl border-l-4 border-primary shadow-sm">
+                <span className="block text-3xl font-serif font-bold text-secondary dark:text-primary">10+</span>
+                <span className="text-sm text-text/70 dark:text-foreground/70 uppercase tracking-wider font-semibold">Jahre Erfahrung</span>
               </div>
-              <div className="p-6 bg-ivory rounded-2xl border-l-4 border-primary shadow-sm">
-                <span className="block text-3xl font-serif font-bold text-secondary">100+</span>
-                <span className="text-sm text-text/70 uppercase tracking-wider font-semibold">Lieder im Repertoire</span>
+              <div className="p-6 bg-card rounded-2xl border-l-4 border-primary shadow-sm">
+                <span className="block text-3xl font-serif font-bold text-secondary dark:text-primary">100+</span>
+                <span className="text-sm text-text/70 dark:text-foreground/70 uppercase tracking-wider font-semibold">Lieder im Repertoire</span>
               </div>
             </div>
+
           </motion.div>
         </div>
       </div>

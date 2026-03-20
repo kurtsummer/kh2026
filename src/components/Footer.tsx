@@ -5,8 +5,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary text-white pt-20 pb-10">
+    <footer className="bg-secondary dark:bg-card text-white pt-20 pb-10">
       <div className="container mx-auto px-4">
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-2">
@@ -56,12 +57,13 @@ const Footer = () => {
               Abonnieren Sie unseren Newsletter für Tipps zur Hochzeitsplanung und Musik-Trends.
             </p>
             <div className="flex">
-              <input 
-                type="email" 
-                placeholder="E-Mail" 
-                className="bg-white/5 border-white/10 rounded-l-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-primary"
+              <input
+                type="email"
+                placeholder="E-Mail"
+                className="bg-white/5 border-white/10 rounded-l-md px-4 py-2 w-full focus:outline-none focus:ring-1 focus:ring-primary dark:bg-background/20"
               />
               <button className="bg-primary px-4 py-2 rounded-r-md hover:bg-primary/90 transition-colors">
+
                 <Music2 size={20} />
               </button>
             </div>
